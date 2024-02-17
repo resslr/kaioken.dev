@@ -33,7 +33,7 @@ export function SecondaryButton({
   return (
     <button
       {...props}
-      className={`bg-stone-500 hover:bg-stone-700 text-white font-bold text-sm py-2 px-4 rounded ${
+      className={`bg-stone-500 hover:bg-stone-400 text-white font-bold text-sm py-2 px-4 rounded ${
         className || ""
       }`}
     >

@@ -8,9 +8,11 @@ import { useNavDrawer } from "$/state/navDrawer"
 export function Navbar() {
   const { setOpen } = useNavDrawer()
   return (
-    <nav className="flex items-center border-b sm:justify-between gap-4 px-4 sm:px-8 py-3 w-full sticky top-0 backdrop-blur-[6px]">
+    <nav className="flex items-center border-b sm:justify-between gap-4 px-4 sm:px-8 py-3 w-full backdrop-blur-[6px]">
       <div className="flex gap-4 items-center">
-        <LogoIcon className="hidden sm:block" />
+        <a href="/" className="hidden sm:flex">
+          <LogoIcon />
+        </a>
         <button
           onclick={() => setOpen(true)}
           type="button"
@@ -19,8 +21,7 @@ export function Navbar() {
           <MenuIcon />
         </button>
         <div className="hidden sm:flex gap-2">
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="/counter">Counter</NavLink>
+          <NavLink href="/docs">Docs</NavLink>
         </div>
       </div>
       <div className="flex flex-grow gap-4 items-center justify-end">
@@ -43,7 +44,7 @@ function SearchButton() {
   return (
     <button
       type="button"
-      className="flex justify-between items-center flex-grow text-left sm:flex-grow-0 min-w-40 px-4 py-2 pr-2 gap-4 rounded border bg-white hover:bg-stone-50 dark:bg-stone-950 hover:dark:bg-stone-900"
+      className="flex leading-4 justify-between items-center flex-grow text-left sm:flex-grow-0 min-w-40 px-4 py-2 pr-2 gap-4 rounded border bg-white hover:bg-stone-50 dark:bg-stone-950 hover:dark:bg-stone-900"
     >
       <span className="text-xs sm:hidden">Search...</span>
       <span className="hidden sm:flex">

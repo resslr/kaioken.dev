@@ -6,19 +6,22 @@ import { Portal } from "kaioken"
 export function LayoutDefault({ children }: { children?: JSX.Element[] }) {
   const { isClient } = usePageContext()
   return (
-    <div className="flex flex-col items-center m-auto w-full min-h-screen">
-      <Navbar />
-
-      <Content>{children}</Content>
+    <>
+      <header className="sticky top-0">
+        <Navbar />
+      </header>
+      <main className="font-light">
+        <Content>{children}</Content>
+      </main>
       {isClient && (
         <Portal container={document.getElementById("portal-root")!}>
           <NavDrawer />
         </Portal>
       )}
-    </div>
+    </>
   )
 }
 
 function Content({ children }: { children?: JSX.Element[] }) {
-  return <div className="p-5 pb-10 sm:px-8">{children}</div>
+  return <div className="p-5 sm:px-8">{children}</div>
 }
