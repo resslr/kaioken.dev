@@ -1,16 +1,14 @@
 import path from "node:path"
 import { defineConfig } from "vite"
-import ssr from "vike/plugin"
+import vike from "vike/plugin"
 import kaioken from "vite-plugin-kaioken"
 
 export default defineConfig({
   resolve: {
     alias: {
-      $: path.join(__dirname, "src"),
-      //$: __dirname,
+      $: path.resolve(__dirname, "src"),
     },
   },
-  build: {},
   esbuild: {
     jsxInject: `import * as kaioken from "kaioken"`,
     jsx: "transform",
@@ -19,5 +17,12 @@ export default defineConfig({
     loader: "tsx",
     include: ["**/*.tsx", "**/*.ts", "**/*.jsx", "**/*.js"],
   },
-  plugins: [ssr(), kaioken()],
+  plugins: [
+    vike({
+      prerender: {
+        noExtraDir: true,
+      },
+    }),
+    kaioken(),
+  ],
 })
