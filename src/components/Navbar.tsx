@@ -3,10 +3,10 @@ import { LogoIcon } from "./icons/LogoIcon"
 import { MenuIcon } from "./icons/MenuIcon"
 import { GithubIcon } from "./icons/GithubIcon"
 import { CommandKeyIcon } from "./icons/keys/CommandKeyIcon"
-import { useSidebar } from "$/state/sidebar"
+import { useNavDrawer } from "$/state/navDrawer"
 
 export function Navbar() {
-  const { setOpen } = useSidebar()
+  const { setOpen } = useNavDrawer()
   return (
     <nav className="flex items-center border-b sm:justify-between gap-4 px-4 sm:px-8 py-3 w-full sticky top-0 backdrop-blur-[6px]">
       <div className="flex gap-4 items-center">

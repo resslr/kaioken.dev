@@ -1,12 +1,12 @@
 import { Transition } from "kaioken"
 import { Drawer } from "./dialog/Drawer"
-import { useSidebar } from "$/state/sidebar"
+import { useNavDrawer } from "$/state/navDrawer"
 
-export function Sidebar() {
+export function NavDrawer() {
   const {
     value: { open },
     setOpen,
-  } = useSidebar()
+  } = useNavDrawer()
   return (
     <Transition
       in={open}
