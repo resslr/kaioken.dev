@@ -3,13 +3,19 @@ import { LogoIcon } from "./icons/LogoIcon"
 import { MenuIcon } from "./icons/MenuIcon"
 import { GithubIcon } from "./icons/GithubIcon"
 import { CommandKeyIcon } from "./icons/keys/CommandKeyIcon"
+import { useSidebar } from "$/state/sidebar"
 
 export function Navbar() {
+  const { setOpen } = useSidebar()
   return (
     <nav className="flex items-center border-b sm:justify-between gap-4 px-4 sm:px-8 py-3 w-full sticky top-0 backdrop-blur-[6px]">
       <div className="flex gap-4 items-center">
         <LogoIcon className="hidden sm:block" />
-        <button type="button" className="sm:hidden">
+        <button
+          onclick={() => setOpen(true)}
+          type="button"
+          className="sm:hidden"
+        >
           <MenuIcon />
         </button>
         <div className="hidden sm:flex gap-2">

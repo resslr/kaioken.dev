@@ -4,14 +4,25 @@ import { Backdrop } from "./Backdrop"
 type DrawerProps = {
   state: TransitionState
   close: () => void
+  side: "bottom" | "left" | "right"
   children?: JSX.Element[]
 }
 
-export function Drawer({ state, close, children }: DrawerProps) {
+export function Drawer({ state, close, children, side }: DrawerProps) {
   const wrapperRef = useRef<HTMLDivElement>(null)
   if (state == "exited") return null
   const opacity = state === "entered" ? "1" : "0"
-  const translateX = state === "entered" ? 0 : 100
+  const translateX =
+    side === "right"
+      ? state === "entered"
+        ? 0
+        : 100
+      : side === "left"
+        ? state === "entered"
+          ? 0
+          : -100
+        : 0
+  const translateY = side === "bottom" ? (state === "entered" ? 0 : 100) : 0
 
   useEffect(() => {
     window.addEventListener("keyup", handleKeyPress)
@@ -33,7 +44,8 @@ export function Drawer({ state, close, children }: DrawerProps) {
     >
       <div
         className="drawer-content p-4"
-        style={{ transform: `translateX(${translateX}%)` }}
+        data-side={side}
+        style={{ transform: `translate(${translateX}%, ${translateY}%)` }}
       >
         {children}
       </div>
