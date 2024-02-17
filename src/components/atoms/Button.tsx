@@ -33,7 +33,7 @@ export function SecondaryButton({
   return (
     <button
       {...props}
-      className={`bg-gray-500 hover:bg-gray-700 text-white font-bold text-sm py-2 px-4 rounded ${
+      className={`bg-stone-500 hover:bg-stone-700 text-white font-bold text-sm py-2 px-4 rounded ${
         className || ""
       }`}
     >
@@ -84,7 +84,7 @@ export function DefaultButton({
   return (
     <button
       {...props}
-      className={`bg-gray-300 hover:bg-gray-200 text-gray-800 font-bold text-sm py-2 px-4 rounded ${
+      className={`bg-stone-200 hover:bg-stone-150 text-gray-800 font-bold text-sm py-2 px-4 rounded ${
         className || ""
       }`}
     >

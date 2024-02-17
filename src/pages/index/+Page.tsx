@@ -1,3 +1,4 @@
+import { Button } from "$/components/atoms/Button"
 import { PageTitle } from "$/components/atoms/PageTitle"
 
 export { Page }
@@ -6,6 +7,7 @@ function Page() {
   return (
     <div className="w-full h-full">
       <PageTitle>Home</PageTitle>
+      <Button variant="default">A Button</Button>
       <br />
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet

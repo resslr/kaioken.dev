@@ -1,5 +1,5 @@
 import { useState } from "kaioken"
-import { Button } from "./atoms/Button"
+import { Button } from "$/components/atoms/Button"
 
 export function Counter() {
   const [count, setCount] = useState(0)
