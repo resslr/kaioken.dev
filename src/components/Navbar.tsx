@@ -4,20 +4,15 @@ import { GithubIcon } from "./icons/GithubIcon"
 import { CommandKeyIcon } from "./icons/keys/CommandKeyIcon"
 import { useNavDrawer } from "$/state/navDrawer"
 import { SITE_LINKS } from "$/constants"
-import { NavLink } from "./atoms/NavLink"
-import { HomeLink } from "./atoms/HomeLink"
+import { usePageContext } from "$/context/pageContext"
 
 export function Navbar() {
   const { setOpen } = useNavDrawer()
+  const { urlPathname } = usePageContext()
+
   return (
     <nav className="flex items-center border-b sm:justify-between gap-4 px-4 sm:px-8 py-3 w-full backdrop-blur-[6px]">
       <div className="flex gap-4 items-center">
-        <a href="/" className="hidden sm:flex gap-1">
-          <LogoIcon />
-          <span className="text-primary font-medium hidden sm:block">
-            Kaioken
-          </span>
-        </a>
         <button
           onclick={() => setOpen(true)}
           type="button"
@@ -25,10 +20,31 @@ export function Navbar() {
         >
           <MenuIcon />
         </button>
+
+        <a href="/" className="hidden sm:flex gap-1">
+          <LogoIcon />
+          <span className="text-primary font-medium hidden sm:block">
+            Kaioken
+          </span>
+        </a>
         <div className="hidden sm:flex gap-2">
-          {SITE_LINKS.map((link) => (
-            <NavLink href={link.href}>{link.title}</NavLink>
-          ))}
+          {SITE_LINKS.map((link) =>
+            link.href === urlPathname ? (
+              <a
+                href={link.href}
+                className="text-sm text-black dark:text-white"
+              >
+                {link.title}
+              </a>
+            ) : (
+              <a
+                href={link.href}
+                className="text-sm text-muted hover:text-black dark:hover:text-white"
+              >
+                {link.title}
+              </a>
+            )
+          )}
         </div>
       </div>
       <div className="flex flex-grow gap-4 items-center justify-end">

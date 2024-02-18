@@ -18,7 +18,7 @@ declare global {
       }
 
       routeParams: Record<string, string>
-
+      urlPathname: string
       data: Record<string, unknown>
     }
   }
