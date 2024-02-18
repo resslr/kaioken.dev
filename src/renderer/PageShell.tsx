@@ -1,4 +1,4 @@
-import "./PageShell.css"
+import "$/styles/global.css"
 import type { PageContext } from "vike/types"
 import { LayoutDefault } from "$/layouts/LayoutDefault"
 import { PageContextProvider } from "$/context/pageContext"

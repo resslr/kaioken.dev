@@ -22,6 +22,7 @@ export function Navbar() {
         </button>
         <div className="hidden sm:flex gap-2">
           <NavLink href="/docs">Docs</NavLink>
+          <NavLink href="/playground">Playground</NavLink>
         </div>
       </div>
       <div className="flex flex-grow gap-4 items-center justify-end">
