@@ -3,7 +3,6 @@ import { Drawer } from "./dialog/Drawer"
 import { useNavDrawer } from "$/state/navDrawer"
 import { SITE_LINKS } from "$/constants"
 import { NavLink } from "./atoms/NavLink"
-import { LogoIcon } from "./icons/LogoIcon"
 import { HomeLink } from "./atoms/HomeLink"
 
 export function NavDrawer() {
@@ -14,7 +13,7 @@ export function NavDrawer() {
   return (
     <Transition
       in={open}
-      timings={[40, 250, 250, 250]}
+      timings={[70, 250, 250, 250]}
       element={(state) =>
         state === "exited" ? null : (
           <Drawer side="left" state={state} close={() => setOpen(false)}>
