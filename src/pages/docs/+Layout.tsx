@@ -1,4 +1,4 @@
-import { SidebarContent } from "$/components/SidebarContent"
+import { SidebarContent } from "./SidebarContent"
 
 export function Layout({ children }: { children?: JSX.Element[] }) {
   return (

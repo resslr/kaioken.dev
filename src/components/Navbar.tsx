@@ -1,17 +1,22 @@
-import { ElementProps } from "kaioken"
 import { LogoIcon } from "./icons/LogoIcon"
 import { MenuIcon } from "./icons/MenuIcon"
 import { GithubIcon } from "./icons/GithubIcon"
 import { CommandKeyIcon } from "./icons/keys/CommandKeyIcon"
 import { useNavDrawer } from "$/state/navDrawer"
+import { SITE_LINKS } from "$/constants"
+import { NavLink } from "./atoms/NavLink"
+import { HomeLink } from "./atoms/HomeLink"
 
 export function Navbar() {
   const { setOpen } = useNavDrawer()
   return (
     <nav className="flex items-center border-b sm:justify-between gap-4 px-4 sm:px-8 py-3 w-full backdrop-blur-[6px]">
       <div className="flex gap-4 items-center">
-        <a href="/" className="hidden sm:flex">
+        <a href="/" className="hidden sm:flex gap-1">
           <LogoIcon />
+          <span className="text-primary font-medium hidden sm:block">
+            Kaioken
+          </span>
         </a>
         <button
           onclick={() => setOpen(true)}
@@ -21,8 +26,9 @@ export function Navbar() {
           <MenuIcon />
         </button>
         <div className="hidden sm:flex gap-2">
-          <NavLink href="/docs">Docs</NavLink>
-          <NavLink href="/playground">Playground</NavLink>
+          {SITE_LINKS.map((link) => (
+            <NavLink href={link.href}>{link.title}</NavLink>
+          ))}
         </div>
       </div>
       <div className="flex flex-grow gap-4 items-center justify-end">
@@ -56,13 +62,5 @@ function SearchButton() {
         <b>K</b>
       </span>
     </button>
-  )
-}
-
-function NavLink({ href, children }: ElementProps<"a">) {
-  return (
-    <a href={href} className="text-sm underline">
-      {children}
-    </a>
   )
 }

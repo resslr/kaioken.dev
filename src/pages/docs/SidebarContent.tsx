@@ -1,3 +1,5 @@
+import { NavLink } from "$/components/atoms/NavLink"
+import { SITE_LINKS } from "$/constants"
 import { ElementProps } from "kaioken"
 
 type Section = {
