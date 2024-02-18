@@ -32,8 +32,8 @@ export function Page() {
       </section>
       <section className="mb-10">
         <Container className="py-10 flex items-center">
-          <h2 className="text-5xl font-medium leading-snug">
-            Simple, familiar components
+          <h2 className="text-4xl font-medium leading-snug">
+            Create user interfaces using simple, familiar components
           </h2>
         </Container>
         <Container mobilePadding={false}>

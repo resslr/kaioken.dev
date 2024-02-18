@@ -47,11 +47,7 @@ export function Navbar() {
       <div className="flex flex-grow gap-4 items-center justify-end">
         <SearchButton />
         <div>
-          <a
-            className="text-primary"
-            href="https://github.com/CrimsonChi/kaioken"
-            target="_blank"
-          >
+          <a href="https://github.com/CrimsonChi/kaioken" target="_blank">
             <GithubIcon />
           </a>
         </div>
@@ -70,7 +66,7 @@ function SearchButton() {
       <span className="hidden sm:flex">
         <span className="text-xs">Search documentation...</span>
       </span>
-      <span className="hidden sm:flex bg-primary text-light dark:opacity-85 dark:text-dark px-1 rounded gap-xs items-center text-[11px] font-mono">
+      <span className="hidden sm:flex bg-dark dark:bg-light  text-light dark:opacity-85 dark:text-dark px-1 rounded gap-xs items-center text-[11px] font-mono">
         <CommandKeyIcon width={12} />
         <b>K</b>
       </span>
