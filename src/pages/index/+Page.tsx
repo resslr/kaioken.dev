@@ -23,7 +23,7 @@ export function Page() {
         <div className="canvas-wrapper absolute overflow-hidden mt-[var(--navbar-height-negative) -z-10">
           <canvas ref={canvasRef} />
         </div>
-        <Container className="min-h-[calc(100dvh)] flex flex-col items-center justify-center h-full">
+        <Container className="min-h-[100dvh] flex flex-col items-center justify-center h-full">
           <h1 className="text-6xl xs:text-8xl sm:text-9xl text-spicy font-bold !leading-snug text-shadow">
             Kaioken
           </h1>

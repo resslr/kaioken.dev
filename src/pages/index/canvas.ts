@@ -87,7 +87,6 @@ function initCanvas(cvs: HTMLCanvasElement) {
   window.addEventListener("mousemove", function (e) {
     mouse.x = e.clientX
     mouse.y = e.clientY
-    //   console.log(mouse);
   })
   // setting up canvas
   canvas = cvs
