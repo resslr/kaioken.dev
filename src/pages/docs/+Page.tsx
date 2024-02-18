@@ -9,7 +9,7 @@ function Page() {
   return (
     <div className="w-full h-full">
       <PageTitle>Docs</PageTitle>
-      <div>
+      <div className="prose prose-neutral lg:prose-xl dark:prose-invert">
         <Test />
       </div>
       <br />
