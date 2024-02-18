@@ -16,7 +16,7 @@ export function PrimaryButton({
   return (
     <button
       {...props}
-      className={`bg-primary hover:bg-primary-light text-white font-bold text-sm py-2 px-4 rounded ${
+      className={`bg-primary hover:bg-primary-light text-light font-bold text-sm py-2 px-4 rounded ${
         className || ""
       }`}
     >
@@ -33,7 +33,7 @@ export function SecondaryButton({
   return (
     <button
       {...props}
-      className={`bg-stone-500 hover:bg-stone-400 text-white font-bold text-sm py-2 px-4 rounded ${
+      className={`bg-stone-500 hover:bg-stone-400 text-light font-bold text-sm py-2 px-4 rounded ${
         className || ""
       }`}
     >
@@ -50,7 +50,7 @@ export function DangerButton({
   return (
     <button
       {...props}
-      className={`bg-red-700 hover:bg-red-600 text-white font-bold text-sm py-2 px-4 rounded ${
+      className={`bg-red-700 hover:bg-red-600 text-light font-bold text-sm py-2 px-4 rounded ${
         className || ""
       }`}
     >
@@ -67,7 +67,7 @@ export function SuccessButton({
   return (
     <button
       {...props}
-      className={`bg-green-700 hover:bg-green-600 text-white font-bold text-sm py-2 px-4 rounded ${
+      className={`bg-green-700 hover:bg-green-600 text-light font-bold text-sm py-2 px-4 rounded ${
         className || ""
       }`}
     >

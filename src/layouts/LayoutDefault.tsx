@@ -1,3 +1,4 @@
+import { Container } from "$/components/atoms/Container"
 import { Navbar } from "$/components/Navbar"
 import { NavDrawer } from "$/components/NavDrawer"
 import { usePageContext } from "$/context/pageContext"
@@ -7,12 +8,12 @@ export function LayoutDefault({ children }: { children?: JSX.Element[] }) {
   const { isClient } = usePageContext()
   return (
     <>
-      <header className="sticky top-0">
-        <Navbar />
+      <header className="sticky top-0 z-50 bg-light dark:bg-dark border-b">
+        <Container>
+          <Navbar />
+        </Container>
       </header>
-      <main>
-        <Content>{children}</Content>
-      </main>
+      <main>{children}</main>
       {isClient && (
         <Portal container={document.getElementById("portal-root")!}>
           <NavDrawer />
@@ -20,8 +21,4 @@ export function LayoutDefault({ children }: { children?: JSX.Element[] }) {
       )}
     </>
   )
-}
-
-function Content({ children }: { children?: JSX.Element[] }) {
-  return <div className="sm:p-5 sm:px-8">{children}</div>
 }

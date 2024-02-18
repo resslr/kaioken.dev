@@ -9,12 +9,14 @@ export default {
       colors: {
         primary: "crimson",
         "primary-light": "#ec1b43",
+        dark: "#131313",
+        light: "#fffafa",
       },
       spacing: {
         xs: "0.125rem",
       },
       screens: {
-        xs: "360px",
+        xs: "460px",
       },
       backgroundColor: {
         stone: {
