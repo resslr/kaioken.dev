@@ -1,8 +1,8 @@
 import { Container } from "$/components/atoms/Container"
-import { CounterDemo } from "$/components/demos/CounterDemo"
 import { usePageContext } from "$/context/pageContext"
 import { useEffect, useRef } from "kaioken"
 import { initCanvas } from "./canvas"
+import { AlbumItemDemo } from "$/components/demos/albums/AlbumItemDemo"
 
 export function Page() {
   const { isClient } = usePageContext()
@@ -30,21 +30,18 @@ export function Page() {
           </span>
         </Container>
       </section>
-      <section className="mb-10">
-        <Container className="py-10 flex items-center">
-          <h2 className="text-4xl font-medium leading-snug">
-            Create user interfaces using simple, familiar components
-          </h2>
-        </Container>
-        <Container mobilePadding={false}>
-          <CounterDemo />
-        </Container>
-      </section>
-      <section>
-        <Container mobilePadding={false}>
-          <CounterDemo />
-        </Container>
-      </section>
+      <div className="flex flex-col gap-10 mb-10">
+        <section>
+          <Container className="py-10 flex items-center">
+            <h2 className="text-3xl font-medium leading-snug">
+              Composable user interfaces with reusable components
+            </h2>
+          </Container>
+          <Container breakpoint="md" mobilePadding={false}>
+            <AlbumItemDemo />
+          </Container>
+        </section>
+      </div>
     </div>
   )
 }

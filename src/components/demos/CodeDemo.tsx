@@ -1,6 +1,6 @@
 import { usePageContext } from "$/context/pageContext"
 import { prismJsx } from "$/prism-jsx"
-import { useRef, useEffect, ElementProps } from "kaioken"
+import { useRef, useEffect } from "kaioken"
 import Prism from "prismjs"
 import "prismjs/themes/prism-tomorrow.css"
 
@@ -20,12 +20,12 @@ export function CodeDemo({
   children?: JSX.Element
 }) {
   return (
-    <div className="grid sm:grid-cols-5">
-      <div className="bg-stone-800 sm:col-span-3 text-light sm:rounded-2xl overflow-hidden z-10 shadow-[#0003] dark:shadow-[#0006] shadow-lg ">
+    <div className="grid md:grid-cols-5">
+      <div className="md:col-span-3 md:rounded-2xl bg-stone-800 text-light overflow-hidden z-10 shadow-[#0003] dark:shadow-[#0006] shadow-lg ">
         <h4 className="text-sm px-4 py-2 text-stone-200 ">{filename}</h4>
         <CodeBlock code={code} />
       </div>
-      <div className="px-4 py-6 my-0 sm:my-8 bg-theme-gradient dark:bg-theme-gradient-dark sm:col-span-2 sm:rounded-e-2xl flex items-center justify-center shadow-[#0003] dark:shadow-[#0006] shadow-lg">
+      <div className="md:col-span-2 sm:rounded-e-2xl px-4 py-8 my-0 sm:my-8 bg-theme-gradient dark:bg-theme-gradient-dark flex items-center justify-center shadow-[#0003] dark:shadow-[#0006] shadow-lg">
         {children}
       </div>
     </div>
