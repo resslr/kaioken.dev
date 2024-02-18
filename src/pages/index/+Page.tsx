@@ -28,7 +28,7 @@ export function Page() {
             Kaioken
           </h1>
           <span className="xs:text-lg sm:text-2xl font-light text-center">
-            A powerful, familiar rendering library with a tiny footprint
+            A powerful, easy-to-use rendering library with a tiny footprint
           </span>
         </Container>
       </section>
