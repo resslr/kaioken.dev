@@ -11,7 +11,7 @@ export function Navbar() {
   const { urlPathname } = usePageContext()
 
   return (
-    <nav className="flex items-center border-b sm:justify-between gap-4 px-4 sm:px-8 py-3 w-full backdrop-blur-[6px]">
+    <nav className="flex items-center border-b sm:justify-between gap-4 px-4 sm:px-8 py-3 w-full backdrop-blur-[6px] z-50">
       <div className="flex gap-4 items-center">
         <button
           onclick={() => setOpen(true)}

@@ -10,7 +10,7 @@ export function LayoutDefault({ children }: { children?: JSX.Element[] }) {
       <header className="sticky top-0">
         <Navbar />
       </header>
-      <main className="font-light">
+      <main>
         <Content>{children}</Content>
       </main>
       {isClient && (
@@ -23,5 +23,5 @@ export function LayoutDefault({ children }: { children?: JSX.Element[] }) {
 }
 
 function Content({ children }: { children?: JSX.Element[] }) {
-  return <div className="p-5 sm:px-8">{children}</div>
+  return <div className="sm:p-5 sm:px-8">{children}</div>
 }
