@@ -1,4 +1,4 @@
-import { HeartIcon } from "$/components/icons/HeartIcon"
+import { LikeButton } from "$/components/LikeButton"
 import { PlayIcon } from "$/components/icons/PlayIcon"
 import { useState } from "kaioken"
 
@@ -13,14 +13,7 @@ export function AlbumItem({ album }: { album: Album }) {
         <h4 className="font-bold">{album.title}</h4>
         <span className="text-muted">{album.artist}</span>
       </div>
-      <button
-        className="flex transition transform active:scale-90 active:opacity-75 active:bg-[#e11d48a]"
-        onclick={() => setLiked((prev) => !prev)}
-      >
-        <HeartIcon
-          className={`transition-colors ${liked ? "text-rose-600" : ""}`}
-        />
-      </button>
+      <LikeButton />
     </div>
   )
 }

@@ -2,8 +2,7 @@ import { CodeDemo } from "../CodeDemo"
 import { DemoComponentWrapper } from "../DemoComponentWrapper"
 import { AlbumItem } from "./AlbumItem"
 
-const code = `
-export function Album({ album }) {
+const code = `function Album({ album }) {
   return (
     <div>
       <Thumbnail album={album} />
@@ -19,8 +18,8 @@ export function Album({ album }) {
 
 export function AlbumItemDemo() {
   return (
-    <CodeDemo filename="Album.tsx" code={code}>
-      <DemoComponentWrapper className="max-w-[300px]">
+    <CodeDemo filename="Album.jsx" code={code}>
+      <DemoComponentWrapper className="max-w-[340px]">
         <AlbumItem
           album={{
             id: 1,
