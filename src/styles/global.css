@@ -1,6 +1,7 @@
 /* This CSS is common to all pages */
 @import url("utils.css");
 @import url("dialog.css");
+@import url("scrollbars.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
