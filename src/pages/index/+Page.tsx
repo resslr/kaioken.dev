@@ -22,7 +22,7 @@ export function Page() {
         <section>
           <Container className="pt-10 pb-6">
             <h2 className="text-3xl font-medium leading-snug mb-4">
-              Create composable user interfaces with reusable components
+              Build modular user interfaces with reusable components
             </h2>
             <p className="text-lg font-light">
               Kaioken makes use of unflavoured JSX syntax, making it familiar
@@ -40,7 +40,7 @@ export function Page() {
         <section>
           <Container className="pt-10 pb-6">
             <h2 className="text-3xl font-medium leading-snug mb-4">
-              Create dynamic user interfaces
+              Create dynamic experiences with simple control flow
             </h2>
             <p className="text-lg font-light">
               Kaioken components are Javascript functions, so control flow and

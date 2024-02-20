@@ -3,10 +3,16 @@
   height: 100vh;
   position: absolute;
   z-index: -1;
-  filter: blur(150px);
+  filter: blur(12vh);
   transform: scaleX(1.25);
   overflow: hidden;
   background-color: purple;
+}
+
+@media (prefers-color-sheme: dark) {
+  #hero-background {
+    background-color: #800080aa;
+  }
 }
 
 #hero-background:after {
