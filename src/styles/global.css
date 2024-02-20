@@ -23,7 +23,7 @@
 
 :root {
   color-scheme: light dark;
-  background-color: #fffafa;
+  background-color: #fff7f7;
   color: #231313;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -36,16 +36,23 @@
 }
 
 
+*,
+::before,
+::after {
+  border-color: #ebe7e5;
+}
+
+
 @media (prefers-color-scheme: dark) {
   :root {
-    background-color: #131313;
-    color: #fffafa;
+    background-color: #151313;
+    color: #fff7f7;
   }
 
   *,
   ::before,
   ::after {
-    border-color: #343434;
+    border-color: #363434;
   }
 }
 

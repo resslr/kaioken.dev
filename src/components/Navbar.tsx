@@ -60,7 +60,7 @@ function SearchButton() {
   return (
     <button
       type="button"
-      className="flex leading-4 justify-between items-center flex-grow text-left sm:flex-grow-0 min-w-40 px-4 py-2 pr-2 gap-4 rounded border bg-light hover:bg-stone-100 dark:bg-stone-950 hover:dark:bg-stone-900"
+      className="flex leading-4 justify-between items-center flex-grow text-left sm:flex-grow-0 min-w-40 px-4 py-2 pr-2 gap-4 rounded border bg-light hover:bg-light-highlight dark:bg-stone-950 hover:dark:bg-stone-900"
     >
       <span className="text-xs sm:hidden">Search...</span>
       <span className="hidden sm:flex">

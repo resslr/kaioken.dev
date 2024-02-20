@@ -10,11 +10,9 @@ export default {
       colors: {
         primary: "crimson",
         "primary-light": "#ec1b43",
-        dark: "#131313",
-        light: "#fffafa",
-        stone: {
-          150: "#edeceb",
-        },
+        dark: "#151313",
+        light: "#fff7f7",
+        "light-highlight": "#fbf2f2",
       },
       spacing: {
         xs: "0.125rem",
@@ -24,7 +22,7 @@ export default {
       },
       backgroundImage: {
         "theme-gradient": "linear-gradient(153deg,#a37fe4,crimson)",
-        "theme-gradient-dark": "linear-gradient(153deg,#55388c,crimson)",
+        "theme-gradient-dark": "linear-gradient(153deg,#55388ce0,#c60025)",
       },
     },
   },
