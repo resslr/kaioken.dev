@@ -7,6 +7,7 @@ export function GithubIcon(props: ElementProps<"svg">) {
       viewBox="0 0 438.549 438.549"
       width={width ?? "1.5rem"}
       height={height ?? "1.5rem"}
+      className="overflow-visible"
       {...rest}
     >
       <path

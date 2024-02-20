@@ -23,8 +23,8 @@ export default {
         xs: "460px",
       },
       backgroundImage: {
-        "theme-gradient": "linear-gradient(153deg,#ba93ff,#9f3942)",
-        "theme-gradient-dark": "linear-gradient(153deg,#7552b3,#871e27)",
+        "theme-gradient": "linear-gradient(153deg,#a37fe4,crimson)",
+        "theme-gradient-dark": "linear-gradient(153deg,#55388c,crimson)",
       },
     },
   },
