@@ -14,5 +14,11 @@ export default {
     title: {
       env: { server: true, client: true },
     },
+    description: {
+      env: { server: true, client: true },
+    },
+    keywords: {
+      env: { server: true, client: true },
+    },
   },
 } satisfies Config

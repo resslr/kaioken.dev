@@ -26,7 +26,7 @@
     "@mdx-js/mdx": "^3.0.1",
     "@mdx-js/rollup": "^3.0.1",
     "express": "^4.18.2",
-    "kaioken": "^0.6.11",
+    "kaioken": "^0.6.12",
     "prismjs": "^1.29.0",
     "tsx": "^4.7.1",
     "vike": "^0.4.161",

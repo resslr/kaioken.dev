@@ -8,7 +8,9 @@ export function Layout({ children }: { children?: JSX.Element[] }) {
         <aside className="hidden sm:block min-w-[180px] max-h-[calc(100vh-2.5rem-60px)] sticky top-[80px] p-1 overflow-y-scroll">
           <SidebarContent />
         </aside>
-        {children}
+        <div className="prose prose-neutral lg:prose-xl dark:prose-invert max-w-max py-5">
+          {children}
+        </div>
       </div>
     </Container>
   )

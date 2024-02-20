@@ -2,7 +2,7 @@
 import type { OnRenderHtmlAsync } from "vike/types"
 import { dangerouslySkipEscape, escapeInject } from "vike/server"
 import { renderToString } from "kaioken"
-import { getTitle } from "./utils"
+import { getDescription, getKeywords, getTitle } from "./utils"
 import { App } from "./App"
 
 export const onRenderHtml: OnRenderHtmlAsync = async (
@@ -20,6 +20,8 @@ export const onRenderHtml: OnRenderHtmlAsync = async (
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
         <title>${getTitle(pageContext)}</title>
+        <meta name="description" content="${getDescription(pageContext)}">
+        <meta name="keywords" content="${getKeywords(pageContext).join(", ")}">
       </head>
       <body>
         <div id="page-root">${dangerouslySkipEscape(pageHtml)}</div>

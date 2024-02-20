@@ -10,9 +10,13 @@ declare global {
       Page: () => JSX.Element
       Layout: () => JSX.Element
       title: string | ((ctx: PageContext) => string)
+      description: string | ((ctx: PageContext) => string)
+      keywords: string[] | ((ctx: PageContext) => string[])
 
       config: {
         title: string | ((ctx: PageContext) => string)
+        description: string | ((ctx: PageContext) => string)
+        keywords: string[] | ((ctx: PageContext) => string[])
         Page: () => JSX.Element
         Layout?: () => JSX.Element
       }
