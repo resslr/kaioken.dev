@@ -5,6 +5,7 @@ import { CommandKeyIcon } from "./icons/keys/CommandKeyIcon"
 import { useNavDrawer } from "$/state/navDrawer"
 import { SITE_LINKS } from "$/constants"
 import { usePageContext } from "$/context/pageContext"
+import { isLinkActive } from "$/utils"
 
 export function Navbar() {
   const { setOpen } = useNavDrawer()
@@ -29,7 +30,7 @@ export function Navbar() {
         </a>
         <div className="hidden sm:flex gap-2">
           {SITE_LINKS.map((link) =>
-            link.href === urlPathname ? (
+            isLinkActive(link.href, urlPathname) ? (
               <a href={link.href} className="text-sm text-dark dark:text-light">
                 {link.title}
               </a>
