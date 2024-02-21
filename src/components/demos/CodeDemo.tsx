@@ -47,7 +47,7 @@ function CodeBlock({ code }: { code: string }) {
   }, [])
 
   return (
-    <pre className="p-4 h-full bg-[#1a1a1a] dark:bg-[#0a0a0a] text-light overflow-x-auto">
+    <pre className="p-4 h-full bg-[#1a1a1a] dark:bg-[#0a0a0a] text-light overflow-x-auto text-xs sm:text-sm">
       <code ref={eleRef}>{isClient ? "" : html}</code>
     </pre>
   )

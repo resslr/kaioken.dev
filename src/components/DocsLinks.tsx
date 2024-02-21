@@ -24,7 +24,7 @@ export function SidebarContent() {
             </a>
           </Header>
           <LinkList>
-            {section.items.map((item) => (
+            {section.sections.map((item) => (
               <Link
                 href={`${section.href}#${item.id}`}
                 onclick={() => setOpen(false)}

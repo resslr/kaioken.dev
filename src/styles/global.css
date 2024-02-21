@@ -22,8 +22,10 @@
 
 
 :root {
+  --color-light: #fffbfb;
+  --color-dark: #151313;
   color-scheme: light dark;
-  background-color: #fff7f7;
+  background-color: var(--color-light);
   color: #231313;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -46,8 +48,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    background-color: #151313;
-    color: #fff7f7;
+    background-color: var(--color-dark);
+    color: #fffafa;
   }
 
   *,

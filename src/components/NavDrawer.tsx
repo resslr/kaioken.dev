@@ -5,6 +5,7 @@ import { SITE_LINKS } from "$/constants"
 import { LogoIcon } from "./icons/LogoIcon"
 import { usePageContext } from "$/context/pageContext"
 import { SidebarContent } from "./DocsLinks"
+import { isLinkActive } from "$/utils"
 
 export function NavDrawer() {
   const {
@@ -27,20 +28,24 @@ export function NavDrawer() {
                   <span className="text-primary font-medium">Kaioken</span>
                 </a>
               </div>
-              <div className="pl-8">
-                <div className="flex flex-col gap-2 mb-5">
-                  {SITE_LINKS.map((link) => (
-                    <a href={link.href} className="text-base font-medium">
-                      {link.title}
-                    </a>
-                  ))}
-                </div>
-                {urlPathname.startsWith("/docs/") && (
-                  <div className="flex flex-col gap-2 mb-5">
+              <div className="flex flex-col gap-2 pl-9">
+                {SITE_LINKS.map((link) => (
+                  <a
+                    href={link.href}
+                    className={`text-base font-medium ${isLinkActive(link.href, urlPathname) ? "" : "text-muted"}`}
+                  >
+                    {link.title}
+                  </a>
+                ))}
+              </div>
+              {urlPathname.startsWith("/docs") && (
+                <>
+                  <hr className="my-6 mx-9" />
+                  <div className="flex flex-col gap-2 text-base xs:text-base pl-9">
                     <SidebarContent />
                   </div>
-                )}
-              </div>
+                </>
+              )}
             </div>
           </Drawer>
         )

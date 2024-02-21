@@ -16,14 +16,14 @@
   z-index: 1000;
   max-width: 100%;
   transition: transform 250ms ease-in-out;
-  background-color: #fff;
+  background-color: var(--color-light);
 }
 
 @media (prefers-color-scheme: dark) {
 
   .modal-content,
   .drawer-content {
-    background-color: #131313;
+    background-color: var(--color-dark);
   }
 }
 

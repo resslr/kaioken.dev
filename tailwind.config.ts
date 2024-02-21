@@ -11,8 +11,8 @@ export default {
         primary: "crimson",
         "primary-light": "#ec1b43",
         dark: "#151313",
-        light: "#fff7f7",
-        "light-highlight": "#fbf2f2",
+        light: "#fffafa",
+        "light-highlight": "#fbf6f6",
       },
       spacing: {
         xs: "0.125rem",
