@@ -39,12 +39,18 @@ async function startServer() {
     const pageContext = await renderPage(pageContextInit)
     if (pageContext.httpResponse === null) return next()
 
-    const { statusCode, contentType } = pageContext.httpResponse
-    res.status(statusCode).type(contentType)
+    const { statusCode, headers, earlyHints } = pageContext.httpResponse
+    if (res.writeEarlyHints)
+      res.writeEarlyHints({ link: earlyHints.map((e) => e.earlyHintLink) })
+    res.status(statusCode)
+    headers.forEach(([name, value]) => res.setHeader(name, value))
+
     pageContext.httpResponse.pipe(res)
   })
 
-  app.listen(process.env.PORT ? parseInt(process.env.PORT) : 3000, () => {
-    console.log("Server listening on http://localhost:3000")
+  const port = parseInt(process.env.PORT || "5173")
+
+  app.listen(port, () => {
+    console.log(`Server listening on http://localhost:${port}`)
   })
 }
