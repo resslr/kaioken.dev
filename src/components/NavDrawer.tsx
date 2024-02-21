@@ -4,6 +4,7 @@ import { useNavDrawer } from "$/state/navDrawer"
 import { SITE_LINKS } from "$/constants"
 import { LogoIcon } from "./icons/LogoIcon"
 import { usePageContext } from "$/context/pageContext"
+import { SidebarContent } from "./DocsLinks"
 
 export function NavDrawer() {
   const {
@@ -34,7 +35,11 @@ export function NavDrawer() {
                     </a>
                   ))}
                 </div>
-                <div className="flex flex-col gap-2 mb-5"></div>
+                {urlPathname.startsWith("/docs/") && (
+                  <div className="flex flex-col gap-2 mb-5">
+                    <SidebarContent />
+                  </div>
+                )}
               </div>
             </div>
           </Drawer>

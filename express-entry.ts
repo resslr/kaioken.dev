@@ -1,7 +1,8 @@
 import { dirname } from "node:path"
 import { fileURLToPath } from "node:url"
-import express from "express"
 import { renderPage } from "vike/server"
+import express from "express"
+import compression from "compression"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -12,6 +13,7 @@ startServer()
 
 async function startServer() {
   const app = express()
+  app.use(compression())
 
   if (isProduction) {
     app.use(express.static(`${root}/dist/client`))

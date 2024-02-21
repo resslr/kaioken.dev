@@ -1,7 +1,7 @@
 export const SITE_LINKS = [
   {
     title: "Docs",
-    href: "/docs",
+    href: "/docs/introduction",
   },
   {
     title: "Playground",

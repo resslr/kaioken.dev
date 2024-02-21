@@ -1,3 +1,7 @@
 export function isLinkActive(href: string, urlPath: string) {
-  return href === urlPath || urlPath.startsWith(href + "/")
+  return (
+    href === urlPath ||
+    urlPath.startsWith(href + "/") ||
+    urlPath.startsWith(href + "#")
+  )
 }
