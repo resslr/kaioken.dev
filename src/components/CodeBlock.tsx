@@ -12,7 +12,7 @@ if (!initialized) {
 
 export function CodeBlock({
   code,
-  className = "p-4",
+  className = "",
 }: {
   code: string
   className?: string

@@ -21,6 +21,7 @@ or the <ExternalLink href="https://github.com/CrimsonChi/kaioken-ssr-template.gi
 The following example demonstrates adding Kaioken to a Vite project.
 
 <TerminalCodeBlock 
+  className='rounded-lg'
   code={`pnpm add kaioken
 pnpm add vite-plugin-kaioken -D`}
   />
@@ -40,7 +41,7 @@ export default defineConfig({
     include: ["**/*.tsx", "**/*.ts", "**/*.jsx", "**/*.js"],
   },
   plugins: [kaioken()],
-})`} className='my-0' />
+})`} className='my-0 rounded-lg' />
 </div>
 <br />
 
@@ -52,5 +53,5 @@ export default defineConfig({
     "jsx": "preserve"
     ...
   }
-}`} className='my-0' />
+}`} className='my-0 rounded-lg' />
 </div>
