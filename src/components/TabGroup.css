@@ -1,4 +1,6 @@
 .tab-group {
+  --active: #b42641;
+
   ul {
     display: flex;
 
@@ -6,10 +8,14 @@
       font-size: .85rem;
       border-radius: .25rem .25rem 0 0;
       background-color: #eee;
-      border: 1px solid #ddd;
+      border: 1px solid;
+      border-color: #ddd;
+      border-bottom: 0;
 
       &.active {
-        background-color: #e3e3e3;
+        background-color: var(--active);
+        color: #fff;
+        border-color: #952d41;
       }
 
       button {
@@ -20,10 +26,10 @@
     @media (prefers-color-scheme: dark) {
       li {
         background-color: #333;
-        border: 1px solid #222;
+        border-color: #222;
 
         &.active {
-          background-color: #444;
+          background-color: var(--active);
         }
       }
     }
