@@ -1,8 +1,8 @@
-import {TabGroup} from '$/components/TabGroup'
 import {ExternalLink} from '$/components/atoms/ExternalLink'
 import {TerminalCodeBlock} from '$/components/TerminalCodeBlock'
 import {JSONCodeBlock} from '$/components/JSONCodeBlock'
 import {CodeBlock} from '$/components/CodeBlock'
+import {GitCloneCode} from './GitCloneCode'
 
 # Getting started
 
@@ -11,30 +11,12 @@ import {CodeBlock} from '$/components/CodeBlock'
 To quickly scaffold a new project, clone the <ExternalLink href="https://github.com/CrimsonChi/kaioken-csr-template.git">CSR Template</ExternalLink>
 or the <ExternalLink href="https://github.com/CrimsonChi/kaioken-ssr-template.git">SSR/SSG Template</ExternalLink>
 
-<div className='not-prose'>
-  <TabGroup
-    items={[{
-      text: "CSR",
-      element: () => <TerminalCodeBlock 
-    code={`mkdir my-app
-cd my-app
-git clone https://github.com/CrimsonChi/kaioken-csr-template.git .
-rm -r .git `}
-    />
-    }, {
-      text: "SSR",
-      element: () => <TerminalCodeBlock 
-    code={`mkdir my-app
-cd my-app
-git clone https://github.com/CrimsonChi/kaioken-ssr-template.git .
-rm -r .git `}
-    />
-    }]}
-  />
-
+<div className="not-prose">
+  <GitCloneCode />
 </div>
 
-<h2 id="start-a-new-project">Add to an existing project</h2>
+
+<h2 id="add-to-an-existing-project">Add to an existing project</h2>
 
 The following example demonstrates adding Kaioken to a Vite project.
 
