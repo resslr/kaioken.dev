@@ -1,0 +1,31 @@
+.tab-group {
+  ul {
+    display: flex;
+
+    li {
+      font-size: .85rem;
+      border-radius: .25rem .25rem 0 0;
+      background-color: #eee;
+      border: 1px solid #ddd;
+
+      &.active {
+        background-color: #e3e3e3;
+      }
+
+      button {
+        padding: .25rem 1rem;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      li {
+        background-color: #333;
+        border: 1px solid #222;
+
+        &.active {
+          background-color: #444;
+        }
+      }
+    }
+  }
+}

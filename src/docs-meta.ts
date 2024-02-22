@@ -28,6 +28,10 @@ export const sections: DocPage[] = [
         id: "start-a-new-project",
       },
       {
+        title: "Add to an existing project",
+        id: "add-to-an-existing-project",
+      },
+      {
         title: "Getting help",
         id: "getting-help",
       },

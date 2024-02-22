@@ -2,7 +2,7 @@ import { usePageContext } from "$/context/pageContext"
 import { prismJsx } from "$/prism-jsx"
 import { useRef, useEffect } from "kaioken"
 import Prism from "prismjs"
-import "prismjs/themes/prism-tomorrow.css"
+import "prismjs/themes/prism-tomorrow.min.css"
 
 let initialized = false
 if (!initialized) {

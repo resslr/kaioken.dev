@@ -15,3 +15,23 @@
 button.reset {
   padding: .125rem .5rem
 }
+
+.link-ext {
+  white-space: nowrap;
+}
+
+.link-ext svg {
+  display: inline;
+  vertical-align: baseline;
+  margin-left: 2px;
+}
+
+.prose a {
+  color: crimson !important
+}
+
+@media (prefers-color-scheme: dark) {
+  .prose a {
+    color: crimson !important
+  }
+}

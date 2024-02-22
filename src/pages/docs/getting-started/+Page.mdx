@@ -1,6 +1,46 @@
 import {Button} from '$/components/atoms/Button'
+import {TabGroup} from '$/components/TabGroup'
+import {ExternalLink} from '$/components/atoms/ExternalLink'
+import {TerminalCode} from '$/components/TerminalCode'
 
-# Test
+# Getting started
+
+<h2 id="start-a-new-project">Start a new project</h2>
+
+To quickly scaffold a new project, clone the <ExternalLink href="https://github.com/CrimsonChi/kaioken-csr-template.git">CSR Template</ExternalLink>
+or the <ExternalLink href="https://github.com/CrimsonChi/kaioken-ssr-template.git">SSR/SSG Template</ExternalLink>
+
+<div className='not-prose'>
+  <TabGroup
+    items={[{
+      text: "CSR",
+      element: () => <TerminalCode 
+    code={`mkdir my-app
+cd my-app
+git clone https://github.com/CrimsonChi/kaioken-csr-template.git .
+rm -r .git `}
+    />
+    }, {
+      text: "SSR",
+      element: () => <TerminalCode 
+    code={`mkdir my-app
+cd my-app
+git clone https://github.com/CrimsonChi/kaioken-ssr-template.git .
+rm -r .git `}
+    />
+    }]}
+  />
+
+</div>
+
+<h2 id="start-a-new-project">Add to an existing project</h2>
+
+
+Otherwise, you can add Kaioken to an existing  
+<TerminalCode 
+  code={`pnpm add kaioken
+pnpm add vite-plugin-kaioken -D`}
+  />
 
 <Button onclick={() => alert("Test")}>Test</Button>
 
