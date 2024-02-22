@@ -35,7 +35,6 @@ pnpm dev`}
 
 export function GitCloneCode() {
   const { value: selectedItem, setSelected } = useSelectionStore()
-  console.log("GitCloneCode", selectedItem)
   return (
     <div>
       <TabGroup
