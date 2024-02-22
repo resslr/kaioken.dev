@@ -1,14 +1,4 @@
-import { usePageContext } from "$/context/pageContext"
-import { prismJsx } from "$/prism-jsx"
-import { useRef, useEffect } from "kaioken"
-import Prism from "prismjs"
-import "prismjs/themes/prism-tomorrow.min.css"
-
-let initialized = false
-if (!initialized) {
-  prismJsx(Prism)
-  initialized = true
-}
+import { CodeBlock } from "../CodeBlock"
 
 export function CodeDemo({
   filename,
@@ -31,24 +21,5 @@ export function CodeDemo({
         {children}
       </div>
     </div>
-  )
-}
-
-function CodeBlock({ code }: { code: string }) {
-  const { isClient } = usePageContext()
-  const eleRef = useRef<HTMLElement>(null)
-  const html = Prism.highlight(code, Prism.languages.jsx, "jsx")
-
-  useEffect(() => {
-    if (!eleRef.current) return
-    if (isClient) {
-      eleRef.current.innerHTML = html
-    }
-  }, [])
-
-  return (
-    <pre className="p-4 h-full bg-[#1a1a1a] dark:bg-[#0a0a0a] text-light overflow-x-auto text-xs sm:text-sm">
-      <code ref={eleRef}>{isClient ? "" : html}</code>
-    </pre>
   )
 }

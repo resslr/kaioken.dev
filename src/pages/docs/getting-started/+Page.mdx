@@ -1,7 +1,8 @@
-import {Button} from '$/components/atoms/Button'
 import {TabGroup} from '$/components/TabGroup'
 import {ExternalLink} from '$/components/atoms/ExternalLink'
-import {TerminalCode} from '$/components/TerminalCode'
+import {TerminalCodeBlock} from '$/components/TerminalCodeBlock'
+import {JSONCodeBlock} from '$/components/JSONCodeBlock'
+import {CodeBlock} from '$/components/CodeBlock'
 
 # Getting started
 
@@ -14,7 +15,7 @@ or the <ExternalLink href="https://github.com/CrimsonChi/kaioken-ssr-template.gi
   <TabGroup
     items={[{
       text: "CSR",
-      element: () => <TerminalCode 
+      element: () => <TerminalCodeBlock 
     code={`mkdir my-app
 cd my-app
 git clone https://github.com/CrimsonChi/kaioken-csr-template.git .
@@ -22,7 +23,7 @@ rm -r .git `}
     />
     }, {
       text: "SSR",
-      element: () => <TerminalCode 
+      element: () => <TerminalCodeBlock 
     code={`mkdir my-app
 cd my-app
 git clone https://github.com/CrimsonChi/kaioken-ssr-template.git .
@@ -35,39 +36,39 @@ rm -r .git `}
 
 <h2 id="start-a-new-project">Add to an existing project</h2>
 
+The following example demonstrates adding Kaioken to a Vite project.
 
-Otherwise, you can add Kaioken to an existing  
-<TerminalCode 
+<TerminalCodeBlock 
   code={`pnpm add kaioken
 pnpm add vite-plugin-kaioken -D`}
   />
 
-<Button onclick={() => alert("Test")}>Test</Button>
+<div className="no-prose">
+  <span>Then, update your vite config to add JSX settings and the dev plugin:</span>
+  <CodeBlock code={`import { defineConfig } from "vite"
+import kaioken from "vite-plugin-kaioken"
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet quibusdam nesciunt quis repellendus voluptatibus suscipit? Fugiat
-doloribus explicabo incidunt, maiores iure, aperiam reiciendis nostrum
-qui, nemo aut consequatur delectus a?
+export default defineConfig({
+  esbuild: {
+    jsxInject: \`import * as kaioken from "kaioken"\`,
+    jsx: "transform",
+    jsxFactory: "kaioken.createElement",
+    jsxFragment: "kaioken.fragment",
+    loader: "tsx",
+    include: ["**/*.tsx", "**/*.ts", "**/*.jsx", "**/*.js"],
+  },
+  plugins: [kaioken()],
+})`} className='my-0' />
+</div>
+<br />
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet quibusdam nesciunt quis repellendus voluptatibus suscipit? Fugiat
-doloribus explicabo incidunt, maiores iure, aperiam reiciendis nostrum
-qui, nemo aut consequatur delectus a?
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet quibusdam nesciunt quis repellendus voluptatibus suscipit? Fugiat
-doloribus explicabo incidunt, maiores iure, aperiam reiciendis nostrum
-qui, nemo aut consequatur delectus a?
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet quibusdam nesciunt quis repellendus voluptatibus suscipit? Fugiat
-doloribus explicabo incidunt, maiores iure, aperiam reiciendis nostrum
-qui, nemo aut consequatur delectus a?
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet quibusdam nesciunt quis repellendus voluptatibus suscipit? Fugiat
-doloribus explicabo incidunt, maiores iure, aperiam reiciendis nostrum
-qui, nemo aut consequatur delectus a?
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet quibusdam nesciunt quis repellendus voluptatibus suscipit? Fugiat
-doloribus explicabo incidunt, maiores iure, aperiam reiciendis nostrum
-qui, nemo aut consequatur delectus a?
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet quibusdam nesciunt quis repellendus voluptatibus suscipit? Fugiat
-doloribus explicabo incidunt, maiores iure, aperiam reiciendis nostrum
-qui, nemo aut consequatur delectus a?
+<div className="no-prose">
+  <span>Lastly, add the following entry in your tsconfig.json:</span>
+  <JSONCodeBlock code={`{
+  "compilerOptions": {
+    ...
+    "jsx": "preserve"
+    ...
+  }
+}`} className='my-0' />
+</div>
