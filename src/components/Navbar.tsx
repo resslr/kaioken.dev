@@ -6,6 +6,7 @@ import { useNavDrawer } from "$/state/navDrawer"
 import { SITE_LINKS } from "$/constants"
 import { usePageContext } from "$/context/pageContext"
 import { isLinkActive } from "$/utils"
+import { CopyIcon } from "./icons/CopyIcon"
 
 export function Navbar() {
   const { setOpen } = useNavDrawer()

@@ -1,6 +1,4 @@
 import { ExternalLink } from "$/components/atoms/ExternalLink"
-import { TerminalCodeBlock } from "$/components/TerminalCodeBlock"
-import { JSONCodeBlock } from "$/components/JSONCodeBlock"
 import { CodeBlock } from "$/components/CodeBlock"
 import { GitCloneCode } from "./GitCloneCode"
 
@@ -24,7 +22,8 @@ and select 'Use this template'.
 
 <span>Add Kaioken and the Kaioken Vite plugin (for HMR):</span>
 <div className="no-prose">
-  <TerminalCodeBlock
+  <CodeBlock
+    lang="bash"
     className="my-0 rounded-lg"
     code={`pnpm add kaioken
 pnpm add vite-plugin-kaioken -D`}
@@ -35,7 +34,9 @@ pnpm add vite-plugin-kaioken -D`}
 
 <div className="no-prose">
   <span>Update your vite.config.ts to add JSX settings and the HMR plugin:</span>
-  <CodeBlock code={`import { defineConfig } from "vite"
+  <CodeBlock
+   lang="ts"
+   code={`import { defineConfig } from "vite"
 import kaioken from "vite-plugin-kaioken"
 
 export default defineConfig({
@@ -55,7 +56,8 @@ export default defineConfig({
 
 <div className="no-prose">
   <span>Add the "jsx" entry in your tsconfig.json:</span>
-  <JSONCodeBlock
+  <CodeBlock
+    lang="ts"
     code={`{
   "compilerOptions": {
     ...
@@ -71,7 +73,9 @@ export default defineConfig({
 
 <div className="no-prose">
   <span>Create a simple app:</span>
-  <CodeBlock code={`export function App() {
+  <CodeBlock 
+    lang="jsx"
+    code={`export function App() {
   return <h1>Hello world!</h1>
 }`} className='my-0 rounded-lg' />
 
@@ -81,7 +85,9 @@ export default defineConfig({
 
 <div className="no-prose">
   <span>Mount your app to the DOM:</span>
-  <CodeBlock code={`import { mount } from "kaioken"
+  <CodeBlock 
+    lang="jsx"
+    code={`import { mount } from "kaioken"
 import { App } from "./App"
 
 const root = document.getElementById("app")

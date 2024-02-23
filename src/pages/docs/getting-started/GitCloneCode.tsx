@@ -1,6 +1,6 @@
 import { TabGroup } from "$/components/TabGroup"
-import { TerminalCodeBlock } from "$/components/TerminalCodeBlock"
-import { createStore, useModel, useState } from "kaioken"
+import { CodeBlock } from "$/components/CodeBlock"
+import { createStore, useModel } from "kaioken"
 
 const useSelectionStore = createStore("CSR", (set) => ({
   setSelected: (value: string) => set(value),
@@ -8,7 +8,8 @@ const useSelectionStore = createStore("CSR", (set) => ({
 
 function CSRBash({ dirname }: { dirname: string }) {
   return (
-    <TerminalCodeBlock
+    <CodeBlock
+      lang="bash"
       className="rounded-b-lg rounded-tr-lg"
       code={`mkdir ${dirname || "my-app"}
 cd ${dirname || "my-app"}
@@ -21,7 +22,8 @@ pnpm dev`}
 }
 function SSRBash({ dirname }: { dirname: string }) {
   return (
-    <TerminalCodeBlock
+    <CodeBlock
+      lang="bash"
       className="rounded-b-lg rounded-tr-lg"
       code={`mkdir ${dirname || "my-app"}
 cd ${dirname || "my-app"}
