@@ -20,7 +20,7 @@ export function TerminalCodeBlock({
     if (isClient) {
       eleRef.current.innerHTML = html
     }
-  }, [])
+  }, [code])
 
   return (
     <pre

@@ -32,6 +32,7 @@ export function NavDrawer() {
                 {SITE_LINKS.map((link) => (
                   <a
                     href={link.href}
+                    target={link.external ? "_blank" : "_self"}
                     className={`text-base font-medium ${isLinkActive(link.href, urlPathname) ? "" : "text-muted"}`}
                   >
                     {link.title}

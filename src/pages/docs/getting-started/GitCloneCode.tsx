@@ -1,32 +1,32 @@
 import { TabGroup } from "$/components/TabGroup"
 import { TerminalCodeBlock } from "$/components/TerminalCodeBlock"
-import { createStore, useState } from "kaioken"
+import { createStore, useModel, useState } from "kaioken"
 
 const useSelectionStore = createStore("CSR", (set) => ({
   setSelected: (value: string) => set(value),
 }))
 
-function CSRBash() {
+function CSRBash({ dirname }: { dirname: string }) {
   return (
     <TerminalCodeBlock
       className="rounded-b-lg rounded-tr-lg"
-      code={`mkdir my-app
-cd my-app
+      code={`mkdir ${dirname || "my-app"}
+cd ${dirname || "my-app"}
 git clone https://github.com/CrimsonChi/kaioken-csr-template.git .
-rm -r .git
+rm -rf .git
 pnpm i
 pnpm dev`}
     />
   )
 }
-function SSRBash() {
+function SSRBash({ dirname }: { dirname: string }) {
   return (
     <TerminalCodeBlock
       className="rounded-b-lg rounded-tr-lg"
-      code={`mkdir my-app
-cd my-app
+      code={`mkdir ${dirname || "my-app"}
+cd ${dirname || "my-app"}
 git clone https://github.com/CrimsonChi/kaioken-ssr-template.git .
-rm -r .git
+rm -rf .git
 pnpm i
 pnpm dev`}
     />
@@ -35,14 +35,26 @@ pnpm dev`}
 
 export function GitCloneCode() {
   const { value: selectedItem, setSelected } = useSelectionStore()
+  const [ref, txt] = useModel("")
   return (
     <div>
-      <TabGroup
-        value={selectedItem}
-        onSelect={setSelected}
-        items={["CSR", "SSR"]}
-      />
-      {selectedItem === "CSR" ? <CSRBash /> : <SSRBash />}
+      <div className="flex gap-2">
+        <TabGroup
+          value={selectedItem}
+          onSelect={setSelected}
+          items={["CSR", "SSR"]}
+        />
+        <input
+          ref={ref}
+          placeholder="my-app"
+          className="px-2 text-sm w-full xs:w-auto"
+        />
+      </div>
+      {selectedItem === "CSR" ? (
+        <CSRBash dirname={txt} />
+      ) : (
+        <SSRBash dirname={txt} />
+      )}
     </div>
   )
 }

@@ -31,12 +31,17 @@ export function Navbar() {
         <div className="hidden sm:flex gap-2">
           {SITE_LINKS.map((link) =>
             isLinkActive(link.href, urlPathname) ? (
-              <a href={link.href} className="text-sm text-dark dark:text-light">
+              <a
+                href={link.href}
+                target={link.external ? "_blank" : "_self"}
+                className="text-sm text-dark dark:text-light"
+              >
                 {link.title}
               </a>
             ) : (
               <a
                 href={link.href}
+                target={link.external ? "_blank" : "_self"}
                 className="text-sm text-muted hover:text-dark dark:hover:text-light"
               >
                 {link.title}
