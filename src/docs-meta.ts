@@ -10,8 +10,8 @@ export const sections: DocPage[] = [
     href: "/docs/introduction",
     sections: [
       {
-        title: "Why Kaioken?",
-        id: "why-kaioken",
+        title: "About Kaioken",
+        id: "about-kaioken",
       },
       {
         title: "Roadmap",
