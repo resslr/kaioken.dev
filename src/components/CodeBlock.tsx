@@ -18,6 +18,7 @@ type Lang = "ts" | "jsx" | "json" | "bash"
 function createHtml(code: string, lang: Lang) {
   switch (lang) {
     case "ts":
+      return Prism.highlight(code, Prism.languages.typescript, "typescript")
     case "jsx":
       return Prism.highlight(code, Prism.languages.jsx, "jsx")
     case "json":
@@ -29,12 +30,12 @@ function createHtml(code: string, lang: Lang) {
 
 export function CodeBlock({
   code,
+  lang,
   className = "",
-  lang = "ts",
 }: {
   code: string
+  lang: Lang
   className?: string
-  lang?: Lang
 }) {
   const { isClient } = usePageContext()
   const eleRef = useRef<HTMLElement>(null)
