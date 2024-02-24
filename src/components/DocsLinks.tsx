@@ -62,7 +62,7 @@ function Header({ children, className, ...props }: ElementProps<"h4">) {
 }
 
 function LinkList({ children }: ElementProps<"div">) {
-  return <div className="flex flex-col w-full gap-1 py-2 px-1">{children}</div>
+  return <div className="flex flex-col w-full gap-1 p-1">{children}</div>
 }
 
 function Link({ children, ...props }: ElementProps<"a">) {
