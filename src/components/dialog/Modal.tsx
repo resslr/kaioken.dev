@@ -13,7 +13,7 @@ export function Modal({ state, close, children, className = "" }: ModalProps) {
   if (state == "exited") return null
   const opacity = state === "entered" ? "1" : "0"
   const scale = state === "entered" ? 1 : 0.85
-  const translateY = state === "entered" ? -50 : -25
+  const translateY = state === "entered" ? -50 : -65
 
   useEffect(() => {
     window.addEventListener("keyup", handleKeyPress)
