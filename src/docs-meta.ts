@@ -1,10 +1,16 @@
-type DocPage = {
+export type DocItem = {
   title: string
   href: string
-  sections: { title: string; id: string }[]
+  pages?: { title: string; href: string }[]
+  sections?: DocSectionLink[]
 }
 
-export const sections: DocPage[] = [
+export type DocSectionLink = {
+  title: string
+  id: string
+}
+
+export const docMeta: DocItem[] = [
   {
     title: "Introduction",
     href: "/docs/introduction",
@@ -37,53 +43,84 @@ export const sections: DocPage[] = [
       },
     ],
   },
+
+  {
+    title: "API",
+    href: "/docs/api",
+    pages: [
+      {
+        title: "Context",
+        href: "/docs/api/context",
+      },
+      {
+        title: "Memo",
+        href: "/docs/api/memo",
+      },
+      {
+        title: "Portal",
+        href: "/docs/api/portal",
+      },
+      {
+        title: "Router",
+        href: "/docs/api/router",
+      },
+      {
+        title: "Store",
+        href: "/docs/api/store",
+      },
+      {
+        title: "Transition",
+        href: "/docs/api/transition",
+      },
+      {
+        title: "Custom hooks",
+        href: "/docs/api/custom-hooks",
+      },
+    ],
+  },
   {
     title: "Hooks",
     href: "/docs/hooks",
-    sections: [
-      {
-        title: "Custom hooks",
-        id: "custom-hooks",
-      },
+    pages: [
       {
         title: "useCallback",
-        id: "useCallback",
+        href: "/docs/hooks/useCallback",
       },
       {
         title: "useContext",
-        id: "useContext",
+        href: "/docs/hooks/useContext",
       },
       {
         title: "useEffect",
-        id: "useEffect",
+        href: "/docs/hooks/useEffect",
       },
       {
         title: "useFetch",
-        id: "useFetch",
+        href: "/docs/hooks/useFetch",
       },
       {
         title: "useMemo",
-        id: "useMemo",
+        href: "/docs/hooks/useMemo",
       },
       {
         title: "useModel",
-        id: "useModel",
+        href: "/docs/hooks/useModel",
       },
       {
         title: "useOptimistic",
-        id: "useOptimistic",
+        href: "/docs/hooks/useOptimistic",
       },
       {
         title: "useReducer",
-        id: "useReducer",
+        href: "/docs/hooks/useReducer",
       },
       {
         title: "useRef",
-        id: "useRef",
+        href: "/docs/hooks/useRef",
       },
       {
         title: "useState",
-        id: "useState",
+        href: "/docs/hooks/useState",
       },
     ],
   },

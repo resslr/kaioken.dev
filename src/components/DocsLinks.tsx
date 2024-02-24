@@ -1,49 +1,63 @@
 import { usePageContext } from "$/context/pageContext"
-import { sections } from "$/docs-meta"
+import { DocItem as DocItemMeta, docMeta } from "$/docs-meta"
 import { useNavDrawer } from "$/state/navDrawer"
 import { isLinkActive } from "$/utils"
 import { ElementProps } from "kaioken"
 
 export function SidebarContent() {
-  const { urlPathname } = usePageContext()
-  const { setOpen } = useNavDrawer()
   return (
     <>
-      {sections.map((section) => (
-        <div className="mb-3">
-          <Header>
-            <a
-              href={
-                isLinkActive(section.href, urlPathname)
-                  ? section.href + "#"
-                  : section.href
-              }
-              onclick={() => setOpen(false)}
-            >
-              {section.title}
-            </a>
-          </Header>
-          <LinkList>
-            {section.sections.map((item) => (
-              <Link
-                href={`${section.href}#${item.id}`}
-                onclick={() => setOpen(false)}
-              >
-                {item.title}
-              </Link>
-            ))}
-          </LinkList>
-        </div>
+      {docMeta.map((meta) => (
+        <DocItem data={meta} />
       ))}
     </>
   )
 }
 
+function DocItem({ data }: { data: DocItemMeta }) {
+  const { urlPathname } = usePageContext()
+  const { setOpen } = useNavDrawer()
+
+  const active = isLinkActive(data.href, urlPathname)
+
+  return (
+    <div className="mb-3">
+      <Header>
+        <a
+          href={active ? data.href + "#" : data.href}
+          onclick={() => setOpen(false)}
+        >
+          {data.title}
+        </a>
+      </Header>
+      {data.pages && (
+        <LinkList>
+          {data.pages.map((page) => (
+            <Link href={page.href}>{page.title}</Link>
+          ))}
+        </LinkList>
+      )}
+      {data.sections && (
+        <LinkList>
+          {data.sections.map((section) => (
+            <Link
+              href={`${data.href}#${section.id}`}
+              onclick={() => setOpen(false)}
+            >
+              {section.title}
+            </Link>
+          ))}
+        </LinkList>
+      )}
+    </div>
+  )
+}
+
 function Header({ children, className, ...props }: ElementProps<"h4">) {
   return (
-    <h4 {...props} className={`font-medium ${className || ""}`}>
+    <span {...props} className={`font-medium ${className || ""}`}>
       {children}
-    </h4>
+    </span>
   )
 }
 
