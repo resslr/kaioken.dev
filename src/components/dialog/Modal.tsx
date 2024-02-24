@@ -5,9 +5,10 @@ type ModalProps = {
   state: TransitionState
   close: () => void
   children?: JSX.Element[]
+  className?: string
 }
 
-export function Modal({ state, close, children }: ModalProps) {
+export function Modal({ state, close, children, className = "" }: ModalProps) {
   const wrapperRef = useRef<HTMLDivElement>(null)
   if (state == "exited") return null
   const opacity = state === "entered" ? "1" : "0"
@@ -34,7 +35,7 @@ export function Modal({ state, close, children }: ModalProps) {
       style={{ opacity }}
     >
       <div
-        className="modal-content p-4"
+        className={`modal-content p-4 ${className}`}
         style={{
           transform: `translate(-50%, ${translateY}%) scale(${scale})`,
         }}

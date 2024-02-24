@@ -1,4 +1,5 @@
 import { Container } from "$/components/atoms/Container"
+import { CommandPallete } from "$/components/CommandPallete"
 import { Navbar } from "$/components/Navbar"
 import { NavDrawer } from "$/components/NavDrawer"
 import { usePageContext } from "$/context/pageContext"
@@ -17,6 +18,7 @@ export function LayoutDefault({ children }: { children?: JSX.Element[] }) {
       {isClient && (
         <Portal container={document.getElementById("portal-root")!}>
           <NavDrawer />
+          <CommandPallete />
         </Portal>
       )}
     </>

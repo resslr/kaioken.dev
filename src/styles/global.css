@@ -37,13 +37,18 @@
   --navbar-height-negative: -60px;
   scroll-padding: 100px;
   scroll-behavior: smooth;
+  --tw-border-opacity: 1;
 }
 
 
 *,
 ::before,
 ::after {
-  border-color: #ebe7e5;
+  border-color: rgb(235 231 229 / var(--tw-border-opacity));
+}
+
+::placeholder {
+  color: #363434
 }
 
 
@@ -53,10 +58,14 @@
     color: #fffafa;
   }
 
+  ::placeholder {
+    color: #777171 !important
+  }
+
   *,
   ::before,
   ::after {
-    border-color: #363434;
+    border-color: rgb(54 52 52 / var(--tw-border-opacity));
   }
 }
 

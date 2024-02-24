@@ -11,7 +11,9 @@ export function Input({
   return (
     <input
       type={type}
-      className={"flex h-9 px-2 rounded-md border " + className}
+      className={
+        "flex h-9 px-2 rounded-md border border-opacity-100 " + className
+      }
       ref={ref}
       {...props}
     />
