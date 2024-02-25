@@ -86,7 +86,7 @@ export function CodeBlock({
         <div className="absolute top-0 right-0 p-2">
           <div className="flex justify-end">
             <button
-              className="text-light opacity-50 hover:opacity-100"
+              className="text-light opacity-30 hover:opacity-60"
               onclick={copyToClipboard}
             >
               <CopyIcon />
