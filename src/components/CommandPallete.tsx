@@ -71,6 +71,7 @@ export function CommandPallete() {
 
 function CommandPalleteDisplay() {
   const [searchInputRef, searchInputValue] = useModel("")
+  const { setOpen } = useCommandPallete()
 
   useEffect(() => {
     searchInputRef.current?.focus()
@@ -88,6 +89,8 @@ function CommandPalleteDisplay() {
     searchInputRef.current?.focus()
   }
 
+  const searchTerms = searchInputValue.toLowerCase().split(" ")
+
   return (
     <>
       <DialogHeader className="border-b-0 relative">
@@ -98,7 +101,10 @@ function CommandPalleteDisplay() {
           className="w-full bg-stone-100 pl-8 dark:bg-stone-900 !border-opacity-50 font-normal text-base"
           ref={searchInputRef}
         />
-        <button className="flex px-2  items-center opacity-35 hover:opacity-100 focus:opacity-100">
+        <button
+          onclick={() => setOpen(false)}
+          className="flex px-2 items-center opacity-35 hover:opacity-100 focus:opacity-100"
+        >
           <CloseIcon width="1em" height="1em" />
         </button>
       </DialogHeader>
@@ -107,17 +113,17 @@ function CommandPalleteDisplay() {
           <CommandPalleteGroup
             title="Links"
             items={SITE_LINKS}
-            searchText={searchInputValue.toLowerCase()}
+            searchTerms={searchTerms}
           />
           <CommandPalleteGroup
             title="API"
             items={docMeta.find((d) => d.title === "API")!.pages!}
-            searchText={searchInputValue.toLowerCase()}
+            searchTerms={searchTerms}
           />
           <CommandPalleteGroup
             title="Hooks"
             items={docMeta.find((d) => d.title === "Hooks")!.pages!}
-            searchText={searchInputValue.toLowerCase()}
+            searchTerms={searchTerms}
           />
         </div>
       </DialogBody>
@@ -125,31 +131,41 @@ function CommandPalleteDisplay() {
   )
 }
 
+type Item = { title: string; href: string }
+
+function matchItem(terms: string[], keywords: string[]) {
+  let matched = 0
+  for (let i = 0; i < terms.length; i++) {
+    if (keywords.some((k) => k.indexOf(terms[i]) > -1)) matched++
+  }
+  return matched === terms.length
+}
+
 function CommandPalleteGroup({
   title,
   items,
-  searchText,
+  searchTerms,
 }: {
   title: string
-  items: { title: string; href: string }[]
-  searchText: string
+  items: Item[]
+  searchTerms: string[]
 }) {
   const filteredItems = useMemo(
     () =>
-      items.filter(
-        (i) =>
-          `${title.toLowerCase()} ${i.title.toLowerCase()}`.indexOf(
-            searchText
-          ) > -1
+      items.filter((item) =>
+        matchItem(searchTerms, [
+          title.toLowerCase(),
+          ...item.title.toLowerCase().split(" "),
+        ])
       ),
-    [searchText]
+    [searchTerms]
   )
   if (!filteredItems.length) return null
 
   return (
     <div className="mb-1 last:mb-0">
       <h4 className="font-bold text-xs text-muted">{title}</h4>
-      <div className="flex gap-1 flex-col p-2 ">
+      <div className="flex gap-1 flex-col py-2 px-1">
         {filteredItems.map((item) => (
           <CommandPalleteItem
             href={item.href}
