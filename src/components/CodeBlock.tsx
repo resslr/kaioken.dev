@@ -86,6 +86,7 @@ export function CodeBlock({
         <div className="absolute top-0 right-0 p-2">
           <div className="flex justify-end">
             <button
+              ariaLabel="Copy to clipboard"
               className="text-[#aaa] opacity-30 hover:opacity-60 focus:opacity-60"
               onclick={copyToClipboard}
             >

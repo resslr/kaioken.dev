@@ -7,7 +7,11 @@ export function Counter() {
   return (
     <>
       <span>Count: {count}</span>{" "}
-      <Button variant="primary" onclick={() => setCount((prev) => prev + 1)}>
+      <Button
+        ariaLabel="Increment"
+        variant="primary"
+        onclick={() => setCount((prev) => prev + 1)}
+      >
         Increment
       </Button>
     </>

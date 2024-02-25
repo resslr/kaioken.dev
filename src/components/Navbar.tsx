@@ -17,6 +17,7 @@ export function Navbar() {
     <nav className="flex items-center sm:justify-between gap-4 py-3 w-full">
       <div className="flex gap-4 items-center">
         <button
+          ariaLabel="Show menu"
           onclick={(e) => setOpen(true, e)}
           type="button"
           className="sm:hidden"
@@ -66,6 +67,7 @@ function SearchButton() {
   const { setOpen } = useCommandPallete()
   return (
     <button
+      ariaLabel="Search documentation"
       type="button"
       className="flex leading-4 justify-between items-center flex-grow text-left sm:flex-grow-0 min-w-40 px-4 py-2 pr-2 gap-4 rounded border bg-light hover:bg-light-highlight dark:bg-stone-950 hover:dark:bg-stone-900"
       onclick={(e) => setOpen(true, e)}

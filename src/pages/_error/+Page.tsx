@@ -13,7 +13,9 @@ function Page() {
     <div className="w-full h-screen flex flex-col gap-4 items-center justify-center text-center relative mt-[var(--navbar-height-negative)] px-5">
       <h1 className="text-5xl">Oops!</h1>
       <h1 className="text-3xl">{msg}</h1>
-      <Button onclick={() => history.back()}>Go back</Button>
+      <Button ariaLabel="Go back" onclick={() => history.back()}>
+        Go back
+      </Button>
     </div>
   )
 }

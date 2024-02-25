@@ -102,6 +102,7 @@ function CommandPalleteDisplay() {
           ref={searchInputRef}
         />
         <button
+          ariaLabel="Close"
           onclick={() => setOpen(false)}
           className="flex px-2 items-center opacity-35 hover:opacity-100 focus:opacity-100"
         >

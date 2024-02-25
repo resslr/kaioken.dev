@@ -6,7 +6,10 @@ export function AlbumItem({ album }: { album: Album }) {
   const [liked, setLiked] = useState(false)
   return (
     <div className="flex items-center gap-4">
-      <button className="p-2 border-2 border-dark dark:border-light rounded">
+      <button
+        role="none"
+        className="p-2 border-2 border-dark dark:border-light rounded"
+      >
         <PlayIcon />
       </button>
       <div className="flex-grow">

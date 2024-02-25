@@ -27,14 +27,14 @@ button.reset {
 }
 
 .prose a {
-  color: crimson !important
+  color: #ea495e !important
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   .prose a {
     color: crimson !important
   }
-}
+} */
 
 .badge {
   background-color: #dc143ccc;

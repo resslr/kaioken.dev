@@ -7,6 +7,7 @@ export function LikeButton() {
   return (
     <button
       data-liked={liked}
+      role="none"
       className="like-button flex transition transform active:scale-90 active:opacity-75"
       onclick={() => setLiked((prev) => !prev)}
     >
