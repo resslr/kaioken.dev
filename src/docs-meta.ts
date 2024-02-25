@@ -1,6 +1,6 @@
 export type DocItem = {
   title: string
-  href: string
+  href?: string
   pages?: { title: string; href: string }[]
   sections?: DocSectionLink[]
 }
@@ -46,7 +46,6 @@ export const docMeta: DocItem[] = [
 
   {
     title: "API",
-    href: "/docs/api",
     pages: [
       {
         title: "Context",
@@ -65,8 +64,8 @@ export const docMeta: DocItem[] = [
         href: "/docs/api/router",
       },
       {
-        title: "Store",
-        href: "/docs/api/store",
+        title: "createStore",
+        href: "/docs/api/createStore",
       },
       {
         title: "Transition",
@@ -80,7 +79,6 @@ export const docMeta: DocItem[] = [
   },
   {
     title: "Hooks",
-    href: "/docs/hooks",
     pages: [
       {
         title: "useCallback",

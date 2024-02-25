@@ -18,15 +18,22 @@ function DocItem({ data }: { data: DocItemMeta }) {
   const { urlPathname } = usePageContext()
   const { setOpen } = useNavDrawer()
 
-  const active = isLinkActive(data.href, urlPathname)
+  const active = data.href && isLinkActive(data.href, urlPathname)
 
   return (
     <div className="mb-3">
-      <Header
-        href={active ? data.href + "#" : data.href}
-        onclick={() => setOpen(false)}
-      >
-        {data.title}
+      <Header>
+        {data.href ? (
+          <a
+            href={active ? data.href + "#" : data.href}
+            onclick={() => setOpen(false)}
+            className="block"
+          >
+            {data.title}
+          </a>
+        ) : (
+          <span>{data.title}</span>
+        )}
       </Header>
       {data.pages && (
         <LinkList>
@@ -51,14 +58,8 @@ function DocItem({ data }: { data: DocItemMeta }) {
   )
 }
 
-function Header({ children, ...props }: ElementProps<"a">) {
-  return (
-    <div className={`font-medium w-full block`}>
-      <a {...props} className="block">
-        {children}
-      </a>
-    </div>
-  )
+function Header({ children }: ElementProps<"div">) {
+  return <div className={`font-medium w-full block`}>{children}</div>
 }
 
 function LinkList({ children }: ElementProps<"div">) {

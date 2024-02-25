@@ -1,0 +1,30 @@
+import { CodeBlock, CodeBlockHeader } from "$/components/CodeBlock"
+import {InlineCodeBlock} from "$/components/atoms/InlineCodeBlock"
+import { ContextDemo } from "$/components/demos/ContextDemo"
+import { AdvancedContextUsage } from "./AdvancedContextUsage.tsx"
+
+# Context
+
+<InlineCodeBlock>Context</InlineCodeBlock> is an external 
+state object declared via <a href="/docs/api/createContext">createContext</a>.
+
+
+<div className="not-prose">
+  <CodeBlock lang="ts" code={`\
+type Context<T> = {
+  // Component that acts as a reactive boundary for the context
+  Provider: ({ value }: { value: T }) => JSX.Element
+  // ...
+}`} />
+</div>
+<br />
+<small>Usage:</small>
+<div className="not-prose">
+  <ContextDemo />
+</div>
+
+### Advanced usage
+
+<div className="not-prose">
+  <AdvancedContextUsage />
+</div>

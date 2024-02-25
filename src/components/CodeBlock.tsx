@@ -1,5 +1,5 @@
 import { usePageContext } from "$/context/pageContext"
-import { useRef, useEffect } from "kaioken"
+import { useRef, useEffect, ElementProps } from "kaioken"
 import Prism from "prismjs"
 import { prismJsx } from "$/prism-jsx"
 import "prismjs/components/prism-typescript"
@@ -54,5 +54,16 @@ export function CodeBlock({
     >
       <code ref={eleRef}>{isClient ? "" : html}</code>
     </pre>
+  )
+}
+
+export function CodeBlockHeader({ children, ...props }: ElementProps<"span">) {
+  return (
+    <span
+      className="text-neutral-400 text-sm px-2 py-1 ml-2 rounded-t bg-stone-800"
+      {...props}
+    >
+      {children}
+    </span>
   )
 }

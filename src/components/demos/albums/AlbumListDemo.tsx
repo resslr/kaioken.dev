@@ -3,8 +3,8 @@ import { DemoComponentWrapper } from "../DemoComponentWrapper"
 import { AlbumItem } from "./AlbumItem"
 
 const code = `function AlbumList({ albums }) {  
-  let title = '0 albums';
-  if (albums.length === 1) title = '1 album';
+  let title = "0 albums";
+  if (albums.length === 1) title = "1 album";
   if (albums.length > 1) title = \`\${albums.length} albums\`
 
   return (
