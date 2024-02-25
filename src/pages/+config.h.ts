@@ -1,9 +1,8 @@
-import type { Config } from "vike/types"
-
 export default {
+  keywords: ["Kaioken", "Typescript", "Javascript", "library", "frontend"],
   meta: {
     Layout: {
       env: { server: true, client: true },
     },
   },
-} satisfies Config
+}
