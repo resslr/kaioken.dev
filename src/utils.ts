@@ -6,6 +6,10 @@ export function isLinkActive(href: string, urlPath: string) {
   )
 }
 
+export function isClickEventFromKeyboard(e: Event) {
+  return e && "detail" in e && e.detail === 0
+}
+
 export function trapFocus(element: Element, e: KeyboardEvent) {
   if (e.key === "Tab") {
     const focusableModalElements = element.querySelectorAll(

@@ -11,7 +11,7 @@ import { CloseIcon } from "./icons/CloseIcon"
 
 export function CommandPallete() {
   const {
-    value: { open },
+    value: { open, event },
     setOpen,
   } = useCommandPallete()
 
@@ -55,9 +55,10 @@ export function CommandPallete() {
           <Modal
             state={state}
             close={() => {
-              focusSender()
+              if (!event) focusSender()
               setOpen(false)
             }}
+            sender={event}
             className="max-w-[min(400px,100vw)]"
           >
             <CommandPalleteDisplay />

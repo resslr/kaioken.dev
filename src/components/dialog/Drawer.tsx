@@ -1,6 +1,6 @@
 import { useRef, type TransitionState, useEffect } from "kaioken"
 import { Backdrop } from "./Backdrop"
-import { trapFocus } from "$/utils"
+import { isClickEventFromKeyboard, trapFocus } from "$/utils"
 
 type DrawerProps = {
   state: TransitionState
@@ -30,7 +30,7 @@ export function Drawer({ state, close, children, side, sender }: DrawerProps) {
     window.addEventListener("keydown", handleKeyDown)
 
     // if the drawer was opened via keyboard 'click', focus the first internal element
-    if (sender && "detail" in sender && sender.detail === 0) {
+    if (sender && isClickEventFromKeyboard(sender)) {
       const firstFocussable = wrapperRef.current!.querySelector(
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
       )

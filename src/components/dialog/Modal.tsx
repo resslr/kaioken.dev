@@ -7,9 +7,16 @@ type ModalProps = {
   close: () => void
   children?: JSX.Element[]
   className?: string
+  sender?: Event | null
 }
 
-export function Modal({ state, close, children, className = "" }: ModalProps) {
+export function Modal({
+  state,
+  close,
+  children,
+  sender,
+  className = "",
+}: ModalProps) {
   const wrapperRef = useRef<HTMLDivElement>(null)
   if (state == "exited") return null
   const opacity = state === "entered" ? "1" : "0"
@@ -26,15 +33,21 @@ export function Modal({ state, close, children, className = "" }: ModalProps) {
     if (state === "exited" || !outerEl) return
     if (e.key === "Escape") {
       e.preventDefault()
-      return close()
+      return handleClose()
     }
     trapFocus(outerEl, e)
+  }
+
+  function handleClose() {
+    if (sender && sender.target && sender.target instanceof HTMLElement)
+      sender.target.focus()
+    close()
   }
 
   return (
     <Backdrop
       ref={wrapperRef}
-      onclick={(e) => e.target === wrapperRef.current && close()}
+      onclick={(e) => e.target === wrapperRef.current && handleClose()}
       style={{ opacity }}
     >
       <div
