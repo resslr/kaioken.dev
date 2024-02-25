@@ -49,7 +49,7 @@ export function GitCloneCode() {
         <input
           ref={ref}
           placeholder="my-app"
-          className="px-2 text-sm w-full xs:w-auto"
+          className="px-2 text-sm w-[140px] xs:w-auto"
         />
       </div>
       {selectedItem === "CSR" ? (

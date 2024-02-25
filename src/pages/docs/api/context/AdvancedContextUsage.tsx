@@ -11,7 +11,7 @@ export function AdvancedContextUsage() {
 
   return (
     <div>
-      <div className="flex gap-2">
+      <div>
         <TabGroup
           items={["themeContext.ts", "ThemeContextProvider.tsx", "Button.tsx"]}
           onSelect={setSelected}
