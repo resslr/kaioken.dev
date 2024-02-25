@@ -1,6 +1,9 @@
 import { createStore } from "kaioken"
 
-export const useNavDrawer = createStore({ open: false }, (set) => ({
-  toggle: () => set((prev) => ({ open: !prev.open })),
-  setOpen: (open: boolean) => set({ open }),
-}))
+export const useNavDrawer = createStore(
+  { open: false, event: null as Event | null },
+  (set) => ({
+    setOpen: (open: boolean, event: Event | null = null) =>
+      set({ open, event }),
+  })
+)

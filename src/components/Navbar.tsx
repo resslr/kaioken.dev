@@ -17,7 +17,7 @@ export function Navbar() {
     <nav className="flex items-center sm:justify-between gap-4 py-3 w-full">
       <div className="flex gap-4 items-center">
         <button
-          onclick={() => setOpen(true)}
+          onclick={(e) => setOpen(true, e)}
           type="button"
           className="sm:hidden"
         >
@@ -54,11 +54,9 @@ export function Navbar() {
       </div>
       <div className="flex flex-grow gap-4 items-center justify-end">
         <SearchButton />
-        <div>
-          <a href="https://github.com/CrimsonChi/kaioken" target="_blank">
-            <GithubIcon />
-          </a>
-        </div>
+        <a href="https://github.com/CrimsonChi/kaioken" target="_blank">
+          <GithubIcon />
+        </a>
       </div>
     </nav>
   )

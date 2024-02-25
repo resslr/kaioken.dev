@@ -51,6 +51,10 @@
   color: #363434
 }
 
+:focus-visible {
+  outline: 2px solid crimson;
+  border-radius: 3px;
+}
 
 @media (prefers-color-scheme: dark) {
   :root {

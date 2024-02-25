@@ -1,5 +1,6 @@
 import { useRef, type TransitionState, useEffect } from "kaioken"
 import { Backdrop } from "./Backdrop"
+import { trapFocus } from "$/utils"
 
 type ModalProps = {
   state: TransitionState
@@ -16,16 +17,18 @@ export function Modal({ state, close, children, className = "" }: ModalProps) {
   const translateY = state === "entered" ? -50 : -65
 
   useEffect(() => {
-    window.addEventListener("keyup", handleKeyPress)
-    return () => window.removeEventListener("keyup", handleKeyPress)
+    window.addEventListener("keydown", handleKeyPress)
+    return () => window.removeEventListener("keydown", handleKeyPress)
   }, [])
 
   function handleKeyPress(e: KeyboardEvent) {
+    const outerEl = wrapperRef.current
+    if (state === "exited" || !outerEl) return
     if (e.key === "Escape") {
       e.preventDefault()
-      if (state === "exited") return
-      close()
+      return close()
     }
+    trapFocus(outerEl, e)
   }
 
   return (

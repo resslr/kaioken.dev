@@ -9,7 +9,7 @@ import { isLinkActive } from "$/utils"
 
 export function NavDrawer() {
   const {
-    value: { open },
+    value: { open, event },
     setOpen,
   } = useNavDrawer()
   const { urlPathname } = usePageContext()
@@ -20,7 +20,12 @@ export function NavDrawer() {
       timings={[70, 250, 250, 250]}
       element={(state) =>
         state === "exited" ? null : (
-          <Drawer side="left" state={state} close={() => setOpen(false)}>
+          <Drawer
+            side="left"
+            state={state}
+            close={() => setOpen(false)}
+            sender={event}
+          >
             <div className="p-4 text-lg">
               <div className="flex gap-1 mb-5">
                 <a href="/" className="flex gap-2 items-center">

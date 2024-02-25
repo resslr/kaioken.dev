@@ -75,6 +75,18 @@ function CommandPalleteDisplay() {
     searchInputRef.current?.focus()
   }, [searchInputRef.current])
 
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyboardEvent)
+    return () => document.removeEventListener("keydown", handleKeyboardEvent)
+  }, [])
+
+  function handleKeyboardEvent(e: KeyboardEvent) {
+    const isHandled = e.key.toLowerCase() === "l" && e.ctrlKey
+    if (!isHandled) return
+    e.preventDefault()
+    searchInputRef.current?.focus()
+  }
+
   return (
     <>
       <DialogHeader className="border-b-0 relative">
@@ -122,7 +134,13 @@ function CommandPalleteGroup({
   searchText: string
 }) {
   const filteredItems = useMemo(
-    () => items.filter((i) => i.title.toLowerCase().includes(searchText)),
+    () =>
+      items.filter(
+        (i) =>
+          `${title.toLowerCase()} ${i.title.toLowerCase()}`.indexOf(
+            searchText
+          ) > -1
+      ),
     [searchText]
   )
   if (!filteredItems.length) return null
@@ -154,7 +172,7 @@ function CommandPalleteItem({
 }) {
   return (
     <a
-      className="w-full text-muted bg-light dark:bg-stone-800 border p-2 rounded focus:bg-light-highlight dark:focus:bg-stone-900"
+      className="w-full text-muted bg-light dark:bg-[#221f1faa] border p-2 rounded focus:bg-light-highlight dark:focus:bg-stone-800"
       href={href}
       target={external ? "_blank" : "_self"}
     >

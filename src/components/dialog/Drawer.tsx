@@ -1,14 +1,16 @@
 import { useRef, type TransitionState, useEffect } from "kaioken"
 import { Backdrop } from "./Backdrop"
+import { trapFocus } from "$/utils"
 
 type DrawerProps = {
   state: TransitionState
   close: () => void
   side: "bottom" | "left" | "right"
   children?: JSX.Element[]
+  sender?: Event | null
 }
 
-export function Drawer({ state, close, children, side }: DrawerProps) {
+export function Drawer({ state, close, children, side, sender }: DrawerProps) {
   const wrapperRef = useRef<HTMLDivElement>(null)
   if (state == "exited") return null
   const opacity = state === "entered" ? "1" : "0"
@@ -25,21 +27,41 @@ export function Drawer({ state, close, children, side }: DrawerProps) {
   const translateY = side === "bottom" ? (state === "entered" ? 0 : 100) : 0
 
   useEffect(() => {
-    window.addEventListener("keyup", handleKeyPress)
-    return () => window.removeEventListener("keyup", handleKeyPress)
+    window.addEventListener("keydown", handleKeyPress)
+
+    // if the drawer was opened via keyboard 'click', focus the first internal element
+    if (sender && "detail" in sender && sender.detail === 0) {
+      const firstFocussable = wrapperRef.current!.querySelector(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+
+      if (firstFocussable && firstFocussable instanceof HTMLElement) {
+        firstFocussable.focus()
+      }
+    }
+
+    return () => window.removeEventListener("keydown", handleKeyPress)
   }, [])
 
   function handleKeyPress(e: KeyboardEvent) {
     if (e.key === "Escape") {
       e.preventDefault()
-      close()
+      handleClose()
     }
+
+    wrapperRef.current && trapFocus(wrapperRef.current, e)
+  }
+
+  function handleClose() {
+    if (sender && sender.target && sender.target instanceof HTMLElement)
+      sender.target.focus()
+    close()
   }
 
   return (
     <Backdrop
       ref={wrapperRef}
-      onclick={(e) => e.target === wrapperRef.current && close()}
+      onclick={(e) => e.target === wrapperRef.current && handleClose()}
       style={{ opacity }}
     >
       <div
