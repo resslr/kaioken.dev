@@ -27,7 +27,7 @@ export function Drawer({ state, close, children, side, sender }: DrawerProps) {
   const translateY = side === "bottom" ? (state === "entered" ? 0 : 100) : 0
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyPress)
+    window.addEventListener("keydown", handleKeyDown)
 
     // if the drawer was opened via keyboard 'click', focus the first internal element
     if (sender && "detail" in sender && sender.detail === 0) {
@@ -40,10 +40,10 @@ export function Drawer({ state, close, children, side, sender }: DrawerProps) {
       }
     }
 
-    return () => window.removeEventListener("keydown", handleKeyPress)
+    return () => window.removeEventListener("keydown", handleKeyDown)
   }, [])
 
-  function handleKeyPress(e: KeyboardEvent) {
+  function handleKeyDown(e: KeyboardEvent) {
     if (e.key === "Escape") {
       e.preventDefault()
       handleClose()

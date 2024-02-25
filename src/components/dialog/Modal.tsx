@@ -17,11 +17,11 @@ export function Modal({ state, close, children, className = "" }: ModalProps) {
   const translateY = state === "entered" ? -50 : -65
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyPress)
-    return () => window.removeEventListener("keydown", handleKeyPress)
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
   }, [])
 
-  function handleKeyPress(e: KeyboardEvent) {
+  function handleKeyDown(e: KeyboardEvent) {
     const outerEl = wrapperRef.current
     if (state === "exited" || !outerEl) return
     if (e.key === "Escape") {

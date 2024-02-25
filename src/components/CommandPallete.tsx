@@ -147,7 +147,7 @@ function CommandPalleteGroup({
 
   return (
     <div className="mb-1 last:mb-0">
-      <h4 className="font-bold text-xs">{title}</h4>
+      <h4 className="font-bold text-xs text-muted">{title}</h4>
       <div className="flex gap-1 flex-col p-2 ">
         {filteredItems.map((item) => (
           <CommandPalleteItem
