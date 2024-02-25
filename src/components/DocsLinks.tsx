@@ -22,13 +22,11 @@ function DocItem({ data }: { data: DocItemMeta }) {
 
   return (
     <div className="mb-3">
-      <Header>
-        <a
-          href={active ? data.href + "#" : data.href}
-          onclick={() => setOpen(false)}
-        >
-          {data.title}
-        </a>
+      <Header
+        href={active ? data.href + "#" : data.href}
+        onclick={() => setOpen(false)}
+      >
+        {data.title}
       </Header>
       {data.pages && (
         <LinkList>
@@ -53,11 +51,13 @@ function DocItem({ data }: { data: DocItemMeta }) {
   )
 }
 
-function Header({ children, className, ...props }: ElementProps<"h4">) {
+function Header({ children, ...props }: ElementProps<"a">) {
   return (
-    <span {...props} className={`font-medium ${className || ""}`}>
-      {children}
-    </span>
+    <div className={`font-medium w-full block`}>
+      <a {...props} className="block">
+        {children}
+      </a>
+    </div>
   )
 }
 
