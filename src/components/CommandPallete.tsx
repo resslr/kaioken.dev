@@ -131,7 +131,7 @@ function CommandPalleteDisplay() {
   )
 }
 
-type Item = { title: string; href: string }
+type Item = { title: string; href: string; disabled?: boolean }
 
 function matchItem(terms: string[], keywords: string[]) {
   let matched = 0
@@ -168,8 +168,7 @@ function CommandPalleteGroup({
       <div className="flex gap-1 flex-col py-2 px-1">
         {filteredItems.map((item) => (
           <CommandPalleteItem
-            href={item.href}
-            text={item.title}
+            item={item}
             external={"external" in item && Boolean(item.external)}
           />
         ))}
@@ -179,21 +178,28 @@ function CommandPalleteGroup({
 }
 
 function CommandPalleteItem({
-  text,
-  href,
+  item,
   external,
 }: {
-  text: string
-  href: string
+  item: Item
   external?: boolean
 }) {
+  console.log(item)
+  if ("disabled" in item && !!item.disabled) {
+    return (
+      <a className="w-full text-muted opacity-75 bg-light dark:bg-[#221f1faa] border p-2 rounded focus:bg-light-highlight dark:focus:bg-stone-800">
+        {item.title}
+        <span className="badge">Upcoming</span>
+      </a>
+    )
+  }
   return (
     <a
       className="w-full text-muted bg-light dark:bg-[#221f1faa] border p-2 rounded focus:bg-light-highlight dark:focus:bg-stone-800"
-      href={href}
+      href={item.href}
       target={external ? "_blank" : "_self"}
     >
-      {text}
+      {item.title}
     </a>
   )
 }
