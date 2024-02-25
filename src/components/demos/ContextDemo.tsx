@@ -9,7 +9,7 @@ import { createContext, useState } from "kaioken"
 
 const ThemeContext = createContext("light")
 
-export function ThemeContextProvider({ children })
+export function ThemeContextProvider({ children }) {
   const [theme, setTheme] = useState("light")
 
   return (
