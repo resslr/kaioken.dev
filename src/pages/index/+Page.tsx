@@ -1,6 +1,8 @@
+import { Button } from "$/components/atoms/Button"
 import { Container } from "$/components/atoms/Container"
 import { AlbumItemDemo } from "$/components/demos/albums/AlbumItemDemo"
 import { AlbumListDemo } from "$/components/demos/albums/AlbumListDemo"
+import { navigate } from "vike/client/router"
 import "./Page.css"
 
 export function Page() {
@@ -15,6 +17,10 @@ export function Page() {
           <span className="text-lg xs:text-xl sm:text-2xl font-light text-center text-shadow text-light">
             A powerful, easy-to-use rendering library with a tiny footprint
           </span>
+          <br />
+          <a href="/docs/getting-started" className="link-button">
+            Get Started
+          </a>
         </Container>
       </section>
       <div className="flex flex-col mt-[150px]">

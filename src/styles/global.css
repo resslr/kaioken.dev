@@ -37,9 +37,6 @@
   --navbar-height-negative: -60px;
   scroll-behavior: smooth;
   --tw-border-opacity: 1;
-}
-
-html {
   scroll-padding: 100px;
 }
 
