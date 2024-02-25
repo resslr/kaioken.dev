@@ -35,3 +35,13 @@ button.reset {
     color: crimson !important
   }
 }
+
+.badge {
+  background-color: #dc143ccc;
+  border-radius: .25rem;
+  color: var(--color-light);
+  padding: 4px 4px;
+  text-transform: uppercase;
+  font-size: xx-small;
+  line-height: 1;
+}

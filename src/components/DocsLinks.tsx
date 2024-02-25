@@ -37,9 +37,16 @@ function DocItem({ data }: { data: DocItemMeta }) {
       </Header>
       {data.pages && (
         <LinkList>
-          {data.pages.map((page) => (
-            <Link href={page.href}>{page.title}</Link>
-          ))}
+          {data.pages.map((page) =>
+            page.disabled ? (
+              <Link className="flex items-center justify-between">
+                <span className="opacity-75">{page.title}</span>
+                <span className="badge">Upcoming</span>
+              </Link>
+            ) : (
+              <Link href={page.href}>{page.title}</Link>
+            )
+          )}
         </LinkList>
       )}
       {data.sections && (
@@ -66,9 +73,9 @@ function LinkList({ children }: ElementProps<"div">) {
   return <div className="flex flex-col w-full gap p-1">{children}</div>
 }
 
-function Link({ children, ...props }: ElementProps<"a">) {
+function Link({ children, className, ...props }: ElementProps<"a">) {
   return (
-    <a className="text-muted" {...props}>
+    <a className={`text-muted ${className || ""}`} {...props}>
       {children}
     </a>
   )
