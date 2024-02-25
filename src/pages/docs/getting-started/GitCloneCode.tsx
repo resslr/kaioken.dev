@@ -10,6 +10,7 @@ function CSRBash({ dirname }: { dirname: string }) {
   return (
     <CodeBlock
       lang="bash"
+      copy
       className="rounded-b-lg rounded-tr-lg"
       code={`mkdir ${dirname || "my-app"}
 cd ${dirname || "my-app"}
@@ -24,6 +25,7 @@ function SSRBash({ dirname }: { dirname: string }) {
   return (
     <CodeBlock
       lang="bash"
+      copy
       className="rounded-b-lg rounded-tr-lg"
       code={`mkdir ${dirname || "my-app"}
 cd ${dirname || "my-app"}
@@ -49,7 +51,7 @@ export function GitCloneCode() {
         <input
           ref={ref}
           placeholder="my-app"
-          className="px-2 text-sm w-[140px] xs:w-auto"
+          className="px-2 text-sm w-[140px] xs:w-auto bg-light dark:bg-dark border rounded-t"
         />
       </div>
       {selectedItem === "CSR" ? (
