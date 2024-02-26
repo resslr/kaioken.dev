@@ -14,10 +14,9 @@ export function Page() {
           <h1 className="text-6xl xs:text-8xl sm:text-9xl text-spicy font-bold !leading-snug text-shadow text-light">
             Kaioken
           </h1>
-          <span className="text-lg xs:text-xl sm:text-2xl font-light text-center text-shadow text-light">
+          <span className="text-lg mb-6 xs:text-xl sm:text-2xl font-light text-center text-shadow text-light">
             A powerful, easy-to-use rendering library with a tiny footprint
           </span>
-          <br />
           <a href="/docs/getting-started" className="link-button">
             Get Started
           </a>
