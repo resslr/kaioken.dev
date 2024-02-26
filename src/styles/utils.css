@@ -30,12 +30,6 @@ button.reset {
   color: #ea495e !important
 }
 
-/* @media (prefers-color-scheme: dark) {
-  .prose a {
-    color: crimson !important
-  }
-} */
-
 .badge {
   background-color: #dc143ccc;
   border-radius: .25rem;
@@ -52,4 +46,9 @@ button.reset {
   color: #222;
   font-weight: 500;
   border-radius: .25rem;
+}
+
+.preview-button {
+  text-decoration: underline;
+  color: crimson;
 }

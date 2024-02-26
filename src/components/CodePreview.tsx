@@ -4,7 +4,7 @@ import { Portal, Transition, useRef, useState } from "kaioken"
 
 export function CodePreview({ data }: { data: CodePreviewData }) {
   const { isClient } = usePageContext()
-  const linkRef = useRef<HTMLAnchorElement>(null)
+  const linkRef = useRef<HTMLButtonElement>(null)
   const linkBounds = useRef<DOMRect>(null)
   const [open, setOpen] = useState(false)
   const previewHovered = useRef(false)
@@ -35,16 +35,17 @@ export function CodePreview({ data }: { data: CodePreviewData }) {
 
   return (
     <>
-      <a
+      <button
+        className="preview-button"
+        ariaLabel="Show code preview"
         ref={linkRef}
-        href={data.link.href}
         onfocus={handleOpen}
         onblur={handleClose}
         onpointerenter={handleOpen}
         onpointerleave={handleClose}
       >
         {data.link.text}
-      </a>
+      </button>
       {isClient && (
         <Portal container={document.getElementById("portal-root")!}>
           <Transition

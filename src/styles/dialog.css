@@ -76,13 +76,16 @@
   top: 0;
   left: 0;
   border-radius: 5px;
-  padding: 5px;
+  padding: 2px;
   border: 2px solid;
 }
 
+.preview-content pre {
+  border-radius: 3px;
+}
 
 @media (prefers-color-scheme: dark) {
   .preview-content {
-    background: #444;
+    background: var(--color-dark);
   }
 }
