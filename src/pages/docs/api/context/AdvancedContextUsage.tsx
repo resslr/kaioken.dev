@@ -34,7 +34,7 @@ function ThemeContextBlock() {
     <CodeBlock
       lang="ts"
       code={`\
-import { createContext, useReducer } from "kaioken"
+import { createContext } from "kaioken"
 
 export const ThemeContext = createContext("light")
 export const ThemeDispatcherContext = createContext(null)
@@ -55,9 +55,10 @@ function ThemeContextProviderBlock() {
     <CodeBlock
       lang="jsx"
       code={`\
+import { useReducer } from "kaioken"
 import { ThemeContext, ThemeDispatcherContext } from "./themeContext"
 
-export function ThemeContextProvider({ children })
+function ThemeContextProvider({ children })
   const [theme, dispatch] = useReducer(themeStateReducer, "light")
 
   return (

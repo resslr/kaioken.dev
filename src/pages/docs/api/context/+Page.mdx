@@ -1,12 +1,14 @@
 import { CodeBlock, CodeBlockHeader } from "$/components/CodeBlock"
-import {InlineCodeBlock} from "$/components/atoms/InlineCodeBlock"
+import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
 import { ContextDemo } from "$/components/demos/ContextDemo"
-import { AdvancedContextUsage } from "./AdvancedContextUsage.tsx"
+import { AdvancedContextUsage } from "./AdvancedContextUsage"
+import { CodePreview } from "$/components/CodePreview"
+import { createContextPreview } from "$/components/previews/createContext.preview"
 
 # Context
 
 <InlineCodeBlock>Context</InlineCodeBlock> is an external 
-state object declared via <a href="/docs/api/createContext">createContext</a>.
+state object declared via <CodePreview data={createContextPreview} />.
 
 
 <div className="not-prose">
