@@ -1,8 +1,6 @@
-import { Button } from "$/components/atoms/Button"
 import { Container } from "$/components/atoms/Container"
 import { AlbumItemDemo } from "$/components/demos/albums/AlbumItemDemo"
 import { AlbumListDemo } from "$/components/demos/albums/AlbumListDemo"
-import { navigate } from "vike/client/router"
 import "./Page.css"
 
 export function Page() {
