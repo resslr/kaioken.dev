@@ -198,7 +198,7 @@ function CommandPalleteItem({
   }
   return (
     <a
-      className="w-full text-muted bg-light dark:bg-[#221f1faa] border p-2 rounded focus:bg-light-highlight dark:focus:bg-stone-800"
+      className="w-full text-muted bg-light dark:bg-[#221f1faa] border p-2 rounded focus:bg-light-highlight hover:bg-light-highlight dark:focus:bg-stone-800 dark:hover:bg-stone-800"
       href={item.href}
       target={external ? "_blank" : "_self"}
     >

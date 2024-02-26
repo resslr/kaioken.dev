@@ -91,10 +91,6 @@ export const docMeta: DocItem[] = [
     title: "Hooks",
     pages: [
       {
-        title: "Dependency arrays",
-        href: "/docs/hooks/dependency-arrays",
-      },
-      {
         title: "useCallback",
         href: "/docs/hooks/useCallback",
       },
@@ -139,6 +135,10 @@ export const docMeta: DocItem[] = [
         title: "useState",
         href: "/docs/hooks/useState",
         disabled: true,
+      },
+      {
+        title: "Dependency arrays",
+        href: "/docs/hooks/dependency-arrays",
       },
     ],
   },
