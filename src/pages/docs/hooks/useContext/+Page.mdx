@@ -1,1 +1,33 @@
+import { CodeBlock } from "$/components/CodeBlock"
+import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
+import { CodePreview } from "$/components/CodePreview"
+import { contextPreview } from "$/components/previews/context.preview"
+
+
 # useContext
+
+Gets the value from a <CodePreview data={contextPreview} /> object.
+
+### Example
+<div className="not-prose">
+  <CodeBlock 
+    lang="jsx" 
+    code={`\
+import { createContext, useContext } from "kaioken"
+
+const ThemeContext = useContext("light")
+
+const Button = () => {
+  const theme = useContext(ThemeContext)
+
+  return (
+    <button className={theme} />
+  )
+}
+`} />
+</div>
+
+### Related
+<ul>
+  <li><a href="/docs/api/context">Context</a></li>
+</ul>

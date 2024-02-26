@@ -70,7 +70,9 @@ export function CommandPallete() {
 }
 
 function CommandPalleteDisplay() {
-  const [searchInputRef, searchInputValue] = useModel("")
+  const [searchInputRef, searchInputValue] = useModel<HTMLInputElement, string>(
+    ""
+  )
   const { setOpen } = useCommandPallete()
 
   useEffect(() => {
@@ -188,7 +190,7 @@ function CommandPalleteItem({
   console.log(item)
   if ("disabled" in item && !!item.disabled) {
     return (
-      <a className="w-full text-muted opacity-75 bg-light dark:bg-[#221f1faa] border p-2 rounded focus:bg-light-highlight dark:focus:bg-stone-800">
+      <a className="w-full flex items-center justify-between text-muted opacity-75 bg-light dark:bg-[#221f1faa] border p-2 rounded focus:bg-light-highlight dark:focus:bg-stone-800">
         {item.title}
         <span className="badge">Upcoming</span>
       </a>

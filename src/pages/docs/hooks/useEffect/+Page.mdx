@@ -1,0 +1,44 @@
+import { CodeBlock } from "$/components/CodeBlock"
+import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
+import { CodePreview } from "$/components/CodePreview"
+import { contextPreview } from "$/components/previews/context.preview"
+
+# useEffect
+
+Runs a function after the component is rendered, or 
+when a value provided in the optional 
+<a href="/docs/hooks/dependency-arrays">dependency array</a>
+has changed.
+
+### Example
+<div className="not-prose">
+  <CodeBlock 
+    lang="jsx" 
+    code={`\
+import { useState, useEffect } from "kaioken"
+
+const MyComponent = ({ initialValue }) => {
+  const [value, setValue] = useState(initialValue)
+
+  useEffect(() => {
+    // This effect will run whenever 'value' changes
+    console.log("Value has changed:", value)
+  }, [value])
+
+  const handleClick = () => {
+    setValue(prevValue => prevValue + 1)
+  };
+
+  return (
+    <div>
+      <p>Value: {value}</p>
+      <button onClick={handleClick}>Increment</button>
+    </div>
+  )
+}`} />
+</div>
+
+### Related
+<ul>
+  <li><a href="/docs/hooks/dependency-arrays">Dependency arrays</a></li>
+</ul>

@@ -6,7 +6,7 @@ const useTabStore = createStore("themeContext.ts", (set) => ({
   setSelected: (value: string) => set(value),
 }))
 
-export function AdvancedContextUsage() {
+export function ContextExample() {
   const { value, setSelected } = useTabStore()
 
   return (

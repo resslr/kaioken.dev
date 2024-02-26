@@ -1,0 +1,38 @@
+import { CodeBlock } from "$/components/CodeBlock"
+import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
+import { CodePreview } from "$/components/CodePreview"
+import { contextPreview } from "$/components/previews/context.preview"
+
+# useMemo
+
+Memoizes the result of expensive computations. 
+Similar to <a href="/docs/hooks/useCallback">useCallback</a>, 
+but instead of memoizing a function, it memoizes the result of a computation.
+
+### Example
+<div className="not-prose">
+  <CodeBlock 
+    lang="jsx" 
+    code={`\
+import { useMemo } from "kaioken"
+
+const MyComponent = ({ prop }) => {
+  // Memoize the result of an expensive computation
+  const memoizedResult = useMemo(() => {
+    // Expensive computation based on the prop
+    return computeExpensiveValue(prop)
+  }, [prop]) // Re-run when 'prop' changes
+
+  return (
+    <div>
+      <p>Result: {memoizedResult}</p>
+    </div>
+  )
+}
+`} />
+</div>
+
+### Related
+<ul>
+  <li><a href="/docs/hooks/dependency-arrays">Dependency arrays</a></li>
+</ul>

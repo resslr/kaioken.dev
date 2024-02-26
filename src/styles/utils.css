@@ -36,7 +36,7 @@ button.reset {
   color: var(--color-light);
   padding: 4px 4px;
   text-transform: uppercase;
-  font-size: xx-small;
+  font-size: 8px;
   line-height: 1;
 }
 
@@ -49,7 +49,6 @@ button.reset {
 }
 
 .preview-button {
-  text-decoration: underline;
   color: #ea495e !important;
   font-weight: 500;
 }

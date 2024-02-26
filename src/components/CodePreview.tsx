@@ -1,10 +1,11 @@
 import { usePageContext } from "$/context/pageContext"
 import { CodePreviewData } from "$/types"
+import { isLinkActive } from "$/utils"
 import { Portal, Transition, useRef, useState } from "kaioken"
 
 export function CodePreview({ data }: { data: CodePreviewData }) {
-  const { isClient } = usePageContext()
-  const linkRef = useRef<HTMLButtonElement>(null)
+  const { isClient, urlPathname } = usePageContext()
+  const linkRef = useRef<any>(null)
   const linkBounds = useRef<DOMRect>(null)
   const [open, setOpen] = useState(false)
   const previewHovered = useRef(false)
@@ -35,17 +36,31 @@ export function CodePreview({ data }: { data: CodePreviewData }) {
 
   return (
     <>
-      <button
-        className="preview-button"
-        ariaLabel="Show code preview"
-        ref={linkRef}
-        onfocus={handleOpen}
-        onblur={handleClose}
-        onpointerenter={handleOpen}
-        onpointerleave={handleClose}
-      >
-        {data.link.text}
-      </button>
+      {isLinkActive(data.link.href, urlPathname) ? (
+        <button
+          className="preview-button"
+          ariaLabel="Show code preview"
+          ref={linkRef}
+          onfocus={handleOpen}
+          onblur={handleClose}
+          onpointerenter={handleOpen}
+          onpointerleave={handleClose}
+        >
+          {data.link.text}
+        </button>
+      ) : (
+        <a
+          href={data.link.href}
+          ref={linkRef}
+          onfocus={handleOpen}
+          onblur={handleClose}
+          onpointerenter={handleOpen}
+          onpointerleave={handleClose}
+        >
+          {data.link.text}
+        </a>
+      )}
+
       {isClient && (
         <Portal container={document.getElementById("portal-root")!}>
           <Transition

@@ -33,7 +33,7 @@ export function NavDrawer() {
                   <span className="text-primary font-medium">Kaioken</span>
                 </a>
               </div>
-              <div className="flex flex-col gap-2 pl-9">
+              <div className="flex flex-col gap-2 px-9">
                 {SITE_LINKS.map((link) => (
                   <a
                     href={link.href}
@@ -47,7 +47,7 @@ export function NavDrawer() {
               {urlPathname.startsWith("/docs") && (
                 <>
                   <hr className="my-6 mx-9" />
-                  <div className="flex flex-col gap-2 text-base xs:text-base pl-9">
+                  <div className="flex flex-col gap-2 text-base xs:text-base px-9">
                     <SidebarContent />
                   </div>
                 </>

@@ -39,7 +39,7 @@ pnpm dev`}
 
 export function GitCloneCode() {
   const { value: selectedItem, setSelected } = useSelectionStore()
-  const [ref, txt] = useModel("")
+  const [ref, txt] = useModel<HTMLInputElement, string>("")
   return (
     <div>
       <div className="flex gap-2">

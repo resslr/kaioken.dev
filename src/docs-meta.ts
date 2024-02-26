@@ -9,6 +9,7 @@ type DocPageLink = {
   title: string
   href: string
   disabled?: boolean
+  keywords?: string[]
 }
 
 type DocSectionLink = {
@@ -55,6 +56,7 @@ export const docMeta: DocItem[] = [
       {
         title: "Context",
         href: "/docs/api/context",
+        keywords: ["createContext"],
       },
       {
         title: "Memo",
@@ -70,20 +72,17 @@ export const docMeta: DocItem[] = [
         title: "Router",
         href: "/docs/api/router",
         disabled: true,
+        keywords: ["Route"],
       },
       {
-        title: "createStore",
-        href: "/docs/api/createStore",
+        title: "Store",
+        href: "/docs/api/store",
         disabled: true,
+        keywords: ["createStore"],
       },
       {
         title: "Transition",
         href: "/docs/api/transition",
-        disabled: true,
-      },
-      {
-        title: "Custom hooks",
-        href: "/docs/api/custom-hooks",
         disabled: true,
       },
     ],
@@ -92,19 +91,20 @@ export const docMeta: DocItem[] = [
     title: "Hooks",
     pages: [
       {
+        title: "Dependency arrays",
+        href: "/docs/hooks/dependency-arrays",
+      },
+      {
         title: "useCallback",
         href: "/docs/hooks/useCallback",
-        disabled: true,
       },
       {
         title: "useContext",
         href: "/docs/hooks/useContext",
-        disabled: true,
       },
       {
         title: "useEffect",
         href: "/docs/hooks/useEffect",
-        disabled: true,
       },
       {
         title: "useFetch",
@@ -114,7 +114,6 @@ export const docMeta: DocItem[] = [
       {
         title: "useMemo",
         href: "/docs/hooks/useMemo",
-        disabled: true,
       },
       {
         title: "useModel",

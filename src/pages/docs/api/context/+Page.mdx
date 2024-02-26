@@ -1,32 +1,24 @@
 import { CodeBlock, CodeBlockHeader } from "$/components/CodeBlock"
 import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
-import { ContextDemo } from "$/components/demos/ContextDemo"
-import { AdvancedContextUsage } from "./AdvancedContextUsage"
+import { ContextExample } from "./ContextExample"
 import { CodePreview } from "$/components/CodePreview"
 import { createContextPreview } from "$/components/previews/createContext.preview"
+import { contextPreview } from "$/components/previews/context.preview"
 
 # Context
 
-<InlineCodeBlock>Context</InlineCodeBlock> is an external 
+<CodePreview data={contextPreview} /> is an external 
 state object declared via <CodePreview data={createContextPreview} />.
+The Provider property is used as a component that acts as a 'reactive boundary'.
+When the context's state changes, children of the provider will be updated.
 
-
-<div className="not-prose">
-  <CodeBlock lang="ts" code={`\
-type Context<T> = {
-  // Component that acts as a reactive boundary for the context
-  Provider: ({ value }: { value: T }) => JSX.Element
-  // ...
-}`} />
-</div>
-<br />
-<small>Usage:</small>
-<div className="not-prose">
-  <ContextDemo />
-</div>
-
-### Advanced usage
+### Example
 
 <div className="not-prose">
-  <AdvancedContextUsage />
+  <ContextExample />
 </div>
+
+### Related
+<ul>
+  <li><a href="/docs/hooks/useContext">useContext</a></li>
+</ul>
