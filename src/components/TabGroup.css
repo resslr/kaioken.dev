@@ -10,11 +10,12 @@
 
     li {
       font-size: .85rem;
-      border-radius: .25rem .25rem 0 0;
       background-color: #eee;
       border: 1px solid;
       border-color: #ddd;
       border-bottom: 0;
+      /* flex-grow: 1; */
+      width: 100%;
 
       &.active {
         background-color: var(--active);
@@ -24,6 +25,17 @@
 
       button {
         padding: .25rem 1rem;
+      }
+    }
+
+    li:first-child {
+      border-radius: .35rem .35rem 0 0;
+    }
+
+    @media screen and (min-width:768px) {
+      li {
+        border-radius: .35rem .35rem 0 0;
+        width: auto;
       }
     }
 
