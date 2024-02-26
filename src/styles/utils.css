@@ -50,5 +50,6 @@ button.reset {
 
 .preview-button {
   text-decoration: underline;
-  color: crimson;
+  color: #ea495e !important;
+  font-weight: 500;
 }
