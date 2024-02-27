@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - createContext",
-  keywords: ["createContext", "context"],
+  title: "Kaioken - Context",
+  keywords: ["context", "createContext"],
 }

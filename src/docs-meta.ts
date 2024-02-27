@@ -61,7 +61,6 @@ export const docMeta: DocItem[] = [
       {
         title: "Memo",
         href: "/docs/api/memo",
-        disabled: true,
       },
       {
         title: "Portal",

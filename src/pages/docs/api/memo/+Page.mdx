@@ -1,0 +1,30 @@
+import { CodeBlock } from "$/components/CodeBlock"
+import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
+import { CodePreview } from "$/components/CodePreview"
+import { createContextPreview } from "$/components/previews/createContext.preview"
+
+# Memo
+
+Memo is a higher-order component that's used for optimizing the performance 
+of Kaioken functional components by preventing unnecessary re-renders.
+
+### Example
+
+<div className="not-prose">
+  <CodeBlock
+      lang="ts"
+      code={`\
+import { memo } from "kaioken"
+
+const MyComponent = memo(({ value }) => {
+  // Component logic here
+  return <div>{value}</div>
+})
+`} 
+  />
+</div>
+
+In this example, MyComponent will only re-render if the <b>value</b> 
+prop changes. If other props or state within the component change 
+but <b>value</b> remains the same, the component won't re-render.
+
