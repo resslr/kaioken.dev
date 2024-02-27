@@ -56,7 +56,7 @@ export const docMeta: DocItem[] = [
       {
         title: "Context",
         href: "/docs/api/context",
-        keywords: ["createcontext"],
+        keywords: ["createContext"],
       },
       {
         title: "Memo",
@@ -70,7 +70,7 @@ export const docMeta: DocItem[] = [
         title: "Router",
         href: "/docs/api/router",
         disabled: true,
-        keywords: ["route"],
+        keywords: ["route", "link", "navigate"],
       },
       {
         title: "Store",

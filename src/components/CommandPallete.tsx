@@ -157,7 +157,7 @@ function CommandPalleteGroup({
         matchItem(searchTerms, [
           title.toLowerCase(),
           ...item.title.toLowerCase().split(" "),
-          ...(item.keywords ?? []),
+          ...(item.keywords?.map((item) => item.toLowerCase()) ?? []),
         ])
       ),
     [searchTerms]
@@ -186,12 +186,15 @@ function CommandPalleteItem({
   item: DocPageLink
   external?: boolean
 }) {
-  console.log(item)
-  if ("disabled" in item && !!item.disabled) {
+  if (item.disabled) {
     return (
-      <a className="w-full flex items-center justify-between text-muted opacity-75 bg-light dark:bg-[#221f1faa] border p-2 rounded focus:bg-light-highlight dark:focus:bg-stone-800">
-        {item.title}
-        <span className="badge">Upcoming</span>
+      <a className="w-full text-muted opacity-75 bg-light dark:bg-[#221f1faa] border p-2 rounded focus:bg-light-highlight dark:focus:bg-stone-800">
+        <span className="w-full flex justify-between items-center">
+          {item.title}
+          <span className="badge">Upcoming</span>
+        </span>
+
+        <CommandPalleteBadges item={item} />
       </a>
     )
   }
@@ -201,7 +204,19 @@ function CommandPalleteItem({
       href={item.href}
       target={external ? "_blank" : "_self"}
     >
-      {item.title}
+      <span className="block">{item.title}</span>
+      <CommandPalleteBadges item={item} />
     </a>
+  )
+}
+
+function CommandPalleteBadges({ item }: { item: DocPageLink }) {
+  if (!item.keywords) return null
+  return (
+    <div className="flex gap-1 mt-1">
+      {item.keywords.map((keyword) => (
+        <span className="badge badge-muted">{keyword}</span>
+      ))}
+    </div>
   )
 }
