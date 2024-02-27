@@ -5,7 +5,7 @@ export type DocItem = {
   sections?: DocSectionLink[]
 }
 
-type DocPageLink = {
+export type DocPageLink = {
   title: string
   href: string
   disabled?: boolean
@@ -56,7 +56,7 @@ export const docMeta: DocItem[] = [
       {
         title: "Context",
         href: "/docs/api/context",
-        keywords: ["createContext"],
+        keywords: ["createcontext"],
       },
       {
         title: "Memo",
@@ -70,13 +70,13 @@ export const docMeta: DocItem[] = [
         title: "Router",
         href: "/docs/api/router",
         disabled: true,
-        keywords: ["Route"],
+        keywords: ["route"],
       },
       {
         title: "Store",
         href: "/docs/api/store",
         disabled: true,
-        keywords: ["createStore"],
+        keywords: ["createstore"],
       },
       {
         title: "Transition",

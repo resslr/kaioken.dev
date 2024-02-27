@@ -3,7 +3,7 @@ import { Transition, useEffect, useMemo, useModel, useRef } from "kaioken"
 import { Modal } from "./dialog/Modal"
 import { DialogHeader } from "./dialog/DialogHeader"
 import { Input } from "./atoms/Input"
-import { docMeta } from "$/docs-meta"
+import { DocPageLink, docMeta } from "$/docs-meta"
 import { DialogBody } from "./dialog/DialogBody"
 import { SITE_LINKS } from "$/constants"
 import { SearchIcon } from "./icons/SearchIcon"
@@ -134,8 +134,6 @@ function CommandPalleteDisplay() {
   )
 }
 
-type Item = { title: string; href: string; disabled?: boolean }
-
 function matchItem(terms: string[], keywords: string[]) {
   let matched = 0
   for (let i = 0; i < terms.length; i++) {
@@ -150,7 +148,7 @@ function CommandPalleteGroup({
   searchTerms,
 }: {
   title: string
-  items: Item[]
+  items: DocPageLink[]
   searchTerms: string[]
 }) {
   const filteredItems = useMemo(
@@ -159,6 +157,7 @@ function CommandPalleteGroup({
         matchItem(searchTerms, [
           title.toLowerCase(),
           ...item.title.toLowerCase().split(" "),
+          ...(item.keywords ?? []),
         ])
       ),
     [searchTerms]
@@ -184,7 +183,7 @@ function CommandPalleteItem({
   item,
   external,
 }: {
-  item: Item
+  item: DocPageLink
   external?: boolean
 }) {
   console.log(item)
