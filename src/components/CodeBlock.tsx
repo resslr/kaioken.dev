@@ -5,6 +5,7 @@ import { prismJsx } from "$/prism-jsx"
 import "prismjs/components/prism-typescript"
 import "prismjs/components/prism-json"
 import "prismjs/components/prism-bash"
+import "prismjs/components/prism-xml-doc"
 import "prismjs/themes/prism-tomorrow.min.css"
 import { CopyIcon } from "./icons/CopyIcon"
 
@@ -14,7 +15,7 @@ if (!initialized) {
   initialized = true
 }
 
-type Lang = "ts" | "jsx" | "json" | "bash"
+type Lang = "ts" | "jsx" | "json" | "bash" | "html"
 
 function createHtml(code: string, lang: Lang) {
   switch (lang) {
@@ -26,6 +27,8 @@ function createHtml(code: string, lang: Lang) {
       return Prism.highlight(code, Prism.languages.json, "json")
     case "bash":
       return Prism.highlight(code, Prism.languages.bash, "bash")
+    case "html":
+      return Prism.highlight(code, Prism.languages.xml, "xml")
   }
 }
 
