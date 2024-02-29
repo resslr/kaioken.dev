@@ -70,7 +70,7 @@ export function CodePreview({ data }: { data: CodePreviewData }) {
               if (state === "exited") return null
               if (!linkBounds.current) return null
               const x = linkBounds.current.x
-              const y = linkBounds.current.y
+              const y = linkBounds.current.y + window.scrollY
               const width = linkBounds.current.width
               const height = linkBounds.current.height
               const opacity = state === "entered" ? "1" : "0"
