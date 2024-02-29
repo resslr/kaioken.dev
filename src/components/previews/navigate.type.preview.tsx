@@ -1,17 +1,17 @@
 import type { CodePreviewData } from "$/types"
 import { CodeBlock } from "../CodeBlock"
 
-export const memoPreview = {
+export const navigateTypePreview = {
   element: () => (
     <CodeBlock
       lang="ts"
       code={`\
-<T>(...props:T) => (...props:T) => JSX.Element
+(path:string) => void
 `}
     />
   ),
   link: {
-    text: "Memo",
-    href: "/docs/api/memo",
+    text: "Navigate",
+    href: "/docs/api/routing#navigate",
   },
 } satisfies CodePreviewData

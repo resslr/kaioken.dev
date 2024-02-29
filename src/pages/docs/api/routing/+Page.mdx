@@ -1,0 +1,39 @@
+import { CodeBlock } from "$/components/CodeBlock"
+import { RoutingKeyComponents } from "./KeyComponents"
+
+
+# Routing
+
+### Overview
+
+The routing module provides mechanisms for handling client-side 
+navigation within a single-page application (SPA). It enables 
+you to define routes that map URLs to specific components, 
+allowing for seamless transitions between different views without 
+full page reloads.
+
+### Key Components
+
+<RoutingKeyComponents />
+
+### Example
+
+<div className = "not-prose" >
+      <CodeBlock
+      lang="jsx"
+      code={`\
+import { Router, Route, Link } from './routing';
+
+function App() {
+  return (
+    <Router basePath="/myapp">
+      <Route path="/" element={Home} />
+      <Route path="/about" element={About} />
+      <Route path="/users/:userId" element={User} />
+    </Router>
+  )
+}
+`}
+    />
+</div>
+

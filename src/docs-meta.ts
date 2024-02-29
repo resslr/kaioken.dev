@@ -67,10 +67,9 @@ export const docMeta: DocItem[] = [
         href: "/docs/api/portal",
       },
       {
-        title: "Router",
-        href: "/docs/api/router",
-        disabled: true,
-        keywords: ["route", "link", "navigate"],
+        title: "Routing",
+        href: "/docs/api/routing",
+        keywords: ["router", "route", "link", "navigate"],
       },
       {
         title: "Store",

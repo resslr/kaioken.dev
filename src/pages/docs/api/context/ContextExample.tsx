@@ -58,7 +58,7 @@ function ThemeContextProviderBlock() {
 import { useReducer } from "kaioken"
 import { ThemeContext, ThemeDispatcherContext } from "./themeContext"
 
-function ThemeContextProvider({ children })
+function ThemeContextProvider({ children }) {
   const [theme, dispatch] = useReducer(themeStateReducer, "light")
 
   return (
@@ -68,6 +68,7 @@ function ThemeContextProvider({ children })
       </ThemeDispatcherContext.Provider>
     </ThemeContext.Provider>
   )
+}
 `}
     />
   )
