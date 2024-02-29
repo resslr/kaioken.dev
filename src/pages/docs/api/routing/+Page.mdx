@@ -22,16 +22,25 @@ full page reloads.
       <CodeBlock
       lang="jsx"
       code={`\
-import { Router, Route, Link } from './routing';
+import { Router, Route, Link, navigate } from "./routing"
 
 function App() {
   return (
     <Router basePath="/myapp">
-      <Route path="/" element={Home} />
-      <Route path="/about" element={About} />
-      <Route path="/users/:userId" element={User} />
+      <Route path="/" element={HomePage} />
+      <Route path="/login" element={LoginPage} />
+      <Route path="/users/:userId" element={UserPage} />
     </Router>
   )
+}
+
+function LoginPage() {
+  const user = useUser() // some function that gets auth state
+  if (user) {
+    return navigate("/")
+  }
+
+  return <LoginForm />
 }
 `}
     />
