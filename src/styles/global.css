@@ -82,6 +82,14 @@ body {
   margin: 0;
 }
 
+.prose {
+  color: (var(--color-dark))
+}
+
 a {
   text-decoration: none;
+}
+
+.prose a {
+  color: #ea495e !important
 }

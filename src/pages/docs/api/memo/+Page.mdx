@@ -1,12 +1,12 @@
 import { CodeBlock } from "$/components/CodeBlock"
 import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
 import { CodePreview } from "$/components/CodePreview"
-import { createContextPreview } from "$/components/previews/createContext.preview"
+import { memoPreview } from "$/components/previews/memo.preview"
 
 # Memo
 
-Memo is a higher-order component that's used for optimizing the performance 
-of Kaioken functional components by preventing unnecessary re-renders.
+<CodePreview data={memoPreview} /> is a higher-order component that's used for optimizing the performance 
+of components by preventing unnecessary re-renders.
 
 ### Example
 
