@@ -63,4 +63,5 @@ button.reset {
 .preview-button {
   color: #ea495e !important;
   font-weight: 500;
+  margin-bottom: 0 !important;
 }

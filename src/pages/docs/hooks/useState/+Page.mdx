@@ -1,0 +1,40 @@
+import { CodeBlock } from "$/components/CodeBlock"
+import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
+import { CodePreview } from "$/components/CodePreview"
+import { refTypePreview } from "$/components/previews/Ref.type.preview"
+
+# useState
+
+Allows you to create a reactive state variable within a component.
+Changes will trigger re-renders of the component to reflect the 
+updated state.
+
+
+### Example
+<div  className="not-prose">
+  <CodeBlock 
+    lang="jsx" 
+    code={`\
+import { useState } from "kaioken"
+
+function MyComponent() {
+  const [count, setCount] = useState(0) // Initial state is 0
+
+  const handleClick = () => {
+    setCount(count + 1) // Update state using setCount
+  }
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={handleClick}>Click me</button>
+    </div>
+  )
+}
+`} />
+</div>
+
+### Related
+<ul>
+  <li><a href="/docs/hooks/useReducer">useReducer</a></li>
+</ul>

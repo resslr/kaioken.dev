@@ -1,0 +1,45 @@
+import { CodeBlock } from "$/components/CodeBlock"
+
+# useReducer
+
+Provides a way to manage complex state logic, offering advantages 
+over the basic <a href="/docs/hooks/useState">useState</a> hook in 
+specific scenarios.
+
+
+### Example
+<div className="not-prose">
+  <CodeBlock 
+    lang="jsx" 
+    code={`\
+import { useReducer } from "kaioken"
+
+function counterReducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 }
+    case "decrement":
+      return { count: state.count - 1 }
+    default:
+      return state
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(counterReducer, { count: 0 })
+
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button onclick={() => dispatch({ type: "increment" })}>Increment</button>
+      <button onclick={() => dispatch({ type: "decrement" })}>Decrement</button>
+    </div>
+  )
+}
+`} />
+</div>
+
+### Related
+<ul>
+  <li><a href="/docs/hooks/useState">useState</a></li>
+</ul>

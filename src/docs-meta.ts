@@ -120,17 +120,15 @@ export const docMeta: DocItem[] = [
       {
         title: "useReducer",
         href: "/docs/hooks/useReducer",
-        disabled: true,
       },
       {
         title: "useRef",
         href: "/docs/hooks/useRef",
-        disabled: true,
+        keywords: ["ref"],
       },
       {
         title: "useState",
         href: "/docs/hooks/useState",
-        disabled: true,
       },
       {
         title: "Dependency arrays",

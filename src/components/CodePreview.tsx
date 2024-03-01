@@ -3,7 +3,13 @@ import { CodePreviewData } from "$/types"
 import { isLinkActive } from "$/utils"
 import { Portal, Transition, useRef, useState } from "kaioken"
 
-export function CodePreview({ data }: { data: CodePreviewData }) {
+export function CodePreview({
+  data,
+  text,
+}: {
+  data: CodePreviewData
+  text?: string
+}) {
   const { isClient, urlPathname } = usePageContext()
   const linkRef = useRef<any>(null)
   const linkBounds = useRef<DOMRect>(null)
@@ -46,7 +52,7 @@ export function CodePreview({ data }: { data: CodePreviewData }) {
           onpointerenter={handleOpen}
           onpointerleave={handleClose}
         >
-          {data.link.text}
+          {text ?? data.link.text}
         </button>
       ) : (
         <a
@@ -57,7 +63,7 @@ export function CodePreview({ data }: { data: CodePreviewData }) {
           onpointerenter={handleOpen}
           onpointerleave={handleClose}
         >
-          {data.link.text}
+          {text ?? data.link.text}
         </a>
       )}
 
