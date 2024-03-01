@@ -16,7 +16,7 @@ but instead of memoizing a function, it memoizes the result of a computation.
     code={`\
 import { useMemo } from "kaioken"
 
-const MyComponent = ({ prop }) => {
+function MyComponent({ prop }) {
   // Memoize the result of an expensive computation
   const memoizedResult = useMemo(() => {
     // Expensive computation based on the prop

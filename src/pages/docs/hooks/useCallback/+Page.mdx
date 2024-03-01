@@ -14,7 +14,7 @@ Persists the creation of a function across updates.
     code={`\
 import { useCallback, useState } from "kaioken"
 
-const ParentComponent = () => {
+function ParentComponent() {
   const [count, setCount] = useState(0)
 
   // Without useCallback, handleIncrement will be recreated on every render.
@@ -30,7 +30,7 @@ const ParentComponent = () => {
   )
 }
 
-const ChildComponent = ({ onIncrement }) => {
+function ChildComponent({ onIncrement }) {
   return (
     <button onclick={onIncrement}>
       Increment

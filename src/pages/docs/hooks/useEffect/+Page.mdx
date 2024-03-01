@@ -17,7 +17,7 @@ has changed.
     code={`\
 import { useState, useEffect } from "kaioken"
 
-const MyComponent = ({ initialValue }) => {
+function MyComponent({ initialValue }) {
   const [value, setValue] = useState(initialValue)
 
   useEffect(() => {

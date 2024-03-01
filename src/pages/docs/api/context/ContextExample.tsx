@@ -1,10 +1,6 @@
 import { CodeBlock } from "$/components/CodeBlock"
 import { TabGroup } from "$/components/TabGroup"
-import { createStore } from "kaioken"
-
-const useTabStore = createStore("themeContext.ts", (set) => ({
-  setSelected: (value: string) => set(value),
-}))
+import { useTabStore } from "./store"
 
 export function ContextExample() {
   const { value, setSelected } = useTabStore()

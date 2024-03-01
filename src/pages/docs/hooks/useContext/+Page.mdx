@@ -17,7 +17,7 @@ import { createContext, useContext } from "kaioken"
 
 const ThemeContext = useContext("light")
 
-const Button = () => {
+function Button() {
   const theme = useContext(ThemeContext)
 
   return (
