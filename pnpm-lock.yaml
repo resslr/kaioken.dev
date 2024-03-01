@@ -18,8 +18,8 @@ dependencies:
     specifier: ^4.18.2
     version: 4.18.2
   kaioken:
-    specifier: ^0.8.5
-    version: 0.8.5
+    specifier: ^0.9.1
+    version: 0.9.1
   prismjs:
     specifier: ^1.29.0
     version: 1.29.0
@@ -1526,8 +1526,8 @@ packages:
     hasBin: true
     dev: true
 
-  /kaioken@0.8.5:
-    resolution: {integrity: sha512-PEEnydDjBoavnoej2ve/WIyYLuIofjQihKJyg/XOWLYgCsOhALCpHJo2PvlRx6yGa0nHHeMWSV33bXeGi0WkUQ==}
+  /kaioken@0.9.1:
+    resolution: {integrity: sha512-PK4Sn82m8nRxp6QJD/WgbgkT2DzT5LHCQDyCZOCL99N/29vICez5KA49D5ERvK5jfg74vcT7Of2qfAjhxSGSOg==}
     dev: false
 
   /lilconfig@2.1.0:
