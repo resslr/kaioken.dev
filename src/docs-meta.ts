@@ -74,8 +74,7 @@ export const docMeta: DocItem[] = [
       {
         title: "Store",
         href: "/docs/api/store",
-        disabled: true,
-        keywords: ["createstore"],
+        keywords: ["createStore", "useStore", "MethodFactory"],
       },
       {
         title: "Transition",

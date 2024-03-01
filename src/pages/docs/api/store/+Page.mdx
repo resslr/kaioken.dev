@@ -1,0 +1,45 @@
+import { InteractingWithTheStore } from "./InteractingWithTheStore"
+import { CodePreview } from "$/components/CodePreview"
+import { CodeBlock } from "$/components/CodeBlock"
+import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
+import { storeTypePreview } from "$/components/previews/Store.type.preview"
+import { methodFactoryTypePreview } from "$/components/previews/MethodFactory.type.preview"
+import { createStoreTypePreview  } from "$/components/previews/createStore.type.preview"
+
+# Store
+
+The <CodePreview data={storeTypePreview} /> API was created to satisfy the need of 
+an external state store which does not reside within
+the application tree, and allows for precision updates
+when state changes.
+
+### Creating a Store
+To create a store, you need to provide two arguments to the <CodePreview data={createStoreTypePreview} /> function:
+<ol>
+  <li><b>Initial State</b>: The initial state of your store.</li>
+  <li><b><CodePreview data={methodFactoryTypePreview} /></b>: This is a 
+  function that receives two arguments - <InlineCodeBlock>setState</InlineCodeBlock> and <InlineCodeBlock>getState</InlineCodeBlock> - 
+  and returns an object containing methods for interacting with the store 
+  state. These methods will be accessible through the returned store object.</li>
+</ol>
+
+<div className="not-prose">
+  <CodeBlock
+    lang="ts"
+    code={`\
+import { createStore } from "kaioken"
+
+const useCountStore = createStore(0, (set) => ({
+  add: (value) => set((state) => state + value),
+  increment: () => set((state) => state + 1),
+  decrement: () => set((state) => state - 1),
+}))
+`}
+  />
+</div>
+
+### Accessing Store State and Methods
+
+#### There are two main ways to interact with the store:
+<InteractingWithTheStore />
+

@@ -1,7 +1,7 @@
 import type { CodePreviewData } from "$/types"
 import { CodeBlock } from "../CodeBlock"
 
-export const contextPreview = {
+export const contextTypePreview = {
   element: () => (
     <CodeBlock
       lang="ts"
