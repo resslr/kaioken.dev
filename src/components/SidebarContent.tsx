@@ -5,69 +5,64 @@ import { isLinkActive } from "$/utils"
 import { ElementProps } from "kaioken"
 
 export function SidebarContent() {
-  return (
-    <>
-      {docMeta.map((meta) => (
-        <DocItem data={meta} />
-      ))}
-    </>
-  )
-}
-
-function DocItem({ data }: { data: DocItemMeta }) {
   const { urlPathname } = usePageContext()
   const { value: open, setOpen } = useNavDrawer()
 
-  const active = data.href && isLinkActive(data.href, urlPathname)
-
   return (
-    <div className="mb-3">
-      <Header>
-        {data.href ? (
-          <a
-            href={active ? data.href + "#" : data.href}
-            onclick={() => open && setOpen(false)}
-            className="block"
-          >
-            {data.title}
-          </a>
-        ) : (
-          <span>{data.title}</span>
-        )}
-      </Header>
-      {data.pages && (
-        <LinkList>
-          {data.pages.map((page) =>
-            page.disabled ? (
-              <Link className="flex items-center justify-between">
-                <span className="opacity-75">{page.title}</span>
-                <span className="badge">Upcoming</span>
-              </Link>
-            ) : (
-              <Link
-                href={page.href}
-                className={`${isLinkActive(page.href, urlPathname) ? "text-black dark:text-light" : ""}`}
+    <>
+      {docMeta.map((data) => (
+        <div className="mb-3">
+          <Header>
+            {data.href ? (
+              <a
+                href={
+                  isLinkActive(data.href, urlPathname)
+                    ? data.href + "#"
+                    : data.href
+                }
+                onclick={() => open && setOpen(false)}
+                className="block"
               >
-                {page.title}
-              </Link>
-            )
+                {data.title}
+              </a>
+            ) : (
+              <span>{data.title}</span>
+            )}
+          </Header>
+          {data.pages && (
+            <LinkList>
+              {data.pages.map((page) =>
+                page.disabled ? (
+                  <Link className="flex items-center justify-between">
+                    <span className="opacity-75">{page.title}</span>
+                    <span className="badge">Upcoming</span>
+                  </Link>
+                ) : (
+                  <Link
+                    href={page.href}
+                    className={`${isLinkActive(page.href, urlPathname) ? "text-black dark:text-light" : ""}`}
+                  >
+                    {page.title}
+                  </Link>
+                )
+              )}
+            </LinkList>
           )}
-        </LinkList>
-      )}
-      {data.sections && (
-        <LinkList>
-          {data.sections.map((section) => (
-            <Link
-              href={`${data.href}#${section.id}`}
-              onclick={() => open && setOpen(false)}
-              className={`${isLinkActive(data.href!, urlPathname) ? "text-black dark:text-light" : ""}`}
-            >
-              {section.title}
-            </Link>
-          ))}
-        </LinkList>
-      )}
-    </div>
+          {data.sections && (
+            <LinkList>
+              {data.sections.map((section) => (
+                <Link
+                  href={`${data.href}#${section.id}`}
+                  onclick={() => open && setOpen(false)}
+                >
+                  {section.title}
+                </Link>
+              ))}
+            </LinkList>
+          )}
+        </div>
+      ))}
+    </>
   )
 }
 
