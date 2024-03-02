@@ -55,12 +55,14 @@ export function Navbar() {
       </div>
       <div className="flex flex-grow gap-4 items-center justify-end">
         <SearchButton />
-        <a href="https://github.com/CrimsonChi/kaioken" target="_blank">
-          <GithubIcon />
-        </a>
-        <a href="https://discord.gg/nRdM9UWg" target="_blank">
-          <DiscordIcon />
-        </a>
+        <div className="flex gap-3 items-center">
+          <a href="https://github.com/CrimsonChi/kaioken" target="_blank">
+            <GithubIcon />
+          </a>
+          <a href="https://discord.gg/nRdM9UWg" target="_blank">
+            <DiscordIcon />
+          </a>
+        </div>
       </div>
     </nav>
   )
