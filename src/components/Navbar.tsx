@@ -8,6 +8,8 @@ import { usePageContext } from "$/context/pageContext"
 import { isLinkActive } from "$/utils"
 import { useCommandPallete } from "$/state/commandPallete"
 import { DiscordIcon } from "./icons/DiscordIcon"
+import { ExternalLink } from "./atoms/ExternalLink"
+import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
 
 export function Navbar() {
   const { setOpen } = useNavDrawer()
@@ -45,9 +47,10 @@ export function Navbar() {
               <a
                 href={link.href}
                 target={link.external ? "_blank" : "_self"}
-                className="text-sm text-muted hover:text-dark dark:hover:text-light"
+                className="inline-flex items-center gap-xs text-sm text-muted hover:text-dark dark:hover:text-light"
               >
                 {link.title}
+                {link.external && <ExternalLinkIcon />}
               </a>
             )
           )}

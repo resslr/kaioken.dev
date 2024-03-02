@@ -6,6 +6,7 @@ import { LogoIcon } from "./icons/LogoIcon"
 import { usePageContext } from "$/context/pageContext"
 import { SidebarContent } from "./SidebarContent"
 import { isLinkActive } from "$/utils"
+import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
 
 export function NavDrawer() {
   const {
@@ -33,21 +34,24 @@ export function NavDrawer() {
                   <span className="text-primary font-medium">Kaioken</span>
                 </a>
               </div>
-              <div className="flex flex-col gap-2 px-9">
+              <div className="flex flex-col gap-2 px-2 ">
                 {SITE_LINKS.map((link) => (
                   <a
                     href={link.href}
                     target={link.external ? "_blank" : "_self"}
-                    className={`text-base font-medium ${isLinkActive(link.activePath ?? link.href, urlPathname) ? "" : "text-muted"}`}
+                    className={`inline-flex items-center gap-1 text-base font-medium ${isLinkActive(link.activePath ?? link.href, urlPathname) ? "" : "text-muted"}`}
                   >
                     {link.title}
+                    {link.external && (
+                      <ExternalLinkIcon width={"1rem"} height={"1rem"} />
+                    )}
                   </a>
                 ))}
               </div>
               {urlPathname.startsWith("/docs") && (
                 <>
-                  <hr className="my-6 mx-9" />
-                  <div className="flex flex-col gap-2 text-base xs:text-base px-9">
+                  <hr className="my-6 mx-2" />
+                  <div className="flex flex-col gap-2 text-base xs:text-base px-2 ">
                     <SidebarContent />
                   </div>
                 </>

@@ -48,7 +48,7 @@
 .drawer-content[data-side="left"],
 .drawer-content[data-side="right"] {
   width: 300px;
-  max-width: calc(100% - 80px);
+  max-width: calc(100% - 60px);
   height: 100%;
 }
 
