@@ -38,7 +38,7 @@ export function NavDrawer() {
                   <a
                     href={link.href}
                     target={link.external ? "_blank" : "_self"}
-                    className={`text-base font-medium ${isLinkActive(link.href, urlPathname) ? "" : "text-muted"}`}
+                    className={`text-base font-medium ${isLinkActive(link.activePath ?? link.href, urlPathname) ? "" : "text-muted"}`}
                   >
                     {link.title}
                   </a>
