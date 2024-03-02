@@ -12,6 +12,7 @@ export function DiscordIcon(props: ElementProps<"svg">) {
       width={width ?? "1.5rem"}
       height={height ?? "1.5rem"}
       className="overflow-visible"
+      {...rest}
     >
       <g>
         <path
