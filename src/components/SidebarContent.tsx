@@ -40,7 +40,7 @@ export function SidebarContent() {
                 ) : (
                   <Link
                     href={page.href}
-                    className={`${isLinkActive(page.href, urlPathname) ? "text-black dark:text-light" : ""}`}
+                    className={`${isLinkActive(page.href, urlPathname) ? "text-light" : ""}`}
                   >
                     {page.title}
                   </Link>

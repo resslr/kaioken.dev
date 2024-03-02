@@ -39,7 +39,7 @@ export function Navbar() {
               <a
                 href={link.href}
                 target={link.external ? "_blank" : "_self"}
-                className="text-sm text-dark dark:text-light"
+                className="text-sm text-light"
               >
                 {link.title}
               </a>
@@ -47,7 +47,7 @@ export function Navbar() {
               <a
                 href={link.href}
                 target={link.external ? "_blank" : "_self"}
-                className="inline-flex items-center gap-xs text-sm text-muted hover:text-dark dark:hover:text-light"
+                className="inline-flex items-center gap-xs text-sm text-muted hover:text-light"
               >
                 {link.title}
                 {link.external && <ExternalLinkIcon />}
@@ -77,14 +77,14 @@ function SearchButton() {
     <button
       ariaLabel="Search documentation"
       type="button"
-      className="flex leading-4 justify-between items-center flex-grow text-left sm:flex-grow-0 min-w-40 px-4 py-2 pr-2 gap-4 rounded border bg-light hover:bg-light-highlight dark:bg-stone-950 hover:dark:bg-stone-900"
+      className="flex leading-4 justify-between items-center flex-grow text-left sm:flex-grow-0 min-w-40 px-4 py-2 pr-2 gap-4 rounded border bg-stone-950 hover:bg-stone-900"
       onclick={(e) => setOpen(true, e)}
     >
       <span className="text-xs sm:hidden">Search...</span>
       <span className="hidden sm:flex">
         <span className="text-xs">Search documentation...</span>
       </span>
-      <span className="hidden sm:flex bg-dark dark:bg-light  text-light dark:opacity-85 dark:text-dark px-1 rounded gap-xs items-center text-[11px] font-mono">
+      <span className="hidden sm:flex bg-light opacity-85 text-dark px-1 rounded gap-xs items-center text-[11px] font-mono">
         <CommandKeyIcon width={12} />
         <b>K</b>
       </span>

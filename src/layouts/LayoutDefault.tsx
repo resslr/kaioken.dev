@@ -9,7 +9,7 @@ export function LayoutDefault({ children }: { children?: JSX.Element[] }) {
   const { isClient } = usePageContext()
   return (
     <>
-      <header className="fixed top-0 w-full z-50 bg-light dark:bg-dark border-b">
+      <header className="fixed top-0 w-full z-50 bg-dark border-b">
         <Container>
           <Navbar />
         </Container>

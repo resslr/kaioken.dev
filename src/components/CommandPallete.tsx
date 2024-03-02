@@ -100,7 +100,7 @@ function CommandPalleteDisplay() {
         <Input
           type="text"
           placeholder="Search..."
-          className="w-full bg-stone-100 pl-8 dark:bg-stone-900 !border-opacity-50 font-normal text-base"
+          className="w-full pl-8 bg-stone-900 !border-opacity-50 font-normal text-base"
           ref={searchInputRef}
         />
         <button
@@ -111,7 +111,7 @@ function CommandPalleteDisplay() {
           <CloseIcon width="1em" height="1em" />
         </button>
       </DialogHeader>
-      <DialogBody className="bg-neutral-100 dark:bg-stone-900 border border-opacity-50 rounded max-h-[400px] overflow-y-auto scroll-py-20">
+      <DialogBody className="bg-stone-900 border border-opacity-50 rounded max-h-[400px] overflow-y-auto scroll-py-20">
         <div className="flex flex-col">
           <CommandPalleteGroup
             title="Links"
@@ -188,7 +188,7 @@ function CommandPalleteItem({
 }) {
   if (item.disabled) {
     return (
-      <a className="w-full text-muted opacity-75 bg-light dark:bg-[#221f1faa] border p-2 rounded focus:bg-light-highlight dark:focus:bg-stone-800">
+      <a className="w-full text-muted opacity-75 bg-[#221f1faa] border p-2 rounded focus:bg-stone-800">
         <span className="w-full flex justify-between items-center">
           {item.title}
           <span className="badge">Upcoming</span>
@@ -200,7 +200,7 @@ function CommandPalleteItem({
   }
   return (
     <a
-      className="w-full text-muted bg-light dark:bg-[#221f1faa] border p-2 rounded focus:bg-light-highlight hover:bg-light-highlight dark:focus:bg-stone-800 dark:hover:bg-stone-800"
+      className="w-full text-muted bg-[#221f1faa] border p-2 rounded focus:bg-stone-800 hover:bg-stone-800"
       href={item.href}
       target={external ? "_blank" : "_self"}
     >

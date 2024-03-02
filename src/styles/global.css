@@ -24,9 +24,9 @@
 :root {
   --color-light: #fffbfb;
   --color-dark: #151313;
-  color-scheme: light dark;
-  background-color: var(--color-light);
-  color: #231313;
+  color-scheme: dark;
+  background-color: var(--color-dark);
+  color: #fffafa;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -44,33 +44,16 @@
 *,
 ::before,
 ::after {
-  border-color: rgb(235 231 229 / var(--tw-border-opacity));
+  border-color: rgb(54 52 52 / var(--tw-border-opacity));
 }
 
 ::placeholder {
-  color: #363434
+  color: #777171 !important
 }
 
 :focus-visible {
   outline: 2px solid crimson;
   border-radius: 3px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    background-color: var(--color-dark);
-    color: #fffafa;
-  }
-
-  ::placeholder {
-    color: #777171 !important
-  }
-
-  *,
-  ::before,
-  ::after {
-    border-color: rgb(54 52 52 / var(--tw-border-opacity));
-  }
 }
 
 ::selection {

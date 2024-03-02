@@ -1,11 +1,5 @@
 .text-muted {
-  color: #777;
-}
-
-@media (prefers-color-scheme: dark) {
-  .text-muted {
-    color: #ccc;
-  }
+  color: #ccc;
 }
 
 .reset {

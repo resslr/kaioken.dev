@@ -81,7 +81,7 @@ export function CodeBlock({
   return (
     <div className="relative">
       <pre
-        className={`p-4 h-full bg-[#1a1a1a] dark:bg-[#0a0a0a] text-light overflow-x-auto text-xs sm:text-sm ${className}`}
+        className={`p-4 h-full bg-[#0a0a0a] text-light overflow-x-auto text-xs sm:text-sm ${className}`}
       >
         <code ref={eleRef}>{isClient ? "" : html}</code>
       </pre>

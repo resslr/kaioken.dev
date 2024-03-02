@@ -1,13 +1,14 @@
 import { Container } from "$/components/atoms/Container"
 import { AlbumItemDemo } from "$/components/demos/albums/AlbumItemDemo"
 import { AlbumListDemo } from "$/components/demos/albums/AlbumListDemo"
+import { HeroBg } from "./HeroBg"
 import "./Page.css"
 
 export function Page() {
   return (
     <div className="w-full h-full overflow-x-hidden">
       <section className="relative mt-[var(--navbar-height-negative)]">
-        <div id="hero-background" />
+        <HeroBg />
         <Container className="min-h-[100vh] flex flex-col items-center justify-center h-full">
           <h1 className="text-6xl xs:text-8xl sm:text-9xl text-spicy font-bold !leading-snug text-shadow text-light">
             Kaioken
