@@ -4,7 +4,7 @@ import { useNavDrawer } from "$/state/navDrawer"
 import { SITE_LINKS } from "$/constants"
 import { LogoIcon } from "./icons/LogoIcon"
 import { usePageContext } from "$/context/pageContext"
-import { SidebarContent } from "./DocsLinks"
+import { SidebarContent } from "./SidebarContent"
 import { isLinkActive } from "$/utils"
 
 export function NavDrawer() {

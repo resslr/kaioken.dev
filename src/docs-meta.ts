@@ -124,7 +124,7 @@ export const docMeta: DocItem[] = [
       {
         title: "useRef",
         href: "/docs/hooks/useRef",
-        keywords: ["ref"],
+        keywords: ["Ref"],
       },
       {
         title: "useState",

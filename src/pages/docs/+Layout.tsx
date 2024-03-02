@@ -1,5 +1,5 @@
 import { Container } from "$/components/atoms/Container"
-import { SidebarContent } from "$/components/DocsLinks"
+import { SidebarContent } from "$/components/SidebarContent"
 
 export function Layout({ children }: { children?: JSX.Element[] }) {
   return (

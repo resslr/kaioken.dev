@@ -16,7 +16,7 @@ export function SidebarContent() {
 
 function DocItem({ data }: { data: DocItemMeta }) {
   const { urlPathname } = usePageContext()
-  const { setOpen } = useNavDrawer()
+  const { value: open, setOpen } = useNavDrawer()
 
   const active = data.href && isLinkActive(data.href, urlPathname)
 
@@ -26,7 +26,7 @@ function DocItem({ data }: { data: DocItemMeta }) {
         {data.href ? (
           <a
             href={active ? data.href + "#" : data.href}
-            onclick={() => setOpen(false)}
+            onclick={() => open && setOpen(false)}
             className="block"
           >
             {data.title}
@@ -44,7 +44,12 @@ function DocItem({ data }: { data: DocItemMeta }) {
                 <span className="badge">Upcoming</span>
               </Link>
             ) : (
-              <Link href={page.href}>{page.title}</Link>
+              <Link
+                href={page.href}
+                className={`${isLinkActive(page.href, urlPathname) ? "text-black dark:text-light" : ""}`}
+              >
+                {page.title}
+              </Link>
             )
           )}
         </LinkList>
@@ -54,7 +59,8 @@ function DocItem({ data }: { data: DocItemMeta }) {
           {data.sections.map((section) => (
             <Link
               href={`${data.href}#${section.id}`}
-              onclick={() => setOpen(false)}
+              onclick={() => open && setOpen(false)}
+              className={`${isLinkActive(data.href!, urlPathname) ? "text-black dark:text-light" : ""}`}
             >
               {section.title}
             </Link>
