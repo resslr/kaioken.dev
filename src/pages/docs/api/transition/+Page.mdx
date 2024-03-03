@@ -1,10 +1,34 @@
 import { CodeBlock } from "$/components/CodeBlock"
+import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
+import { CodePreview } from "$/components/CodePreview"
+import { TransitionStateTypePreview } from "$/components/previews/TransitionState.type.preview"
+
 
 
 # Transition
 
 The Transition component enables you to animate the DOM in a procedural
 / coroutine-like fashion. Useful for modals, drawers and dialogs.
+
+### Using Transitions
+Transition requires two properties - <b>element</b> and <b>in</b>, and 
+can optionally take a 3rd, <b>timings</b>, for controlling timings 
+between <CodePreview data={TransitionStateTypePreview} /> -
+ <InlineCodeBlock>entering</InlineCodeBlock>, 
+ <InlineCodeBlock>entered</InlineCodeBlock>, 
+ <InlineCodeBlock>exiting</InlineCodeBlock> and 
+ <InlineCodeBlock>exited</InlineCodeBlock>.
+
+
+
+<ul>
+  <li><b>element</b>: a function that recieves the transition state as an argument and returns a JSX.Element. </li>
+  <li><b>in</b>: specifies whether the transition state should move toward the <InlineCodeBlock>entered</InlineCodeBlock> or <InlineCodeBlock>exited</InlineCodeBlock> state.</li>
+  <li><b>timings</b> (optional): allows you to specify a delay for each step of the transition component as it iterates through each of the four states.</li>
+</ul>
+
+
+
 
 ### Example
 
@@ -16,9 +40,12 @@ import { useState, Transition } from "kaioken"
 
 function Home() {
   const [expanded, setExpanded] = useState(false)
+  
   return (
     <div className="flex flex-col">
-      <button onclick={() => setExpanded((prev) => !prev)}>Show More</button>
+      <button onclick={() => setExpanded((prev) => !prev)}>
+        Show More
+      </button>
       
       <Transition 
         in={expanded} 
@@ -30,6 +57,7 @@ function Home() {
       />
     </div>
   )
+}
 
 
 function DetailsView({opacity}) {
