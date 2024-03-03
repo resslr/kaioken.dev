@@ -1,0 +1,47 @@
+import { CodeBlock } from "$/components/CodeBlock"
+import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
+import { CodePreview } from "$/components/CodePreview"
+import { useModelTypePreview } from "$/components/previews/useModel.type.preview"
+import { refTypePreview } from "$/components/previews/Ref.type.preview"
+
+# useModel
+
+Similar to <a href="/docs/hooks/useRef">useRef</a>, but allows
+you to easily set up two-way binding for a given input, textarea or select element.
+
+<CodePreview data={useModelTypePreview} /> takes one argument - 
+<InlineCodeBlock>initialValue</InlineCodeBlock>, and returns the following:
+<ul>
+  <li><b>elementRef</b>: A <CodePreview data={refTypePreview} /> used to bind to the target element.</li>
+  <li><b>value</b>: The element's current value (alternatively gives the value of 'checked' if used on a checkbox / radio)</li>
+  <li><b>setValue</b>: function provided to enable setting the value from code.</li>
+</ul>
+
+### Example
+<div className="not-prose">
+  <CodeBlock 
+    lang="jsx" 
+    code={`\
+import { useModel } from "kaioken"
+
+function MyComponent() {
+  const [inputRef, inputValue, setInputValue] = useModel("")
+
+  const handleClick = () => {
+    setInputValue("")
+  }
+
+  return (
+    <div>
+      <input ref={inputRef} type="text" />
+      <button onclick={handleClick}>Focus Input</button>
+    </div>
+  )
+}
+`} />
+</div>
+
+### Related
+<ul>
+  <li><a href="/docs/hooks/useRef">useRef</a></li>
+</ul>

@@ -108,7 +108,7 @@ export const docMeta: DocItem[] = [
       {
         title: "useModel",
         href: "/docs/hooks/useModel",
-        disabled: true,
+        keywords: ["Ref"],
       },
       {
         title: "useOptimistic",
