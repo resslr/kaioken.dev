@@ -79,7 +79,6 @@ export const docMeta: DocItem[] = [
       {
         title: "Transition",
         href: "/docs/api/transition",
-        disabled: true,
       },
     ],
   },

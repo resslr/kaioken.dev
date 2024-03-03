@@ -1,0 +1,43 @@
+import { CodeBlock } from "$/components/CodeBlock"
+
+
+# Transition
+
+The Transition component enables you to animate the DOM in a procedural
+/ coroutine-like fashion. Useful for modals, drawers and dialogs.
+
+### Example
+
+<div className="not-prose">
+  <CodeBlock
+      lang="jsx"
+      code={`\
+import { useState, Transition } from "kaioken"
+
+function Home() {
+  const [expanded, setExpanded] = useState(false)
+  return (
+    <div className="flex flex-col">
+      <button onclick={() => setExpanded((prev) => !prev)}>Show More</button>
+      
+      <Transition 
+        in={expanded} 
+        timings={[33, 300, 300, 300]} 
+        element={(state) => {
+          if (state === "exited") return null
+          return <DetailsView opacity={state === "entered" ? "1" : "0"} />
+        }}
+      />
+    </div>
+  )
+
+
+function DetailsView({opacity}) {
+  return (
+    <p style={{ transition: "all .3s ease", opacity }}>
+      Some more information 🧠
+    </p>
+  )
+}     
+`}/>
+</div>
