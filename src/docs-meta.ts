@@ -100,7 +100,6 @@ export const docMeta: DocItem[] = [
       {
         title: "useFetch",
         href: "/docs/hooks/useFetch",
-        disabled: true,
       },
       {
         title: "useMemo",
