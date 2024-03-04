@@ -113,7 +113,6 @@ export const docMeta: DocItem[] = [
       {
         title: "useOptimistic",
         href: "/docs/hooks/useOptimistic",
-        disabled: true,
       },
       {
         title: "useReducer",
