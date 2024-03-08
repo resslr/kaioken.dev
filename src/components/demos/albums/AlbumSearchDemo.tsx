@@ -62,24 +62,26 @@ export function AlbumSearchDemo() {
 
   return (
     <CodeDemo filename="SearchableAlbumList.jsx" code={code}>
-      <DemoComponentWrapper className="max-w-[340px] h-[300px] overflow-auto">
-        <h2 className="mb-4 font-bold text-lg">Albums</h2>
-        <div className="sticky top-0 bg-stone-700 mb-4 flex rounded z-10 shadow-md shadow-stone-900">
-          <SearchIcon className="absolute left-2 top-1/2 -translate-y-1/2 text-stone-400" />
-          <input
-            ref={inputRef}
-            type="text"
-            className="bg-transparent pl-8 w-full text-sm py-1 "
-            placeholder="Search"
-          />
+      <DemoComponentWrapper className="max-w-[340px] p-0 overflow-hidden">
+        <div className="h-[240px] overflow-auto p-4">
+          <h2 className="mb-4 font-bold text-lg">Albums</h2>
+          <div className="sticky top-0 bg-stone-700 mb-4 flex rounded z-10 shadow-md shadow-stone-900">
+            <SearchIcon className="absolute left-2 top-1/2 -translate-y-1/2 text-stone-400" />
+            <input
+              ref={inputRef}
+              type="text"
+              className="bg-transparent pl-8 w-full text-sm py-1 "
+              placeholder="Search"
+            />
+          </div>
+          <section className="flex flex-col gap-4">
+            {filteredAlbums.length > 0 ? (
+              filteredAlbums.map((album) => <AlbumItem album={album} />)
+            ) : (
+              <p>No matches for "{inputValue}"</p>
+            )}
+          </section>
         </div>
-        <section className="flex flex-col gap-4">
-          {filteredAlbums.length > 0 ? (
-            filteredAlbums.map((album) => <AlbumItem album={album} />)
-          ) : (
-            <p>No matches for "{inputValue}"</p>
-          )}
-        </section>
       </DemoComponentWrapper>
     </CodeDemo>
   )
