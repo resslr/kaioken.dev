@@ -75,11 +75,14 @@ export function AlbumSearchDemo() {
             />
           </div>
           <section className="flex flex-col gap-4">
-            {filteredAlbums.length > 0 ? (
-              filteredAlbums.map((album) => <AlbumItem album={album} />)
-            ) : (
-              <p>No matches for "{inputValue}"</p>
-            )}
+            <p className="text-muted">
+              {filteredAlbums.length > 0
+                ? `${filteredAlbums.length} matches`
+                : `No matches for "${inputValue}"`}
+            </p>
+            {filteredAlbums.map((album) => (
+              <AlbumItem album={album} />
+            ))}
           </section>
         </div>
       </DemoComponentWrapper>
