@@ -62,7 +62,7 @@ export function AlbumSearchDemo() {
 
   return (
     <CodeDemo filename="SearchableAlbumList.jsx" code={code}>
-      <DemoComponentWrapper className="max-w-[340px] p-0 overflow-hidden">
+      <DemoComponentWrapper className="max-w-[340px] overflow-hidden p-0">
         <div className="h-[240px] overflow-auto p-4">
           <h2 className="mb-4 font-bold text-lg">Albums</h2>
           <div className="sticky top-0 bg-stone-700 mb-4 flex rounded z-10 shadow-md shadow-stone-900">
