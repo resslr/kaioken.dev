@@ -12,7 +12,7 @@ const code = `function Album({ album }) {
       </a>
       <LikeButton album={album} />
     </div>
-  );
+  )
 }
 `
 

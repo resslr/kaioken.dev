@@ -1,6 +1,7 @@
 import { Container } from "$/components/atoms/Container"
 import { AlbumItemDemo } from "$/components/demos/albums/AlbumItemDemo"
 import { AlbumListDemo } from "$/components/demos/albums/AlbumListDemo"
+import { AlbumSearchDemo } from "$/components/demos/albums/AlbumSearchDemo"
 import { HeroBg } from "./HeroBg"
 import "./Page.css"
 
@@ -21,8 +22,8 @@ export function Page() {
           </a>
         </Container>
       </section>
-      <div className="flex flex-col mt-[150px]">
-        <section className="py-10 ">
+      <div className="flex flex-col">
+        <section className="py-20">
           <Container className="pb-6">
             <h2 className="text-3xl font-medium leading-snug mb-4">
               Build modular user interfaces with reusable components
@@ -36,7 +37,7 @@ export function Page() {
             <AlbumItemDemo />
           </Container>
         </section>
-        <section className="py-10">
+        <section className="py-20">
           <Container className="pb-6">
             <h2 className="text-3xl font-medium leading-snug mb-4">
               Create dynamic experiences with simple control flow
@@ -48,6 +49,21 @@ export function Page() {
           </Container>
           <Container breakpoint="md" mobilePadding={false}>
             <AlbumListDemo />
+          </Container>
+        </section>
+        <section className="py-20">
+          <Container className="pb-6">
+            <h2 className="text-3xl font-medium leading-snug mb-4">
+              Make interactivity easy
+            </h2>
+            <span className="text-lg font-light">
+              Kaioken components use simple, declarative syntax to make
+              interactivity easy. Changing the state of a component
+              automatically updates the UI.
+            </span>
+          </Container>
+          <Container breakpoint="md" mobilePadding={false}>
+            <AlbumSearchDemo />
           </Container>
         </section>
       </div>

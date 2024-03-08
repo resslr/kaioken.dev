@@ -79,7 +79,7 @@ export function CodeBlock({
   }
 
   return (
-    <div className="relative">
+    <div className="relative flex-grow">
       <pre
         className={`p-4 h-full bg-[#0a0a0a] text-light overflow-x-auto text-xs sm:text-sm ${className}`}
       >
