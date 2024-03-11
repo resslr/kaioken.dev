@@ -7,7 +7,8 @@ export const storeTypePreview = {
       lang="ts"
       code={`\
 type Store<T, U extends MethodFactory<T>> = {
-  (fn?: (state: T) => unknown): { value: T } & ReturnType<U>
+  (): { value: T } & ReturnType<U>
+  <R>(selector: (value: T) => R): { value: R } & ReturnType<U>
   getState: () => T
   setState: (setter: T | ((prev:T) => T)) => void
   methods: ReturnType<U>
