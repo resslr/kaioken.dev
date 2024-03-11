@@ -9,7 +9,7 @@ export const onRenderClient: OnRenderClientAsync = async (pageContext) => {
 
   if (!pageContext.isHydration) {
     document.title = getTitle(pageContext)
+  } else {
+    hydrate(App, container, { pageContext })
   }
-
-  hydrate(App, container, { pageContext })
 }
