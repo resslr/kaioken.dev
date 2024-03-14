@@ -8,8 +8,8 @@ import { usePageContext } from "$/context/pageContext"
 import { isLinkActive } from "$/utils"
 import { useCommandPallete } from "$/state/commandPallete"
 import { DiscordIcon } from "./icons/DiscordIcon"
-import { ExternalLink } from "./atoms/ExternalLink"
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
+import { KofiDonationLink } from "./KofiDonationLink"
 
 export function Navbar() {
   const { setOpen } = useNavDrawer()
@@ -65,6 +65,7 @@ export function Navbar() {
           <a href="https://discord.gg/nRdM9UWg" target="_blank">
             <DiscordIcon />
           </a>
+          <KofiDonationLink />
         </div>
       </div>
     </nav>
