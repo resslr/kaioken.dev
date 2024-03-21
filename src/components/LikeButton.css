@@ -23,7 +23,7 @@
   transition: color .3s;
 }
 
-.like-button[data-liked="true"]:after {
+.like-button[data-liked="true"][just-liked="true"]:after {
   animation-name: likeButtonHighlight;
   animation-duration: .3s;
 }
