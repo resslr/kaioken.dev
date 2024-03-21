@@ -1,8 +1,9 @@
 import { SearchIcon } from "$/components/icons/SearchIcon"
-import { useModel } from "kaioken"
+import { createStore, useModel } from "kaioken"
 import { CodeDemo } from "../CodeDemo"
 import { DemoComponentWrapper } from "../DemoComponentWrapper"
-import { AlbumItem } from "./AlbumItem"
+import { PlayIcon } from "$/components/icons/PlayIcon"
+import { LikeButton } from "$/components/LikeButton"
 
 const code = `function SearchableAlbumList({ albums }) {  
   const [searchText, setSearchText] = useState('')
@@ -21,40 +22,56 @@ const code = `function SearchableAlbumList({ albums }) {
 }
 `
 
-export function AlbumSearchDemo() {
-  const [inputRef, inputValue] = useModel<HTMLInputElement, string>("")
-  const albums: Album[] = [
+const useAlbumsStore = createStore(
+  [
     {
-      id: 1,
+      id: "a030bbdc-0d65-4639-be10-b1eb05ee9bb0",
       title: "First album",
       artist: "Album artist",
       url: "#",
+      liked: false,
     },
     {
-      id: 2,
+      id: "a030bbdc-0d65-4639-be10-b1eb05ee9bb1",
       title: "Second album",
       artist: "Album artist",
       url: "#",
+      liked: false,
     },
     {
-      id: 3,
+      id: "a030bbdc-0d65-4639-be10-b1eb05ee9bb2",
       title: "Third album",
       artist: "Album artist",
       url: "#",
+      liked: false,
     },
     {
-      id: 4,
+      id: "a030bbdc-0d65-4639-be10-b1eb05ee9bb3",
       title: "Fourth album",
       artist: "Album artist",
       url: "#",
+      liked: false,
     },
     {
-      id: 5,
+      id: "a030bbdc-0d65-4639-be10-b1eb05ee9bb4",
       title: "Fifth album",
       artist: "Album artist",
       url: "#",
+      liked: false,
     },
-  ]
+  ] as (Album & { liked: boolean })[],
+  (set) => ({
+    setAlbumLiked: (id: string, liked: boolean) =>
+      set((prev) => prev.map((a) => (a.id === id ? { ...a, liked } : a))),
+  })
+)
+
+export function AlbumSearchDemo() {
+  const [inputRef, inputValue] = useModel<HTMLInputElement, string>("")
+  const { value: albums } = useAlbumsStore(
+    (store) => store,
+    () => true
+  )
 
   const filteredAlbums = albums.filter(
     (a) => a.title.toLowerCase().indexOf(inputValue.toLowerCase()) > -1
@@ -81,11 +98,32 @@ export function AlbumSearchDemo() {
                 : `No matches for "${inputValue}"`}
             </p>
             {filteredAlbums.map((album) => (
-              <AlbumItem album={album} />
+              <AlbumItem key={album.id} album={album} />
             ))}
           </section>
         </div>
       </DemoComponentWrapper>
     </CodeDemo>
+  )
+}
+
+function AlbumItem({ album }: { album: Album; key: string }) {
+  const { value: liked, setAlbumLiked } = useAlbumsStore(
+    (store) => store.find((a) => a.id === album.id)!.liked
+  )
+  return (
+    <div className="flex items-center gap-4">
+      <button role="none" className="p-2 border-2 border-light rounded">
+        <PlayIcon />
+      </button>
+      <div className="flex-grow">
+        <h4 className="font-bold">{album.title}</h4>
+        <span className="text-muted">{album.artist}</span>
+      </div>
+      <LikeButton
+        liked={liked}
+        toggleLiked={() => setAlbumLiked(album.id, !liked)}
+      />
+    </div>
   )
 }

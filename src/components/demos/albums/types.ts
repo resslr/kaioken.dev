@@ -1,5 +1,5 @@
 interface Album {
-  id: number
+  id: string
   title: string
   artist: string
   url: string
