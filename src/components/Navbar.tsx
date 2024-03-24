@@ -62,7 +62,7 @@ export function Navbar() {
           <a href="https://github.com/CrimsonChi/kaioken" target="_blank">
             <GithubIcon />
           </a>
-          <a href="https://discord.gg/nRdM9UWg" target="_blank">
+          <a href="https://discord.gg/yspvgXegvs" target="_blank">
             <DiscordIcon />
           </a>
           <KofiDonationLink />
