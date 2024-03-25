@@ -37,7 +37,7 @@ export function CodePreview({
   function handleClose() {
     if (previewHovered.current) return
     clearHideTimeout()
-    hideTimeout.current = window.setTimeout(() => setOpen(false), 500)
+    hideTimeout.current = window.setTimeout(() => setOpen(false), 250)
   }
 
   return (
