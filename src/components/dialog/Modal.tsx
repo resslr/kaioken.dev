@@ -18,7 +18,7 @@ export function Modal({
   className = "",
 }: ModalProps) {
   const wrapperRef = useRef<HTMLDivElement>(null)
-  if (state == "exited") return null
+
   const opacity = state === "entered" ? "1" : "0"
   const scale = state === "entered" ? 1 : 0.85
   const translateY = state === "entered" ? -50 : -65
@@ -27,6 +27,8 @@ export function Modal({
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [])
+
+  if (state == "exited") return null
 
   function handleKeyDown(e: KeyboardEvent) {
     const outerEl = wrapperRef.current

@@ -32,10 +32,7 @@ export function CommandPallete() {
     if (!isHandled) return
 
     e.preventDefault()
-    const {
-      value: { open },
-      setOpen,
-    } = useCommandPallete()
+    const { open } = useCommandPallete.getState()
 
     if (!open) {
       prevActiveElement.current = document.activeElement
@@ -49,7 +46,7 @@ export function CommandPallete() {
   return (
     <Transition
       in={open}
-      timings={[70, 250, 250, 250]}
+      timings={[50, 250, 250, 250]}
       element={(state) =>
         state === "exited" ? null : (
           <Modal

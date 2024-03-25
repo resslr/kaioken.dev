@@ -9,7 +9,6 @@ import { isLinkActive } from "$/utils"
 import { useCommandPallete } from "$/state/commandPallete"
 import { DiscordIcon } from "./icons/DiscordIcon"
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
-import { KofiDonationLink } from "./KofiDonationLink"
 
 export function Navbar() {
   const { setOpen } = useNavDrawer()
@@ -65,7 +64,6 @@ export function Navbar() {
           <a href="https://discord.gg/yspvgXegvs" target="_blank">
             <DiscordIcon />
           </a>
-          <KofiDonationLink />
         </div>
       </div>
     </nav>
