@@ -34,7 +34,7 @@ pnpm add vite-plugin-kaioken -D`}
 <br />
 
 <div className="no-prose">
-  <span>Update your vite.config.ts to add JSX settings and the HMR plugin:</span>
+  <span>Update your vite.config.ts (or add it in the top level of your project) and add the HMR plugin:</span>
   <CodeBlock
    lang="ts"
    copy
@@ -42,14 +42,6 @@ pnpm add vite-plugin-kaioken -D`}
 import kaioken from "vite-plugin-kaioken"
 
 export default defineConfig({
-  esbuild: {
-    jsxInject: \`import * as kaioken from "kaioken"\`,
-    jsx: "transform",
-    jsxFactory: "kaioken.createElement",
-    jsxFragment: "kaioken.fragment",
-    loader: "tsx",
-    include: ["**/*.tsx", "**/*.ts", "**/*.jsx", "**/*.js"],
-  },
   plugins: [kaioken()],
 })`} className='my-0 rounded-lg' />
 </div>
