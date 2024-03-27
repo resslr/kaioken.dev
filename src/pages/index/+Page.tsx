@@ -14,9 +14,9 @@ export function Page() {
           <h1 className="text-6xl xs:text-8xl sm:text-9xl text-spicy font-bold !leading-snug text-shadow text-light">
             Kaioken
           </h1>
-          <span className="text-lg mb-6 xs:text-xl sm:text-2xl font-light text-center text-shadow text-light">
+          <p className="text-lg mb-6 xs:text-xl sm:text-2xl font-light text-center text-shadow text-light">
             A powerful, easy-to-use rendering library with a tiny footprint
-          </span>
+          </p>
           <a href="/docs/getting-started" className="link-button">
             Get Started
           </a>
@@ -28,10 +28,10 @@ export function Page() {
             <h2 className="text-3xl font-medium leading-snug mb-4">
               Build modular user interfaces with reusable components
             </h2>
-            <span className="text-lg font-light">
+            <p className="text-lg font-light">
               Kaioken uses unflavoured JSX syntax, making it familiar and
               approachable to anyone with knowledge of HTML and Javascript.
-            </span>
+            </p>
           </Container>
           <Container breakpoint="md" mobilePadding={false}>
             <AlbumItemDemo />
@@ -42,10 +42,10 @@ export function Page() {
             <h2 className="text-3xl font-medium leading-snug mb-4">
               Create dynamic experiences with simple control flow
             </h2>
-            <span className="text-lg font-light">
+            <p className="text-lg font-light">
               Kaioken components are Javascript functions, so control flow and
               dynamic rendering requires no additional knowledge.
-            </span>
+            </p>
           </Container>
           <Container breakpoint="md" mobilePadding={false}>
             <AlbumListDemo />
@@ -56,11 +56,11 @@ export function Page() {
             <h2 className="text-3xl font-medium leading-snug mb-4">
               Make interactivity easy
             </h2>
-            <span className="text-lg font-light">
+            <p className="text-lg font-light">
               Kaioken components use simple, declarative syntax to make
               interactivity easy. Changing the state of a component
               automatically updates the UI.
-            </span>
+            </p>
           </Container>
           <Container breakpoint="md" mobilePadding={false}>
             <AlbumSearchDemo />
