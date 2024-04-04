@@ -21,19 +21,19 @@ const code = `function AlbumList({ albums }) {
 export function AlbumListDemo() {
   const albums: Album[] = [
     {
-      id: 1,
+      id: "1",
       title: "First album",
       artist: "Album artist",
       url: "#",
     },
     {
-      id: 2,
+      id: "2",
       title: "Second album",
       artist: "Album artist",
       url: "#",
     },
     {
-      id: 3,
+      id: "3",
       title: "Third album",
       artist: "Album artist",
       url: "#",
@@ -46,7 +46,7 @@ export function AlbumListDemo() {
         <h2 className="mb-4 font-bold text-lg">3 albums</h2>
         <section className="flex flex-col gap-4">
           {albums.map((album) => (
-            <AlbumItem album={album} />
+            <AlbumItem album={album} key={album.id} />
           ))}
         </section>
       </DemoComponentWrapper>
