@@ -76,7 +76,7 @@ function SearchButton() {
     <button
       ariaLabel="Search documentation"
       type="button"
-      className="flex leading-4 justify-between items-center flex-grow text-left sm:flex-grow-0 min-w-40 px-4 py-2 pr-2 gap-4 rounded border bg-stone-950 hover:bg-stone-900"
+      className="flex leading-4 justify-between items-center flex-grow text-left sm:flex-grow-0 min-w-36 px-4 py-2 pr-2 gap-4 rounded border bg-stone-950 hover:bg-stone-900"
       onclick={(e) => setOpen(true, e)}
     >
       <span className="text-xs sm:hidden">Search...</span>
