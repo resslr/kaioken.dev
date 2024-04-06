@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - Custom hooks",
-  keywords: ["Custom hooks", "hooks"],
+  title: "Kaioken - Dependency arrays",
+  keywords: ["Dependency arrays", "hooks"],
 }
