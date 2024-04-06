@@ -131,6 +131,11 @@ export const docMeta: DocItem[] = [
         title: "Dependency arrays",
         href: "/docs/hooks/dependency-arrays",
       },
+      {
+        title: "Custom hooks",
+        href: "/docs/hooks/custom-hooks",
+        keywords: ["useHook"],
+      },
     ],
   },
 ]
