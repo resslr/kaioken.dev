@@ -6,7 +6,7 @@ import { contextTypePreview } from "$/components/previews/Context.type.preview"
 
 # useContext
 
-Gets the value from a <CodePreview data={contextTypePreview} /> object.
+Gets the value from a Context Provider component within the current component's heirarchy. If no provider is found, it will return the context's default value.
 
 ### Example
 <div className="not-prose">
@@ -16,6 +16,14 @@ Gets the value from a <CodePreview data={contextTypePreview} /> object.
 import { createContext, useContext } from "kaioken"
 
 const ThemeContext = useContext("light")
+
+function App() {
+  return (
+    <ThemeContext.Provider value="light">
+      <Button />
+    </ThemeContext.Provider>
+  )  
+}
 
 function Button() {
   const theme = useContext(ThemeContext)
