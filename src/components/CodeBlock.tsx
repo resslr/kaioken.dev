@@ -51,12 +51,10 @@ export function CodeBlock({
 
   useEffect(() => {
     if (!eleRef.current) return
-    if (isClient) {
-      eleRef.current.innerHTML = createHtml(code, lang)
-      if (copyInterval.current !== -1) {
-        window.clearInterval(copyInterval.current!)
-        copyInterval.current = -1
-      }
+    eleRef.current.innerHTML = createHtml(code, lang)
+    if (copyInterval.current !== -1) {
+      window.clearInterval(copyInterval.current!)
+      copyInterval.current = -1
     }
   }, [code])
 
