@@ -32,16 +32,10 @@ function ThemeContextBlock() {
       code={`\
 import { createContext } from "kaioken"
 
-export const ThemeContext = createContext("light")
-export const ThemeDispatcherContext = createContext(null)
-
-export function themeStateReducer(state, action) {
-  switch (action.type) {
-    case "toggle":
-      return state === "light" ? "dark" : "light"
-    // ...
-  }
-}`}
+export const ThemeContext = createContext({
+  value: "light",
+  toggle: () => {},
+})`}
     />
   )
 }
@@ -51,21 +45,23 @@ function ThemeContextProviderBlock() {
     <CodeBlock
       lang="jsx"
       code={`\
-import { useReducer } from "kaioken"
-import { ThemeContext, ThemeDispatcherContext } from "./themeContext"
+import { useState } from "kaioken"
+import { ThemeContext } from "./themeContext"
 
 function ThemeContextProvider({ children }) {
-  const [theme, dispatch] = useReducer(themeStateReducer, "light")
+  const [theme, setTheme] = useState("light")
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <ThemeDispatcherContext.Provider value={dispatch}>
-        {children}
-      </ThemeDispatcherContext.Provider>
+    <ThemeContext.Provider
+      value={{
+        value: theme,
+        toggle: () => setTheme(theme === "light" ? "dark" : "light"),
+      }}
+    >
+      {children}
     </ThemeContext.Provider>
   )
-}
-`}
+}`}
     />
   )
 }
@@ -76,13 +72,13 @@ function ButtonBlock() {
       lang="jsx"
       code={`\
 import { useContext } from "kaioken"
-import { ThemeDispatcherContext } from "./themeContext"
+import { ThemeContext } from "./themeContext"
 
 function Button() {
-  const dispatch = useContext(ThemeDispatcherContext)
+  const { toggle } = useContext(ThemeContext)
 
   return (
-    <button onclick={() => dispatch({ type: "toggle" })}>
+    <button onclick={toggle}>
       Toggle theme
     </button>
   )

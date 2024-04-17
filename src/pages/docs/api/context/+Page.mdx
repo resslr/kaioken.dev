@@ -5,10 +5,10 @@ import { contextTypePreview } from "$/components/previews/Context.type.preview"
 
 # Context
 
-<CodePreview data={contextTypePreview} /> is an external 
-state object declared via <CodePreview data={createContextPreview} />.
-The <b>Provider</b> property is used as a component that acts as a 'reactive boundary'.
-When the context's state changes, children of the provider will be updated.
+<CodePreview data={contextTypePreview} /> is an externally declared state object declared via <CodePreview data={createContextPreview} />.
+The <b>Provider</b> property is a component that acts as a 'host' of the context, that is initialized with it's own value.
+
+Children of the provider can use 'useContext' to access the provider's current state - if no provider is found, it will return the context's initial value.
 
 ### Example
 
