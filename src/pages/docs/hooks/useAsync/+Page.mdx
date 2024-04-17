@@ -1,0 +1,43 @@
+import { CodeBlock } from "$/components/CodeBlock"
+import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
+
+
+# useAsync
+
+Similar to <a href="/docs/hooks/useEffect">useEffect</a>,
+but runs an async function and returns <InlineCodeBlock>[data, loading, error]</InlineCodeBlock>.
+
+### Example
+<div className="not-prose">
+  <CodeBlock 
+    lang="jsx" 
+    code={`\
+import { useState, useAsync } from "kaioken"
+
+export function UseAsyncExample() {
+  const [productId, setProductId] = useState(1)
+
+  const [data, loading, error] = useAsync<Product>(async () => {
+    return (await fetch(\`https://dummyjson.com/products/\${productId}\`)).json()
+  }, [productId])
+
+  return (
+    <div>
+      <button onclick={() => setProductId((prev) => prev + 1)}>Next</button>
+      {data ? (
+        <ProductCard product={product} />
+      ) : loading ? (
+        <Spinner />
+      ) : (
+        <p>{error.message}</p>
+      )}
+    </div>
+  )
+}`} />
+</div>
+
+### Related
+<ul>
+  <li><a href="/docs/hooks/dependency-arrays">Dependency arrays</a></li>
+</ul>
+

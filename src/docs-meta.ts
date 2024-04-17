@@ -86,6 +86,10 @@ export const docMeta: DocItem[] = [
     title: "Hooks",
     pages: [
       {
+        title: "useAsync",
+        href: "/docs/hooks/useAsync",
+      },
+      {
         title: "useCallback",
         href: "/docs/hooks/useCallback",
       },
@@ -98,10 +102,6 @@ export const docMeta: DocItem[] = [
         href: "/docs/hooks/useEffect",
       },
       {
-        title: "useFetch",
-        href: "/docs/hooks/useFetch",
-      },
-      {
         title: "useMemo",
         href: "/docs/hooks/useMemo",
       },
@@ -109,10 +109,6 @@ export const docMeta: DocItem[] = [
         title: "useModel",
         href: "/docs/hooks/useModel",
         keywords: ["Ref"],
-      },
-      {
-        title: "useOptimistic",
-        href: "/docs/hooks/useOptimistic",
       },
       {
         title: "useReducer",
