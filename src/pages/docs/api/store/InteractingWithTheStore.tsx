@@ -62,7 +62,7 @@ function TodoList() {
 
   return (
     <ul>
-      {items.map(item => (
+      {items.map((item) => (
         <TodoItem key={item.id} id={item.id} />
       ))}
     </ul>
