@@ -1,13 +1,16 @@
 import { CodeBlock } from "$/components/CodeBlock"
 import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
+import { CodePreview } from "$/components/CodePreview"
+import {UseAsyncResultTypePreview} from "$/components/previews/UseAsyncResult.type.preview"
 
 
 # useAsync
 
 Similar to <a href="/docs/hooks/useEffect">useEffect</a>,
-but runs an async function and returns <InlineCodeBlock>[data, loading, error]</InlineCodeBlock>.
+but runs an async function and returns a tuple containing a <CodePreview data={UseAsyncResultTypePreview} />.
 
 ### Example
+
 <div className="not-prose">
   <CodeBlock 
     lang="jsx" 
@@ -17,7 +20,7 @@ import { useState, useAsync } from "kaioken"
 export function UseAsyncExample() {
   const [productId, setProductId] = useState(1)
 
-  const [data, loading, error] = useAsync<Product>(async () => {
+  const [data, loading, error] = useAsync(async () => {
     return (await fetch(\`https://dummyjson.com/products/\${productId}\`)).json()
   }, [productId])
 
@@ -25,7 +28,7 @@ export function UseAsyncExample() {
     <div>
       <button onclick={() => setProductId((prev) => prev + 1)}>Next</button>
       {data ? (
-        <ProductCard product={product} />
+        <ProductCard product={data} />
       ) : loading ? (
         <Spinner />
       ) : (
