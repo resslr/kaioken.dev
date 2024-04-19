@@ -1,4 +1,4 @@
-import { useRef, type TransitionState, useEffect, children } from "kaioken"
+import { useRef, type TransitionState, useEffect } from "kaioken"
 import { Backdrop } from "./Backdrop"
 import { isClickEventFromKeyboard, trapFocus } from "$/utils"
 
@@ -7,9 +7,10 @@ type DrawerProps = {
   close: () => void
   side: "bottom" | "left" | "right"
   sender?: Event | null
+  children: JSX.Children
 }
 
-export function Drawer({ state, close, side, sender }: DrawerProps) {
+export function Drawer({ state, close, side, sender, children }: DrawerProps) {
   const wrapperRef = useRef<HTMLDivElement>(null)
   if (state == "exited") return null
   const opacity = state === "entered" ? "1" : "0"
@@ -68,7 +69,7 @@ export function Drawer({ state, close, side, sender }: DrawerProps) {
         data-side={side}
         style={{ transform: `translate(${translateX}%, ${translateY}%)` }}
       >
-        {children()}
+        {children}
       </div>
     </Backdrop>
   )

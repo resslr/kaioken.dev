@@ -1,5 +1,5 @@
 import { usePageContext } from "$/context/pageContext"
-import { useRef, useEffect, ElementProps, useState } from "kaioken"
+import { useRef, useEffect, ElementProps, useState, useMemo } from "kaioken"
 import Prism from "prismjs"
 import { prismJsx } from "$/prism-jsx"
 import "prismjs/components/prism-typescript"
@@ -43,15 +43,11 @@ export function CodeBlock({
   className?: string
   copy?: boolean
 }) {
-  const { isClient } = usePageContext()
   const [copied, setCopied] = useState(false)
   const copyInterval = useRef(-1)
-  const eleRef = useRef<HTMLElement>(null)
-  const html = isClient ? "" : createHtml(code, lang)
+  const html = useMemo(() => createHtml(code, lang), [code])
 
   useEffect(() => {
-    if (!eleRef.current) return
-    eleRef.current.innerHTML = createHtml(code, lang)
     if (copyInterval.current !== -1) {
       window.clearInterval(copyInterval.current!)
       copyInterval.current = -1
@@ -81,7 +77,7 @@ export function CodeBlock({
       <pre
         className={`p-4 h-full bg-[#0a0a0a] text-light overflow-x-auto text-xs sm:text-sm ${className}`}
       >
-        <code ref={eleRef}>{isClient ? "" : html}</code>
+        <code innerHTML={html} />
       </pre>
       {copy && (
         <div className="absolute top-0 right-0 p-2">

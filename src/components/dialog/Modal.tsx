@@ -1,4 +1,4 @@
-import { useRef, type TransitionState, useEffect, children } from "kaioken"
+import { useRef, type TransitionState, useEffect } from "kaioken"
 import { Backdrop } from "./Backdrop"
 import { trapFocus } from "$/utils"
 
@@ -7,9 +7,16 @@ type ModalProps = {
   close: () => void
   className?: string
   sender?: Event | null
+  children: JSX.Children
 }
 
-export function Modal({ state, close, sender, className = "" }: ModalProps) {
+export function Modal({
+  state,
+  close,
+  sender,
+  className = "",
+  children,
+}: ModalProps) {
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   const opacity = state === "entered" ? "1" : "0"
@@ -51,7 +58,7 @@ export function Modal({ state, close, sender, className = "" }: ModalProps) {
           transform: `translate(-50%, ${translateY}%) scale(${scale})`,
         }}
       >
-        {children()}
+        {children}
       </div>
     </Backdrop>
   )

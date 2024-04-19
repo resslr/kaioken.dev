@@ -3,9 +3,9 @@ import { CommandPallete } from "$/components/CommandPallete"
 import { Navbar } from "$/components/Navbar"
 import { NavDrawer } from "$/components/NavDrawer"
 import { usePageContext } from "$/context/pageContext"
-import { children, Portal } from "kaioken"
+import { Portal } from "kaioken"
 
-export function LayoutDefault() {
+export function LayoutDefault({ children }: { children: JSX.Children }) {
   const { isClient } = usePageContext()
   return (
     <>
@@ -14,7 +14,7 @@ export function LayoutDefault() {
           <Navbar />
         </Container>
       </header>
-      <main className="pt-[var(--navbar-height)]">{children()}</main>
+      <main className="pt-[var(--navbar-height)]">{children}</main>
       {isClient && (
         <Portal container={document.getElementById("portal-root")!}>
           <NavDrawer />

@@ -1,12 +1,13 @@
-import { children } from "kaioken"
 import { CodeBlock } from "../CodeBlock"
 
 export function CodeDemo({
   filename,
   code,
+  children,
 }: {
   filename: string
   code: string
+  children: JSX.Children
 }) {
   return (
     <div className="grid md:grid-cols-5">
@@ -17,7 +18,7 @@ export function CodeDemo({
         <CodeBlock lang="jsx" code={code} />
       </div>
       <div className="md:col-span-2 md:rounded-e-2xl md:my-8 px-4 py-8 my-0 bg-theme-gradient-dark flex items-center justify-center shadow-[#0006] shadow-lg">
-        {children()}
+        {children}
       </div>
     </div>
   )

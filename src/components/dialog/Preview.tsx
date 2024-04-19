@@ -1,10 +1,11 @@
-import { children, type TransitionState } from "kaioken"
+import { type TransitionState } from "kaioken"
 
 type PreviewProps = {
   state: TransitionState
+  children: JSX.Children
 }
 
-export function Preview({ state }: PreviewProps) {
+export function Preview({ state, children }: PreviewProps) {
   if (state == "exited") return null
   const opacity = state === "entered" ? "1" : "0"
   const scale = state === "entered" ? 1 : 0.85
@@ -18,7 +19,7 @@ export function Preview({ state }: PreviewProps) {
         transform: `translate(-50%, ${translateY}%) scale(${scale})`,
       }}
     >
-      {children()}
+      {children}
     </div>
   )
 }
