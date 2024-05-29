@@ -15,11 +15,7 @@ export function SidebarContent() {
           <Header>
             {data.href ? (
               <a
-                href={
-                  isLinkActive(data.href, urlPathname)
-                    ? data.href + "#"
-                    : data.href
-                }
+                href={data.href}
                 onclick={() => open && setOpen(false)}
                 className="block"
               >
@@ -40,6 +36,9 @@ export function SidebarContent() {
                 ) : (
                   <Link
                     href={page.href}
+                    onclick={() =>
+                      isLinkActive(page.href, urlPathname) && setOpen(false)
+                    }
                     className={`${isLinkActive(page.href, urlPathname) ? "text-light" : ""}`}
                   >
                     {page.title}
@@ -52,7 +51,7 @@ export function SidebarContent() {
             <LinkList>
               {data.sections.map((section) => (
                 <Link
-                  href={`${data.href}#${section.id}`}
+                  href={data.href + (section.id ? `#${section.id}` : "")}
                   onclick={() => open && setOpen(false)}
                 >
                   {section.title}

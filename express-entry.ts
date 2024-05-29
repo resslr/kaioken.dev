@@ -16,7 +16,7 @@ async function startServer() {
   app.use(compression())
 
   if (isProduction) {
-    app.use(express.static(`${root}/dist/client`))
+    app.use(express.static(`${root}/dist/client`, { redirect: false }))
   } else {
     // Instantiate Vite's development server and integrate its middleware to our server.
     // ⚠️ We should instantiate it *only* in development. (It isn't needed in production

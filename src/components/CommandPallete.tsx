@@ -8,19 +8,26 @@ import { DialogBody } from "./dialog/DialogBody"
 import { SITE_LINKS } from "$/constants"
 import { SearchIcon } from "./icons/SearchIcon"
 import { CloseIcon } from "./icons/CloseIcon"
+import { usePageContext } from "$/context/pageContext"
+import { isLinkActive } from "$/utils"
 
 export function CommandPallete() {
   const {
     value: { open, event },
     setOpen,
   } = useCommandPallete()
+  const { urlPathname } = usePageContext()
 
   const prevActiveElement = useRef<Element>(null)
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyboardEvent)
-    return () => document.removeEventListener("keydown", handleKeyboardEvent)
+    return () => {
+      document.removeEventListener("keydown", handleKeyboardEvent)
+    }
   }, [])
+
+  useEffect(() => (open && setOpen(false), void 0), [urlPathname])
 
   function focusSender() {
     const el = prevActiveElement.current
@@ -183,6 +190,8 @@ function CommandPalleteItem({
   item: DocPageLink
   external?: boolean
 }) {
+  const { setOpen } = useCommandPallete()
+  const { urlPathname } = usePageContext()
   if (item.disabled) {
     return (
       <a className="w-full text-muted opacity-75 bg-[#221f1faa] border p-2 rounded focus:bg-stone-800">
@@ -199,6 +208,7 @@ function CommandPalleteItem({
     <a
       className="w-full text-muted bg-[#221f1faa] border p-2 rounded focus:bg-stone-800 hover:bg-stone-800"
       href={item.href}
+      onclick={() => isLinkActive(item.href, urlPathname) && setOpen(false)}
       target={external ? "_blank" : "_self"}
     >
       <span className="block">{item.title}</span>

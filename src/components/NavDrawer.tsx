@@ -1,4 +1,4 @@
-import { Transition } from "kaioken"
+import { Transition, useEffect } from "kaioken"
 import { Drawer } from "./dialog/Drawer"
 import { useNavDrawer } from "$/state/navDrawer"
 import { SITE_LINKS } from "$/constants"
@@ -14,6 +14,8 @@ export function NavDrawer() {
     setOpen,
   } = useNavDrawer()
   const { urlPathname } = usePageContext()
+
+  useEffect(() => (open && setOpen(false), void 0), [urlPathname])
 
   return (
     <Transition
