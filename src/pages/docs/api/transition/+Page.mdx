@@ -14,7 +14,8 @@ The Transition component enables you to animate the DOM in a procedural
 <ul>
   <li><b>element</b><sup style="color:red">\*</sup>: a function that recieves the transition state as an argument and returns a JSX.Element. </li>
   <li><b>in</b><sup style="color:red">\*</sup>: specifies whether the transition state should move toward the <InlineCodeBlock>entered</InlineCodeBlock> or <InlineCodeBlock>exited</InlineCodeBlock> state.</li>
-  <li><b>duration</b> (optional, default 150ms): allows you to specify duration in milliseconds.</li>
+  <li><b>duration</b> <small style="color:#ccc">(optional, default 150ms)</small>: allows you to specify duration in milliseconds.</li>
+  <li><b>onTransitionEnd</b>: allows you to specify a function to be called when the transition ends.</li>
 </ul>
 
 ### Example
@@ -42,6 +43,7 @@ function Home() {
         //  in: 300,
         //  out: 300
         //}} 
+        onTransitionEnd={(state) => console.log("Transition ended", state)}
         element={(state) => {
           if (state === "exited") return null
           return <DetailsView opacity={state === "entered" ? "1" : "0"} />
