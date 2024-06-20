@@ -70,7 +70,6 @@ export function CodePreview({
       {isClient && (
         <Portal container={document.getElementById("portal-root")!}>
           <Transition
-            timings={[70, 150, 150, 150]}
             in={open}
             element={(state) => {
               if (state === "exited") return null

@@ -11,24 +11,11 @@ The Transition component enables you to animate the DOM in a procedural
 / coroutine-like fashion. Useful for modals, drawers and dialogs.
 
 ### Using Transitions
-Transition requires two properties - <b>element</b> and <b>in</b>, and 
-can optionally take a 3rd, <b>timings</b>, for controlling timings 
-between <CodePreview data={TransitionStateTypePreview} /> -
- <InlineCodeBlock>entering</InlineCodeBlock>, 
- <InlineCodeBlock>entered</InlineCodeBlock>, 
- <InlineCodeBlock>exiting</InlineCodeBlock> and 
- <InlineCodeBlock>exited</InlineCodeBlock>.
-
-
-
 <ul>
-  <li><b>element</b>: a function that recieves the transition state as an argument and returns a JSX.Element. </li>
-  <li><b>in</b>: specifies whether the transition state should move toward the <InlineCodeBlock>entered</InlineCodeBlock> or <InlineCodeBlock>exited</InlineCodeBlock> state.</li>
-  <li><b>timings</b> (optional): allows you to specify a delay for each step of the transition component as it iterates through each of the four states.</li>
+  <li><b>element</b><sup style="color:red">\*</sup>: a function that recieves the transition state as an argument and returns a JSX.Element. </li>
+  <li><b>in</b><sup style="color:red">\*</sup>: specifies whether the transition state should move toward the <InlineCodeBlock>entered</InlineCodeBlock> or <InlineCodeBlock>exited</InlineCodeBlock> state.</li>
+  <li><b>duration</b> (optional, default 150ms): allows you to specify duration in milliseconds.</li>
 </ul>
-
-
-
 
 ### Example
 
@@ -49,7 +36,12 @@ function Home() {
       
       <Transition 
         in={expanded} 
-        timings={[33, 300, 300, 300]} 
+        duration={300} 
+        // alternatively:
+        // duration={{
+        //  in: 300,
+        //  out: 300
+        //}} 
         element={(state) => {
           if (state === "exited") return null
           return <DetailsView opacity={state === "entered" ? "1" : "0"} />

@@ -20,7 +20,10 @@ export function NavDrawer() {
   return (
     <Transition
       in={open}
-      timings={[70, 250, 250, 250]}
+      duration={{
+        in: 30,
+        out: 250,
+      }}
       element={(state) =>
         state === "exited" ? null : (
           <Drawer

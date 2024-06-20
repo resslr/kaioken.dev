@@ -53,7 +53,10 @@ export function CommandPallete() {
   return (
     <Transition
       in={open}
-      timings={[50, 250, 250, 250]}
+      duration={{
+        in: 50,
+        out: 250,
+      }}
       element={(state) =>
         state === "exited" ? null : (
           <Modal
