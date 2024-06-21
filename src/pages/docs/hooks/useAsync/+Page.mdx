@@ -21,7 +21,7 @@ export function UseAsyncExample() {
   const [productId, setProductId] = useState(1)
 
   // Use useAsync to run an async function whenever the productId changes
-  const [data, loading, error] = useAsync(async () => {
+  const { data, loading, error, invalidate } = useAsync(async () => {
     return (await fetch(\`https://dummyjson.com/products/\${productId}\`)).json()
   }, [productId])
 
@@ -29,7 +29,7 @@ export function UseAsyncExample() {
     <div>
       <button onclick={() => setProductId((prev) => prev + 1)}>Next</button>
       {data ? (
-        <ProductCard product={data} />
+        <ProductCard product={data} invalidate={invalidate} />
       ) : loading ? (
         <Spinner />
       ) : (

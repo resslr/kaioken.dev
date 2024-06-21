@@ -6,10 +6,25 @@ export const UseAsyncResultTypePreview = {
     <CodeBlock
       lang="ts"
       code={`\
-type UseAsyncResult<T> =
-  | [null, true, null] // initial
-  | [T, false, null] // success
-  | [null, false, Error] // failure
+type UseAsyncResult<T> = (
+  | /** loading*/ {
+      data: null
+      loading: true
+      error: null
+    }
+  | /** loaded */ {
+      data: T
+      loading: false
+      error: null
+    }
+  | /** error */ {
+      data: null
+      loading: false
+      error: UseAsyncError
+    }
+) & {
+  invalidate: (forceUpdate?: boolean) => void
+}
 `}
     />
   ),
