@@ -8,7 +8,7 @@ declare global {
       is404?: boolean
 
       Page: () => JSX.Element
-      Layout: () => JSX.Element
+      Layout: ({ children }: { children: JSX.Children }) => JSX.Element
       title: string | ((ctx: PageContext) => string)
       description: string | ((ctx: PageContext) => string)
       keywords: string[] | ((ctx: PageContext) => string[])
@@ -18,7 +18,7 @@ declare global {
         description: string | ((ctx: PageContext) => string)
         keywords: string[] | ((ctx: PageContext) => string[])
         Page: () => JSX.Element
-        Layout?: () => JSX.Element
+        Layout?: ({ children }: { children: JSX.Children }) => JSX.Element
       }
 
       routeParams: Record<string, string>
