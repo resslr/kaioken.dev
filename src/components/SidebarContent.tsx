@@ -6,7 +6,7 @@ import { ElementProps } from "kaioken"
 
 export function SidebarContent() {
   const { urlPathname } = usePageContext()
-  const { value: open, setOpen } = useNavDrawer()
+  const { value: open, setOpen } = useNavDrawer((state) => state.open)
 
   return (
     <>
@@ -37,7 +37,9 @@ export function SidebarContent() {
                   <Link
                     href={page.href}
                     onclick={() =>
-                      isLinkActive(page.href, urlPathname) && setOpen(false)
+                      isLinkActive(page.href, urlPathname) &&
+                      open &&
+                      setOpen(false)
                     }
                     className={`${isLinkActive(page.href, urlPathname) ? "text-light" : ""}`}
                   >
