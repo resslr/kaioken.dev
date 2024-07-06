@@ -1,5 +1,5 @@
 import { SearchIcon } from "$/components/icons/SearchIcon"
-import { createStore, useModel } from "kaioken"
+import { createStore, useMemo, useModel } from "kaioken"
 import { CodeDemo } from "../CodeDemo"
 import { DemoComponentWrapper } from "../DemoComponentWrapper"
 import { PlayIcon } from "$/components/icons/PlayIcon"
@@ -73,9 +73,16 @@ export function AlbumSearchDemo() {
     () => true
   )
 
-  const filteredAlbums = albums.filter(
-    (a) => a.title.toLowerCase().indexOf(inputValue.toLowerCase()) > -1
-  )
+  const [filteredAlbums, resultTxt] = useMemo(() => {
+    const res = albums.filter(
+      (a) => a.title.toLowerCase().indexOf(inputValue.toLowerCase()) > -1
+    )
+    const len = res.length
+    return [
+      res,
+      len === 0 ? "No matches" : len === 1 ? "1 match" : `${len} matches`,
+    ]
+  }, [inputValue])
 
   return (
     <CodeDemo filename="SearchableAlbumList.jsx" code={code}>
@@ -92,11 +99,7 @@ export function AlbumSearchDemo() {
             />
           </div>
           <section className="flex flex-col gap-4">
-            <p className="text-muted">
-              {filteredAlbums.length > 0
-                ? `${filteredAlbums.length} matches`
-                : `No matches for "${inputValue}"`}
-            </p>
+            <p className="text-muted">{resultTxt}</p>
             {filteredAlbums.map((album) => (
               <AlbumItem key={album.id} album={album} />
             ))}
@@ -113,9 +116,9 @@ function AlbumItem({ album }: { album: Album; key: string }) {
   )
   return (
     <div className="flex items-center gap-4">
-      <button role="none" className="p-2 border-2 border-light rounded">
+      <div role="none" className="p-2 border-2 border-light rounded">
         <PlayIcon />
-      </button>
+      </div>
       <div className="flex-grow">
         <h4 className="font-bold">{album.title}</h4>
         <span className="text-muted">{album.artist}</span>
