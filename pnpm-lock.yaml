@@ -21,8 +21,8 @@ importers:
         specifier: ^4.18.3
         version: 4.18.3
       kaioken:
-        specifier: ^0.21.1
-        version: 0.21.1
+        specifier: ^0.22.1
+        version: 0.22.1
       prismjs:
         specifier: ^1.29.0
         version: 1.29.0
@@ -67,8 +67,8 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2
       vite-plugin-kaioken:
-        specifier: ^0.5.2
-        version: 0.5.2(kaioken@0.21.1)
+        specifier: ^0.6.0
+        version: 0.6.0(kaioken@0.22.1)
 
 packages:
 
@@ -884,8 +884,8 @@ packages:
     resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
     hasBin: true
 
-  kaioken@0.21.1:
-    resolution: {integrity: sha512-VtM7GUu5hl62YaJitihUIAIGCiWwNRxvpW4KzA84+XBgrkpPomL3gt0huYuCNe9FCSIDqit5l5HSRBoX5HvmGg==}
+  kaioken@0.22.1:
+    resolution: {integrity: sha512-nsEHY0WiZtH4PrPvhKk0WeOgyzjp3BWMfQxczgTS4Hjod41UpNpVdeqy1yPoQhP//rDBfildE0YupzlrzJ+GNg==}
 
   lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
@@ -1486,10 +1486,10 @@ packages:
       react-streaming:
         optional: true
 
-  vite-plugin-kaioken@0.5.2:
-    resolution: {integrity: sha512-f9kbPUHJZNX2YyLjt49u66ox/oFs1H89iwVbYlS1qsSe6GB1cRKHXl+8ZBhd6F20iPsFER/dcB+fp+rrPoFVtg==}
+  vite-plugin-kaioken@0.6.0:
+    resolution: {integrity: sha512-bzVsu51orxZpgfJRVCNIULl19dq6+9T6YmaO0d183hjGGtIF3a8WOCD4IeRU5un8zJdcoAHV+CCfnNgNj/XEXg==}
     peerDependencies:
-      kaioken: '>=0.21.1'
+      kaioken: '>=0.22.0'
 
   vite@5.1.6:
     resolution: {integrity: sha512-yYIAZs9nVfRJ/AiOLCA91zzhjsHUgMjB+EigzFb6W2XTLO8JixBCKCjvhKZaye+NKYHCrkv3Oh50dH9EdLU2RA==}
@@ -2367,7 +2367,7 @@ snapshots:
 
   jiti@1.21.0: {}
 
-  kaioken@0.21.1: {}
+  kaioken@0.22.1: {}
 
   lilconfig@2.1.0: {}
 
@@ -3199,9 +3199,9 @@ snapshots:
       source-map-support: 0.5.21
       vite: 5.1.6(@types/node@20.11.25)
 
-  vite-plugin-kaioken@0.5.2(kaioken@0.21.1):
+  vite-plugin-kaioken@0.6.0(kaioken@0.22.1):
     dependencies:
-      kaioken: 0.21.1
+      kaioken: 0.22.1
 
   vite@5.1.6(@types/node@20.11.25):
     dependencies:
