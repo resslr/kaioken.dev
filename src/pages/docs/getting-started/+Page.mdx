@@ -35,7 +35,7 @@ import { GitCloneCode } from "./GitCloneCode"
       copy
       className="my-0 rounded-lg"
       code={`pnpm add kaioken
-  pnpm add vite-plugin-kaioken -D`}
+pnpm add vite-plugin-kaioken -D`}
     />
   </div>
 
@@ -47,11 +47,11 @@ import { GitCloneCode } from "./GitCloneCode"
     lang="ts"
     copy
     code={`import { defineConfig } from "vite"
-  import kaioken from "vite-plugin-kaioken"
+import kaioken from "vite-plugin-kaioken"
 
-  export default defineConfig({
-    plugins: [kaioken()],
-  })`} className='my-0 rounded-lg' />
+export default defineConfig({
+  plugins: [kaioken()],
+})`} className='my-0 rounded-lg' />
   </div>
 
   <br />
@@ -61,12 +61,12 @@ import { GitCloneCode } from "./GitCloneCode"
     <CodeBlock
       lang="json"
       code={`{
-    "compilerOptions": {
-      ...
-      "jsx": "preserve"
-      ...
-    }
-  }`}
+  "compilerOptions": {
+    ...
+    "jsx": "preserve"
+    ...
+  }
+}`}
       className="my-0 rounded-lg"
     />
   </div>
@@ -79,8 +79,8 @@ import { GitCloneCode } from "./GitCloneCode"
       lang="jsx"
       copy
       code={`export function App() {
-    return <h1>Hello world!</h1>
-  }`} className='my-0 rounded-lg' />
+  return <h1>Hello world!</h1>
+}`} className='my-0 rounded-lg' />
 
   </div>
 
@@ -92,11 +92,11 @@ import { GitCloneCode } from "./GitCloneCode"
       lang="ts"
       copy
       code={`import { mount } from "kaioken"
-  import { App } from "./App"
+import { App } from "./App"
 
-  const root = document.getElementById("app")
-  mount(App, root)
-  `} className='my-0 rounded-lg' />
+const root = document.getElementById("app")
+mount(App, root)
+`} className='my-0 rounded-lg' />
 
   </div>
 </HighlightOnLoad>
