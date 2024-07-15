@@ -1,23 +1,32 @@
 import { ExternalLink } from "$/components/atoms/ExternalLink"
+import { HighlightOnLoad } from "$/components/HighlightOnLoad"
 
 # Introduction
 
-<h2 id="about-kaioken">About Kaioken</h2>
+<HighlightOnLoad hash="#about-kaioken">
+  <div className="docs-section-header">
+    <a id="about-kaioken" href="#about-kaioken">About Kaioken</a>
+  </div>
 
-Kaioken was made to provide developers with a way to build apps with the expressivity and customizability that React does,
-but with a much smaller footprint and more features.
+  Kaioken was made to provide developers with a way to build apps with the expressivity and customizability that React does,
+  but with a much smaller footprint and more features.
 
-Kaioken will remain <ExternalLink href="https://github.com/CrimsonChi/kaioken" >open source</ExternalLink> forever and welcomes your ideas and contributions!
+  Kaioken will remain <ExternalLink href="https://github.com/CrimsonChi/kaioken" >open source</ExternalLink> forever and welcomes your ideas and contributions!
 
-<h3>
-  <a href="/docs/getting-started">Get started with Kaioken</a>
-</h3>
-<br />
+  <h3>
+    <a href="/docs/getting-started">Get started with Kaioken</a>
+  </h3>
+</HighlightOnLoad>
 
-<h2 id="roadmap">Roadmap</h2>
+<div className="py-4">
+</div>
+<HighlightOnLoad hash="#roadmap">
+  <div className="docs-section-header">
+    <a id="roadmap" href="#roadmap">Roadmap</a>
+  </div>
+  There aren't any dates set in stone but the following items are on Kaioken's horizon:
 
-There aren't any dates set in stone but the following items are on Kaioken's horizon:
-
-- Fully managed <ExternalLink href="https://vike.dev" >Vike</ExternalLink> integration
-  for server-side rendering & static site generation
-- Component declaration API with support for <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components">Web Components</ExternalLink>
+  - Fully managed <ExternalLink href="https://vike.dev" >Vike</ExternalLink> integration
+    for server-side rendering & static site generation
+  - Component declaration API with support for <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components">Web Components</ExternalLink>
+</HighlightOnLoad>

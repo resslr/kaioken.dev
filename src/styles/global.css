@@ -81,3 +81,38 @@ a {
   margin-top: .25rem;
   margin-bottom: .25rem;
 }
+
+.docs-section-header a {
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.5em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  line-height: 1.3333333;
+}
+
+.docs-section {
+  position: relative
+}
+
+.docs-section:after {
+  content: '';
+  pointer-events: none;
+  background-color: #fff;
+  position: absolute;
+  opacity: 0;
+  top: -1rem;
+  right: -1rem;
+  bottom: -1rem;
+  left: -1rem;
+  transform: none;
+  /* height: 100%;
+  width: 100%; */
+  transition: opacity .3s ease-out;
+  border-radius: 5px;
+}
+
+.docs-section.highlight:after {
+  opacity: .05
+}
