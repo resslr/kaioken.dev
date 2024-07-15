@@ -11,7 +11,7 @@ export function SidebarContent() {
   return (
     <>
       {docMeta.map((data) => (
-        <div key={data.title} className="mb-3">
+        <div key={data.title} className="px-1 mb-3">
           <Header>
             {data.href ? (
               <a
@@ -77,7 +77,7 @@ function Header({ children }: ElementProps<"div">) {
 }
 
 function LinkList({ children }: ElementProps<"div">) {
-  return <div className="flex flex-col w-full gap p-1">{children}</div>
+  return <div className="flex flex-col w-full gap">{children}</div>
 }
 
 function Link({ children, className, ...props }: ElementProps<"a">) {

@@ -10,6 +10,9 @@ export default defineConfig({
       $: path.resolve(__dirname, "src"),
     },
   },
+  esbuild: {
+    sourcemap: false,
+  },
   plugins: [
     {
       enforce: "pre",
