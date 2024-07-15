@@ -18,7 +18,7 @@ export function CommandPallete() {
   } = useCommandPallete()
   const { urlPathname } = usePageContext()
 
-  const prevActiveElement = useRef<Element>(null)
+  const prevActiveElement = useRef<Element | null>(null)
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyboardEvent)
@@ -77,9 +77,7 @@ export function CommandPallete() {
 }
 
 function CommandPalleteDisplay() {
-  const [searchInputRef, searchInputValue] = useModel<HTMLInputElement, string>(
-    ""
-  )
+  const [searchInputRef, searchInputValue] = useModel("")
   const { setOpen } = useCommandPallete()
 
   useEffect(() => {
@@ -177,6 +175,7 @@ function CommandPalleteGroup({
       <div className="flex gap-1 flex-col py-2 px-1">
         {filteredItems.map((item) => (
           <CommandPalleteItem
+            key={item.href}
             item={item}
             external={"external" in item && Boolean(item.external)}
           />
@@ -225,7 +224,9 @@ function CommandPalleteBadges({ item }: { item: DocPageLink }) {
   return (
     <div className="flex gap-1 mt-1">
       {item.keywords.map((keyword) => (
-        <span className="badge badge-muted">{keyword}</span>
+        <span key={keyword} className="badge badge-muted">
+          {keyword}
+        </span>
       ))}
     </div>
   )

@@ -8,7 +8,7 @@ const useSelectionStore = createStore("CSR", (set) => ({
 
 export function GitCloneCode() {
   const { value: selectedItem, setSelected } = useSelectionStore()
-  const [ref, txt] = useModel<HTMLInputElement, string>("")
+  const [ref, txt] = useModel("")
   return (
     <div>
       <div className="flex gap-2">

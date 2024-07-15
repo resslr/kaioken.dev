@@ -2,7 +2,7 @@ import { LikeButton } from "$/components/LikeButton"
 import { PlayIcon } from "$/components/icons/PlayIcon"
 import { useState } from "kaioken"
 
-export function AlbumItem({ album }: { album: Album; key: string }) {
+export function AlbumItem({ album }: { album: Album }) {
   const [liked, setLiked] = useState(false)
   return (
     <div className="flex items-center gap-4">

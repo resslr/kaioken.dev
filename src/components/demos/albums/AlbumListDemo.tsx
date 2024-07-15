@@ -11,7 +11,7 @@ const code = `function AlbumList({ albums }) {
     <section>
       <h2>{title}</h2>
       {albums.map(album =>
-        <Album album={album} />
+        <Album key={album.id} album={album} />
       )}
     </section>
   )
@@ -46,7 +46,7 @@ export function AlbumListDemo() {
         <h2 className="mb-4 font-bold text-lg">3 albums</h2>
         <section className="flex flex-col gap-4">
           {albums.map((album) => (
-            <AlbumItem album={album} key={album.id} />
+            <AlbumItem key={album.id} album={album} />
           ))}
         </section>
       </DemoComponentWrapper>

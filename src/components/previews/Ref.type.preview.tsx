@@ -7,7 +7,7 @@ export const refTypePreview = {
       lang="ts"
       code={`\
 type Ref<T> = {
-  current: T | null
+  current: T
 }`}
     />
   ),

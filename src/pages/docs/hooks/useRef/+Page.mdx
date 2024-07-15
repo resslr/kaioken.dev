@@ -25,7 +25,7 @@ Useful for:
 import { useRef } from "kaioken"
 
 function MyComponent() {
-  const inputRef = useRef(null) // Create a ref for the input element
+  const inputRef = useRef() // Create a ref for the input element
 
   const handleClick = () => {
     inputRef.current?.focus() // Access and focus the input element using the ref

@@ -21,7 +21,6 @@ export function AlbumItemDemo() {
     <CodeDemo filename="Album.jsx" code={code}>
       <DemoComponentWrapper className="max-w-[340px]">
         <AlbumItem
-          key="1"
           album={{
             id: "1",
             title: "Album title",

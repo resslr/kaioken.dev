@@ -42,6 +42,7 @@ export function NavDrawer() {
               <div className="flex flex-col gap-2 px-2 ">
                 {SITE_LINKS.map((link) => (
                   <a
+                    key={link.href}
                     href={link.href}
                     target={link.external ? "_blank" : "_self"}
                     className={`inline-flex items-center gap-1 text-base font-medium ${isLinkActive(link.activePath ?? link.href, urlPathname) ? "" : "text-muted"}`}

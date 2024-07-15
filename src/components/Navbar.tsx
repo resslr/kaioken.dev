@@ -36,6 +36,7 @@ export function Navbar() {
           {SITE_LINKS.map((link) =>
             isLinkActive(link.activePath ?? link.href, urlPathname) ? (
               <a
+                key={link.href}
                 href={link.href}
                 target={link.external ? "_blank" : "_self"}
                 className="text-sm text-light"
@@ -44,6 +45,7 @@ export function Navbar() {
               </a>
             ) : (
               <a
+                key={link.href}
                 href={link.href}
                 target={link.external ? "_blank" : "_self"}
                 className="inline-flex items-center gap-xs text-sm text-muted hover:text-light"

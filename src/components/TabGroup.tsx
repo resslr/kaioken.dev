@@ -13,7 +13,7 @@ export function TabGroup(props: TabGroupProps) {
         {props.items.map((item) => {
           const active = item === props.value
           return (
-            <li className={active ? "active" : ""}>
+            <li key={item} className={active ? "active" : ""}>
               <button
                 ariaLabel={item}
                 onclick={() => !active && props.onSelect(item)}

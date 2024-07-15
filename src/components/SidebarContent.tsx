@@ -11,7 +11,7 @@ export function SidebarContent() {
   return (
     <>
       {docMeta.map((data) => (
-        <div className="mb-3">
+        <div key={data.title} className="mb-3">
           <Header>
             {data.href ? (
               <a
@@ -29,12 +29,16 @@ export function SidebarContent() {
             <LinkList>
               {data.pages.map((page) =>
                 page.disabled ? (
-                  <Link className="flex items-center justify-between">
+                  <Link
+                    key={page.title}
+                    className="flex items-center justify-between"
+                  >
                     <span className="opacity-75">{page.title}</span>
                     <span className="badge">Upcoming</span>
                   </Link>
                 ) : (
                   <Link
+                    key={page.href}
                     href={page.href}
                     onclick={() =>
                       isLinkActive(page.href, urlPathname) &&
@@ -53,6 +57,7 @@ export function SidebarContent() {
             <LinkList>
               {data.sections.map((section) => (
                 <Link
+                  key={section.id}
                   href={data.href + (section.id ? `#${section.id}` : "")}
                   onclick={() => open && setOpen(false)}
                 >

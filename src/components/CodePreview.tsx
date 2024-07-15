@@ -12,7 +12,7 @@ export function CodePreview({
 }) {
   const { isClient, urlPathname } = usePageContext()
   const linkRef = useRef<any>(null)
-  const linkBounds = useRef<DOMRect>(null)
+  const linkBounds = useRef<DOMRect | null>(null)
   const [open, setOpen] = useState(false)
   const previewHovered = useRef(false)
   const hideTimeout = useRef(-1)
