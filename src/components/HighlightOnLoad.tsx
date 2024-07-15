@@ -18,7 +18,7 @@ export function HighlightOnLoad({
       }
       timeoutRef.current = window.setTimeout(
         () => ref.current?.classList.remove("highlight"),
-        1500
+        1000
       )
     }
   }, [globalThis.window?.location.hash])
