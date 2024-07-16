@@ -22,6 +22,7 @@ export const onRenderHtml: OnRenderHtmlAsync = async (
         <title>${getTitle(pageContext)}</title>
         <meta name="description" content="${getDescription(pageContext)}">
         <meta name="keywords" content="${getKeywords(pageContext).join(", ")}">
+        <meta name="darkreader-lock">
       </head>
       <body>
         <div id="page-root">${dangerouslySkipEscape(pageHtml)}</div>
