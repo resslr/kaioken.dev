@@ -9,9 +9,10 @@ export function CodeDemo({
   code: string
   children: JSX.Children
 }) {
+  //bg-[#1c1c1c]
   return (
     <div className="grid md:grid-cols-5">
-      <div className="flex flex-col md:col-span-3 md:rounded-2xl bg-stone-800 text-light overflow-hidden z-10 shadow-[#0006] shadow-lg">
+      <div className="flex flex-col md:col-span-3 md:rounded-2xl bg-[#222] text-light overflow-hidden z-10 shadow-[#0006] shadow-lg">
         <span className="text-sm px-4 py-2 text-stone-200 opacity-80">
           {filename}
         </span>
