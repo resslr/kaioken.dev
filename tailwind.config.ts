@@ -14,7 +14,7 @@ export default {
         light: "#fffafa",
         "light-highlight": "#fbf6f6",
         stone: {
-          750: "#33302c",
+          750: "#332f2f",
         },
       },
       spacing: {
