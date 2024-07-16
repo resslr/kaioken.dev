@@ -1,20 +1,22 @@
 import { TabGroup } from "$/components/TabGroup"
 import { CodeBlock } from "$/components/CodeBlock"
-import { createStore, useModel } from "kaioken"
-
-const useSelectionStore = createStore("CSR", (set) => ({
-  setSelected: (value: string) => set(value),
-}))
+import { useModel } from "kaioken"
+import { usePackageManager } from "./packageManagerStore"
+import { useTemplateSelection } from "./templateSelectionStore"
 
 export function GitCloneCode() {
-  const { value: selectedItem, setSelected } = useSelectionStore()
+  const { value: pkgManager } = usePackageManager()
+  const { value: selectedItem, setSelected } = useTemplateSelection()
   const [ref, txt] = useModel("")
+
+  const pkgManagerRunPref =
+    ["npm", "yarn"].indexOf(pkgManager) > -1 ? " run" : ""
   return (
     <div>
       <div className="flex gap-2">
         <TabGroup
           value={selectedItem}
-          onSelect={setSelected}
+          onSelect={(value) => setSelected(value as typeof selectedItem)}
           items={["CSR", "SSR"]}
         />
         <input
@@ -31,8 +33,8 @@ export function GitCloneCode() {
 cd ${txt || "my-app"}
 git clone https://github.com/CrimsonChi/kaioken-${selectedItem.toLowerCase()}-template.git .
 rm -rf .git
-pnpm i
-pnpm dev`}
+${pkgManager} install
+${pkgManager}${pkgManagerRunPref} dev`}
       />
     </div>
   )

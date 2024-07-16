@@ -2,22 +2,21 @@ import { ExternalLink } from "$/components/atoms/ExternalLink"
 import { CodeBlock } from "$/components/CodeBlock"
 import { HighlightOnLoad } from "$/components/HighlightOnLoad"
 import { GitCloneCode } from "./GitCloneCode"
+import { CliCode } from "./CliCode"
 
 # Getting started
 
 <HighlightOnLoad hash="#start-a-new-project">
-  <div className="docs-section-header">
+  <div className="docs-section-header mb-4">
     <a id="start-a-new-project" href="#start-a-new-project">Start a new project</a>
   </div>
 
-  To quickly scaffold a new project, head to the <ExternalLink href="https://github.com/CrimsonChi/kaioken-csr-template.git">CSR Template</ExternalLink>
-  or the <ExternalLink href="https://github.com/CrimsonChi/kaioken-ssr-template.git">SSR/SSG Template</ExternalLink> repository
-  and select 'Use this template'.
-
-  <span>Alternatively, you can clone a template via the following:</span>
   <div className="not-prose">
-    <GitCloneCode />
+    <CliCode />
   </div>
+  
+  
+  
 </HighlightOnLoad>
 <div className="py-8"></div>
 <HighlightOnLoad hash="#add-to-an-existing-project">
