@@ -1,12 +1,10 @@
 import { CodeBlock } from "$/components/CodeBlock"
-import { TabGroup } from "$/components/TabGroup"
 import { PackageManagerSelector } from "./PackageManagerSelector"
-import { packageManagers, usePackageManager } from "./packageManagerStore"
+import { packageManager } from "./packageManagerStore"
 
 export function CliCode() {
-  const { value } = usePackageManager()
   let str = ""
-  switch (value) {
+  switch (packageManager.value) {
     case "NPM":
       str = "npx create-kaioken@latest"
       break

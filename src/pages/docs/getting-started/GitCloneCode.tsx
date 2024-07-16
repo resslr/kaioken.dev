@@ -1,16 +1,17 @@
 import { TabGroup } from "$/components/TabGroup"
 import { CodeBlock } from "$/components/CodeBlock"
 import { useModel } from "kaioken"
-import { usePackageManager } from "./packageManagerStore"
+import { packageManager } from "./packageManagerStore"
 import { useTemplateSelection } from "./templateSelectionStore"
 
 export function GitCloneCode() {
-  const { value: pkgManager } = usePackageManager()
   const { value: selectedItem, setSelected } = useTemplateSelection()
   const [ref, txt] = useModel("")
 
   const pkgManagerRunPref =
-    ["npm", "yarn"].indexOf(pkgManager) > -1 ? " run" : ""
+    ["npm", "yarn"].indexOf(packageManager.value.toLocaleLowerCase()) > -1
+      ? " run"
+      : ""
   return (
     <div>
       <div className="flex gap-2">
@@ -33,8 +34,8 @@ export function GitCloneCode() {
 cd ${txt || "my-app"}
 git clone https://github.com/CrimsonChi/kaioken-${selectedItem.toLowerCase()}-template.git .
 rm -rf .git
-${pkgManager} install
-${pkgManager}${pkgManagerRunPref} dev`}
+${packageManager.value.toLowerCase()} install
+${packageManager.value.toLowerCase()}${pkgManagerRunPref} dev`}
       />
     </div>
   )

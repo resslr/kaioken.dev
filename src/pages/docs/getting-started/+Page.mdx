@@ -3,6 +3,7 @@ import { CodeBlock } from "$/components/CodeBlock"
 import { HighlightOnLoad } from "$/components/HighlightOnLoad"
 import { GitCloneCode } from "./GitCloneCode"
 import { CliCode } from "./CliCode"
+import {packageManager} from "./packageManagerStore"
 
 # Getting started
 
@@ -14,11 +15,8 @@ import { CliCode } from "./CliCode"
   <div className="not-prose">
     <CliCode />
   </div>
-  
-  
-  
 </HighlightOnLoad>
-<div className="py-8"></div>
+<div className="py-4"></div>
 <HighlightOnLoad hash="#add-to-an-existing-project">
   <div className="docs-section-header">
     <a id="add-to-an-existing-project" href="#add-to-an-existing-project">Add to an existing project</a>
@@ -33,8 +31,8 @@ import { CliCode } from "./CliCode"
       lang="bash"
       copy
       className="my-0 rounded-lg"
-      code={`pnpm add kaioken
-pnpm add vite-plugin-kaioken -D`}
+      code={`${packageManager.value.toLowerCase()} ${packageManager.value === "NPM" ? "install" : "add"} kaioken
+${packageManager.value.toLowerCase()} ${packageManager.value === "NPM" ? "install" : "add"} vite-plugin-kaioken ${packageManager.value === "Yarn" ? "--dev" : packageManager.value === "PNPM" ? "-D" : packageManager.value === "Bun" ? "--dev" :  "--save-dev"}`}
     />
   </div>
 
