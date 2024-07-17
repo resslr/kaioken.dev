@@ -116,3 +116,11 @@ a {
 .docs-section.highlight:after {
   opacity: .066
 }
+
+.token.attr-value,
+.token.char,
+.token.regex,
+.token.string,
+.token.variable {
+  color: #ef9a65ff !important;
+}

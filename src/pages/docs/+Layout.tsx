@@ -44,7 +44,5 @@ function ActiveLinkTrackerSlidingThing() {
   }, [])
 
   const className = `bg-neutral-50 ${mounted ? "opacity-100" : "opacity-0"} w-[2px] h-4 block absolute left-0 top-0 ${mounted ? "transition-all" : ""}`
-  console.log(className, mounted)
-
   return <div ref={ref} className={className}></div>
 }
