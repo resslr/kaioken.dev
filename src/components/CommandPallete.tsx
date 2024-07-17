@@ -10,6 +10,7 @@ import { SearchIcon } from "./icons/SearchIcon"
 import { CloseIcon } from "./icons/CloseIcon"
 import { usePageContext } from "$/context/pageContext"
 import { isLinkActive } from "$/utils"
+import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
 
 export function CommandPallete() {
   const {
@@ -213,7 +214,10 @@ function CommandPalleteItem({
       onclick={() => isLinkActive(item.href, urlPathname) && setOpen(false)}
       target={external ? "_blank" : "_self"}
     >
-      <span className="block">{item.title}</span>
+      <span className="flex gap-1 items-center">
+        {item.title}
+        {external ? <ExternalLinkIcon width=".85rem" height=".85rem" /> : ""}
+      </span>
       <CommandPalleteBadges item={item} />
     </a>
   )
