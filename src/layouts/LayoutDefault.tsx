@@ -9,12 +9,12 @@ export function LayoutDefault({ children }: { children: JSX.Children }) {
   const { isClient } = usePageContext()
   return (
     <>
-      <header className="fixed top-0 w-full z-50 bg-dark border-b">
+      <header className="sticky top-0 w-full z-50 bg-dark border-b">
         <Container>
           <Navbar />
         </Container>
       </header>
-      <main className="pt-[var(--navbar-height)]">{children}</main>
+      <main>{children}</main>
       {isClient && (
         <Portal container={document.getElementById("portal-root")!}>
           <NavDrawer />
