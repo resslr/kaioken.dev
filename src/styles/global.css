@@ -38,6 +38,7 @@
   scroll-behavior: smooth;
   --tw-border-opacity: 1;
   scroll-padding: 100px;
+  scrollbar-gutter: stable;
 }
 
 
