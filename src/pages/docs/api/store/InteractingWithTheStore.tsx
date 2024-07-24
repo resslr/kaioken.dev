@@ -30,10 +30,8 @@ function Counter() {
         </div>
         <ul className="py-4 ">
           <li className="mb-5">
-            You can provide a function to{" "}
-            <InlineCodeBlock>useStore</InlineCodeBlock> to return a computed
-            value. This will cause the component to only update when the result
-            of that computation changes:
+            You can provide a function to <InlineCodeBlock>useStore</InlineCodeBlock>to return a computed value.
+            This will cause the component to only update when the result of that computation changes:
             <div className="not-prose">
               <CodeBlock
                 lang="jsx"
@@ -71,10 +69,8 @@ function TodoList() {
 `}
               />
             </div>
-            In the above example, the TodoList component will only update when
-            the number of items in the store changes. We can also provide{" "}
-            <InlineCodeBlock>null</InlineCodeBlock> as the first argument, which
-            means the comparison will use the current state.
+            In the above example, the TodoList component will only update when the number of items in the store changes.
+            We can also provide <InlineCodeBlock>null</InlineCodeBlock> as the first argument, which means the comparison will use the current state.
           </li>
         </ul>
       </li>
