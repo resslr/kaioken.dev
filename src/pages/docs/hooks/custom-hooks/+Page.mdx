@@ -15,10 +15,13 @@ Custom hooks allow you to encapsulate reusable logic within your Kaioken compone
 The provided code snippet showcases the <InlineCodeBlock>useHook</InlineCodeBlock> function, which is the foundation for creating hooks in Kaioken. Here's a breakdown of its functionality:
 
 - **<CodePreview data={useHookTypePreview} /> function:**
+
     - Takes three arguments:
+
         - <InlineCodeBlock>hookName</InlineCodeBlock>: A string representing the name of your custom hook.
         - <InlineCodeBlock>hookData</InlineCodeBlock>: An object containing data specific to your hook's logic.
         - <InlineCodeBlock>callback</InlineCodeBlock>: A function that defines the behavior of your custom hook. It receives an object containing information about the current execution context and can access the provided <InlineCodeBlock>hookData</InlineCodeBlock>.
+ 
     - Retrieves the Kaioken virtual node (vNode) associated with the component.
     - Validates that the hook is called at an appropriate location (top level of a component or within another hook).
     - Extracts relevant context information from the vNode.
@@ -31,11 +34,13 @@ The provided code snippet showcases the <InlineCodeBlock>useHook</InlineCodeBloc
 1. **Naming:** Choose a descriptive name starting with `use` (e.g., `useAuth`, `useWindowSize`).
 2. **<InlineCodeBlock>hookData</InlineCodeBlock>:** Define the data structure your hook will use. This can be an object containing state variables, functions, or other necessary information.
 3. **<CodePreview data={useHookCallbackTypePreview} /> function:** This function implements the core logic of your custom hook. It receives an object containing details about the current execution context, including:
+
     - <InlineCodeBlock>hook</InlineCodeBlock>: The current <InlineCodeBlock>hookData</InlineCodeBlock> object.
     - <InlineCodeBlock>oldHook</InlineCodeBlock> (optional): The <InlineCodeBlock>hookData</InlineCodeBlock> used in the previous render (if available).
     - <InlineCodeBlock>update</InlineCodeBlock>: A function to trigger a re-render of the component.
     - <InlineCodeBlock>queueEffect</InlineCodeBlock>: A function to schedule side effects within your hook.
     - <InlineCodeBlock>vNode</InlineCodeBlock>: The Kaioken virtual node associated with the component.
+
 4. **Return value:** The <InlineCodeBlock>callback</InlineCodeBlock> function should return the value(s) you want to expose to your component's logic.
 
 **Example (adapted from <InlineCodeBlock>useState</InlineCodeBlock>):**
