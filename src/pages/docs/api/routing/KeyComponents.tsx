@@ -3,6 +3,7 @@ import { linkTypePreview } from "$/components/previews/link.type.preview"
 import { routeTypePreview } from "$/components/previews/route.type.preview"
 import { routerTypePreview } from "$/components/previews/router.type.preview"
 import { navigateTypePreview } from "$/components/previews/navigate.type.preview"
+import { useRouterTypePreview } from "$/components/previews/useRouter.type.preview"
 
 export function RoutingKeyComponents() {
   return (
@@ -37,8 +38,7 @@ export function RoutingKeyComponents() {
               Properties:
               <ul>
                 <li>
-                  <b>element</b>: A function that returns the component to be
-                  rendered, accepting params and query objects.
+                  <b>element</b>: A JSX element to render.
                 </li>
                 <li>
                   <b>path</b>: A string representing the path pattern to match.
@@ -76,6 +76,15 @@ export function RoutingKeyComponents() {
           <CodePreview data={navigateTypePreview} />
           <ul>
             <li>A function for programmatic navigation to a given URL.</li>
+          </ul>
+        </li>
+        <li>
+          <CodePreview data={useRouterTypePreview} />
+          <ul>
+            <li>
+              A hook that allows you to access the URL state as parsed by the
+              router.
+            </li>
           </ul>
         </li>
       </ol>

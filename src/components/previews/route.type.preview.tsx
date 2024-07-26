@@ -8,7 +8,7 @@ export const routeTypePreview = {
       code={`\
 (props: { 
   path: string; 
-  element: ({ params: object; query: object }) => JSX.Element 
+  element: JSX.Element 
   fallthrough?: boolean; 
 }) => JSX.Element
 `}

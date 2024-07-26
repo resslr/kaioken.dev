@@ -22,25 +22,35 @@ full page reloads.
       <CodeBlock
       lang="jsx"
       code={`\
-import { Router, Route, Link, navigate } from "./routing"
+import { Router, Route, Link, navigate, useRouter } from "kaioken"
 
 function App() {
   return (
-    <Router basePath="/myapp">
-      <Route path="/" element={HomePage} />
-      <Route path="/login" element={LoginPage} />
-      <Route path="/users/:userId" element={UserPage} />
+    <Router>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/users/:userId" element={<UserPage />} />
     </Router>
   )
 }
 
 function LoginPage() {
-  const user = useUser() // some function that gets auth state
+  const user = useUser() // some custom hook that gets auth state
   if (user) {
     return navigate("/")
   }
 
   return <LoginForm />
+}
+
+function UserPage() {
+  const { params } = useRouter()
+  
+  /**
+   * the ":userId" part of the Route path is parsed from the URL 
+   * and made accessible via useRouter()
+   */
+  return <h1>User: {params.userId}</h1> 
 }
 `}
     />
