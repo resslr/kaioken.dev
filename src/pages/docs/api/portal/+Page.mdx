@@ -1,4 +1,7 @@
-import { PortalExample } from "./PortalExample"
+import { ExampleFileSelector } from "./ExampleFileSelector"
+import { selectedTab } from "./store"
+import ExampleApp from "./example.App.md"
+import ExampleIndex from "./example.index.md"
 
 # Portal
 
@@ -8,6 +11,13 @@ container.
 
 ### Example
 
-<div className="not-prose">
-  <PortalExample />
+<div>
+  <div className="not-prose">
+    <ExampleFileSelector />
+    {selectedTab.value === "App.tsx" ? (
+      <ExampleApp />
+    ) : (
+      <ExampleIndex />
+    )}
+  </div>
 </div>

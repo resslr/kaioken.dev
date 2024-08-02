@@ -1,17 +1,8 @@
 import type { CodePreviewData } from "$/types"
-import { CodeBlock } from "../CodeBlock"
+import CreateContext from "./createContext.md"
 
 export const createContextPreview = {
-  element: () => (
-    <CodeBlock
-      lang="ts"
-      code={`\
-import { createContext } from "kaioken"
-
-const ThemeContext = createContext("light")
-`}
-    />
-  ),
+  element: CreateContext,
   link: {
     text: "createContext",
     href: "/docs/api/context",

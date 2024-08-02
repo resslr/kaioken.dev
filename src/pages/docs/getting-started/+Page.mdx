@@ -1,9 +1,16 @@
 import { ExternalLink } from "$/components/atoms/ExternalLink"
-import { CodeBlock } from "$/components/CodeBlock"
 import { HighlightOnLoad } from "$/components/HighlightOnLoad"
-import { GitCloneCode } from "./GitCloneCode"
-import { CliCode } from "./CliCode"
-import {packageManager} from "./packageManagerStore"
+import { packageManager } from "./packageManagerStore"
+import { PackageManagerSelector } from "./PackageManagerSelector"
+import { CopyInnerText } from "$/components/CopyInnerText"
+import BunCliBash from "./bash.cli.bun.md"
+import NpmCliBash from "./bash.cli.npm.md"
+import PnpmCliBash from "./bash.cli.pnpm.md"
+import YarnCliBash from "./bash.cli.yarn.md"
+import BunInstallBash from "./bash.manual.bun.md"
+import NpmInstallBash from "./bash.manual.npm.md"
+import PnpmInstallBash from "./bash.manual.pnpm.md"
+import YarnInstallBash from "./bash.manual.yarn.md"
 
 # Getting started
 
@@ -11,12 +18,24 @@ import {packageManager} from "./packageManagerStore"
   <div className="docs-section-header mb-4">
     <a id="start-a-new-project" href="#start-a-new-project">Start a new project</a>
   </div>
-
-  <div className="not-prose">
-    <CliCode />
+  <div>
+    <div className="not-prose">
+      <PackageManagerSelector />
+      <CopyInnerText>
+        {packageManager.value === "Bun" ? (
+          <BunCliBash />
+        ) : packageManager.value === "NPM" ? (
+          <NpmCliBash />
+        ) : packageManager.value === "Yarn" ? (
+          <YarnCliBash />
+        ) : (
+          <PnpmCliBash />
+        )}
+      </CopyInnerText>
+    </div>
   </div>
 </HighlightOnLoad>
-<div className="py-4"></div>
+
 <HighlightOnLoad hash="#add-to-an-existing-project">
   <div className="docs-section-header">
     <a id="add-to-an-existing-project" href="#add-to-an-existing-project">Add to an existing project</a>
@@ -25,79 +44,71 @@ import {packageManager} from "./packageManagerStore"
   <h4>The following example demonstrates adding Kaioken to a Vite project.</h4>
   <br />
 
-  <span>Add Kaioken and the Kaioken Vite plugin (for HMR):</span>
-  <div className="not-prose">
-    <CodeBlock
-      lang="bash"
-      copy
-      className="my-0 rounded-lg"
-      code={`${packageManager.value.toLowerCase()} ${packageManager.value === "NPM" ? "install" : "add"} kaioken
-${packageManager.value.toLowerCase()} ${packageManager.value === "NPM" ? "install" : "add"} vite-plugin-kaioken ${packageManager.value === "Yarn" ? "--dev" : packageManager.value === "PNPM" ? "-D" : packageManager.value === "Bun" ? "--dev" :  "--save-dev"}`}
-    />
-  </div>
+  <span>Add Kaioken and the Kaioken Vite plugin (for HMR and Devtools):</span>
+  <CopyInnerText>
+    {packageManager.value === "Bun" ? (
+      <BunInstallBash />
+    ) : packageManager.value === "NPM" ? (
+      <NpmInstallBash />
+    ) : packageManager.value === "Yarn" ? (
+      <YarnInstallBash />
+    ) : (
+      <PnpmInstallBash />
+    )}
+  </CopyInnerText>
 
   <br />
 
-  <div className="not-prose">
-    <span>Update your vite.config.ts (or add it in the top level of your project) and add the HMR plugin:</span>
-    <CodeBlock
-    lang="ts"
-    copy
-    code={`import { defineConfig } from "vite"
-import kaioken from "vite-plugin-kaioken"
+  Update your vite.config.ts (or add it in the top level of your project) and add the HMR plugin:
 
-export default defineConfig({
-  plugins: [kaioken()],
-})`} className='my-0 rounded-lg' />
-  </div>
+  <CopyInnerText>
+    ```ts
+    import kaioken from "vite-plugin-kaioken"
+
+    export default defineConfig({
+      plugins: [kaioken()],
+    })
+    ```
+  </CopyInnerText>
 
   <br />
 
-  <div className="not-prose">
-    <span>Add the "jsx" entry in your tsconfig.json:</span>
-    <CodeBlock
-      lang="json"
-      code={`{
-  "compilerOptions": {
-    ...
-    "jsx": "preserve"
-    ...
+  <span>Add the "jsx" entry in your tsconfig.json:</span>
+  ```json
+  {
+    "compilerOptions": {
+      ...
+      "jsx": "preserve",
+      ...
+    }
   }
-}`}
-      className="my-0 rounded-lg"
-    />
-  </div>
+  ```
 
   <br />
 
-  <div className="not-prose">
-    <span>Create a simple app:</span>
-    <CodeBlock 
-      lang="jsx"
-      copy
-      code={`export function App() {
-  return <h1>Hello world!</h1>
-}`} className='my-0 rounded-lg' />
-
-  </div>
+  <span>Create a simple app:</span>
+  <CopyInnerText>
+    ```jsx
+    export function App() {
+      return <h1>Hello world!</h1>
+    }
+    ```
+  </CopyInnerText>
 
   <br />
 
-  <div className="not-prose">
-    <span>Mount your app to the DOM:</span>
-    <CodeBlock 
-      lang="ts"
-      copy
-      code={`import { mount } from "kaioken"
-import { App } from "./App"
+  <span>Mount your app to the DOM:</span>
+  <CopyInnerText>
+    ```ts
+    import { mount } from "kaioken"
+    import { App } from "./App"
 
-const root = document.getElementById("app")
-mount(App, root)
-`} className='my-0 rounded-lg' />
-
-  </div>
+    const root = document.getElementById("app")
+    mount(App, root)
+    ```
+  </CopyInnerText>
 </HighlightOnLoad>
-<div className="py-8"></div>
+
 <HighlightOnLoad hash="#getting-help">
   <div className="docs-section-header">
     <a id="getting-help" href="#getting-help">Getting help</a>

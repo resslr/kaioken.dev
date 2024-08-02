@@ -1,15 +1,8 @@
 import type { CodePreviewData } from "$/types"
-import { CodeBlock } from "../CodeBlock"
+import UseModelType from "./useModel.type.md"
 
 export const useModelTypePreview = {
-  element: () => (
-    <CodeBlock
-      lang="ts"
-      code={`\
-type BindableElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-<T extends BindableElement, U extends string | number | boolean>(initialValue): [Ref<T>, U, (newValue:U) => void]`}
-    />
-  ),
+  element: UseModelType,
   link: {
     text: "useModel",
     href: "/docs/hooks/useModel",

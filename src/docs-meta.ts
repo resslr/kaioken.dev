@@ -72,9 +72,14 @@ export const docMeta: DocItem[] = [
         keywords: ["router", "route", "link", "navigate"],
       },
       {
+        title: "Signal",
+        href: "/docs/api/signal",
+        keywords: ["signal", "state"],
+      },
+      {
         title: "Store",
         href: "/docs/api/store",
-        keywords: ["createStore", "useStore", "MethodFactory"],
+        keywords: ["createStore", "useStore", "MethodFactory", "state"],
       },
       {
         title: "Transition",

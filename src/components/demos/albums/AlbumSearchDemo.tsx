@@ -4,23 +4,7 @@ import { CodeDemo } from "../CodeDemo"
 import { DemoComponentWrapper } from "../DemoComponentWrapper"
 import { PlayIcon } from "$/components/icons/PlayIcon"
 import { LikeButton } from "$/components/LikeButton"
-
-const code = `function SearchableAlbumList({ albums }) {  
-  const [searchText, setSearchText] = useState('')
-  const filteredAlbums = filterAlbums(albums, searchText)
-  
-  return (
-    <>
-      <SearchInput
-        value={searchText}
-        onChange={setSearchText} />
-      <AlbumList
-        albums={filteredAlbums}
-        emptyMessage={\`No matches for "\${searchText}"\`} />
-    </>
-  )
-}
-`
+import SearchableAlbumList from "./SearchableAlbumList.md"
 
 const useAlbumsStore = createStore(
   [
@@ -85,7 +69,10 @@ export function AlbumSearchDemo() {
   }, [inputValue])
 
   return (
-    <CodeDemo filename="SearchableAlbumList.jsx" code={code}>
+    <CodeDemo
+      filename="SearchableAlbumList.jsx"
+      CodeBlock={SearchableAlbumList}
+    >
       <DemoComponentWrapper className="max-w-[340px] overflow-hidden p-0">
         <div className="h-[240px] overflow-auto p-4">
           <h2 className="mb-4 font-bold text-lg">Albums</h2>

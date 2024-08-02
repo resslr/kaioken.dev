@@ -1,7 +1,11 @@
-import { ContextExample } from "./ContextExample"
 import { CodePreview } from "$/components/CodePreview"
 import { createContextPreview } from "$/components/previews/createContext.preview"
 import { contextTypePreview } from "$/components/previews/Context.type.preview"
+import { ExampleFileSelector } from "./ExampleFileSelector"
+import { selectedTab } from "./store"
+import ExampleButton from "./example.Button.md"
+import ExampleThemeContext from "./example.ThemeContext.md"
+import ExampleThemeContextProvider from "./example.ThemeContextProvider.md"
 
 # Context
 
@@ -11,9 +15,17 @@ The <b>Provider</b> property is a component that acts as a 'host' of the context
 Children of the provider can use <a href="/docs/hooks/useContext">useContext</a> to access the provider's current state - if no provider is found, it will return the context's initial value.
 
 ### Example
-
-<div className="not-prose">
-  <ContextExample />
+<div>
+  <div className="not-prose">
+    <ExampleFileSelector />
+    {selectedTab.value === "ThemeContext.ts" ? (
+    <ExampleThemeContext />
+  ) : selectedTab.value === "ThemeContextProvider.tsx" ? (
+    <ExampleThemeContextProvider />
+  ) : (
+    <ExampleButton />
+  )}
+  </div>
 </div>
 
 ### Related

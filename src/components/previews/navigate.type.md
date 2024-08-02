@@ -1,0 +1,3 @@
+```ts
+(path:string) => void
+```

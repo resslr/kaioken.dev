@@ -1,15 +1,8 @@
 import type { CodePreviewData } from "$/types"
-import { CodeBlock } from "../CodeBlock"
+import MemoType from "./memo.type.md"
 
 export const memoTypePreview = {
-  element: () => (
-    <CodeBlock
-      lang="ts"
-      code={`\
-<T>(props:T) => (props:T) => JSX.Element
-`}
-    />
-  ),
+  element: MemoType,
   link: {
     text: "Memo",
     href: "/docs/api/memo",

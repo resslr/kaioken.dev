@@ -1,18 +1,8 @@
 import type { CodePreviewData } from "$/types"
-import { CodeBlock } from "../CodeBlock"
+import MethodFactoryType from "./MethodFactory.type.md"
 
 export const methodFactoryTypePreview = {
-  element: () => (
-    <CodeBlock
-      lang="ts"
-      code={`\
-type MethodFactory<T> = (
-  setState: (setter: T | ((prev:T) => T)) => void,
-  getState: () => T
-) => Record<string, (...args: any[]) => void>
-`}
-    />
-  ),
+  element: MethodFactoryType,
   link: {
     text: "MethodFactory",
     href: "/docs/api/store",

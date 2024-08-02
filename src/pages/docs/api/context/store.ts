@@ -1,5 +1,3 @@
-import { createStore } from "kaioken"
+import { signal } from "kaioken"
 
-export const useTabStore = createStore("themeContext.ts", (set) => ({
-  setSelected: (value: string) => set(value),
-}))
+export const selectedTab = signal("ThemeContext.ts")

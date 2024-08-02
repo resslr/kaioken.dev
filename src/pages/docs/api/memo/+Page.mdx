@@ -1,4 +1,3 @@
-import { CodeBlock } from "$/components/CodeBlock"
 import { CodePreview } from "$/components/CodePreview"
 import { memoTypePreview } from "$/components/previews/memo.type.preview"
 
@@ -9,19 +8,14 @@ of components by preventing unnecessary re-renders.
 
 ### Example
 
-<div className="not-prose">
-  <CodeBlock
-      lang="jsx"
-      code={`\
+```jsx
 import { memo } from "kaioken"
 
 const MyComponent = memo(({ value }) => {
   // Component logic here
   return <div>{value}</div>
 })
-`} 
-  />
-</div>
+```
 
 In this example, MyComponent will only re-render if the <b>value</b> 
 prop changes. If other props or state within the component change 

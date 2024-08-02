@@ -1,22 +1,7 @@
 import { CodeDemo } from "../CodeDemo"
 import { DemoComponentWrapper } from "../DemoComponentWrapper"
 import { AlbumItem } from "./AlbumItem"
-
-const code = `function AlbumList({ albums }) {  
-  let title = "0 albums"
-  if (albums.length === 1) title = "1 album"
-  if (albums.length > 1) title = \`\${albums.length} albums\`
-
-  return (
-    <section>
-      <h2>{title}</h2>
-      {albums.map(album =>
-        <Album key={album.id} album={album} />
-      )}
-    </section>
-  )
-}
-`
+import AlbumList from "./AlbumList.md"
 
 export function AlbumListDemo() {
   const albums: Album[] = [
@@ -41,7 +26,7 @@ export function AlbumListDemo() {
   ]
 
   return (
-    <CodeDemo filename="AlbumList.jsx" code={code}>
+    <CodeDemo filename="AlbumList.jsx" CodeBlock={AlbumList}>
       <DemoComponentWrapper className="max-w-[340px]">
         <h2 className="mb-4 font-bold text-lg">3 albums</h2>
         <section className="flex flex-col gap-4">

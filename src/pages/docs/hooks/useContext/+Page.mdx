@@ -1,18 +1,9 @@
-import { CodeBlock } from "$/components/CodeBlock"
-import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
-import { CodePreview } from "$/components/CodePreview"
-import { contextTypePreview } from "$/components/previews/Context.type.preview"
-
-
 # useContext
 
 Gets the value from a <a href="/docs/api/context">Context</a> Provider component within the current component's heirarchy. If no provider is found, it will return the context's default value.
 
 ### Example
-<div className="not-prose">
-  <CodeBlock 
-    lang="jsx" 
-    code={`\
+```jsx
 import { createContext, useContext } from "kaioken"
 
 const ThemeContext = useContext("light")
@@ -32,8 +23,7 @@ function Button() {
     <button className={theme} />
   )
 }
-`} />
-</div>
+```
 
 ### Related
 <ul>

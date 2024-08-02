@@ -102,7 +102,9 @@ export function CodePreview({
                     }}
                     className="preview-content"
                   >
-                    <data.element />
+                    <div className="not-prose">
+                      <data.element />
+                    </div>
                   </div>
                 </div>
               )

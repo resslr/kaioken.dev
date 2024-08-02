@@ -1,15 +1,8 @@
 import type { CodePreviewData } from "$/types"
-import { CodeBlock } from "../CodeBlock"
+import RouterType from "./router.type.md"
 
 export const routerTypePreview = {
-  element: () => (
-    <CodeBlock
-      lang="ts"
-      code={`\
-(props: { basePath?: string }) => JSX.Element
-`}
-    />
-  ),
+  element: RouterType,
   link: {
     text: "Router",
     href: "/docs/api/routing#router",

@@ -1,5 +1,3 @@
-import { CodeBlock } from "$/components/CodeBlock"
-import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
 import { CodePreview } from "$/components/CodePreview"
 import { refTypePreview } from "$/components/previews/Ref.type.preview"
 
@@ -11,10 +9,7 @@ updated state.
 
 
 ### Example
-<div  className="not-prose">
-  <CodeBlock 
-    lang="jsx" 
-    code={`\
+```jsx
 import { useState } from "kaioken"
 
 function MyComponent() {
@@ -31,8 +26,7 @@ function MyComponent() {
     </div>
   )
 }
-`} />
-</div>
+```
 
 ### Related
 <ul>

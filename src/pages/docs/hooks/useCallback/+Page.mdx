@@ -1,14 +1,10 @@
-import { CodeBlock } from "$/components/CodeBlock"
-
 # useCallback
 
 Persists the creation of a function across updates.
 
 ### Example
-<div className="not-prose">
-  <CodeBlock 
-    lang="jsx" 
-    code={`\
+
+```jsx
 import { useCallback, useState } from "kaioken"
 
 function ParentComponent() {
@@ -34,8 +30,7 @@ function ChildComponent({ onIncrement }) {
     </button>
   )
 }
-`} />
-</div>
+```
 
 ### Related
 <ul>

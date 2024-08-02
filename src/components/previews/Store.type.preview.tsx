@@ -1,22 +1,8 @@
 import type { CodePreviewData } from "$/types"
-import { CodeBlock } from "../CodeBlock"
+import StoreType from "./Store.type.md"
 
 export const storeTypePreview = {
-  element: () => (
-    <CodeBlock
-      lang="ts"
-      code={`\
-type Store<T, U extends MethodFactory<T>> = {
-  (): { value: T } & ReturnType<U>
-  <R>(selector: (value: T) => R): { value: R } & ReturnType<U>
-  getState: () => T
-  setState: (setter: T | ((prev:T) => T)) => void
-  methods: ReturnType<U>
-  subscribe: (fn: (value: T) => void) => () => void
-}
-`}
-    />
-  ),
+  element: StoreType,
   link: {
     text: "Store",
     href: "/docs/api/store",

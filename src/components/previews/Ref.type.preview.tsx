@@ -1,16 +1,8 @@
 import type { CodePreviewData } from "$/types"
-import { CodeBlock } from "../CodeBlock"
+import RefType from "./Ref.type.md"
 
 export const refTypePreview = {
-  element: () => (
-    <CodeBlock
-      lang="ts"
-      code={`\
-type Ref<T> = {
-  current: T
-}`}
-    />
-  ),
+  element: RefType,
   link: {
     text: "Ref",
     href: "/docs/hooks/useRef",

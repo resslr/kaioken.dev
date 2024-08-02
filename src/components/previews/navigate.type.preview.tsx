@@ -1,15 +1,8 @@
 import type { CodePreviewData } from "$/types"
-import { CodeBlock } from "../CodeBlock"
+import NavigateType from "./navigate.type.md"
 
 export const navigateTypePreview = {
-  element: () => (
-    <CodeBlock
-      lang="ts"
-      code={`\
-(path:string) => void
-`}
-    />
-  ),
+  element: NavigateType,
   link: {
     text: "Navigate",
     href: "/docs/api/routing#navigate",

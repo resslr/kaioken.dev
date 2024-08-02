@@ -1,15 +1,8 @@
-import { CodePreviewData } from "$/types"
-import { CodeBlock } from "../CodeBlock"
+import type { CodePreviewData } from "$/types"
+import UseHookType from "./useHook.type.md"
 
 export const useHookTypePreview = {
-  element: () => (
-    <CodeBlock
-      lang="ts"
-      code={`\
-function useHook<T, U>(hookName: string, hookData: Hook<T>, callback: HookCallback<T, U>): U
-`}
-    />
-  ),
+  element: UseHookType,
   link: {
     text: "useHook",
     href: "/docs/hooks/custom-hooks",

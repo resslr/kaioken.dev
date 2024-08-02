@@ -1,15 +1,8 @@
 import type { CodePreviewData } from "$/types"
-import { CodeBlock } from "../CodeBlock"
+import UseStateType from "./useState.type.md"
 
 export const useStateTypePreview = {
-  element: () => (
-    <CodeBlock
-      lang="ts"
-      code={`\
-<T>(value:T | (() => T)) => [T, T | ((prev:T) => T)]
-`}
-    />
-  ),
+  element: UseStateType,
   link: {
     text: "useState",
     href: "/docs/hooks/useState",

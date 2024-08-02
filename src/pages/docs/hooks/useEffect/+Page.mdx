@@ -1,4 +1,3 @@
-import { CodeBlock } from "$/components/CodeBlock"
 
 # useEffect
 
@@ -8,10 +7,7 @@ when a value provided in the optional
 has changed.
 
 ### Example
-<div className="not-prose">
-  <CodeBlock 
-    lang="jsx" 
-    code={`\
+```jsx
 import { useState, useEffect } from "kaioken"
 
 function MyComponent({ initialValue }) {
@@ -32,9 +28,8 @@ function MyComponent({ initialValue }) {
       <button onclick={handleClick}>Increment</button>
     </div>
   )
-}`} />
-</div>
-
+}
+```
 ### Related
 <ul>
   <li><a href="/docs/hooks/dependency-arrays">Dependency arrays</a></li>

@@ -1,5 +1,3 @@
-import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
-import { CodeBlock } from "$/components/CodeBlock"
 import { CodePreview } from "$/components/CodePreview"
 import { useHookTypePreview } from "$/components/previews/useHook.type.preview"
 import { useHookCallbackTypePreview } from "$/components/previews/useHookCallback.type.preview"
@@ -12,42 +10,40 @@ Custom hooks allow you to encapsulate reusable logic within your Kaioken compone
 
 **Understanding the Code:**
 
-The provided code snippet showcases the <InlineCodeBlock>useHook</InlineCodeBlock> function, which is the foundation for creating hooks in Kaioken. Here's a breakdown of its functionality:
+The provided code snippet showcases the ``useHook`` function, which is the foundation for creating hooks in Kaioken. Here's a breakdown of its functionality:
 
 - **<CodePreview data={useHookTypePreview} /> function:**
 
     - Takes three arguments:
 
-        - <InlineCodeBlock>hookName</InlineCodeBlock>: A string representing the name of your custom hook.
-        - <InlineCodeBlock>hookData</InlineCodeBlock>: An object containing data specific to your hook's logic.
-        - <InlineCodeBlock>callback</InlineCodeBlock>: A function that defines the behavior of your custom hook. It receives an object containing information about the current execution context and can access the provided <InlineCodeBlock>hookData</InlineCodeBlock>.
+        - ``hookName``: A string representing the name of your custom hook.
+        - ``hookData``: An object containing data specific to your hook's logic.
+        - ``callback``: A function that defines the behavior of your custom hook. It receives an object containing information about the current execution context and can access the provided ``hookData``.
  
     - Retrieves the Kaioken virtual node (vNode) associated with the component.
     - Validates that the hook is called at an appropriate location (top level of a component or within another hook).
     - Extracts relevant context information from the vNode.
-    - Calls the provided <InlineCodeBlock>callback</InlineCodeBlock> function with details about the current state and methods for updating the component or scheduling effects.
-    - Stores the used <InlineCodeBlock>hookData</InlineCodeBlock> within the vNode for future references.
-    - Returns the result returned by the <InlineCodeBlock>callback</InlineCodeBlock> function.
+    - Calls the provided ``callback`` function with details about the current state and methods for updating the component or scheduling effects.
+    - Stores the used ``hookData`` within the vNode for future references.
+    - Returns the result returned by the ``callback`` function.
 
 **Creating a Custom Hook:**
 
 1. **Naming:** Choose a descriptive name starting with `use` (e.g., `useAuth`, `useWindowSize`).
-2. **<InlineCodeBlock>hookData</InlineCodeBlock>:** Define the data structure your hook will use. This can be an object containing state variables, functions, or other necessary information.
+2. **``hookData``:** Define the data structure your hook will use. This can be an object containing state variables, functions, or other necessary information.
 3. **<CodePreview data={useHookCallbackTypePreview} /> function:** This function implements the core logic of your custom hook. It receives an object containing details about the current execution context, including:
 
-    - <InlineCodeBlock>hook</InlineCodeBlock>: The current <InlineCodeBlock>hookData</InlineCodeBlock> object.
-    - <InlineCodeBlock>oldHook</InlineCodeBlock> (optional): The <InlineCodeBlock>hookData</InlineCodeBlock> used in the previous render (if available).
-    - <InlineCodeBlock>update</InlineCodeBlock>: A function to trigger a re-render of the component.
-    - <InlineCodeBlock>queueEffect</InlineCodeBlock>: A function to schedule side effects within your hook.
-    - <InlineCodeBlock>vNode</InlineCodeBlock>: The Kaioken virtual node associated with the component.
+    - ``hook``: The current ``hookData`` object.
+    - ``oldHook`` (optional): The ``hookData`` used in the previous render (if available).
+    - ``update``: A function to trigger a re-render of the component.
+    - ``queueEffect``: A function to schedule side effects within your hook.
+    - ``vNode``: The Kaioken virtual node associated with the component.
 
-4. **Return value:** The <InlineCodeBlock>callback</InlineCodeBlock> function should return the value(s) you want to expose to your component's logic.
+4. **Return value:** The ``callback`` function should return the value(s) you want to expose to your component's logic.
 
-**Example (adapted from <InlineCodeBlock>useState</InlineCodeBlock>):**
+**Example (adapted from ``useState``):**
 
-<CodeBlock
-      lang="ts"
-      code={`\
+```jsx
 function useCounter(initialValue = 0) {
   return useHook(
     "useCounter",
@@ -66,17 +62,16 @@ function useCounter(initialValue = 0) {
       return [hook.count, increment, decrement]
     }
   )
-}\
-`}
-    />
+}
+```
 
 
 **Key Considerations:**
 
-- **<InlineCodeBlock>shouldExecHook</InlineCodeBlock> function (optional):** You can optionally use a function like `shouldExecHook` to control when your custom hook should be executed based on rendering modes or other conditions.
-- **Accessing previous state (optional):** The <InlineCodeBlock>oldHook</InlineCodeBlock> argument in the callback allows you to access the state from the previous render if needed.
-- **Triggering re-renders:** Use the provided <InlineCodeBlock>update</InlineCodeBlock> function to trigger a re-render of the component when your hook's state changes.
-- **Scheduling effects:** Use the <InlineCodeBlock>queueEffect</InlineCodeBlock> function to schedule side effects that are executed post-update within your custom hook.
+- **``shouldExecHook`` function (optional):** You can optionally use a function like `shouldExecHook` to control when your custom hook should be executed based on rendering modes or other conditions.
+- **Accessing previous state (optional):** The ``oldHook`` argument in the callback allows you to access the state from the previous render if needed.
+- **Triggering re-renders:** Use the provided ``update`` function to trigger a re-render of the component when your hook's state changes.
+- **Scheduling effects:** Use the ``queueEffect`` function to schedule side effects that are executed post-update within your custom hook.
 
 By following these guidelines, you can create custom hooks that promote code reusability, improve component organization, and enhance the maintainability of your Kaioken applications.
 

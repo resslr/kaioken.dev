@@ -1,5 +1,3 @@
-import { CodeBlock } from "$/components/CodeBlock"
-import { InlineCodeBlock } from "$/components/atoms/InlineCodeBlock"
 import { CodePreview } from "$/components/CodePreview"
 import { useModelTypePreview } from "$/components/previews/useModel.type.preview"
 import { refTypePreview } from "$/components/previews/Ref.type.preview"
@@ -10,7 +8,7 @@ Similar to <a href="/docs/hooks/useRef">useRef</a>, but allows
 you to easily set up two-way binding for a given input, textarea or select element.
 
 <CodePreview data={useModelTypePreview} /> takes one argument - 
-<InlineCodeBlock>initialValue</InlineCodeBlock>, and returns the following:
+``initialValue``, and returns the following:
 <ul>
   <li><b>elementRef</b>: A <CodePreview data={refTypePreview} /> used to bind to the target element.</li>
   <li><b>value</b>: The element's current value (alternatively gives the value of 'checked' if used on a checkbox / radio)</li>
@@ -18,10 +16,7 @@ you to easily set up two-way binding for a given input, textarea or select eleme
 </ul>
 
 ### Example
-<div className="not-prose">
-  <CodeBlock 
-    lang="jsx" 
-    code={`\
+```jsx
 import { useModel } from "kaioken"
 
 function MyComponent() {
@@ -38,8 +33,7 @@ function MyComponent() {
     </div>
   )
 }
-`} />
-</div>
+```
 
 ### Related
 <ul>

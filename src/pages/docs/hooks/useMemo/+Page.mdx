@@ -1,4 +1,3 @@
-import { CodeBlock } from "$/components/CodeBlock"
 
 # useMemo
 
@@ -7,10 +6,7 @@ Similar to <a href="/docs/hooks/useCallback">useCallback</a>,
 but instead of memoizing a function, it memoizes the result of a computation.
 
 ### Example
-<div className="not-prose">
-  <CodeBlock 
-    lang="jsx" 
-    code={`\
+```jsx
 import { useMemo } from "kaioken"
 
 function MyComponent({ prop }) {
@@ -26,8 +22,7 @@ function MyComponent({ prop }) {
     </div>
   )
 }
-`} />
-</div>
+```
 
 ### Related
 <ul>

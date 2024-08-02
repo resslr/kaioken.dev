@@ -1,4 +1,3 @@
-import { CodeBlock } from "$/components/CodeBlock"
 import { RoutingKeyComponents } from "./KeyComponents"
 
 
@@ -18,10 +17,7 @@ full page reloads.
 
 ### Example
 
-<div className = "not-prose" >
-      <CodeBlock
-      lang="jsx"
-      code={`\
+```jsx
 import { Router, Route, Link, navigate, useRouter } from "kaioken"
 
 function App() {
@@ -52,7 +48,4 @@ function UserPage() {
    */
   return <h1>User: {params.userId}</h1> 
 }
-`}
-    />
-</div>
-
+```

@@ -1,17 +1,10 @@
 import type { CodePreviewData } from "$/types"
-import { CodeBlock } from "../CodeBlock"
+import TransitionStateType from "./TransitionState.type.md"
 
 export const TransitionStateTypePreview = {
-  element: () => (
-    <CodeBlock
-      lang="ts"
-      code={`\
-type TransitionState = "entering" | "entered" | "exiting" | "exited"
-`}
-    />
-  ),
+  element: TransitionStateType,
   link: {
-    text: "Transition States",
+    text: "Transition State",
     href: "/docs/api/transition",
   },
 } satisfies CodePreviewData
