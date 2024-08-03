@@ -122,6 +122,21 @@ a {
   color: #ef9a65ff !important;
 } */
 
+.prose :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):not(pre.shiki > code) {
+  background-color: #2f2f2f !important;
+  padding: 0.125rem 0.25rem;
+  border-radius: .25rem;
+  font-weight: 400;
+}
+
+.prose :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):before {
+  content: ""
+}
+
+.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::after {
+  content: "";
+}
+
 
 pre.shiki {
   font-weight: 400;
@@ -129,6 +144,10 @@ pre.shiki {
   line-height: 1.7142857;
   border-radius: .35rem;
   background-color: #0a0a0a !important;
+}
+
+pre.shiki>code {
+  background-color: unset;
 }
 
 /** strings */
