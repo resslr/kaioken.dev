@@ -133,11 +133,9 @@ const Parent = () => {
   const onInc = () => count.value++
   console.log('Parent render')
   
-  return <Child 
-    element={() => {
-      return <button onclick={onInc}>{count}</button>
-    }} 
-  />
+  return (
+    <Child element={() => <button onclick={onInc}>{count}</button>} />
+  )
 }
 ```
 
