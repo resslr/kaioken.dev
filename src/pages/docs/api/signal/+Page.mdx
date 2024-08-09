@@ -66,11 +66,7 @@ const todos = signal<string[]>([])
 
 // Todo.tsx
 import { input, todos } from "signals.ts"
-const Page = () => (
-  const onInput = (e: InputEvent) => {
-    input.value = e.value
-  }
-  
+const Page = () => {
   const onSubmit = (e: Event) = > {
     e.preventDefault();
     todos.value = [...todos.value, input.value]
@@ -79,15 +75,13 @@ const Page = () => (
   
   return (
     <form>
-      <input type="text" oninput={onInput} />
+      <input type="text" oninput={(e) => input.value = e.target.value} />
       <ul>
-        {todos.value.map(
-          (item) => <li>{item}</li>
-        )}
+        {todos.value.map((item) => <li>{item}</li>)}
       </ul>
     </form>
   )
-)
+}
 ```
 
 You can see here even though, todos & input is defined inside of signals.ts, we can import them inside a single or multiple components and still keep our reactivity!
