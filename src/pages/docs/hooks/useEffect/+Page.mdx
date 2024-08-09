@@ -19,7 +19,7 @@ function MyComponent({ initialValue }) {
   }, [value])
 
   const handleClick = () => {
-    setValue(prevValue => prevValue + 1)
+    setValue((prev) => prev + 1)
   };
 
   return (

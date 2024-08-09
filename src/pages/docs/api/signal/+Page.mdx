@@ -65,7 +65,7 @@ const input = signal('')
 const todos = signal<string[]>([])
 
 // Todo.tsx
-import { input, todos } from 'signals.ts'
+import { input, todos } from "signals.ts"
 const Page = () => (
   const onInput = (e: InputEvent) => {
     input.value = e.value
@@ -109,7 +109,7 @@ We've got you covered! All signals have a subscribe method that will fire anytim
 const count = signal(0)
 
 const stop = count.subscribe(($count) => {
-  console.log(`count is now `, $count)
+  console.log(`count is now ${$count}`)
   // any business logic you'd like you add!
 })
 ```
@@ -124,14 +124,14 @@ Let's say we have a parent & child situation, like so...
 ```tsx
 type ChildProps = Kaioken.FCProps<{ element: () => JSX.Element }>
 const Child = ({ element }: ChildProps) => {
-  console.log('Child render')
+  console.log("Child render")
   return element()
 }
 
 const Parent = () => {
   const count = signal(0);
   const onInc = () => count.value++
-  console.log('Parent render')
+  console.log("Parent render")
   
   return (
     <Child
@@ -157,7 +157,7 @@ Why not just ``todos.value.push(input.value)``? This is because signals only rea
 const onSubmit = () => {
     e.preventDefault();
     todos.value.push(input.value)
-    input.value = ''
+    input.value = ""
     
     todos.notify(); // emits a signal change
 }

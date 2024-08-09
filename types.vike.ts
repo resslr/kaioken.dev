@@ -18,7 +18,7 @@ declare global {
         description: string | ((ctx: PageContext) => string)
         keywords: string[] | ((ctx: PageContext) => string[])
         Page: () => JSX.Element
-        Layout?: ({ children }: { children: JSX.Children }) => JSX.Element
+        Layout?: Kaioken.FC
       }
 
       routeParams: Record<string, string>

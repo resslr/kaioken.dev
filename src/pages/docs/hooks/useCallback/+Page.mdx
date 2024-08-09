@@ -12,7 +12,7 @@ function ParentComponent() {
 
   // Without useCallback, handleIncrement will be recreated on every render.
   const handleIncrement = useCallback(() => {
-    setCount(prevCount => prevCount + 1)
+    setCount((prev) => prev + 1)
   }, [])
 
   return (
