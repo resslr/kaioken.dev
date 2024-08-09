@@ -41,15 +41,15 @@ this can nice for when using this value in jsx, for example in our case 0 exampl
 ```jsx
 const Counter = () => {
   const count = signal(0)
-  const onInc = () => count.value++
-  const onDec= () => count.value--
+  const increment = () => count.value++
+  const decrement = () => count.value--
   
   return (
     <div className="flex gap-4">
-      <button>-</button>
+      <button onclick={decrement}>-</button>
       <p>{count.value}</p> // [!code --]
       <p>{count}</p> // [!code ++]
-      <button>+</button>
+      <button onclick={increment}>+</button>
     </div>
   )
 }
