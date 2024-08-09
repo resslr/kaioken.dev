@@ -61,7 +61,7 @@ What does this mean? Well, let's up the complexity a bit from a counter with a t
 
 ```tsx
 // signals.ts
-const input = signal('')
+const input = signal("")
 const todos = signal<string[]>([])
 
 // Todo.tsx
@@ -74,7 +74,7 @@ const Page = () => (
   const onSubmit = (e: Event) = > {
     e.preventDefault();
     todos.value = [...todos.value, input.value]
-    input.value = ''
+    input.value = ""
   }
   
   return (
