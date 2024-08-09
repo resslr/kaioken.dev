@@ -67,14 +67,14 @@ const todos = signal<string[]>([])
 // Todo.tsx
 import { input, todos } from "signals.ts"
 const Page = () => {
-  const onSubmit = (e: Event) = > {
+  const handleSubmit = (e: Event) = > {
     e.preventDefault();
     todos.value = [...todos.value, input.value]
     input.value = ""
   }
   
   return (
-    <form>
+    <form onsubmit={handleSubmit}>
       <input type="text" oninput={(e) => input.value = e.target.value} />
       <ul>
         {todos.value.map((item) => <li>{item}</li>)}
