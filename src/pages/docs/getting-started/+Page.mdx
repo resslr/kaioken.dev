@@ -1,4 +1,5 @@
 import { ExternalLink } from "$/components/atoms/ExternalLink"
+import { CalloutBlock } from "$/components/atoms/CalloutBlock"
 import { HighlightOnLoad } from "$/components/HighlightOnLoad"
 import { packageManager } from "./packageManagerStore"
 import { PackageManagerSelector } from "./PackageManagerSelector"
@@ -15,7 +16,7 @@ import YarnInstallBash from "./bash.manual.yarn.md"
 # Getting started
 
 <HighlightOnLoad hash="#start-a-new-project">
-  <div className="docs-section-header mb-4">
+  <div className="docs-section-header mb-5">
     <a id="start-a-new-project" href="#start-a-new-project">Start a new project</a>
   </div>
   <div>
@@ -37,25 +38,30 @@ import YarnInstallBash from "./bash.manual.yarn.md"
 </HighlightOnLoad>
 
 <HighlightOnLoad hash="#add-to-an-existing-project">
-  <div className="docs-section-header">
+  <div className="docs-section-header mb-5">
     <a id="add-to-an-existing-project" href="#add-to-an-existing-project">Add to an existing project</a>
   </div>
 
-  <h4>The following example demonstrates adding Kaioken to a Vite project.</h4>
-  <br />
+  <CalloutBlock>
+    <span>The following example demonstrates adding Kaioken to a <ExternalLink href="https://vitejs.dev/">Vite</ExternalLink> project.</span>
+  </CalloutBlock>
 
-  <span>Add Kaioken and the Kaioken Vite plugin (for HMR and Devtools):</span>
-  <CopyInnerText>
-    {packageManager.value === "Bun" ? (
-      <BunInstallBash />
-    ) : packageManager.value === "NPM" ? (
-      <NpmInstallBash />
-    ) : packageManager.value === "Yarn" ? (
-      <YarnInstallBash />
-    ) : (
-      <PnpmInstallBash />
-    )}
-  </CopyInnerText>
+  Add Kaioken and the Kaioken Vite plugin (for HMR and Devtools):
+
+  <div className="not-prose">
+    <PackageManagerSelector />
+    <CopyInnerText>
+      {packageManager.value === "Bun" ? (
+        <BunInstallBash />
+      ) : packageManager.value === "NPM" ? (
+        <NpmInstallBash />
+      ) : packageManager.value === "Yarn" ? (
+        <YarnInstallBash />
+      ) : (
+        <PnpmInstallBash />
+      )}
+    </CopyInnerText>
+  </div>
 
   Update your vite.config.ts (or add it in the top level of your project) and add the HMR plugin:
 
