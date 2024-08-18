@@ -107,6 +107,10 @@ export const docMeta: DocItem[] = [
         href: "/docs/hooks/useEffect",
       },
       {
+        title: "useLayoutEffect",
+        href: "/docs/hooks/useLayoutEffect",
+      },
+      {
         title: "useMemo",
         href: "/docs/hooks/useMemo",
       },

@@ -1,0 +1,47 @@
+import { CalloutBlock } from "$/components/atoms/CalloutBlock"
+import { TabGroup } from "$/components/TabGroup"
+import { selectedTab } from "./store"
+import ExampleApp from "./Example.App.md"
+import ExampleButtonWithTooltip from "./Example.ButtonWithTooltip.md"
+import ExampleTooltip from "./Example.Tooltip.md"
+import ExampleTooltipContainer from "./Example.TooltipContainer.md"
+
+# useLayoutEffect
+
+Runs a function after the component is rendered, or 
+when a value provided in the optional 
+<a href="/docs/hooks/dependency-arrays">dependency array</a>
+has changed.
+
+<CalloutBlock>
+  <div className="not-prose">
+    Similar to <a href="/docs/hooks/useEffect">useEffect</a>, but it runs synchronously before the browser paints.
+    It's useful when you want to perform an action after the component has been rendered, but before the browser paints.
+    <br />
+    <b>This hook should be used with caution - updates to state from within the hook will block the browser from rendering.</b>    
+  </div>
+</CalloutBlock>
+
+### Example
+
+<div className="not-prose">
+  <TabGroup
+    items={["App.tsx", "ButtonWithTooltip.tsx", "Tooltip.tsx", "TooltipContainer.tsx"]}
+    onSelect={(value) => (selectedTab.value = value)}
+    value={selectedTab.value}
+  />
+  {selectedTab.value === "App.tsx" ? (
+    <ExampleApp />
+  ) : selectedTab.value === "ButtonWithTooltip.tsx" ? (
+    <ExampleButtonWithTooltip />    
+  ) : selectedTab.value === "Tooltip.tsx" ? (
+    <ExampleTooltip />
+  ) : (
+    <ExampleTooltipContainer />
+  )}
+</div>
+
+### Related
+<ul>
+  <li><a href="/docs/hooks/dependency-arrays">Dependency arrays</a></li>
+</ul>
