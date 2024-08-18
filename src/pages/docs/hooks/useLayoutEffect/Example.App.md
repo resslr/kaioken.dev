@@ -1,7 +1,7 @@
 ```jsx
-import ButtonWithTooltip from "./ButtonWithTooltip.tsx"
+import { ButtonWithTooltip } from "./ButtonWithTooltip"
 
-export default function App() {
+export function App() {
   return (
     <div>
       <ButtonWithTooltip

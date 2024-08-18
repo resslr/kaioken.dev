@@ -1,8 +1,8 @@
 ```jsx
 import { useState, useRef } from "kaioken"
-import Tooltip from "./Tooltip.tsx"
+import { Tooltip } from "./Tooltip"
 
-export default function ButtonWithTooltip({ tooltipContent, ...rest }) {
+export function ButtonWithTooltip({ tooltipContent, ...rest }) {
   const [targetRect, setTargetRect] = useState(null)
   const buttonRef = useRef(null)
   return (

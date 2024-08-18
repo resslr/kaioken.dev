@@ -1,8 +1,8 @@
 ```jsx
 import { useRef, useLayoutEffect, useState, Portal } from "kaioken"
-import TooltipContainer from "./TooltipContainer.tsx"
+import { TooltipContainer } from "./TooltipContainer"
 
-export default function Tooltip({ children, targetRect }) {
+export function Tooltip({ children, targetRect }) {
   const ref = useRef(null)
   const [tooltipHeight, setTooltipHeight] = useState(0)
 
