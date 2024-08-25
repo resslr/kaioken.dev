@@ -1,3 +1,6 @@
+import { siteCodeLang } from "$/state/langToggle"
+import ExampleCode from "./example.md"
+import ExampleCodeTS from "./example.ts.md"
 
 # useMemo
 
@@ -6,23 +9,8 @@ Similar to <a href="/docs/hooks/useCallback">useCallback</a>,
 but instead of memoizing a function, it memoizes the result of a computation.
 
 ### Example
-```jsx
-import { useMemo } from "kaioken"
 
-function MyComponent({ prop }) {
-  // Memoize the result of an expensive computation
-  const memoizedResult = useMemo(() => {
-    // Expensive computation based on the prop
-    return computeExpensiveValue(prop)
-  }, [prop]) // Re-run when 'prop' changes
-
-  return (
-    <div>
-      <p>Result: {memoizedResult}</p>
-    </div>
-  )
-}
-```
+{siteCodeLang.value === "ts" ? <ExampleCodeTS /> : <ExampleCode />}
 
 ### Related
 <ul>

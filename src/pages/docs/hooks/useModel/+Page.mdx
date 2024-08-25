@@ -1,6 +1,9 @@
 import { CodePreview } from "$/components/CodePreview"
 import { useModelTypePreview } from "$/components/previews/useModel.type.preview"
 import { refTypePreview } from "$/components/previews/Ref.type.preview"
+import { siteCodeLang } from "$/state/langToggle"
+import ExampleCode from "./example.md"
+import ExampleCodeTS from "./example.ts.md"
 
 # useModel
 
@@ -16,24 +19,8 @@ you to easily set up two-way binding for a given input, textarea or select eleme
 </ul>
 
 ### Example
-```jsx
-import { useModel } from "kaioken"
 
-function MyComponent() {
-  const [inputRef, inputValue, setInputValue] = useModel("")
-
-  const handleClick = () => {
-    setInputValue("")
-  }
-
-  return (
-    <div>
-      <input ref={inputRef} type="text" />
-      <button onclick={handleClick}>Reset Input</button>
-    </div>
-  )
-}
-```
+{siteCodeLang.value === "ts" ? <ExampleCodeTS /> : <ExampleCode />}
 
 ### Related
 <ul>

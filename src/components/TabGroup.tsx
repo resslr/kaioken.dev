@@ -4,6 +4,7 @@ interface TabGroupProps {
   items: string[]
   value: string
   onSelect: (value: string) => void
+  itemSuffix?: string | ((item: string) => string)
 }
 
 export function TabGroup(props: TabGroupProps) {
@@ -19,6 +20,11 @@ export function TabGroup(props: TabGroupProps) {
                 onclick={() => !active && props.onSelect(item)}
               >
                 {item}
+                {typeof props.itemSuffix === "function"
+                  ? props.itemSuffix(item)
+                  : typeof props.itemSuffix === "string"
+                    ? props.itemSuffix
+                    : ""}
               </button>
             </li>
           )

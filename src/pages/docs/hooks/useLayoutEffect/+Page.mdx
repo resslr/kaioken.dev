@@ -1,10 +1,14 @@
 import { CalloutBlock } from "$/components/atoms/CalloutBlock"
 import { TabGroup } from "$/components/TabGroup"
 import { selectedTab } from "./store"
+import { siteCodeLang } from "$/state/langToggle"
 import ExampleApp from "./Example.App.md"
 import ExampleButtonWithTooltip from "./Example.ButtonWithTooltip.md"
+import ExampleButtonWithTooltipTS from "./Example.ButtonWithTooltip.ts.md"
 import ExampleTooltip from "./Example.Tooltip.md"
+import ExampleTooltipTS from "./Example.Tooltip.ts.md"
 import ExampleTooltipContainer from "./Example.TooltipContainer.md"
+import ExampleTooltipContainerTS from "./Example.TooltipContainer.ts.md"
 
 # useLayoutEffect
 
@@ -26,19 +30,17 @@ has changed.
 
 <div className="not-prose">
   <TabGroup
-    items={["App.tsx", "ButtonWithTooltip.tsx", "Tooltip.tsx", "TooltipContainer.tsx"]}
+    items={["App", "ButtonWithTooltip", "Tooltip", "TooltipContainer"]}
     onSelect={(value) => (selectedTab.value = value)}
     value={selectedTab.value}
+    itemSuffix={"." + siteCodeLang.value + "x"}
   />
-  {selectedTab.value === "App.tsx" ? (
-    <ExampleApp />
-  ) : selectedTab.value === "ButtonWithTooltip.tsx" ? (
-    <ExampleButtonWithTooltip />    
-  ) : selectedTab.value === "Tooltip.tsx" ? (
-    <ExampleTooltip />
-  ) : (
-    <ExampleTooltipContainer />
-  )}
+  {selectedTab.value === "App" ? (<ExampleApp />)
+    : selectedTab.value === "ButtonWithTooltip" ?
+      siteCodeLang.value === "js" ? (<ExampleButtonWithTooltip />) : (<ExampleButtonWithTooltipTS />)
+    : selectedTab.value === "Tooltip" ?
+      siteCodeLang.value === "js" ? (<ExampleTooltip />) : (<ExampleTooltipTS />)
+    : siteCodeLang.value === "js" ? (<ExampleTooltipContainer />) : (<ExampleTooltipContainerTS />)}
 </div>
 
 ### Related

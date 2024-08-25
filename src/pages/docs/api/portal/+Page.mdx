@@ -1,6 +1,8 @@
-import { ExampleFileSelector } from "./ExampleFileSelector"
+import { TabGroup } from "$/components/TabGroup"
 import { selectedTab } from "./store"
+import { siteCodeLang } from "$/state/langToggle"
 import ExampleApp from "./example.App.md"
+import ExampleAppTS from "./example.App.ts.md"
 import ExampleIndex from "./example.index.md"
 
 # Portal
@@ -13,11 +15,14 @@ container.
 
 <div>
   <div className="not-prose">
-    <ExampleFileSelector />
-    {selectedTab.value === "App.tsx" ? (
-      <ExampleApp />
-    ) : (
-      <ExampleIndex />
-    )}
+    <TabGroup
+      items={["App", "index.html"]}
+      onSelect={(value) => (selectedTab.value = value)}
+          value={selectedTab.value}
+      itemSuffix={(item) => item === "App" ? `.${siteCodeLang.value}x` : ""}
+    />
+    {selectedTab.value === "App" ?
+      siteCodeLang.value === "js" ?(<ExampleApp />) : (<ExampleAppTS />) 
+    : (<ExampleIndex />)}
   </div>
 </div>

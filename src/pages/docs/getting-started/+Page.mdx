@@ -12,6 +12,9 @@ import BunInstallBash from "./bash.manual.bun.md"
 import NpmInstallBash from "./bash.manual.npm.md"
 import PnpmInstallBash from "./bash.manual.pnpm.md"
 import YarnInstallBash from "./bash.manual.yarn.md"
+import MountCode from "./mountCode.md"
+import MountCodeTS from "./mountCode.ts.md"
+import { siteCodeLang } from "$/state/langToggle"
 
 # Getting started
 
@@ -98,15 +101,16 @@ import YarnInstallBash from "./bash.manual.yarn.md"
   </CopyInnerText>
 
   <span>Mount your app to the DOM:</span>
-  <CopyInnerText>
-    ```ts
-    import { mount } from "kaioken"
-    import { App } from "./App"
+  
+  <div className="not-prose">
+    <CopyInnerText>
+      {siteCodeLang.value === "js" ?
+        (<MountCode />)
+        : (<MountCodeTS />)
+      }  
+    </CopyInnerText>
+  </div>
 
-    const root = document.getElementById("app")
-    mount(App, root)
-    ```
-  </CopyInnerText>
 </HighlightOnLoad>
 
 <HighlightOnLoad hash="#getting-help">

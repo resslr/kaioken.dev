@@ -1,4 +1,4 @@
-```ts
+```js
 import { createContext } from "kaioken"
 
 export const ThemeContext = createContext({

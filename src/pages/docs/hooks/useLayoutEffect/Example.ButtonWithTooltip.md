@@ -2,7 +2,7 @@
 import { useState, useRef } from "kaioken"
 import { Tooltip } from "./Tooltip"
 
-export function ButtonWithTooltip({ tooltipContent, ...rest }) {
+export function ButtonWithTooltip({ children, tooltipContent, ...rest }) {
   const [targetRect, setTargetRect] = useState(null)
   const buttonRef = useRef(null)
   return (
@@ -12,17 +12,14 @@ export function ButtonWithTooltip({ tooltipContent, ...rest }) {
         ref={buttonRef}
         onpointerenter={() => {
           const rect = buttonRef.current.getBoundingClientRect()
-          setTargetRect({
-            left: rect.left,
-            top: rect.top,
-            right: rect.right,
-            bottom: rect.bottom,
-          })
+          setTargetRect(rect)
         }}
         onpointerleave={() => {
           setTargetRect(null)
         }}
-      />
+      >
+        {children}
+      </button>
       {targetRect !== null && (
         <Tooltip targetRect={targetRect}>{tooltipContent}</Tooltip>
       )}

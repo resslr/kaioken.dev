@@ -1,36 +1,14 @@
+import { siteCodeLang } from "$/state/langToggle"
+import ExampleCode from "./example.md"
+import ExampleCodeTS from "./example.ts.md"
+
 # useCallback
 
 Persists the creation of a function across updates.
 
 ### Example
 
-```jsx
-import { useCallback, useState } from "kaioken"
-
-function ParentComponent() {
-  const [count, setCount] = useState(0)
-
-  // Without useCallback, handleIncrement will be recreated on every render.
-  const handleIncrement = useCallback(() => {
-    setCount((prev) => prev + 1)
-  }, [])
-
-  return (
-    <div>
-      <ChildComponent onIncrement={handleIncrement} />
-      <p>Count: {count}</p>
-    </div>
-  )
-}
-
-function ChildComponent({ onIncrement }) {
-  return (
-    <button onclick={onIncrement}>
-      Increment
-    </button>
-  )
-}
-```
+{siteCodeLang.value === "ts" ? <ExampleCodeTS /> : <ExampleCode />}
 
 ### Related
 <ul>

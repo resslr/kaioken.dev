@@ -4,7 +4,9 @@ import { CodeDemo } from "../CodeDemo"
 import { DemoComponentWrapper } from "../DemoComponentWrapper"
 import { PlayIcon } from "$/components/icons/PlayIcon"
 import { LikeButton } from "$/components/LikeButton"
+import { siteCodeLang } from "$/state/langToggle"
 import SearchableAlbumList from "./SearchableAlbumList.md"
+import SearchableAlbumListTS from "./SearchableAlbumList.ts.md"
 
 const useAlbumsStore = createStore(
   [
@@ -70,8 +72,16 @@ export function AlbumSearchDemo() {
 
   return (
     <CodeDemo
-      filename="SearchableAlbumList.jsx"
-      CodeBlock={SearchableAlbumList}
+      filename={
+        siteCodeLang.value === "js"
+          ? "SearchableAlbumList.jsx"
+          : "SearchableAlbumList.tsx"
+      }
+      CodeBlock={
+        siteCodeLang.value === "js"
+          ? SearchableAlbumList
+          : SearchableAlbumListTS
+      }
     >
       <DemoComponentWrapper className="max-w-[340px] overflow-hidden p-0">
         <div className="h-[240px] overflow-auto p-4">

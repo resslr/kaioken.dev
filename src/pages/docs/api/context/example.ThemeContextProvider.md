@@ -9,7 +9,7 @@ function ThemeContextProvider({ children }) {
     <ThemeContext.Provider
       value={{
         value: theme,
-        toggle: () => setTheme(theme === "light" ? "dark" : "light"),
+        toggle: () => setTheme((prev) => (prev === "light" ? "dark" : "light")),
       }}
     >
       {children}

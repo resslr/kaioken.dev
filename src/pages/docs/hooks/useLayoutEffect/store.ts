@@ -1,3 +1,3 @@
 import { signal } from "kaioken"
 
-export const selectedTab = signal("App.tsx")
+export const selectedTab = signal("App")

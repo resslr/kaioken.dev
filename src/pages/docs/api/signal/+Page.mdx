@@ -1,4 +1,12 @@
 import { CodePreview } from "$/components/CodePreview"
+import { siteCodeLang } from "$/state/langToggle"
+import ExternalSignalExample from "./example.externalSignal.md"
+import ExternalSignalExampleTS from "./example.externalSignal.ts.md"
+import SignalToChildExample from "./example.signalToChild.md"
+import SignalToChildExampleTS from "./example.signalToChild.ts.md"
+import NotifyExample from "./example.notify.md"
+import NotifyExampleTS from "./example.notify.ts.md"
+
 
 # Signal
 
@@ -59,30 +67,7 @@ const Counter = () => {
 
 What does this mean? Well, let's up the complexity a bit from a counter with a tiny todo app.
 
-```tsx
-// signals.ts
-const input = signal("")
-const todos = signal<string[]>([])
-
-// Todo.tsx
-import { input, todos } from "signals.ts"
-const Page = () => {
-  const handleSubmit = (e: Event) = > {
-    e.preventDefault();
-    todos.value = [...todos.value, input.value]
-    input.value = ""
-  }
-  
-  return (
-    <form onsubmit={handleSubmit}>
-      <input type="text" oninput={(e) => input.value = e.target.value} />
-      <ul>
-        {todos.value.map((item) => <li>{item}</li>)}
-      </ul>
-    </form>
-  )
-}
-```
+{siteCodeLang.value === "ts" ? <ExternalSignalExampleTS /> : <ExternalSignalExample />}
 
 You can see here even though, todos & input is defined inside of signals.ts, we can import them inside a single or multiple components and still keep our reactivity!
 
@@ -115,25 +100,7 @@ const stop = count.subscribe(($count) => {
 
 Let's say we have a parent & child situation, like so...
 
-```tsx
-type ChildProps = Kaioken.FCProps<{ element: () => JSX.Element }>
-const Child = ({ element }: ChildProps) => {
-  console.log("Child render")
-  return element()
-}
-
-const Parent = () => {
-  const count = signal(0);
-  const increment = () => count.value++
-  console.log("Parent render")
-  
-  return (
-    <Child
-      element={() => <button onclick={increment}>{count}</button>}
-    />
-  )
-}
-```
+{siteCodeLang.value === "ts" ? <SignalToChildExampleTS /> : <SignalToChildExample />}
 
 When mutating ``count``, signals are smart enough to only add ``Child`` to the internal list of 'subscribed nodes', meaning anytime it updates it will only re render ``Child`` even though it's defined in ``Parent``.
 
@@ -147,12 +114,4 @@ todos.value = [...todos.value, input.value]
 
 Why not just ``todos.value.push(input.value)``? This is because signals only react to explicit sets on the value properly! This means you cannot deeply mutate the value and expect it to react. However, we supply a special ``notify`` method that allows you to notify all the subscribers (including components that have automatically subscribed to the signal), after you deeply mutate the value, so we can update the todos onSubmit method to look like so.
 
-```tsx
-const onSubmit = () => {
-    e.preventDefault();
-    todos.value.push(input.value)
-    input.value = ""
-    
-    todos.notify(); // emits a signal change
-}
-```
+{siteCodeLang.value === "ts" ? <NotifyExampleTS /> : <NotifyExample />}

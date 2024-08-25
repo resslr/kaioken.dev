@@ -9,6 +9,7 @@ import { isLinkActive } from "$/utils"
 import { useCommandPallete } from "$/state/commandPallete"
 import { DiscordIcon } from "./icons/DiscordIcon"
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
+import { SiteLangToggle } from "./SiteLangToggle"
 
 export function Navbar() {
   const { setOpen } = useNavDrawer()
@@ -58,6 +59,7 @@ export function Navbar() {
         </div>
       </div>
       <div className="flex flex-grow gap-4 items-center justify-end">
+        <SiteLangToggle />
         <SearchButton />
         <div className="flex gap-3 items-center">
           <a href="https://github.com/CrimsonChi/kaioken" target="_blank">

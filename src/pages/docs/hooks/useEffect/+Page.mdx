@@ -1,3 +1,6 @@
+import { siteCodeLang } from "$/state/langToggle"
+import ExampleCode from "./example.md"
+import ExampleCodeTS from "./example.ts.md"
 
 # useEffect
 
@@ -7,25 +10,9 @@ when a value provided in the optional
 has changed.
 
 ### Example
-```jsx
-import { useState, useEffect } from "kaioken"
 
-function MyComponent({ initialValue }) {
-  const [value, setValue] = useState(initialValue)
+{siteCodeLang.value === "ts" ? <ExampleCodeTS /> : <ExampleCode />}
 
-  useEffect(() => {
-    // This effect will run once when the component is mounted, and whenever 'value' changes
-    console.log("Value has changed:", value)
-  }, [value])
-
-  return (
-    <div>
-      <p>Value: {value}</p>
-      <button onclick={() => setValue((prev) => prev + 1)}>Increment</button>
-    </div>
-  )
-}
-```
 ### Related
 <ul>
   <li><a href="/docs/hooks/dependency-arrays">Dependency arrays</a></li>

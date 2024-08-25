@@ -1,6 +1,8 @@
 import { CodePreview } from "$/components/CodePreview"
 import { refTypePreview } from "$/components/previews/Ref.type.preview"
-
+import { siteCodeLang } from "$/state/langToggle"
+import ExampleCode from "./example.md"
+import ExampleCodeTS from "./example.ts.md"
 
 # useRef
 
@@ -16,24 +18,9 @@ Useful for:
 
 
 ### Example
-```jsx
-import { useRef } from "kaioken"
 
-function MyComponent() {
-  const inputRef = useRef() // Create a ref for the input element
+{siteCodeLang.value === "ts" ? <ExampleCodeTS /> : <ExampleCode />}
 
-  const handleClick = () => {
-    inputRef.current?.focus() // Access and focus the input element using the ref
-  }
-
-  return (
-    <div>
-      <input ref={inputRef} type="text" />
-      <button onclick={handleClick}>Focus Input</button>
-    </div>
-  )
-}
-```
 ### Related
 <ul>
   <li><a href="/docs/hooks/useState">useState</a></li>

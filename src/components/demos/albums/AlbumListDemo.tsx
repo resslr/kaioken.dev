@@ -1,7 +1,9 @@
+import { siteCodeLang } from "$/state/langToggle"
 import { CodeDemo } from "../CodeDemo"
 import { DemoComponentWrapper } from "../DemoComponentWrapper"
 import { AlbumItem } from "./AlbumItem"
 import AlbumList from "./AlbumList.md"
+import AlbumListTS from "./AlbumList.ts.md"
 
 export function AlbumListDemo() {
   const albums: Album[] = [
@@ -26,7 +28,10 @@ export function AlbumListDemo() {
   ]
 
   return (
-    <CodeDemo filename="AlbumList.jsx" CodeBlock={AlbumList}>
+    <CodeDemo
+      filename={siteCodeLang.value === "js" ? "AlbumList.jsx" : "AlbumList.tsx"}
+      CodeBlock={siteCodeLang.value === "js" ? AlbumList : AlbumListTS}
+    >
       <DemoComponentWrapper className="max-w-[340px]">
         <h2 className="mb-4 font-bold text-lg">3 albums</h2>
         <section className="flex flex-col gap-4">

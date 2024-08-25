@@ -1,11 +1,18 @@
+import { siteCodeLang } from "$/state/langToggle"
 import { CodeDemo } from "../CodeDemo"
 import { DemoComponentWrapper } from "../DemoComponentWrapper"
 import { AlbumItem } from "./AlbumItem"
 import AlbumItemCodeBlock from "./AlbumItem.md"
+import AlbumItemCodeBlockTS from "./AlbumItem.ts.md"
 
 export function AlbumItemDemo() {
   return (
-    <CodeDemo filename="Album.jsx" CodeBlock={AlbumItemCodeBlock}>
+    <CodeDemo
+      filename={siteCodeLang.value === "js" ? "Album.jsx" : "Album.tsx"}
+      CodeBlock={
+        siteCodeLang.value === "js" ? AlbumItemCodeBlock : AlbumItemCodeBlockTS
+      }
+    >
       <DemoComponentWrapper className="max-w-[340px]">
         <AlbumItem
           album={{

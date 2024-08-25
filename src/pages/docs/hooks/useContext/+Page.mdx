@@ -1,29 +1,14 @@
+import { siteCodeLang } from "$/state/langToggle"
+import ExampleCode from "./example.md"
+import ExampleCodeTS from "./example.ts.md"
+
 # useContext
 
 Gets the value from a <a href="/docs/api/context">Context</a> Provider component within the current component's heirarchy. If no provider is found, it will return the context's default value.
 
 ### Example
-```jsx
-import { createContext, useContext } from "kaioken"
 
-const ThemeContext = useContext("light")
-
-function App() {
-  return (
-    <ThemeContext.Provider value="light">
-      <Button />
-    </ThemeContext.Provider>
-  )  
-}
-
-function Button() {
-  const theme = useContext(ThemeContext)
-
-  return (
-    <button className={theme} />
-  )
-}
-```
+{siteCodeLang.value === "ts" ? <ExampleCodeTS /> : <ExampleCode />}
 
 ### Related
 <ul>

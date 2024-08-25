@@ -1,23 +1,16 @@
 import { CodePreview } from "$/components/CodePreview"
 import { memoTypePreview } from "$/components/previews/memo.type.preview"
+import { siteCodeLang } from "$/state/langToggle"
+import ExampleCode from "./example.md"
+import ExampleCodeTS from "./example.ts.md"
 
 # Memo
 
 <CodePreview data={memoTypePreview} /> is a higher-order component that's used for optimizing the performance 
-of components by preventing unnecessary re-renders.
+of components by preventing unnecessary re-renders. 
+By default it will perform an identity check for the props passed. If the props don't change, it will not re-render.
+You can override this behavior by passing a different `compare` function.
 
 ### Example
 
-```jsx
-import { memo } from "kaioken"
-
-const MyComponent = memo(({ value }) => {
-  // Component logic here
-  return <div>{value}</div>
-})
-```
-
-In this example, MyComponent will only re-render if the <b>value</b> 
-prop changes. If other props or state within the component change 
-but <b>value</b> remains the same, the component won't re-render.
-
+{siteCodeLang.value === "ts" ? <ExampleCodeTS /> : <ExampleCode />}

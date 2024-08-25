@@ -12,7 +12,7 @@ but runs an async function and returns a tuple containing a <CodePreview data={U
 ```jsx
 import { useState, useAsync } from "kaioken"
 
-export function UseAsyncExample() {
+function App() {
   const [productId, setProductId] = useState(1)
 
   // Use useAsync to run an async function whenever the productId changes
