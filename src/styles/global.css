@@ -30,7 +30,6 @@
   --content-width: 1080px;
   --navbar-height: 60px;
   --navbar-height-negative: -60px;
-  scroll-behavior: smooth;
   --tw-border-opacity: 1;
   scroll-padding: 100px;
   scrollbar-gutter: stable;
