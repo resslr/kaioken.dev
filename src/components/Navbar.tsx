@@ -83,8 +83,8 @@ function SearchButton() {
       className="flex leading-4 justify-between items-center flex-grow text-left sm:flex-grow-0 min-w-36 px-4 py-2 pr-2 gap-4 rounded border bg-stone-950 hover:bg-stone-900"
       onclick={(e) => setOpen(true, e)}
     >
-      <span className="text-xs sm:hidden">Search...</span>
-      <span className="hidden sm:flex">
+      <span className="text-xs sm:hidden text-muted">Search...</span>
+      <span className="hidden sm:flex text-muted">
         <span className="text-xs">Search documentation...</span>
       </span>
       <span className="hidden sm:flex bg-light opacity-85 text-dark px-1 rounded gap-xs items-center text-[11px] font-mono">
