@@ -1,30 +1,53 @@
 import { siteCodeLang } from "$/state/langToggle"
-import { useCallback, useRef } from "kaioken"
+import { Transition, useCallback, useRef } from "kaioken"
 
 export function SiteLangToggle() {
   const handleClick = useCallback(() => {
     siteCodeLang.value = siteCodeLang.value === "js" ? "ts" : "js"
   }, [])
-  const btnRef = useRef<HTMLButtonElement | null>(null)
-  const tx =
-    siteCodeLang.value === "ts"
-      ? btnRef.current?.getBoundingClientRect().width
-      : 0
+  const jsTxtRef = useRef<HTMLSpanElement | null>(null)
+  const mounted = useRef(false)
+
   return (
     <button
-      ref={btnRef}
       className="relative flex items-end justify-end text-primary border-2 border-primary rounded p-1 w-7 h-7 text-xs leading-none font-extrabold overflow-hidden"
       onclick={handleClick}
     >
-      <div
-        style={{
-          transform: `translateX(${tx}px)`,
+      <Transition
+        in={siteCodeLang.value === "ts"}
+        duration={{ in: 0, out: 50 }}
+        element={(state) => {
+          const domRect = jsTxtRef.current?.getBoundingClientRect()
+          const tx = state === "entered" ? domRect?.width || 13 : -20
+          return (
+            <span
+              className="transition-transform"
+              style={{ transform: `translateX(${tx}px)`, color: "crimson" }}
+            >
+              TS
+            </span>
+          )
         }}
-        className={`transition absolute right-1 w-[200%] text-right`}
-      >
-        <span style="color: crimson; margin-right: 0.9375rem">TS</span>
-        <span style="color: crimson">JS</span>
-      </div>
+      />
+      <Transition
+        in={siteCodeLang.value === "js"}
+        duration={{ in: 0, out: 50 }}
+        onTransitionEnd={() => {
+          mounted.current = true
+        }}
+        element={(state) => {
+          const tx = state === "entered" || !mounted.current ? 0 : 20
+          return (
+            <span
+              ref={jsTxtRef}
+              className="transition-transform"
+              style={{ transform: `translateX(${tx}px)`, color: "crimson" }}
+            >
+              JS
+            </span>
+          )
+        }}
+      />
     </button>
   )
 }
