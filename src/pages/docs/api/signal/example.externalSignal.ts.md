@@ -7,7 +7,7 @@ const todos = signal<string[]>([])
 import { input, todos } from "signals.ts"
 const Page = () => {
   const handleSubmit = (e: Event) = > {
-    e.preventDefault();
+    e.preventDefault()
     todos.value = [...todos.value, input.value]
     input.value = ""
   }
