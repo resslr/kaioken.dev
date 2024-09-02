@@ -1,9 +1,13 @@
 ```jsx
 import { Link, useRouter, useAsync } from "kaioken"
 
+type UsersResponse = {
+  users: User[]
+}
+
 export function UserList() {
   const { query, setQuery } = useRouter()
-  const { data, loading, error } = useAsync<{data: User[]}>(async () => {
+  const { data, loading, error } = useAsync<UsersResponse>(async () => {
     return (
       await fetch(`https://dummyjson.com/users?q=${q}&select=image`)
     ).json()
