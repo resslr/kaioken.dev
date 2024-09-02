@@ -21,7 +21,7 @@ function randomSpeed() {
 
 export function HeroBg() {
   const { isClient } = usePageContext()
-  const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null)
   const balls = useRef<Ball[]>([])
   const intervalRef = useRef(-1)

@@ -1,7 +1,7 @@
 ```tsx
 import { useState, Transition } from "kaioken"
 
-function Home() {
+function App() {
   const [expanded, setExpanded] = useState(false)
   
   return (

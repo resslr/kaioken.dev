@@ -5,7 +5,7 @@ export function SiteLangToggle() {
   const handleClick = useCallback(() => {
     siteCodeLang.value = siteCodeLang.value === "js" ? "ts" : "js"
   }, [])
-  const jsTxtRef = useRef<HTMLSpanElement | null>(null)
+  const jsTxtRef = useRef<HTMLSpanElement>(null)
   const mounted = useRef(false)
 
   return (

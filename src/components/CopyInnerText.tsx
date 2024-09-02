@@ -3,7 +3,7 @@ import { CopyIcon } from "./icons/CopyIcon"
 
 export function CopyInnerText({ children }: { children: JSX.Children }) {
   const [copied, setCopied] = useState(false)
-  const ref = useRef<HTMLDivElement | null>(null)
+  const ref = useRef<HTMLDivElement>(null)
   const copiedTimeout = useRef(-1)
 
   useEffect(

@@ -19,7 +19,7 @@ export function Layout({ children }: { children: JSX.Children }) {
 }
 
 function ActiveLinkTrackerSlidingThing() {
-  const ref = useRef<HTMLDivElement | null>(null)
+  const ref = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
   const setPos = () => {
     if (!ref.current) return

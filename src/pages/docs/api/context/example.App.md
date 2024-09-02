@@ -2,7 +2,7 @@
 import { ThemeContextProvider } from "./ThemeContextProvider"
 import { Button } from "./Button"
 
-function App() {
+export function App() {
   return (
     <ThemeContextProvider>
       <Button />

@@ -2,7 +2,7 @@
 import { useState } from "kaioken"
 import { ThemeContext } from "./themeContext"
 
-function ThemeContextProvider({ children }) {
+export function ThemeContextProvider({ children }) {
   const [theme, setTheme] = useState("light")
 
   return (

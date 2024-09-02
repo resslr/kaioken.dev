@@ -2,7 +2,7 @@
 import { useModel } from "kaioken"
 
 function App() {
-  const [inputRef, inputValue, setInputValue] = useModel("")
+  const [inputRef, inputValue, setInputValue] = useModel<HTMLInputElement>("")
 
   const handleClick = () => {
     setInputValue("")

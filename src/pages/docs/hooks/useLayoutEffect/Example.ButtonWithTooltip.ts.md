@@ -8,7 +8,7 @@ export function ButtonWithTooltip({
   ...rest
 }: ElementProps<"button"> & { tooltipContent: JSX.Element }) {
   const [targetRect, setTargetRect] = useState<DOMRect | null>(null)
-  const buttonRef = useRef<HTMLButtonElement | null>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
   return (
     <>
       <button

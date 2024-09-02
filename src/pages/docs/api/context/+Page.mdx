@@ -23,17 +23,17 @@ Children of the provider can use <a href="/docs/hooks/useContext">useContext</a>
 <div>
   <div className="not-prose">
     <TabGroup
-      items={["App", "ThemeContext", "ThemeContextProvider", "Button"]}
+      items={["ThemeContext", "App", "ThemeContextProvider", "Button"]}
       onSelect={(value) => (selectedTab.value = value)}
       value={selectedTab.value}
       itemSuffix={(item) => "." + siteCodeLang.value + (item === "ThemeContext" ? "" : "x")}
     />
-    {selectedTab.value === "App" ? (<ExampleApp />) 
-      : selectedTab.value === "ThemeContext" ?
-        siteCodeLang.value === "js" ? (<ExampleThemeContext />) : (<ExampleThemeContextTS />) 
-      : selectedTab.value === "ThemeContextProvider" ?
-        siteCodeLang.value === "js" ? (<ExampleThemeContextProvider />) : (<ExampleThemeContextProviderTS />)
-      : (<ExampleButton />)}
+      {selectedTab.value === "App" ? (<ExampleApp />) 
+        : selectedTab.value === "ThemeContext" ?
+          siteCodeLang.value === "js" ? (<ExampleThemeContext />) : (<ExampleThemeContextTS />) 
+        : selectedTab.value === "ThemeContextProvider" ?
+          siteCodeLang.value === "js" ? (<ExampleThemeContextProvider />) : (<ExampleThemeContextProviderTS />)
+        : (<ExampleButton />)}
   </div>
 </div>
 

@@ -78,7 +78,7 @@ export function CommandPallete() {
 }
 
 function CommandPalleteDisplay() {
-  const [searchInputRef, searchInputValue] = useModel("")
+  const [searchInputRef, searchInputValue] = useModel<HTMLInputElement>("")
   const { setOpen } = useCommandPallete()
 
   useEffect(() => {

@@ -1,17 +1,19 @@
 ```jsx
-import { useMemo } from "kaioken"
+import { useMemo, useState } from "kaioken"
 import { fibonacci } from "./fibonacci"
 
-function App({ n }) {
+function App() {
+  const [n, setN] = useState(0)
   // Memoize the result of an expensive computation
   const memoizedResult = useMemo(() => {
-    // Expensive computation based on the prop
+    // Expensive computation based on the value of 'n'
     return fibonacci(n)
   }, [n]) // Re-run when 'n' changes
 
   return (
     <div>
       <p>Result: {memoizedResult}</p>
+      <button onclick={() => setN((prev) => prev + 1)}>Increment</button>
     </div>
   )
 }

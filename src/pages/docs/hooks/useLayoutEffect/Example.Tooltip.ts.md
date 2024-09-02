@@ -9,10 +9,11 @@ export function Tooltip({
   children: JSX.Children
   targetRect: DOMRect
 }) {
-  const ref = useRef<HTMLDivElement | null>(null)
+  const ref = useRef<HTMLDivElement>(null)
   const [tooltipHeight, setTooltipHeight] = useState(0)
 
   useLayoutEffect(() => {
+    if (!ref.current) return
     const { height } = ref.current.getBoundingClientRect()
     setTooltipHeight(height)
     console.log("Measured tooltip height: " + height)

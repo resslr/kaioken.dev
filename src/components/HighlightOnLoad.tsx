@@ -7,7 +7,7 @@ export function HighlightOnLoad({
   children: JSX.Children
   hash: string
 }) {
-  const ref = useRef<HTMLDivElement | null>(null)
+  const ref = useRef<HTMLDivElement>(null)
   const timeoutRef = useRef(-1)
   useEffect(() => {
     if (!ref.current) return

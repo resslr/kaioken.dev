@@ -1,5 +1,12 @@
+import { TabGroup } from "$/components/TabGroup"
+import { siteCodeLang } from "$/state/langToggle"
 import { RoutingKeyComponents } from "./KeyComponents"
-
+import { selectedTab } from "./selectedTab"
+import ExampleApp from "./example.App.md"
+import ExampleLoginPage from "./example.LoginPage.md"
+import ExampleUserList from "./example.UserList.md"
+import ExampleUserListTS from "./example.UserList.ts.md"
+import ExampleUserPage from "./example.UserPage.md"
 
 # Routing
 
@@ -17,35 +24,18 @@ full page reloads.
 
 ### Example
 
-```jsx
-import { Router, Route, Link, navigate, useRouter } from "kaioken"
-
-function App() {
-  return (
-    <Router>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/users/:userId" element={<UserPage />} />
-    </Router>
-  )
-}
-
-function LoginPage() {
-  const user = useUser() // some custom hook that gets auth state
-  if (user) {
-    return navigate("/")
-  }
-
-  return <LoginForm />
-}
-
-function UserPage() {
-  const { params } = useRouter()
-  
-  /**
-   * the ":userId" part of the Route path is parsed from the URL 
-   * and made accessible via useRouter()
-   */
-  return <h1>User: {params.userId}</h1> 
-}
-```
+<div>
+  <div className="not-prose">
+    <TabGroup
+      items={["App", "LoginPage", "UserList", "UserPage"]}
+      onSelect={(value) => (selectedTab.value = value)}
+      value={selectedTab.value}
+      itemSuffix={() => `.${siteCodeLang.value}x`}
+    />
+    {selectedTab.value === "App" ? (<ExampleApp />) 
+      : selectedTab.value === "LoginPage" ? (<ExampleLoginPage />)
+      : selectedTab.value === "UserList" ?
+        siteCodeLang.value === "js" ? (<ExampleUserList />) : (<ExampleUserListTS />)
+      : (<ExampleUserPage />)}
+  </div>
+</div>

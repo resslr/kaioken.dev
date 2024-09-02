@@ -1,7 +1,7 @@
 ```jsx
 import { useRef } from "kaioken"
 
-function MyComponent() {
+function App() {
   const inputRef = useRef(null) // Create a ref for the input element
 
   const handleClick = () => {

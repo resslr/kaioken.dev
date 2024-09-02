@@ -1,6 +1,4 @@
-import { siteCodeLang } from "$/state/langToggle"
 import ExampleCode from "./example.md"
-import ExampleCodeTS from "./example.ts.md"
 
 # useMemo
 
@@ -10,7 +8,7 @@ but instead of memoizing a function, it memoizes the result of a computation.
 
 ### Example
 
-{siteCodeLang.value === "ts" ? <ExampleCodeTS /> : <ExampleCode />}
+<ExampleCode />
 
 ### Related
 <ul>

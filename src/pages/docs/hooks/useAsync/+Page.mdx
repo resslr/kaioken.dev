@@ -1,6 +1,8 @@
+import { siteCodeLang } from "$/state/langToggle"
 import { CodePreview } from "$/components/CodePreview"
-import {UseAsyncResultTypePreview} from "$/components/previews/UseAsyncResult.type.preview"
-
+import { UseAsyncResultTypePreview } from "$/components/previews/UseAsyncResult.type.preview"
+import ExampleCode from "./example.md"
+import ExampleCodeTS from "./example.ts.md"
 
 # useAsync
 
@@ -9,31 +11,7 @@ but runs an async function and returns a tuple containing a <CodePreview data={U
 
 ### Example
 
-```jsx
-import { useState, useAsync } from "kaioken"
-
-function App() {
-  const [productId, setProductId] = useState(1)
-
-  // Use useAsync to run an async function whenever the productId changes
-  const { data, loading, error, invalidate } = useAsync(async () => {
-    return (await fetch(`https://dummyjson.com/products/${productId}`)).json()
-  }, [productId])
-
-  return (
-    <div>
-      <button onclick={() => setProductId((prev) => prev + 1)}>Next</button>
-      {data ? (
-        <ProductCard product={data} invalidate={invalidate} />
-      ) : loading ? (
-        <Spinner />
-      ) : (
-        <p>{error.message}</p>
-      )}
-    </div>
-  )
-}
-```
+{siteCodeLang.value === "js" ? <ExampleCode /> : <ExampleCodeTS />}
 
 ### Related
 <ul>
