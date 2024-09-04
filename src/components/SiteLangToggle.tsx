@@ -6,7 +6,6 @@ export function SiteLangToggle() {
     siteCodeLang.value = siteCodeLang.value === "js" ? "ts" : "js"
   }, [])
   const jsTxtRef = useRef<HTMLSpanElement>(null)
-  const mounted = useRef(false)
 
   return (
     <button
@@ -15,7 +14,7 @@ export function SiteLangToggle() {
     >
       <Transition
         in={siteCodeLang.value === "ts"}
-        duration={{ in: 0, out: 50 }}
+        duration={50}
         element={(state) => {
           const domRect = jsTxtRef.current?.getBoundingClientRect()
           const tx = state === "entered" ? domRect?.width || 13 : -20
@@ -31,12 +30,10 @@ export function SiteLangToggle() {
       />
       <Transition
         in={siteCodeLang.value === "js"}
-        duration={{ in: 0, out: 50 }}
-        onTransitionEnd={() => {
-          mounted.current = true
-        }}
+        initialState="entered"
+        duration={50}
         element={(state) => {
-          const tx = state === "entered" || !mounted.current ? 0 : 20
+          const tx = state === "entered" ? 0 : 20
           return (
             <span
               ref={jsTxtRef}
