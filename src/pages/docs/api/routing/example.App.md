@@ -1,18 +1,24 @@
 ```jsx
-import { Router, Route } from "kaioken"
-import { HomePage } from "./HomePage"
+import { Router, Route, Link } from "kaioken"
 import { LoginPage } from "./LoginPage"
 import { UserList } from "./UserList"
 import { UserPage } from "./UserPage"
 
 export function App() {
   return (
-    <Router>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/users" element={<UserList />} />
-      <Route path="/users/:userId" element={<UserPage />} />
-    </Router>
+    <>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/users">Users</Link>
+      </nav>
+      <Router>
+        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/users" element={<UserList />} />
+        <Route path="/users/:userId" element={<UserPage />} />
+      </Router>
+    </>
   )
 }
 ```

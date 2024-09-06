@@ -4,10 +4,10 @@ import { Link, useRouter, useAsync } from "kaioken"
 export function UserList() {
   const { query, setQuery } = useRouter()
   const { data, loading, error } = useAsync(async () => {
-    return (
-      await fetch(`https://dummyjson.com/users?q=${q}&select=image`)
-    ).json()
-  }, [q])
+    return await fetch(
+      `https://dummyjson.com/users/search?select=image&q=${query.q || ""}`
+    ).then((res) => res.json())
+  }, [query.q])
 
   return (
     <div>
