@@ -1,5 +1,5 @@
 ```jsx
-export default function TooltipContainer({ children, x, y, contentRef }) {
+export function TooltipContainer({ children, x, y, contentRef }) {
   return (
     <div
       style={{

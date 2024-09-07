@@ -1,5 +1,5 @@
 ```tsx
-export default function TooltipContainer({
+export function TooltipContainer({
   children,
   x,
   y,
