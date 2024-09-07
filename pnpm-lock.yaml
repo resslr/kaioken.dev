@@ -27,8 +27,8 @@ importers:
         specifier: ^4.19.2
         version: 4.19.2
       kaioken:
-        specifier: 0.28.1
-        version: 0.28.1
+        specifier: 0.28.3
+        version: 0.28.3
       tsx:
         specifier: ^4.16.2
         version: 4.16.2
@@ -70,8 +70,8 @@ importers:
         specifier: ^5.5.4
         version: 5.5.4
       vite-plugin-kaioken:
-        specifier: 0.10.1
-        version: 0.10.1(kaioken@0.28.1)
+        specifier: 0.10.4
+        version: 0.10.4(kaioken@0.28.3)
 
 packages:
 
@@ -1050,8 +1050,8 @@ packages:
     resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
     hasBin: true
 
-  kaioken@0.28.1:
-    resolution: {integrity: sha512-DuBtP98l6birqaLRDtwbpGnJ02StSGERceS9VelM1qwHdlnUFZTRwgN/HEvP4QlpB9bOvbTRNswg6ED8iyB04Q==}
+  kaioken@0.28.3:
+    resolution: {integrity: sha512-/Qxo+mIr6OE/VY6Xpp+FM5SbfUwd29BDRO+hdip0ZxqtmfmfonTPgH20bDwe32g/EG75qAGNJJ49/RcYyE7abg==}
 
   lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
@@ -1663,8 +1663,8 @@ packages:
       react-streaming:
         optional: true
 
-  vite-plugin-kaioken@0.10.1:
-    resolution: {integrity: sha512-aK6tZJ2IFr09dhwqTJUV5TgW8tAek3rce7IDB/HL7qB5f9+1RlifB2DbugBBP+X2AKAg/wW/GYLZd/EkCZAg5Q==}
+  vite-plugin-kaioken@0.10.4:
+    resolution: {integrity: sha512-ORtUEhVVTt8/pi5xjKBQKqLf0Rzcf+x3GhkKgDZYDxWtPuT+JR5y9As0Fzntxr4ibr7vgTUex8/h0xvkbzqn4w==}
     peerDependencies:
       kaioken: '>=0.28.1-0'
 
@@ -2666,7 +2666,7 @@ snapshots:
 
   jiti@1.21.6: {}
 
-  kaioken@0.28.1: {}
+  kaioken@0.28.3: {}
 
   lilconfig@2.1.0: {}
 
@@ -3511,9 +3511,9 @@ snapshots:
       source-map-support: 0.5.21
       vite: 5.3.5(@types/node@22.0.0)
 
-  vite-plugin-kaioken@0.10.1(kaioken@0.28.1):
+  vite-plugin-kaioken@0.10.4(kaioken@0.28.3):
     dependencies:
-      kaioken: 0.28.1
+      kaioken: 0.28.3
 
   vite@5.3.5(@types/node@22.0.0):
     dependencies:
