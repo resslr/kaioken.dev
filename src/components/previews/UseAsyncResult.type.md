@@ -16,6 +16,6 @@ type UseAsyncResult<T> = (
       error: UseAsyncError
     }
 ) & {
-  invalidate: (forceUpdate?: boolean) => void
+  invalidate: () => void
 }
 ```

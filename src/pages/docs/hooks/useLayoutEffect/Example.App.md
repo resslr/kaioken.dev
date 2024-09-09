@@ -1,7 +1,7 @@
 ```jsx
 import { ButtonWithTooltip } from "./ButtonWithTooltip"
 
-export function App() {
+function App() {
   return (
     <div>
       <ButtonWithTooltip

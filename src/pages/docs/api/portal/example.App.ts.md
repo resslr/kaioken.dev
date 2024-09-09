@@ -1,7 +1,7 @@
 ```tsx
 import { Portal } from "kaioken"
 
-export function App() {
+function App() {
   return (
     <div>
       <h1>Hello world!</div>

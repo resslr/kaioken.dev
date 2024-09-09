@@ -4,7 +4,7 @@ import { LoginPage } from "./LoginPage"
 import { UserList } from "./UserList"
 import { UserPage } from "./UserPage"
 
-export function App() {
+function App() {
   return (
     <>
       <nav>

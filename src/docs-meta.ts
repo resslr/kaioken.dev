@@ -133,6 +133,10 @@ export const docMeta: DocItem[] = [
         href: "/docs/hooks/useState",
       },
       {
+        title: "useSyncExternalStore",
+        href: "/docs/hooks/useSyncExternalStore",
+      },
+      {
         title: "Dependency arrays",
         href: "/docs/hooks/dependency-arrays",
       },

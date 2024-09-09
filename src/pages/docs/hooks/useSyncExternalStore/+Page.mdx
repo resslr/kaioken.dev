@@ -1,0 +1,27 @@
+import { siteCodeLang } from "$/state/langToggle"
+import { selectedTab } from "./selectedTab"
+import { TabGroup } from "$/components/TabGroup"
+import ExampleApp from "./example.App.md"
+import ExampleCounterStore from "./example.counterStore.md"
+import ExampleCounterStoreTS from "./example.counterStore.ts.md"
+
+# useSyncExternalStore
+
+Allows you to subscribe to an external store and read the current state synchronously. 
+It's particularly useful when you are working with state management libraries or any 
+custom external store where you need to synchronize the Kaioken component with the store's state.
+
+### Example
+
+<div>
+  <div className="not-prose">
+    <TabGroup
+      items={["App", "counterStore"]}
+      onSelect={(value) => (selectedTab.value = value)}
+      value={selectedTab.value}
+      itemSuffix={(item) => `.${siteCodeLang.value}${item === "App" ? "x" : ""}`}
+    />
+    {selectedTab.value === "App" ? (<ExampleApp />)
+          : siteCodeLang.value === "js" ? (<ExampleCounterStore />) : (<ExampleCounterStoreTS />)}
+  </div>
+</div>
