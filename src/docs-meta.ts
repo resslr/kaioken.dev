@@ -135,6 +135,7 @@ export const docMeta: DocItem[] = [
       {
         title: "useSyncExternalStore",
         href: "/docs/hooks/useSyncExternalStore",
+        keywords: ["state", "global state"],
       },
       {
         title: "Dependency arrays",
