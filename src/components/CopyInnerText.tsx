@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "kaioken"
+import { useState, useRef, useEffect, useCallback } from "kaioken"
 import { CopyIcon } from "./icons/CopyIcon"
 
 export function CopyInnerText({ children }: { children: JSX.Children }) {
@@ -13,14 +13,14 @@ export function CopyInnerText({ children }: { children: JSX.Children }) {
     []
   )
 
-  async function copyToClipboard() {
+  const copyToClipboard = useCallback(async () => {
     if (copiedTimeout.current !== -1) {
       window.clearTimeout(copiedTimeout.current!)
     }
     await navigator.clipboard.writeText(ref.current!.textContent!)
     setCopied(true)
     copiedTimeout.current = window.setTimeout(() => setCopied(false), 1500)
-  }
+  }, [])
 
   return (
     <div ref={ref} className="relative">

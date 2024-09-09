@@ -1,7 +1,14 @@
 import { usePageContext } from "$/context/pageContext"
 import { CodePreviewData } from "$/types"
 import { isLinkActive } from "$/utils"
-import { Portal, Transition, useRef, useState } from "kaioken"
+import { Portal, Transition, useCallback, useRef, useState } from "kaioken"
+
+function clearTimeoutRef(timeoutRef: Kaioken.MutableRefObject<number>) {
+  if (timeoutRef.current !== -1) {
+    window.clearTimeout(timeoutRef.current)
+    timeoutRef.current = -1
+  }
+}
 
 export function CodePreview({
   data,
@@ -17,28 +24,17 @@ export function CodePreview({
   const previewHovered = useRef(false)
   const hideTimeout = useRef(-1)
 
-  function setLinkBounds(el: Element | null) {
-    linkBounds.current = el?.getBoundingClientRect() || null
-  }
-
-  function clearHideTimeout() {
-    if (hideTimeout.current !== -1) {
-      window.clearTimeout(hideTimeout.current!)
-      hideTimeout.current = -1
-    }
-  }
-
-  function handleOpen() {
-    clearHideTimeout()
-    setLinkBounds(linkRef.current!)
+  const handleOpen = useCallback(() => {
+    clearTimeoutRef(hideTimeout)
+    linkBounds.current = linkRef.current?.getBoundingClientRect() || null
     setOpen(true)
-  }
+  }, [])
 
-  function handleClose() {
+  const handleClose = useCallback(() => {
     if (previewHovered.current) return
-    clearHideTimeout()
+    clearTimeoutRef(hideTimeout)
     hideTimeout.current = window.setTimeout(() => setOpen(false), 250)
-  }
+  }, [])
 
   return (
     <>
@@ -91,7 +87,8 @@ export function CodePreview({
                 <div className="transition-opacity" style={{ opacity }}>
                   <div
                     onpointerenter={() => (
-                      clearHideTimeout(), (previewHovered.current = true)
+                      clearTimeoutRef(hideTimeout),
+                      (previewHovered.current = true)
                     )}
                     onpointerleave={() => {
                       previewHovered.current = false

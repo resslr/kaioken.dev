@@ -1,5 +1,12 @@
 import { useCommandPallete } from "$/state/commandPallete"
-import { Transition, useEffect, useMemo, useModel, useRef } from "kaioken"
+import {
+  Transition,
+  useCallback,
+  useEffect,
+  useMemo,
+  useModel,
+  useRef,
+} from "kaioken"
 import { Modal } from "./dialog/Modal"
 import { DialogHeader } from "./dialog/DialogHeader"
 import { Input } from "./atoms/Input"
@@ -195,6 +202,9 @@ function CommandPalleteItem({
 }) {
   const { setOpen } = useCommandPallete()
   const { urlPathname } = usePageContext()
+  const onLinkClick = useCallback(() => {
+    if (isLinkActive(item.href, urlPathname)) setOpen(false)
+  }, [item.href, urlPathname, setOpen])
   if (item.disabled) {
     return (
       <a className="w-full text-muted opacity-75 bg-[#221f1faa] border p-2 rounded focus:bg-stone-800">
@@ -211,7 +221,7 @@ function CommandPalleteItem({
     <a
       className="w-full text-muted bg-[#221f1faa] border p-2 rounded focus:bg-stone-800 hover:bg-stone-800"
       href={item.href}
-      onclick={() => isLinkActive(item.href, urlPathname) && setOpen(false)}
+      onclick={onLinkClick}
       target={external ? "_blank" : "_self"}
     >
       <span className="flex gap-1 items-center">

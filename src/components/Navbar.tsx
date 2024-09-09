@@ -10,6 +10,7 @@ import { useCommandPallete } from "$/state/commandPallete"
 import { DiscordIcon } from "./icons/DiscordIcon"
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
 import { SiteLangToggle } from "./SiteLangToggle"
+import { useCallback, useMemo } from "kaioken"
 
 export function Navbar() {
   const { setOpen } = useNavDrawer()
@@ -76,20 +77,26 @@ export function Navbar() {
 
 function SearchButton() {
   const { setOpen } = useCommandPallete()
+  const isMac = useMemo(() => {
+    return (
+      "window" in globalThis &&
+      navigator.userAgent.toUpperCase().indexOf("MAC OS") !== -1
+    )
+  }, [])
+  const handleClick = useCallback((e: MouseEvent) => setOpen(true, e), [])
   return (
     <button
       ariaLabel="Search documentation"
       type="button"
       className="flex leading-4 justify-between items-center flex-grow text-left sm:flex-grow-0 min-w-36 px-4 py-2 pr-2 gap-4 rounded border bg-stone-950 hover:bg-stone-900"
-      onclick={(e) => setOpen(true, e)}
+      onclick={handleClick}
     >
       <span className="text-xs sm:hidden text-muted">Search...</span>
       <span className="hidden sm:flex text-muted">
         <span className="text-xs">Search documentation...</span>
       </span>
-      <span className="hidden sm:flex bg-light opacity-85 text-dark px-1 rounded gap-xs items-center text-[11px] font-mono">
-        <CommandKeyIcon width={12} />
-        <b>K</b>
+      <span className="hidden sm:block items-center bg-light opacity-85 text-dark px-1 rounded text-[11px] font-mono">
+        {isMac ? "⌘" : "Ctrl"} <b>K</b>
       </span>
     </button>
   )
