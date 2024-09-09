@@ -10,7 +10,7 @@ import { useCommandPallete } from "$/state/commandPallete"
 import { DiscordIcon } from "./icons/DiscordIcon"
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
 import { SiteLangToggle } from "./SiteLangToggle"
-import { useCallback, useEffect, useMemo, useState } from "kaioken"
+import { useCallback, useLayoutEffect, useMemo, useState } from "kaioken"
 
 export function Navbar() {
   const { setOpen } = useNavDrawer()
@@ -84,8 +84,8 @@ function SearchButton() {
       "window" in globalThis &&
       navigator.userAgent.toUpperCase().indexOf("MAC OS") !== -1
     )
-  }, [])
-  useEffect(() => setMounted(true), [])
+  }, [mounted])
+  useLayoutEffect(() => setMounted(true), [])
   const handleClick = useCallback((e: MouseEvent) => setOpen(true, e), [])
   return (
     <button

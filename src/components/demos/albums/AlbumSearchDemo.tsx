@@ -53,7 +53,7 @@ const useAlbumsStore = createStore(
 )
 
 export function AlbumSearchDemo() {
-  const [inputRef, inputValue] = useModel("")
+  const [inputRef, inputValue] = useModel<HTMLInputElement>("")
   const { value: albums } = useAlbumsStore(
     (store) => store,
     () => true
