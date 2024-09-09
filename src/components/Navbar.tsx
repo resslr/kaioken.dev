@@ -10,7 +10,7 @@ import { useCommandPallete } from "$/state/commandPallete"
 import { DiscordIcon } from "./icons/DiscordIcon"
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
 import { SiteLangToggle } from "./SiteLangToggle"
-import { useCallback, useMemo } from "kaioken"
+import { useCallback, useLayoutEffect, useMemo, useState } from "kaioken"
 
 export function Navbar() {
   const { setOpen } = useNavDrawer()
@@ -76,13 +76,16 @@ export function Navbar() {
 }
 
 function SearchButton() {
+  const [mounted, setMounted] = useState(false)
   const { setOpen } = useCommandPallete()
   const isMac = useMemo(() => {
     return (
+      mounted &&
       "window" in globalThis &&
       navigator.userAgent.toUpperCase().indexOf("MAC OS") !== -1
     )
   }, [])
+  useLayoutEffect(() => setMounted(true), [])
   const handleClick = useCallback((e: MouseEvent) => setOpen(true, e), [])
   return (
     <button
@@ -95,8 +98,9 @@ function SearchButton() {
       <span className="hidden sm:flex text-muted">
         <span className="text-xs">Search documentation...</span>
       </span>
-      <span className="hidden sm:block items-center bg-light opacity-85 text-dark px-1 rounded text-[11px] font-mono">
-        {isMac ? "⌘" : "Ctrl"} <b>K</b>
+      <span className="hidden sm:flex items-center gap-1 bg-light opacity-85 text-dark px-1 rounded text-[11px] font-mono">
+        {isMac ? <CommandKeyIcon width="0.7rem" height="0.7rem" /> : "Ctrl"}
+        <b>K</b>
       </span>
     </button>
   )
