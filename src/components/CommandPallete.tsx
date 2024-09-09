@@ -43,7 +43,7 @@ export function CommandPallete() {
   }
 
   function handleKeyboardEvent(e: KeyboardEvent) {
-    const isHandled = e.key.toLowerCase() === "k" && e.ctrlKey
+    const isHandled = e.key.toLowerCase() === "k" && (e.ctrlKey || e.metaKey)
     if (!isHandled) return
 
     e.preventDefault()
