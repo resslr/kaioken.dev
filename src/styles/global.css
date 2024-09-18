@@ -7,6 +7,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.glass-container {
+  @apply border border-white border-opacity-5 bg-white bg-opacity-5 shadow-lg backdrop-blur-md
+}
+
 * {
   box-sizing: border-box;
 }
@@ -142,7 +146,7 @@ pre.shiki {
   font-size: 0.7rem;
   line-height: 1.7142857;
   border-radius: .35rem;
-  background-color: #0a0a0a !important;
+  background-color: #0006 !important;
 }
 
 pre.shiki>code {

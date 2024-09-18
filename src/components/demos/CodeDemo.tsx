@@ -10,7 +10,7 @@ export function CodeDemo({
   //bg-[#1c1c1c]
   return (
     <div className="grid md:grid-cols-5">
-      <div className="not-prose flex flex-col md:col-span-3 md:rounded-2xl bg-[#1f1e1c] text-light overflow-hidden z-10 shadow-[#0006] shadow-lg">
+      <div className="not-prose flex flex-col md:col-span-3 md:rounded-2xl glass-container text-light overflow-hidden z-10 shadow-[#0006] shadow-lg">
         <span className="text-sm px-4 py-2 text-stone-200 opacity-80">
           {filename}
         </span>

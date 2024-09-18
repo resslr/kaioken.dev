@@ -1,6 +1,6 @@
 export function CalloutBlock({ children }: { children: JSX.Children }) {
   return (
-    <div style="background-color: #1f1f1f; padding: 0.5rem 1rem; border-radius: 0.25rem; border-left: 0.25rem solid #b42641; color: #ddd;">
+    <div className="px-4 py-2 bg-dark bg-opacity-50 backdrop-blur-md text-neutral-200 rounded border-l-4 border-l-[#b42641]">
       {children}
     </div>
   )

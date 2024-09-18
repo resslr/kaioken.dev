@@ -1,3 +1,4 @@
+import "./HeroBg.css"
 import { usePageContext } from "$/context/pageContext"
 import { useEffect, useRef } from "kaioken"
 
