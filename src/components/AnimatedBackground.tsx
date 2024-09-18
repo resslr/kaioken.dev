@@ -27,6 +27,7 @@ export function AnimatedBackground() {
 
   useEffect(() => {
     if (!canvasRef.current) return
+    canvasRef.current.style.opacity = "1"
     ctxRef.current = canvasRef.current.getContext("2d")
     setup: {
       balls.current = Array.from({ length: 10 }).map(() => {
