@@ -16,7 +16,7 @@ import { SITE_LINKS } from "$/constants"
 import { SearchIcon } from "./icons/SearchIcon"
 import { CloseIcon } from "./icons/CloseIcon"
 import { usePageContext } from "$/context/pageContext"
-import { isLinkActive } from "$/utils"
+import { isLinkActive, isMac } from "$/utils"
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
 
 export function CommandPallete() {
@@ -43,7 +43,8 @@ export function CommandPallete() {
   }
 
   function handleKeyboardEvent(e: KeyboardEvent) {
-    const isHandled = e.key.toLowerCase() === "k" && (e.ctrlKey || e.metaKey)
+    const isHandled =
+      e.key.toLowerCase() === "k" && (isMac() ? e.metaKey : e.ctrlKey)
     if (!isHandled) return
 
     e.preventDefault()

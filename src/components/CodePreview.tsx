@@ -17,7 +17,7 @@ export function CodePreview({
   data: CodePreviewData
   text?: string
 }) {
-  const { isClient, urlPathname } = usePageContext()
+  const { urlPathname } = usePageContext()
   const linkRef = useRef<any>(null)
   const linkBounds = useRef<DOMRect | null>(null)
   const [open, setOpen] = useState(false)
@@ -63,52 +63,50 @@ export function CodePreview({
         </a>
       )}
 
-      {isClient && (
-        <Portal container={document.getElementById("portal-root")!}>
-          <Transition
-            in={open}
-            element={(state) => {
-              if (state === "exited") return null
-              if (!linkBounds.current) return null
-              const x = linkBounds.current.x
-              const y = linkBounds.current.y + window.scrollY
-              const width = linkBounds.current.width
-              const height = linkBounds.current.height
-              const opacity = state === "entered" ? "1" : "0"
+      <Portal container={() => document.getElementById("portal-root")!}>
+        <Transition
+          in={open}
+          element={(state) => {
+            if (state === "exited") return null
+            if (!linkBounds.current) return null
+            const x = linkBounds.current.x
+            const y = linkBounds.current.y + window.scrollY
+            const width = linkBounds.current.width
+            const height = linkBounds.current.height
+            const opacity = state === "entered" ? "1" : "0"
 
-              const linkCenterX = x + width / 2
-              let previewOffsetX = Math.min(
-                linkCenterX - 200,
-                window.innerWidth - 420
-              )
-              if (previewOffsetX < 10) previewOffsetX = 10
+            const linkCenterX = x + width / 2
+            let previewOffsetX = Math.min(
+              linkCenterX - 200,
+              window.innerWidth - 420
+            )
+            if (previewOffsetX < 10) previewOffsetX = 10
 
-              return (
-                <div className="transition-opacity" style={{ opacity }}>
-                  <div
-                    onpointerenter={() => (
-                      clearTimeoutRef(hideTimeout),
-                      (previewHovered.current = true)
-                    )}
-                    onpointerleave={() => {
-                      previewHovered.current = false
-                      handleClose()
-                    }}
-                    style={{
-                      transform: `translate(${previewOffsetX}px, calc(${y + height}px + .5rem))`,
-                    }}
-                    className="preview-content"
-                  >
-                    <div className="not-prose">
-                      <data.element />
-                    </div>
+            return (
+              <div className="transition-opacity" style={{ opacity }}>
+                <div
+                  onpointerenter={() => (
+                    clearTimeoutRef(hideTimeout),
+                    (previewHovered.current = true)
+                  )}
+                  onpointerleave={() => {
+                    previewHovered.current = false
+                    handleClose()
+                  }}
+                  style={{
+                    transform: `translate(${previewOffsetX}px, calc(${y + height}px + .5rem))`,
+                  }}
+                  className="preview-content"
+                >
+                  <div className="not-prose">
+                    <data.element />
                   </div>
                 </div>
-              )
-            }}
-          />
-        </Portal>
-      )}
+              </div>
+            )
+          }}
+        />
+      </Portal>
     </>
   )
 }
