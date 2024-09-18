@@ -91,7 +91,8 @@ export function AlbumSearchDemo() {
             <input
               ref={inputRef}
               type="text"
-              className="bg-transparent pl-8 w-full text-sm py-1 "
+              name="album-search"
+              className="bg-transparent pl-8 w-full text-sm py-1"
               placeholder="Search"
             />
           </div>

@@ -63,10 +63,18 @@ export function Navbar() {
         <SiteLangToggle />
         <SearchButton />
         <div className="flex gap-3 items-center">
-          <a href="https://github.com/CrimsonChi/kaioken" target="_blank">
+          <a
+            href="https://github.com/CrimsonChi/kaioken"
+            target="_blank"
+            ariaLabel="Visit the Kaioken repo on GitHub"
+          >
             <GithubIcon />
           </a>
-          <a href="https://discord.gg/yspvgXegvs" target="_blank">
+          <a
+            href="https://discord.gg/yspvgXegvs"
+            target="_blank"
+            ariaLabel="Join the Kaioken Discord server"
+          >
             <DiscordIcon />
           </a>
         </div>

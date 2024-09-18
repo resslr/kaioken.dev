@@ -22,9 +22,9 @@ export function LikeButton({
     <button
       data-liked={liked}
       just-liked={justLiked}
-      role="none"
       className="like-button flex transition transform active:scale-90 active:opacity-75"
       onclick={toggleLiked}
+      ariaLabel="like button"
     >
       <HeartIcon />
     </button>
