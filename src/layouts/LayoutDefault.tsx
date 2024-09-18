@@ -1,6 +1,6 @@
 import { Container } from "$/components/atoms/Container"
 import { CommandPallete } from "$/components/CommandPallete"
-import { HeroBg } from "$/components/HeroBg"
+import { AnimatedBackground } from "$/components/AnimatedBackground"
 import { Navbar } from "$/components/Navbar"
 import { NavDrawer } from "$/components/NavDrawer"
 import { Portal } from "kaioken"
@@ -14,7 +14,7 @@ export function LayoutDefault({ children }: { children: JSX.Children }) {
         </Container>
       </header>
       <main>
-        <HeroBg />
+        <AnimatedBackground />
         {children}
       </main>
       <Portal container={() => document.getElementById("portal-root")!}>
