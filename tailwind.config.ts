@@ -24,8 +24,7 @@ export default {
         xs: "460px",
       },
       backgroundImage: {
-        "theme-gradient": "linear-gradient(153deg,#a37fe4,crimson)",
-        "theme-gradient-dark": "linear-gradient(153deg,#55388ce0,#c60025)",
+        "theme-gradient": "linear-gradient(153deg, #9913548a, #ed143d7d)",
       },
     },
   },
