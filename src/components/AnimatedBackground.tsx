@@ -29,6 +29,12 @@ export function AnimatedBackground() {
     if (!canvasRef.current) return
     canvasRef.current.style.opacity = "1"
     ctxRef.current = canvasRef.current.getContext("2d")
+    if (!ctxRef.current) {
+      console.error("failed to obtain canvas rendering context")
+      return
+    }
+    const c = ctxRef.current
+
     setup: {
       balls.current = Array.from({ length: 10 }).map(() => {
         return {
@@ -58,14 +64,10 @@ export function AnimatedBackground() {
     }
     loop: {
       const tick = () => {
-        const c = ctxRef.current
-        if (!c) {
-          console.error("failed to obtain canvas rendering context")
-          return
-        }
         c.clearRect(0, 0, window.innerWidth, window.innerHeight)
         c.fillStyle = "crimson"
         const b = balls.current ?? []
+        const yOffset = -window.scrollY * 0.2
         for (let i = 0; i < b.length; i++) {
           const ball = b[i]
           ball.pos.x += ball.vel.x
@@ -90,7 +92,7 @@ export function AnimatedBackground() {
           const sizeMulti = Math.min(0.1 + window.innerWidth / 460, 2)
           c.arc(
             ball.pos.x,
-            ball.pos.y,
+            ball.pos.y + yOffset,
             ball.size * sizeMulti,
             0,
             Math.PI * 2,
