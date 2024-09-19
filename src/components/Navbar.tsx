@@ -93,7 +93,7 @@ function SearchButton() {
     <button
       ariaLabel="Search documentation"
       type="button"
-      className="flex leading-4 justify-between items-center flex-grow text-left sm:flex-grow-0 min-w-36 px-4 py-2 pr-2 gap-4 rounded border bg-stone-950 hover:bg-stone-900"
+      className="flex leading-4 justify-between items-center flex-grow text-left sm:flex-grow-0 min-w-36 px-4 py-2 pr-2 gap-4 rounded border border-white border-opacity-10 bg-stone-950 hover:bg-stone-900"
       onclick={handleClick}
     >
       <span className="text-xs sm:hidden text-muted">Search...</span>

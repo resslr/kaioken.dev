@@ -114,7 +114,7 @@ function CommandPalleteDisplay() {
         <Input
           type="text"
           placeholder="Search..."
-          className="w-full pl-8 bg-stone-900 !border-opacity-50 font-normal text-base"
+          className="w-full pl-8 bg-stone-900 font-normal text-base"
           ref={searchInputRef}
         />
         <button
@@ -125,7 +125,7 @@ function CommandPalleteDisplay() {
           <CloseIcon width="1em" height="1em" />
         </button>
       </DialogHeader>
-      <DialogBody className="bg-stone-900 border border-opacity-50 rounded max-h-[400px] overflow-y-auto scroll-py-20">
+      <DialogBody className="bg-stone-900 border border-white border-opacity-10 rounded max-h-[400px] overflow-y-auto scroll-py-20">
         <div className="flex flex-col">
           <CommandPalleteGroup
             title="Links"
@@ -220,7 +220,7 @@ function CommandPalleteItem({
   }
   return (
     <a
-      className="w-full text-muted bg-[#221f1faa] border p-2 rounded focus:bg-stone-800 hover:bg-stone-800"
+      className="w-full text-muted bg-[#221f1faa] border border-white border-opacity-5 p-2 rounded focus:bg-stone-800 hover:bg-stone-800"
       href={item.href}
       onclick={onLinkClick}
       target={external ? "_blank" : "_self"}
