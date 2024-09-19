@@ -36,14 +36,7 @@ button.reset {
   padding: 2px 5px;
   text-transform: unset;
   color: #ddd;
-  background-color: #777;
-}
-
-@media (prefers-color-scheme:dark) {
-  .badge.badge-muted {
-    color: #ccc;
-    background-color: #555;
-  }
+  background-color: #333;
 }
 
 .link-button {

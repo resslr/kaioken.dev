@@ -39,13 +39,6 @@
   scrollbar-gutter: stable;
 }
 
-
-/* *,
-::before,
-::after {
-  border-color: rgb(54 52 52 / var(--tw-border-opacity));
-} */
-
 ::placeholder {
   color: #777171 !important
 }

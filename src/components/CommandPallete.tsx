@@ -114,7 +114,7 @@ function CommandPalleteDisplay() {
         <Input
           type="text"
           placeholder="Search..."
-          className="w-full pl-8 bg-stone-900 font-normal text-base"
+          className="w-full pl-8 bg-black bg-opacity-20 font-normal text-base"
           ref={searchInputRef}
         />
         <button
@@ -125,8 +125,8 @@ function CommandPalleteDisplay() {
           <CloseIcon width="1em" height="1em" />
         </button>
       </DialogHeader>
-      <DialogBody className="bg-stone-900 border border-white border-opacity-10 rounded max-h-[400px] overflow-y-auto scroll-py-20">
-        <div className="flex flex-col">
+      <DialogBody className="bg-black bg-opacity-10 border border-white border-opacity-5 rounded max-h-[400px] overflow-y-auto scroll-py-20">
+        <div className="flex flex-col gap-2">
           <CommandPalleteGroup
             title="Links"
             items={SITE_LINKS}
@@ -179,8 +179,8 @@ function CommandPalleteGroup({
   if (!filteredItems.length) return null
 
   return (
-    <div className="mb-1 last:mb-0">
-      <h4 className="font-bold text-xs text-muted">{title}</h4>
+    <div>
+      <h4 className="mx-1 font-bold text-sm text-muted">{title}</h4>
       <div className="flex gap-1 flex-col py-2 px-1">
         {filteredItems.map((item) => (
           <CommandPalleteItem
@@ -208,8 +208,8 @@ function CommandPalleteItem({
   }, [item.href, urlPathname, setOpen])
   if (item.disabled) {
     return (
-      <a className="w-full text-muted opacity-75 bg-[#221f1faa] border p-2 rounded focus:bg-stone-800">
-        <span className="w-full flex justify-between items-center">
+      <a className="w-full text-muted bg-white bg-opacity-[1%] border border-white border-opacity-5 p-2 rounded focus:bg-opacity-5 hover:bg-opacity-5">
+        <span className="w-full flex justify-between items-center text-xs">
           {item.title}
           <span className="badge">Upcoming</span>
         </span>
@@ -220,12 +220,12 @@ function CommandPalleteItem({
   }
   return (
     <a
-      className="w-full text-muted bg-[#221f1faa] border border-white border-opacity-5 p-2 rounded focus:bg-stone-800 hover:bg-stone-800"
+      className="w-full text-muted bg-white bg-opacity-[1%] border border-white border-opacity-5 p-2 rounded focus:bg-opacity-5 hover:bg-opacity-5"
       href={item.href}
       onclick={onLinkClick}
       target={external ? "_blank" : "_self"}
     >
-      <span className="flex gap-1 items-center">
+      <span className="flex gap-1 items-center text-sm font-light">
         {item.title}
         {external ? <ExternalLinkIcon width=".85rem" height=".85rem" /> : ""}
       </span>
