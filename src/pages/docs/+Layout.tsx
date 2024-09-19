@@ -4,7 +4,7 @@ import { signal, useEffect, useRef, useState } from "kaioken"
 
 export function Layout({ children }: { children: JSX.Children }) {
   return (
-    <Container className="flex gap-8 min-h-[calc(100dvh+var(--navbar-height-negative))]">
+    <Container className="flex gap-8 mt-[var(--navbar-height)] min-h-[calc(100dvh+var(--navbar-height-negative))]">
       <aside className="hidden sm:block min-w-[200px] max-h-[calc(100vh-2.5rem-60px)] sticky top-[80px] p-1 overflow-y-auto">
         <div>
           <SidebarContent />

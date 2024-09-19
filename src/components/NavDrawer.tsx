@@ -56,7 +56,7 @@ export function NavDrawer() {
               </div>
               {urlPathname.startsWith("/docs") && (
                 <>
-                  <hr className="my-6 mx-2" />
+                  <hr className="my-6 mx-2 border-white border-opacity-10" />
                   <div className="flex flex-col gap-2 text-base xs:text-base px-2 ">
                     <SidebarContent />
                   </div>
