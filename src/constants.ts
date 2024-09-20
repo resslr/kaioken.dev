@@ -5,6 +5,11 @@ export const SITE_LINKS = [
     activePath: "/docs",
   },
   {
+    title: "Test",
+    href: "/test",
+    activePath: "/test",
+  },
+  {
     title: "Playground",
     href: "https://stackblitz.com/~/github.com/CrimsonChi/kaioken-csr-template",
     external: true,
