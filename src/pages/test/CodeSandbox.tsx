@@ -1,83 +1,42 @@
-//https://github.com/Sandpack/nodebox-runtime/blob/main/packages/nodebox/api.md
 import { JSXEditor } from "$/components/JSXEditor"
 import { TabGroup } from "$/components/TabGroup"
-import { Nodebox, ShellProcess, WorkerStatusUpdate } from "@codesandbox/nodebox"
-//import { Nodebox } from "@codesandbox/nodebox"
-import {
-  useRef,
-  useEffect,
-  useState,
-  createContext,
-  useContext,
-  useAsync,
-} from "kaioken"
+import { useRef, useEffect, useState } from "kaioken"
+import { NodeBoxProvider, useNodeBox, useWorkerStatus } from "./NodeBox"
 
 interface CodeSanboxProps {
   files: Record<string, string>
 }
-
-declare global {
-  interface Window {
-    __nodeboxIFrame: HTMLIFrameElement
-    __nodeboxInstance: Nodebox
-  }
-}
-
-const NodeBoxContext = createContext<Nodebox>(null as any)
-
-const useNodeBox = () => useContext(NodeBoxContext)
-const NodeBoxProvider: Kaioken.FC<{ fallback: JSX.Element }> = ({
-  children,
-  fallback,
-}) => {
-  const [workerStatus, setWorkerStatus] = useState<WorkerStatusUpdate | null>(
-    null
-  )
-  const [nodebox, setNodebox] = useState<Nodebox | null>(
-    "window" in globalThis && !!window.__nodeboxInstance
-      ? (window.__nodeboxInstance ?? null)
-      : null
-  )
-  useEffect(() => {
-    async function init() {
-      if (!(("__nodeboxIFrame" in window) as any)) {
-        window.__nodeboxIFrame = document.createElement("iframe")
-        window.__nodeboxIFrame.style.display = "none"
-        document.body.appendChild(window.__nodeboxIFrame)
-        const nBoxModule = await import("@codesandbox/nodebox")
-        const nodeBox = new nBoxModule.Nodebox({
-          iframe: window.__nodeboxIFrame,
-        })
-        await nodeBox.connect()
-        const shell = nodeBox.shell.create()
-        shell.on("progress", setWorkerStatus)
-        setNodebox(nodeBox)
-        window.__nodeboxInstance = nodeBox
-        return
-      }
-      setNodebox(window.__nodeboxInstance)
-    }
-    init()
-  }, [])
-
-  if (nodebox === null) return fallback
-
-  return (
-    <NodeBoxContext.Provider value={nodebox}>
-      {children}
-    </NodeBoxContext.Provider>
-  )
-}
-
 const asyncNoop = async () => {}
 
 export function CodeSandbox(props: CodeSanboxProps) {
   return (
-    <NodeBoxProvider fallback={<p>loading...</p>}>
+    <NodeBoxProvider
+      fallback={
+        <small className="uppercase">preparing sandbox environment...</small>
+      }
+    >
       <CodeSandboxImpl {...props} />
+      <small className="uppercase">
+        <WorkerStatusDisplayText />
+      </small>
     </NodeBoxProvider>
   )
 }
+
+function WorkerStatusDisplayText() {
+  const status = useWorkerStatus()
+  if (!status) return null
+  switch (status.state) {
+    case "command_running":
+      return null
+    case "starting_command":
+    case "downloading_manifest":
+      return status.state + "..."
+    case "downloaded_module":
+      return `downloaded module ${status.name}@${status.version}. total pending modules: ${status.totalPending}`
+  }
+}
+
 function CodeSandboxImpl(props: CodeSanboxProps) {
   const nodeBox = useNodeBox()
   const killCmd = useRef<() => Promise<void>>(asyncNoop)
@@ -258,7 +217,6 @@ function CodeSandboxImpl(props: CodeSanboxProps) {
 
   return (
     <div className="mt-[var(--navbar-height)]">
-      <button onclick={() => killCmd.current()}>Kill Nodebox</button>
       <TabGroup
         items={Object.keys(props.files)}
         value={selectedFile}
