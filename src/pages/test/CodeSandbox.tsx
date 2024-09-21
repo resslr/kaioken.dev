@@ -6,8 +6,6 @@ import { NodeBoxProvider, useNodeBox, useWorkerStatus } from "./NodeBox"
 interface CodeSanboxProps {
   files: Record<string, string>
 }
-const asyncNoop = async () => {}
-
 export function CodeSandbox(props: CodeSanboxProps) {
   return (
     <NodeBoxProvider
@@ -39,13 +37,14 @@ function WorkerStatusDisplayText() {
 
 function CodeSandboxImpl(props: CodeSanboxProps) {
   const nodeBox = useNodeBox()
-  const killCmd = useRef<() => Promise<void>>(asyncNoop)
+  const killCmd = useRef<(() => Promise<void>) | null>(null)
   const previewIframeRef = useRef<HTMLIFrameElement>(null)
   const [selectedFile, setSelectedFile] = useState(Object.keys(props.files)[0])
 
   useEffect(() => {
+    killCmd.current?.()
     killCmd.current = async () => {
-      killCmd.current = asyncNoop
+      killCmd.current = null
       try {
         await Promise.all(
           Object.keys(props.files).map(async (file) => {
