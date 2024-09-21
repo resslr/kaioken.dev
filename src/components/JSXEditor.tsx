@@ -1,10 +1,15 @@
 import { ElementProps, useMemo } from "kaioken"
-import { CodeMirrorComponent } from "$/components/CodeMirrorEditor"
+import {
+  CodeMirrorComponent,
+  CodeMirrorComponentProps,
+} from "$/components/CodeMirrorEditor"
 import { javascript } from "@codemirror/lang-javascript"
 
-interface JSXEditorProps extends ElementProps<"div"> {
+type JSXEditorProps = Omit<
+  CodeMirrorComponentProps,
+  "extensions" | "initialContent"
+> & {
   content: string
-  onContentChanged: (content: string) => void
 }
 
 export function JSXEditor({

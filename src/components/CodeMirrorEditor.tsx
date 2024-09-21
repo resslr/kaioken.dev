@@ -5,7 +5,8 @@ import { EditorState, type Extension } from "@codemirror/state"
 import { oneDark } from "@codemirror/theme-one-dark"
 import { EditorView, basicSetup } from "codemirror"
 
-interface CodeMirrorComponentProps extends ElementProps<"div"> {
+export interface CodeMirrorComponentProps extends ElementProps<"div"> {
+  readonly?: boolean
   initialContent?: string
   onContentChanged?: (content: string) => void
   /** @default true */
@@ -18,6 +19,7 @@ export function CodeMirrorComponent({
   onContentChanged,
   includeBasicExtensions = true,
   extensions: userExtensions,
+  readonly,
   ...props
 }: CodeMirrorComponentProps) {
   const { className, ...rest } = props
@@ -25,7 +27,9 @@ export function CodeMirrorComponent({
   const cmInstance = useRef<EditorView | null>(null)
   useEffect(() => {
     if (!elementRef.current) return
-    const extensions: Extension[] = [
+    const extensions: readonly Extension[] = [
+      oneDark,
+      EditorState.readOnly.of(!!readonly),
       ...(includeBasicExtensions ? [basicSetup] : []), // Basic setup for editing
       ...(userExtensions ?? []),
       ...(onContentChanged
@@ -35,8 +39,6 @@ export function CodeMirrorComponent({
                 onContentChanged(update.state.doc.toString())
               }
             }),
-            //EditorView.darkTheme.of(true),
-            oneDark,
           ]
         : []),
     ]
@@ -54,7 +56,7 @@ export function CodeMirrorComponent({
 
   return (
     <div
-      className={"prose CodeMirror max-w-full  " + className}
+      className={"prose CodeMirror max-w-full flex w-full " + className}
       ref={elementRef}
       {...rest}
     />

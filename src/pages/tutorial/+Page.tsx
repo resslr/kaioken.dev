@@ -19,7 +19,11 @@ export function Page() {
         <div className="w-full md:w-1/3 p-4">
           <tut.content />
         </div>
-        <CodeSandbox files={tut.files} className="w-full md:w-2/3" />
+        <CodeSandbox
+          files={tut.files}
+          readonly={"readonly" in tut}
+          className="w-full md:w-2/3"
+        />
       </div>
     </div>
   )

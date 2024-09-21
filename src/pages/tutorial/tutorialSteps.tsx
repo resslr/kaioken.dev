@@ -5,6 +5,7 @@ type TutorialStep = {
   content: () => JSX.Element
   files: Record<string, string>
   solution?: Record<string, string>
+  readonly?: boolean
 }
 
 const TutorialPageHeading: Kaioken.FC<ElementProps<"h1">> = (props) => {

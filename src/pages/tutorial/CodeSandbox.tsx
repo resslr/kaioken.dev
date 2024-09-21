@@ -6,6 +6,7 @@ import { FILES_MAP } from "./filesMap"
 
 interface CodeSanboxProps extends ElementProps<"div"> {
   files: Record<string, string>
+  readonly?: boolean
 }
 export function CodeSandbox(props: CodeSanboxProps) {
   return (
@@ -33,7 +34,7 @@ function WorkerStatusDisplayText() {
   }
 }
 
-function CodeSandboxImpl({ files, ...props }: CodeSanboxProps) {
+function CodeSandboxImpl({ files, readonly, ...props }: CodeSanboxProps) {
   const [prevWrittenFiles, setPrevWrittenFiles] = useState<Record<
     string,
     string
@@ -125,6 +126,7 @@ function CodeSandboxImpl({ files, ...props }: CodeSanboxProps) {
         content={code}
         onContentChanged={handleChange}
         className="flex-grow w-full"
+        readonly={readonly}
       />
       <iframe ref={previewIframeRef} className="flex-grow" />
       <small className="uppercase">
