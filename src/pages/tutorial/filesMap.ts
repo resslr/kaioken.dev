@@ -90,7 +90,16 @@ const INDEX_HTML = `
   </body>
 </html>
 `
+const STYLES = `
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+					'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #222;
+  color: #f6f6f6;
+}
+`
 const CLIENT_TS = `
+import "./styles.css"
 import { mount } from "kaioken"
 import App from "./App"
 const root = document.getElementById("app")!
@@ -102,5 +111,6 @@ export const FILES_MAP: FilesMap = {
   //"/tsconfig.json": TS_CONFIG,
   "startVite.js": VITE_SERVER_SCRIPT,
   "/index.html": INDEX_HTML,
+  "/src/styles.css": STYLES,
   "/src/client.ts": CLIENT_TS,
 }

@@ -1,35 +1,25 @@
 import { usePageContext } from "$/context/pageContext"
+import { redirect } from "vike/abort"
 import { CodeSandbox } from "./CodeSandbox"
+import { TUTORIAL_STEPS } from "./tutorialSteps"
 
 export function Page() {
   const ctx = usePageContext()
-  ctx.routeParams
-  const files = {
-    ["App.tsx"]: `
-import { Counter } from "./Counter"
+  // if (ctx.routeParams.tutorialId === undefined) {
+  //   setTimeout(() => {
+  //     redirect("/tutorial/introduction")
+  //   }, 100)
+  // }
+  const tut =
+    TUTORIAL_STEPS[
+      ctx.routeParams.tutorialId as any as keyof typeof TUTORIAL_STEPS
+    ]
 
-export default function App() {
-  return <Counter />
-}
-`,
-    ["Counter.tsx"]: `
-import {useState} from "kaioken"
-
-export function Counter() {
-  const [count, setCount] = useState(0)
-  return (
-    <button onclick={() => setCount(prev => prev + 1)}>
-      Click me! {count}
-    </button>
-  )
-}
-`,
-  }
   return (
     <div className="mt-[var(--navbar-height)]">
       <div className="flex">
-        <div className="w-1/3">Tutorial</div>
-        <CodeSandbox files={files} className="flex-grow w-2/3" />
+        <div className="w-1/3">{tut.content()}</div>
+        <CodeSandbox files={tut.files} className="flex-grow w-2/3" />
       </div>
     </div>
   )

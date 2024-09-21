@@ -34,49 +34,75 @@ function WorkerStatusDisplayText() {
 }
 
 function CodeSandboxImpl({ files, ...props }: CodeSanboxProps) {
+  const [prevWrittenFiles, setPrevWrittenFiles] = useState<Record<
+    string,
+    string
+  > | null>(null)
   const nodeBox = useNodeBox()
-  const killCmd = useRef<(() => Promise<void>) | null>(null)
   const previewIframeRef = useRef<HTMLIFrameElement>(null)
   const [selectedFile, setSelectedFile] = useState(Object.keys(files)[0])
 
-  useEffect(() => {
-    killCmd.current?.()
-    killCmd.current = async () => {
-      killCmd.current = null
-      try {
-        await Promise.all(
-          Object.keys(files).map(async (file) => {
-            nodeBox.fs.rm(`/src/${file}`)
-          })
-        )
-      } catch (error) {
-        console.error("err", error)
-      }
-    }
-    const init = async () => {
-      if (!previewIframeRef.current) return
-      const shell = nodeBox.shell.create()
+  const cleanupRemovedFiles = async (
+    oldFiles: Record<string, string>,
+    newFiles: Record<string, string>
+  ) => {
+    return await Promise.all(
+      Object.keys(oldFiles).map(async (file) => {
+        if (file in newFiles) return
+        nodeBox.fs.rm(`/src/${file}`)
+      })
+    )
+  }
+
+  const writeFiles = async (files: Record<string, string>) => {
+    return await Promise.all(
+      Object.keys(files).map(async (file) => {
+        nodeBox.fs.writeFile(`/src/${file}`, files[file])
+      })
+    )
+  }
+
+  const init = async () => {
+    if (!previewIframeRef.current) return
+    const shell = nodeBox.shell.create()
+    if (prevWrittenFiles === null) {
       await nodeBox.fs.init({ ...FILES_MAP })
-      if (!previewIframeRef.current) return
-      await Promise.all(
-        Object.keys(files).map(async (file) => {
-          nodeBox.fs.writeFile(`/src/${file}`, files[file])
-        })
-      )
-      if (!previewIframeRef.current) return
-      await shell.runCommand("node", ["startVite.js"])
-      try {
-        if (!previewIframeRef.current) return
-        const previewInfo = await nodeBox.preview.waitForPort(3000, 10_000)
-        if (!previewIframeRef.current) return
-        previewIframeRef.current.setAttribute("src", previewInfo.url)
-      } catch (error) {
-        console.error("err", error)
-      }
     }
+    if (!previewIframeRef.current) return
+    //await cleanupRemovedFiles(prevWrittenFiles ?? {}, files)
+    await writeFiles(files)
+    setPrevWrittenFiles(files)
+    if (prevWrittenFiles !== null) return
+
+    if (!previewIframeRef.current) return
+    await shell.runCommand("node", ["startVite.js"])
+    try {
+      if (!previewIframeRef.current) return
+      const previewInfo = await nodeBox.preview.waitForPort(3000, 10_000)
+      if (!previewIframeRef.current) return
+      previewIframeRef.current.setAttribute("src", previewInfo.url)
+    } catch (error) {
+      console.error("err", error)
+    }
+  }
+
+  useEffect(() => {
     init()
-    return () => killCmd.current?.()
-  }, [])
+    return () => {
+      cleanupRemovedFiles(
+        prevWrittenFiles ?? {},
+        previewIframeRef.current ? files : {}
+      )
+    }
+  }, [files])
+
+  // useEffect(() => {
+  //   if (!nodeBox) return
+  //   if (!previewIframeRef.current) return
+  //   if (killCmd.current) {
+  //     killCmd.current()
+  //   }
+  // }, [files])
 
   const handleChange = (newCode: string) => {
     if (!nodeBox) return
