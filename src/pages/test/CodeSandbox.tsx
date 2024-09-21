@@ -127,33 +127,7 @@ function CodeSandboxImpl(props: CodeSanboxProps) {
   
       // Start the server
       await server.listen();
-
-      process.on('message', (message) => {
-        console.log("process.on('message')", message);
-        if (message === 'shutdown') {
-          console.log('Shutting down Vite server...');
-          server.close().then(() => {
-            console.log('Vite server closed.');
-            process.exit(0);  // Exit the process after shutting down
-          });
-        }
-      });
-
-      // Optionally handle signals like SIGINT or SIGTERM to kill the server
-      process.on('SIGINT', () => {
-        console.log('SIGINT received, closing server...');
-        server.close().then(() => {
-          process.exit(0);
-        });
-      });
-
-      process.on('SIGTERM', () => {
-        console.log('SIGTERM received, closing server...');
-        server.close().then(() => {
-          process.exit(0);
-        });
-      });
-  
+        
       // Print out the URL to visit the app
       console.log(\`Vite server is running at: http://localhost:\${server.config.server.port}\`);
     } catch (err) {
