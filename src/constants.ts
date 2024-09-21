@@ -5,9 +5,9 @@ export const SITE_LINKS = [
     activePath: "/docs",
   },
   {
-    title: "Test",
-    href: "/test",
-    activePath: "/test",
+    title: "Tutorial",
+    href: "/tutorial",
+    activePath: "/tutorial",
   },
   {
     title: "Playground",

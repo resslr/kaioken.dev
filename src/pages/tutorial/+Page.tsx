@@ -1,6 +1,9 @@
+import { usePageContext } from "$/context/pageContext"
 import { CodeSandbox } from "./CodeSandbox"
 
 export function Page() {
+  const ctx = usePageContext()
+  ctx.routeParams
   const files = {
     ["App.tsx"]: `
 import { Counter } from "./Counter"
@@ -24,7 +27,10 @@ export function Counter() {
   }
   return (
     <div className="mt-[var(--navbar-height)]">
-      <CodeSandbox files={files} />
+      <div className="flex">
+        <div className="w-1/3">Tutorial</div>
+        <CodeSandbox files={files} className="flex-grow w-2/3" />
+      </div>
     </div>
   )
 }

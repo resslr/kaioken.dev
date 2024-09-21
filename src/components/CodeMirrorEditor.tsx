@@ -54,7 +54,7 @@ export function CodeMirrorComponent({
 
   return (
     <div
-      className={"prose CodeMirror " + className}
+      className={"prose CodeMirror max-w-full  " + className}
       ref={elementRef}
       {...rest}
     />

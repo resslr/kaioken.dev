@@ -1,10 +1,10 @@
 import { JSXEditor } from "$/components/JSXEditor"
 import { TabGroup } from "$/components/TabGroup"
-import { useRef, useEffect, useState } from "kaioken"
+import { useRef, useEffect, useState, ElementProps } from "kaioken"
 import { NodeBoxProvider, useNodeBox, useWorkerStatus } from "./NodeBox"
 import { FILES_MAP } from "./filesMap"
 
-interface CodeSanboxProps {
+interface CodeSanboxProps extends ElementProps<"div"> {
   files: Record<string, string>
 }
 export function CodeSandbox(props: CodeSanboxProps) {
@@ -15,9 +15,6 @@ export function CodeSandbox(props: CodeSanboxProps) {
       }
     >
       <CodeSandboxImpl {...props} />
-      <small className="uppercase">
-        <WorkerStatusDisplayText />
-      </small>
     </NodeBoxProvider>
   )
 }
@@ -36,11 +33,11 @@ function WorkerStatusDisplayText() {
   }
 }
 
-function CodeSandboxImpl(props: CodeSanboxProps) {
+function CodeSandboxImpl({ files, ...props }: CodeSanboxProps) {
   const nodeBox = useNodeBox()
   const killCmd = useRef<(() => Promise<void>) | null>(null)
   const previewIframeRef = useRef<HTMLIFrameElement>(null)
-  const [selectedFile, setSelectedFile] = useState(Object.keys(props.files)[0])
+  const [selectedFile, setSelectedFile] = useState(Object.keys(files)[0])
 
   useEffect(() => {
     killCmd.current?.()
@@ -48,7 +45,7 @@ function CodeSandboxImpl(props: CodeSanboxProps) {
       killCmd.current = null
       try {
         await Promise.all(
-          Object.keys(props.files).map(async (file) => {
+          Object.keys(files).map(async (file) => {
             nodeBox.fs.rm(`/src/${file}`)
           })
         )
@@ -62,8 +59,8 @@ function CodeSandboxImpl(props: CodeSanboxProps) {
       await nodeBox.fs.init({ ...FILES_MAP })
       if (!previewIframeRef.current) return
       await Promise.all(
-        Object.keys(props.files).map(async (file) => {
-          nodeBox.fs.writeFile(`/src/${file}`, props.files[file])
+        Object.keys(files).map(async (file) => {
+          nodeBox.fs.writeFile(`/src/${file}`, files[file])
         })
       )
       if (!previewIframeRef.current) return
@@ -83,28 +80,30 @@ function CodeSandboxImpl(props: CodeSanboxProps) {
 
   const handleChange = (newCode: string) => {
     if (!nodeBox) return
-    props.files[selectedFile] = newCode
+    files[selectedFile] = newCode
     nodeBox.fs.writeFile(`/src/${selectedFile}`, newCode)
   }
 
-  const code = props.files[selectedFile]
+  const code = files[selectedFile]
 
+  const { className, ...rest } = props
   return (
-    <div className="mt-[var(--navbar-height)]">
+    <div className={`flex flex-col ${className || ""}`} {...rest}>
       <TabGroup
-        items={Object.keys(props.files)}
+        items={Object.keys(files)}
         value={selectedFile}
         onSelect={setSelectedFile}
       />
-      <div className="flex gap-2">
-        <JSXEditor
-          key={selectedFile}
-          content={code}
-          onContentChanged={handleChange}
-          className="flex-grow"
-        />
-        <iframe ref={previewIframeRef} className="flex-grow" />
-      </div>
+      <JSXEditor
+        key={selectedFile}
+        content={code}
+        onContentChanged={handleChange}
+        className="flex-grow w-full"
+      />
+      <iframe ref={previewIframeRef} className="flex-grow" />
+      <small className="uppercase">
+        <WorkerStatusDisplayText />
+      </small>
     </div>
   )
 }
