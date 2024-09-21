@@ -1,7 +1,7 @@
 import type { FilesMap } from "@codesandbox/nodebox"
 
 const PACKAGE_JSON = JSON.stringify({
-  name: "test",
+  name: "kaioken-vite-custom-sandbox",
   type: "module",
   scripts: {
     dev: "vite",
@@ -12,8 +12,7 @@ const PACKAGE_JSON = JSON.stringify({
     "@rollup/wasm-node": "latest",
   },
   devDependencies: {
-    typescript: "5.5.3",
-    //vite: "5.3.5",
+    //typescript: "5.5.3",
     vite: "4.5.5",
     "vite-plugin-kaioken": "latest",
   },
@@ -23,31 +22,31 @@ const PACKAGE_JSON = JSON.stringify({
     },
   },
 })
-const TS_CONFIG = JSON.stringify({
-  compilerOptions: {
-    target: "ES2020",
-    useDefineForClassFields: true,
-    module: "ESNext",
-    lib: ["ES2020", "DOM", "DOM.Iterable"],
-    skipLibCheck: true,
+// const TS_CONFIG = JSON.stringify({
+//   compilerOptions: {
+//     target: "ES2020",
+//     useDefineForClassFields: true,
+//     module: "ESNext",
+//     lib: ["ES2020", "DOM", "DOM.Iterable"],
+//     skipLibCheck: true,
 
-    /* Bundler mode */
-    moduleResolution: "bundler",
-    allowImportingTsExtensions: true,
-    resolveJsonModule: true,
-    isolatedModules: true,
-    noEmit: true,
+//     /* Bundler mode */
+//     moduleResolution: "bundler",
+//     allowImportingTsExtensions: true,
+//     resolveJsonModule: true,
+//     isolatedModules: true,
+//     noEmit: true,
 
-    /* Linting */
-    strict: true,
-    noUnusedLocals: true,
-    noUnusedParameters: true,
-    noFallthroughCasesInSwitch: true,
+//     /* Linting */
+//     strict: true,
+//     noUnusedLocals: true,
+//     noUnusedParameters: true,
+//     noFallthroughCasesInSwitch: true,
 
-    jsx: "preserve",
-  },
-  include: ["src"],
-})
+//     jsx: "preserve",
+//   },
+//   include: ["src"],
+// })
 const VITE_SERVER_SCRIPT = `
 import { createServer } from 'vite';
 import kaioken from 'vite-plugin-kaioken';
@@ -100,7 +99,7 @@ mount(App, root)
 
 export const FILES_MAP: FilesMap = {
   "package.json": PACKAGE_JSON,
-  "/tsconfig.json": TS_CONFIG,
+  //"/tsconfig.json": TS_CONFIG,
   "startVite.js": VITE_SERVER_SCRIPT,
   "/index.html": INDEX_HTML,
   "/src/client.ts": CLIENT_TS,

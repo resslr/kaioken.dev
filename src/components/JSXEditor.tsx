@@ -12,7 +12,10 @@ export function JSXEditor({
   onContentChanged,
   ...props
 }: JSXEditorProps) {
-  const extensions = useMemo(() => [javascript({ jsx: true })], [])
+  const extensions = useMemo(
+    () => [javascript({ jsx: true, typescript: true })],
+    []
+  )
   return (
     <CodeMirrorComponent
       initialContent={content}
