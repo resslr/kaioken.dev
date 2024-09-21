@@ -56,7 +56,7 @@ function CodeSandboxImpl(props: CodeSanboxProps) {
         console.error("err", error)
       }
     }
-    ;(async () => {
+    const init = async () => {
       if (!previewIframeRef.current) return
       const shell = nodeBox.shell.create()
       await nodeBox.fs.init({
@@ -187,23 +187,24 @@ function CodeSandboxImpl(props: CodeSanboxProps) {
   mount(App, root)
             `,
       })
+      if (!previewIframeRef.current) return
       await Promise.all(
         Object.keys(props.files).map(async (file) => {
           nodeBox.fs.writeFile(`/src/${file}`, props.files[file])
         })
       )
-
-      console.log("running dev cmd...", shell)
-      const devCommand = await shell.runCommand("node", ["startVite.js"])
-      console.log("devCommand", devCommand)
+      if (!previewIframeRef.current) return
+      await shell.runCommand("node", ["startVite.js"])
       try {
+        if (!previewIframeRef.current) return
         const previewInfo = await nodeBox.preview.waitForPort(3000, 10_000)
-        console.log("previewInfo", previewInfo)
+        if (!previewIframeRef.current) return
         previewIframeRef.current.setAttribute("src", previewInfo.url)
       } catch (error) {
         console.error("err", error)
       }
-    })()
+    }
+    init()
     return () => killCmd.current?.()
   }, [])
 
