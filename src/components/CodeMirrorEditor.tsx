@@ -1,6 +1,8 @@
-import "./CodeMirror.css"
+// import "./CodeMirror.css"
+//import "./material.css"
 import { useRef, useEffect, type ElementProps } from "kaioken"
 import { EditorState, type Extension } from "@codemirror/state"
+import { oneDark } from "@codemirror/theme-one-dark"
 import { EditorView, basicSetup } from "codemirror"
 
 interface CodeMirrorComponentProps extends ElementProps<"div"> {
@@ -33,6 +35,8 @@ export function CodeMirrorComponent({
                 onContentChanged(update.state.doc.toString())
               }
             }),
+            //EditorView.darkTheme.of(true),
+            oneDark,
           ]
         : []),
     ]

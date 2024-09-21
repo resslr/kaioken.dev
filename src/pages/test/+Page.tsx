@@ -13,7 +13,11 @@ export default function App() {
 import {createElement, useState} from "kaioken"
 export function Counter() {
   const [count, setCount] = useState(0)
-  return <button onclick={() => setCount(prev => prev + 1)}>Click me! {count}</button>
+  return (
+    <button onclick={() => setCount(prev => prev + 1)}>
+      Click me! {count}
+    </button>
+  )
 }
 `,
 }
