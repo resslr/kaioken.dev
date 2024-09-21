@@ -1,17 +1,15 @@
-import { siteCodeLang } from "$/state/langToggle"
 import { CodeSandbox } from "./CodeSandbox"
 
 export function Page() {
-  const lang = siteCodeLang.value
   const files = {
-    [lang === "ts" ? "App.tsx" : "App.jsx"]: `
+    ["App.tsx"]: `
 import { Counter } from "./Counter"
 
 export default function App() {
   return <Counter />
 }
 `,
-    [lang === "ts" ? "Counter.tsx" : "Counter.jsx"]: `
+    ["Counter.tsx"]: `
 import {useState} from "kaioken"
 
 export function Counter() {
