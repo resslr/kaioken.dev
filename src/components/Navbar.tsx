@@ -96,8 +96,8 @@ function SearchButton() {
       className="flex leading-4 justify-between items-center flex-grow text-left sm:flex-grow-0 min-w-36 px-4 py-2 pr-2 gap-4 rounded border border-white border-opacity-10 bg-stone-950 hover:bg-stone-900"
       onclick={handleClick}
     >
-      <span className="text-xs sm:hidden text-muted">Search...</span>
-      <span className="hidden sm:flex text-muted">
+      <span className="text-xs md:hidden text-muted">Search...</span>
+      <span className="hidden md:flex text-muted">
         <span className="text-xs">Search documentation...</span>
       </span>
       <span className="hidden sm:flex items-center gap-1 bg-light opacity-85 text-dark px-1 rounded text-[11px] font-mono">

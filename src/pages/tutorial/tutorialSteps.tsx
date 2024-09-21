@@ -1,3 +1,5 @@
+import { ElementProps } from "kaioken"
+
 type TutorialStep = {
   title: string
   content: () => JSX.Element
@@ -5,22 +7,38 @@ type TutorialStep = {
   solution?: Record<string, string>
 }
 
+const TutorialPageHeading: Kaioken.FC<ElementProps<"h1">> = (props) => {
+  return <h1 className="text-2xl font-bold" {...props} />
+}
+
+const TutorialPageFooterLink: Kaioken.FC<ElementProps<"a">> = (props) => {
+  return (
+    <a
+      className="px-4 py-2 bg-light hover:bg-neutral-300 rounded text-dark font-medium"
+      {...props}
+    />
+  )
+}
+
 export const TUTORIAL_STEPS = {
   introduction: {
     title: "Introduction",
     content: () => {
       return (
-        <div className="flex flex-col gap-2">
-          <h1 className="text-xl leading-6">
+        <div className="flex flex-col gap-4">
+          <TutorialPageHeading>
             Welcome to Kaioken. This is a tutorial on how to use it.
-          </h1>
-          <hr />
+          </TutorialPageHeading>
           <p>
             Kaioken is a framework for building user interfaces. It is
             unopinionated and easy to use. It is very flexible and has excellent
             documentation.
           </p>
-          <a href="/tutorial/your-first-app">Next: Your First App</a>
+          <footer className="flex">
+            <TutorialPageFooterLink href="/tutorial/your-first-app">
+              Next: Your First App
+            </TutorialPageFooterLink>
+          </footer>
         </div>
       )
     },
@@ -37,9 +55,10 @@ export default function App() {
     content: () => {
       return (
         <div className="flex flex-col gap-2">
-          <h1 className="text-xl leading-6">Let's create your first app!</h1>
+          <TutorialPageHeading>
+            Let's create your first app!
+          </TutorialPageHeading>
           <p>Some subtext</p>
-          <a href="/tutorial/counter">Next: Counter</a>
         </div>
       )
     },
