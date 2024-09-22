@@ -8,42 +8,7 @@ import {
   transformerNotationHighlight,
   transformerNotationDiff,
 } from "@shikijs/transformers"
-
-// const customTheme = {
-//   name: "rose-pine-moon",
-//   bg: "#2a2734",
-//   settings: [
-//     {
-//       scope: ["punctuation"],
-//       settings: {
-//         foreground: "#6c6783",
-//       },
-//     },
-//     {
-//       scope: ["punctuation.definition.tag"],
-//       settings: {
-//         foreground: "#e09142",
-//       },
-//     },
-//     {
-//       scope: [
-//         "keyword.control.import.js",
-//         "keyword.control.from",
-//         "string",
-//         "storage.type",
-//       ],
-//       settings: {
-//         foreground: "#fc9",
-//       },
-//     },
-//     {
-//       scope: ["entity.name.tag", "variable"],
-//       settings: {
-//         foreground: "#c4b9fe",
-//       },
-//     },
-//   ],
-// }
+import { shikiInlineDiffNotation } from "./shikiInlineDiffNotation"
 
 export default defineConfig({
   resolve: {
@@ -65,12 +30,11 @@ export default defineConfig({
           [
             shiki,
             {
-              //theme: "rose-pine-moon",
-              //theme: "min-dark",
               theme: "github-dark",
               transformers: [
                 transformerNotationHighlight(),
                 transformerNotationDiff(),
+                shikiInlineDiffNotation(),
               ],
             } as RehypeShikiOptions,
           ],

@@ -168,6 +168,24 @@ pre.shiki span[style="color: rgb(133, 232, 157);"] {
   color: #e8585c !important;
 }
 
+pre.shiki span.line.diff {
+  padding: 1px 2px;
+}
+
+/** inline diff ~~  */
+pre.shiki span[style="color:#E1E4E8;background-color:#173a4f;"] {
+  padding: 1px 2px;
+}
+
+/** inline diff ++  */
+pre.shiki span[style="color:#E1E4E8;background-color:#174327;"] {
+  padding: 1px 2px;
+}
+
+pre.shiki span[style="color:#B392F0;background-color:#174327;"] {
+  padding: 1px 2px;
+}
+
 pre.shiki span.line.diff.remove {
   background-color: #512525;
 }
@@ -176,7 +194,7 @@ pre.shiki span.line.diff.remove:before {
   content: "-";
   line-height: 1.25rem;
   position: absolute;
-  margin-left: 10px;
+  margin-left: 0.15rem;
   color: red;
 }
 
@@ -188,7 +206,7 @@ pre.shiki span.line.diff.add:before {
   content: "+";
   line-height: 1.25rem;
   position: absolute;
-  margin-left: 10px;
+  margin-left: 0.15rem;
   color: #1fc31f;
 }
 
