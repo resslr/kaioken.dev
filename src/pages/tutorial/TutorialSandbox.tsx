@@ -1,15 +1,13 @@
-import { usePageContext } from "$/context/pageContext"
 import { redirect } from "vike/abort"
-import { TUTORIAL_STEPS } from "./tutorialSteps"
 import { CodeSandbox } from "./CodeSandbox"
+import { useTutorialStep } from "./TutorialStepContext"
 
 export function TutorialSandbox() {
-  const ctx = usePageContext()
-  const tutorialId = ctx.urlPathname.split("/tutorial/")[1]
-  const tut = TUTORIAL_STEPS[tutorialId as any as keyof typeof TUTORIAL_STEPS]
-  if (!tut) {
+  const ctx = useTutorialStep()
+  const step = ctx?.step.current
+  if (!step) {
     throw redirect("/tutorial/introduction")
   }
 
-  return <CodeSandbox files={tut.files} />
+  return <CodeSandbox files={step.files} />
 }

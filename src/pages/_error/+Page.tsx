@@ -1,9 +1,12 @@
 import { Button } from "$/components/atoms/Button"
 import { usePageContext } from "$/context/pageContext"
+import { redirect } from "vike/abort"
 
 export { Page }
 function Page() {
   const pageContext = usePageContext()
+  if (pageContext.urlPathname === "/tutorial")
+    throw redirect("/tutorial/introduction")
 
   let msg: string = pageContext.is404
     ? "We couldn't find the page you're looking for."

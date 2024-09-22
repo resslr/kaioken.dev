@@ -1,3 +1,5 @@
+import { useTutorialStep } from "../TutorialStepContext"
+
 ## Welcome to Kaioken. This is a tutorial on how to use it.
 
 Kaioken is a framework for building user interfaces. 
@@ -7,3 +9,12 @@ It is very flexible and has excellent documentation.
 <div className="flex">
   <a href="/tutorial/your-first-app" className="link-button mb-40">Next: Your First App</a>
 </div>
+
+{useTutorialStep({
+  files: {
+        ["App.jsx"]: `
+export default function App() {
+  return <h1>Hello world!</h1>
+}
+`}
+})}

@@ -3,6 +3,7 @@ import { TabGroup } from "$/components/TabGroup"
 import { useRef, useEffect, useState, ElementProps } from "kaioken"
 import { NodeBoxProvider, useNodeBox, useWorkerStatus } from "./NodeBox"
 import { FILES_MAP } from "./filesMap"
+import { useDebounceThrottle } from "$/utils"
 
 interface CodeSanboxProps extends ElementProps<"div"> {
   files: Record<string, string>
@@ -31,17 +32,6 @@ function WorkerStatusDisplayText() {
       return status.state + "..."
     case "downloaded_module":
       return `downloaded module ${status.name}@${status.version}. total pending modules: ${status.totalPending}`
-  }
-}
-
-function useDebounceThrottle(fn: () => void, delay: number) {
-  const timeoutRef = useRef<number>(-1)
-  useEffect(() => {
-    return () => window.clearTimeout(timeoutRef.current)
-  }, [])
-  return () => {
-    window.clearTimeout(timeoutRef.current)
-    timeoutRef.current = window.setTimeout(fn, delay)
   }
 }
 
@@ -107,14 +97,6 @@ function CodeSandboxImpl({ files, readonly, ...props }: CodeSanboxProps) {
       )
     }
   }, [files])
-
-  // useEffect(() => {
-  //   if (!nodeBox) return
-  //   if (!previewIframeRef.current) return
-  //   if (killCmd.current) {
-  //     killCmd.current()
-  //   }
-  // }, [files])
 
   const debouncedWrite = useDebounceThrottle(() => {
     if (!nodeBox) return

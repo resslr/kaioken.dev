@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "kaioken"
+
 export function isLinkActive(href: string, urlPath: string) {
   return (
     href.split("#")[0] === urlPath ||
@@ -50,5 +52,16 @@ export function trapFocus(element: Element, e: KeyboardEvent) {
         e.preventDefault()
       }
     }
+  }
+}
+
+export function useDebounceThrottle(fn: () => void, delay: number) {
+  const timeoutRef = useRef<number>(-1)
+  useEffect(() => {
+    return () => window.clearTimeout(timeoutRef.current)
+  }, [])
+  return () => {
+    window.clearTimeout(timeoutRef.current)
+    timeoutRef.current = window.setTimeout(fn, delay)
   }
 }
