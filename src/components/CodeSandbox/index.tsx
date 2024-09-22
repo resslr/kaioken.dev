@@ -1,7 +1,11 @@
 import { JSXEditor } from "$/components/JSXEditor"
 import { TabGroup } from "$/components/TabGroup"
 import { useRef, useEffect, useState, ElementProps } from "kaioken"
-import { NodeBoxProvider, useNodeBox, useWorkerStatus } from "./NodeBox"
+import {
+  NodeBoxProvider,
+  useNodeBox,
+  useWorkerStatus,
+} from "$/context/NodeBoxContext"
 import { FILES_MAP } from "./filesMap"
 import { useDebounceThrottle } from "$/utils"
 
@@ -9,7 +13,7 @@ interface CodeSanboxProps extends ElementProps<"div"> {
   files: Record<string, string>
   readonly?: boolean
 }
-export function CodeSandbox(props: CodeSanboxProps) {
+export default function CodeSandbox(props: CodeSanboxProps) {
   return (
     <NodeBoxProvider
       fallback={

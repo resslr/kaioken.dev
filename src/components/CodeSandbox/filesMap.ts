@@ -101,7 +101,7 @@ const STYLES = `
 const CLIENT_TS = `
 import "./styles.css"
 import { mount } from "kaioken"
-import App from "./App"
+import { App } from "./App"
 const root = document.getElementById("app")!
 mount(App, root)
 `

@@ -11,7 +11,10 @@ type TutorialCtx = {
   step: Kaioken.MutableRefObject<TutorialStep | null>
 }
 
-export const TutorialFilesContext = createContext<TutorialCtx>(null as any)
+const TutorialFilesContext = createContext<TutorialCtx>({
+  setStep: () => {},
+  step: { current: null },
+})
 
 export const TutorialStepProvider: Kaioken.FC = ({ children }) => {
   const step = useRef<TutorialStep | null>(null)
