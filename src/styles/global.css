@@ -69,6 +69,10 @@ a {
   color: #ea495e !important
 }
 
+.prose a.link-button {
+  color: #222 !important
+}
+
 .prose :where(ul ul, ul ol, ol ul, ol ol):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   margin-top: .25rem;
   margin-bottom: .25rem;

@@ -9,7 +9,7 @@ export const TUTORIAL_STEPS = {
   introduction: {
     title: "Introduction",
     files: {
-      ["App.tsx"]: `
+      ["App.jsx"]: `
 export default function App() {
   return <h1>Hello World!</h1>
 }
@@ -19,7 +19,7 @@ export default function App() {
   ["your-first-app"]: {
     title: "Your First App",
     files: {
-      ["App.tsx"]: `
+      ["App.jsx"]: `
 export default function App() {
   return <h1>Hello world!</h1>
 }

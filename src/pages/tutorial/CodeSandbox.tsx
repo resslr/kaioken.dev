@@ -34,6 +34,17 @@ function WorkerStatusDisplayText() {
   }
 }
 
+function useDebounceThrottle(fn: () => void, delay: number) {
+  const timeoutRef = useRef<number>(-1)
+  useEffect(() => {
+    return () => window.clearTimeout(timeoutRef.current)
+  }, [])
+  return () => {
+    window.clearTimeout(timeoutRef.current)
+    timeoutRef.current = window.setTimeout(fn, delay)
+  }
+}
+
 function CodeSandboxImpl({ files, readonly, ...props }: CodeSanboxProps) {
   const [prevWrittenFiles, setPrevWrittenFiles] = useState<Record<
     string,
@@ -105,10 +116,15 @@ function CodeSandboxImpl({ files, readonly, ...props }: CodeSanboxProps) {
   //   }
   // }, [files])
 
+  const debouncedWrite = useDebounceThrottle(() => {
+    if (!nodeBox) return
+    nodeBox.fs.writeFile(`/src/${selectedFile}`, files[selectedFile])
+  }, 250)
+
   const handleChange = (newCode: string) => {
     if (!nodeBox) return
     files[selectedFile] = newCode
-    nodeBox.fs.writeFile(`/src/${selectedFile}`, newCode)
+    debouncedWrite()
   }
 
   const code = files[selectedFile]
