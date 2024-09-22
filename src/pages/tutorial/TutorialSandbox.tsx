@@ -1,6 +1,7 @@
 import { redirect } from "vike/abort"
 import CodeSandbox from "$/components/CodeSandbox"
 import { useTutorialStep } from "./TutorialStepContext"
+import { usePageContext } from "$/context/pageContext"
 
 export function TutorialSandbox() {
   const ctx = useTutorialStep()
@@ -9,10 +10,5 @@ export function TutorialSandbox() {
     throw redirect("/tutorial/introduction")
   }
 
-  return (
-    <CodeSandbox
-      //key={usePageContext().urlPathname}
-      files={step.files}
-    />
-  )
+  return <CodeSandbox key={usePageContext().urlPathname} files={step.files} />
 }
