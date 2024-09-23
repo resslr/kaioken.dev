@@ -74,14 +74,26 @@ a {
   margin-bottom: .25rem;
 }
 
+@media screen and (max-width: 480px) {
+  .prose :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    font-size: 1.75rem;
+  }
+}
+
 .docs-section-header a {
   color: #fff !important;
   text-decoration: none;
   font-weight: 700;
-  font-size: 1.5em;
+  font-size: 1.25em;
   margin-top: 2em;
   margin-bottom: 1em;
   line-height: 1.3333333;
+}
+
+@media screen and (min-width: 480px) {
+  .docs-section-header a {
+    font-size: 1.5em;
+  }
 }
 
 .docs-section {
@@ -109,30 +121,6 @@ a {
 .docs-section.highlight:after {
   opacity: .066
 }
-
-/* .token.attr-value,
-.token.char,
-.token.regex,
-.token.string,
-.token.variable {
-  color: #ef9a65ff !important;
-} */
-
-.prose :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):not(pre.shiki > code) {
-  background-color: #2f2f2f !important;
-  padding: 0.125rem 0.25rem;
-  border-radius: .25rem;
-  font-weight: 400;
-}
-
-.prose :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):before {
-  content: ""
-}
-
-.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::after {
-  content: "";
-}
-
 
 pre.shiki {
   font-weight: 400;
