@@ -2,7 +2,6 @@ import { createContext, useContext, useRef, useState } from "kaioken"
 
 export type TutorialStep = {
   files: Record<string, string>
-  solution?: Record<string, string>
   readonly?: boolean
 }
 

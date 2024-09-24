@@ -10,5 +10,9 @@ export function TutorialSandbox() {
     throw redirect("/tutorial/introduction")
   }
 
-  return <CodeSandbox key={usePageContext().urlPathname} files={step.files} />
+  return (
+    <div>
+      <CodeSandbox key={usePageContext().urlPathname} files={step.files} />
+    </div>
+  )
 }
