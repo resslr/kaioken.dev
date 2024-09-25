@@ -66,7 +66,11 @@ export function AlbumSearchDemo() {
     const len = res.length
     return [
       res,
-      len === 0 ? "No matches" : len === 1 ? "1 match" : `${len} matches`,
+      len === 0
+        ? `No matches for "${inputValue}"`
+        : len === 1
+          ? "1 match"
+          : `${len} matches`,
     ]
   }, [inputValue])
 
