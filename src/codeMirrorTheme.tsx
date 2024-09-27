@@ -151,11 +151,11 @@ const editorTheme = EditorView.theme(
 // ])
 const customTheme = HighlightStyle.define([
   { tag: t.function(t.variableName), color: "#B392F0" }, // Function names
-  { tag: t.keyword, color: "#ff5370" }, // Keywords
+  { tag: t.keyword, color: "#F97583" }, // Keywords
   { tag: t.variableName, color: "##E1E4E8" }, // Variables
   { tag: t.string, color: "#fde3e3" }, // Strings and template literals
   { tag: t.number, color: "#f0a05e" }, // Numbers
-  { tag: t.operator, color: "#ff5370" }, // Operators
+  { tag: t.operator, color: "#F97583" }, // Operators
   { tag: t.typeName, color: "#e8585c" }, // JSX Elements
   { tag: t.attributeName, color: "#B392F0" }, // JSX attributes
   { tag: t.propertyName, color: "#f0a05e" },
