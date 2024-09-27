@@ -6,24 +6,28 @@ import { Extension } from "@codemirror/state"
 import { HighlightStyle, syntaxHighlighting } from "@codemirror/language"
 import { tags as t } from "@lezer/highlight"
 
-// Using https://github.com/one-dark/vscode-one-dark-theme/ as reference for the colors
+// const chalky = "#e5c07b",
+//   coral = "#e06c75",
+//   invalid = "#ffffff",
+//   ivory = "#abb2bf",
+//   stone = "#7d8799", // Brightened compared to original to increase contrast
+//   whiskey = "#d19a66",
+//   darkBackground = "#1117",
+//   highlightBackground = "#2c313a",
+//   background = "#1117",
+//   tooltipBackground = "#353a42",
+//   selection = "#fff3",
+//   cursor = "white",
+//   purple = "#B392F0",
+//   paleRed = "#F97583",
+//   darkRed = "#e8585c"
 
-const chalky = "#e5c07b",
-  coral = "#e06c75",
-  invalid = "#ffffff",
-  ivory = "#abb2bf",
-  stone = "#7d8799", // Brightened compared to original to increase contrast
-  whiskey = "#d19a66",
-  darkBackground = "#1117",
+const ivory = "#abb2bf",
   highlightBackground = "#2c313a",
   background = "#1117",
   tooltipBackground = "#353a42",
   selection = "#fff3",
-  cursor = "white",
-  purple = "#B392F0",
-  paleRed = "#F97583",
-  darkRed = "#e8585c"
-
+  cursor = "white"
 /// The editor theme styles for One Dark.
 const editorTheme = EditorView.theme(
   {
@@ -96,59 +100,71 @@ const editorTheme = EditorView.theme(
   { dark: true }
 )
 
-/// The highlighting style for code in the One Dark theme.
-const kaiokenHighlightStyle = HighlightStyle.define([
-  { tag: t.keyword, color: paleRed },
-  {
-    tag: [t.name, t.deleted, t.character, t.propertyName, t.macroName],
-    color: "#E1E4E8",
-  },
-  {
-    tag: t.propertyName,
-    color: purple,
-  },
-  { tag: [t.function(t.variableName), t.labelName], color: purple },
-  { tag: [t.color, t.constant(t.name), t.standard(t.name)], color: whiskey },
-  { tag: [t.definition(t.name), t.separator], color: "#E1E4E8" },
-  {
-    tag: [
-      t.typeName,
-      t.className,
-      t.number,
-      t.changed,
-      t.annotation,
-      t.modifier,
-      t.self,
-      t.namespace,
-    ],
-    color: darkRed,
-  },
-  {
-    tag: [
-      t.operator,
-      t.operatorKeyword,
-      t.url,
-      t.escape,
-      t.regexp,
-      t.link,
-      t.special(t.string),
-    ],
-    color: paleRed,
-  },
-  { tag: [t.meta, t.comment], color: stone },
-  { tag: t.strong, fontWeight: "bold" },
-  { tag: t.emphasis, fontStyle: "italic" },
-  { tag: t.strikethrough, textDecoration: "line-through" },
-  { tag: t.link, color: stone, textDecoration: "underline" },
-  { tag: t.heading, fontWeight: "bold", color: coral },
-  { tag: [t.atom, t.bool, t.special(t.variableName)], color: whiskey },
-  { tag: [t.processingInstruction, t.string, t.inserted], color: "#fde3e3" },
-  { tag: t.invalid, color: invalid },
+// The highlighting style for code in the One Dark theme.
+// const kaiokenHighlightStyle = HighlightStyle.define([
+//   { tag: t.keyword, color: paleRed },
+//   // {
+//   //   tag: [t.name, t.deleted, t.character, t.propertyName, t.macroName],
+//   //   color: "#E1E4E8",
+//   // },
+//   {
+//     tag: t.propertyName,
+//     color: purple,
+//   },
+//   { tag: [t.function(t.variableName), t.labelName], color: purple },
+//   { tag: [t.color, t.constant(t.name), t.standard(t.name)], color: whiskey },
+//   { tag: [t.definition(t.name), t.separator], color: "#E1E4E8" },
+//   {
+//     tag: [
+//       t.typeName,
+//       t.className,
+//       t.number,
+//       t.changed,
+//       t.annotation,
+//       t.modifier,
+//       t.self,
+//       t.namespace,
+//     ],
+//     color: darkRed,
+//   },
+//   {
+//     tag: [
+//       t.operator,
+//       t.operatorKeyword,
+//       t.url,
+//       t.escape,
+//       t.regexp,
+//       t.link,
+//       t.special(t.string),
+//     ],
+//     color: paleRed,
+//   },
+//   { tag: [t.meta, t.comment], color: stone },
+//   { tag: t.strong, fontWeight: "bold" },
+//   { tag: t.emphasis, fontStyle: "italic" },
+//   { tag: t.strikethrough, textDecoration: "line-through" },
+//   { tag: t.link, color: stone, textDecoration: "underline" },
+//   { tag: t.heading, fontWeight: "bold", color: coral },
+//   { tag: [t.atom, t.bool, t.special(t.variableName)], color: whiskey },
+//   { tag: [t.processingInstruction, t.string, t.inserted], color: "#fde3e3" },
+//   { tag: t.invalid, color: invalid },
+// ])
+const customTheme = HighlightStyle.define([
+  { tag: t.function(t.variableName), color: "#B392F0" }, // Function names
+  { tag: t.keyword, color: "#ff5370" }, // Keywords
+  { tag: t.variableName, color: "##E1E4E8" }, // Variables
+  { tag: t.string, color: "#fde3e3" }, // Strings and template literals
+  { tag: t.number, color: "#f0a05e" }, // Numbers
+  { tag: t.operator, color: "#ff5370" }, // Operators
+  { tag: t.typeName, color: "#e8585c" }, // JSX Elements
+  { tag: t.attributeName, color: "#B392F0" }, // JSX attributes
+  { tag: t.propertyName, color: "#f0a05e" },
+  { tag: t.function(t.propertyName), color: "#B392F0" },
 ])
 
 /// Extension to enable the One Dark theme (both the editor theme and
 /// the highlight style).
 export const kaiokenTheme: Extension = [
   editorTheme,
-  syntaxHighlighting(kaiokenHighlightStyle),
+  syntaxHighlighting(customTheme),
 ]
