@@ -11,7 +11,7 @@ export function TutorialSandbox() {
   }
 
   return (
-    <div>
+    <div className="h-full">
       <CodeSandbox key={usePageContext().urlPathname} files={step.files} />
     </div>
   )

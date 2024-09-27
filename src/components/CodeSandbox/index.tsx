@@ -117,23 +117,27 @@ function CodeSandboxImpl({ files, readonly, ...props }: CodeSanboxProps) {
 
   const { className, ...rest } = props
   return (
-    <div className={`flex flex-col ${className || ""}`} {...rest}>
-      <TabGroup
-        items={Object.keys(files)}
-        value={selectedFile}
-        onSelect={setSelectedFile}
-      />
-      <JSXEditor
-        key={selectedFile}
-        content={code}
-        onContentChanged={handleChange}
-        className="flex-grow w-full"
-        readonly={readonly}
-      />
-      <iframe ref={previewIframeRef} className="flex-grow" />
-      <small className="uppercase">
-        <WorkerStatusDisplayText />
-      </small>
+    <div className={`h-full flex flex-col ${className || ""}`} {...rest}>
+      <div className="flex-grow flex flex-col h-2/5">
+        <TabGroup
+          items={Object.keys(files)}
+          value={selectedFile}
+          onSelect={setSelectedFile}
+        />
+        <JSXEditor
+          key={selectedFile}
+          content={code}
+          onContentChanged={handleChange}
+          className="flex-grow w-full h-full"
+          readonly={readonly}
+        />
+      </div>
+      <div className="flex-grow h-3/5">
+        <iframe ref={previewIframeRef} className="flex-grow h-full w-full" />
+        <small className="uppercase fixed bottom-0">
+          <WorkerStatusDisplayText />
+        </small>
+      </div>
     </div>
   )
 }
