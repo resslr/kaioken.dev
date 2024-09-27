@@ -117,7 +117,7 @@ function CodeSandboxImpl({ files, readonly, ...props }: CodeSanboxProps) {
 
   const { className, ...rest } = props
   return (
-    <div className={`h-full flex flex-col ${className || ""}`} {...rest}>
+    <div className={`${className || ""}`} {...rest}>
       <div className="flex-grow flex flex-col h-1/2">
         <TabGroup
           items={Object.keys(files)}

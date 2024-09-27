@@ -11,8 +11,10 @@ export function TutorialSandbox() {
   }
 
   return (
-    <div className="h-full">
-      <CodeSandbox key={usePageContext().urlPathname} files={step.files} />
-    </div>
+    <CodeSandbox
+      key={usePageContext().urlPathname}
+      files={step.files}
+      className="h-full flex flex-col"
+    />
   )
 }

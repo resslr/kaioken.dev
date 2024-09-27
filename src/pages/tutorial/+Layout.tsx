@@ -6,7 +6,7 @@ export function Layout({ children }: { children: JSX.Children }) {
     <TutorialStepProvider>
       <div className="flex mt-[var(--navbar-height)] min-h-[calc(100dvh+var(--navbar-height-negative))]">
         <div className="prose prose-invert w-full p-8">{children}</div>
-        <div className="flex-grow w-full">
+        <div className="flex-grow w-full p-2">
           <TutorialSandbox />
         </div>
       </div>
