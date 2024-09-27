@@ -48,7 +48,7 @@
   border-radius: 3px;
 }
 
-::selection {
+::selection:not(.cm-content ::selection) {
   background: #dc143ccc;
   color: #fff;
 }

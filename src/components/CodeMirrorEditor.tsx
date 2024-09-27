@@ -4,6 +4,8 @@ import { useRef, useEffect, type ElementProps } from "kaioken"
 import { EditorState, type Extension } from "@codemirror/state"
 import { oneDark } from "@codemirror/theme-one-dark"
 import { EditorView, basicSetup } from "codemirror"
+import { kaiokenTheme } from "$/codeMirrorTheme"
+import { kaiokenSetup } from "$/codeMirrorExtensions"
 
 export interface CodeMirrorComponentProps extends ElementProps<"div"> {
   readonly?: boolean
@@ -28,9 +30,11 @@ export function CodeMirrorComponent({
   useEffect(() => {
     if (!elementRef.current) return
     const extensions: readonly Extension[] = [
-      oneDark,
+      //oneDark,
+      kaiokenTheme,
+      //myTheme,
       EditorState.readOnly.of(!!readonly),
-      ...(includeBasicExtensions ? [basicSetup] : []), // Basic setup for editing
+      ...(includeBasicExtensions ? [kaiokenSetup] : []), // Basic setup for editing
       ...(userExtensions ?? []),
       ...(onContentChanged
         ? [

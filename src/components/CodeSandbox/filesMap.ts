@@ -97,6 +97,17 @@ const STYLES = `
   background-color: #222;
   color: #f6f6f6;
 }
+body {
+  margin: 0;
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 1rem;
+}
 `
 const CLIENT_TS = `
 import "./styles.css"

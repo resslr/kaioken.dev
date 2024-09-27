@@ -118,7 +118,7 @@ function CodeSandboxImpl({ files, readonly, ...props }: CodeSanboxProps) {
   const { className, ...rest } = props
   return (
     <div className={`h-full flex flex-col ${className || ""}`} {...rest}>
-      <div className="flex-grow flex flex-col h-2/5">
+      <div className="flex-grow flex flex-col h-1/2">
         <TabGroup
           items={Object.keys(files)}
           value={selectedFile}
@@ -132,7 +132,7 @@ function CodeSandboxImpl({ files, readonly, ...props }: CodeSanboxProps) {
           readonly={readonly}
         />
       </div>
-      <div className="flex-grow h-3/5">
+      <div className="flex-grow h-1/2">
         <iframe ref={previewIframeRef} className="flex-grow h-full w-full" />
         <small className="uppercase fixed bottom-0">
           <WorkerStatusDisplayText />
