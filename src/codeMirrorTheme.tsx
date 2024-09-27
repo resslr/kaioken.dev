@@ -56,7 +56,7 @@ const editorTheme = EditorView.theme(
     },
 
     ".cm-activeLine": { backgroundColor: "#fff1" },
-    ".cm-selectionMatch": { backgroundColor: "#aafe661a" },
+    ".cm-selectionMatch": { backgroundColor: "#fff3" },
 
     "&.cm-focused .cm-matchingBracket, &.cm-focused .cm-nonmatchingBracket": {
       backgroundColor: "#bad0f847",
