@@ -84,7 +84,7 @@ const INDEX_HTML = `
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + TS + Kaioken</title>
   </head>
-  <body>
+  <body style="background-color: #1c1a1a" >
     <div id="app"></div>
     <script type="module" src="/src/client.ts"></script>
   </body>
@@ -94,7 +94,7 @@ const STYLES = `
 :root {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
 					'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #222;
+  background-color: #1c1a1a;
   color: #f6f6f6;
 }
 body {
@@ -108,13 +108,43 @@ body {
   height: 100vh;
   gap: 1rem;
 }
+#error-display {
+  color: crimson;
+  background-color: #111;
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  font-size: 1rem;
+  border: 1px solid #f66;
+  padding: .5rem;
+  width: calc(100% - 3rem);
+  display: block;
+}
 `
 const CLIENT_TS = `
 import "./styles.css"
 import { mount } from "kaioken"
 import { App } from "./App"
 const root = document.getElementById("app")!
-mount(App, root)
+mount(App, root);
+
+const errorDisplay = Object.assign(document.createElement("div"), {
+  id: "error-display",
+});
+
+window.__kaioken.on("update", () => {
+  if (errorDisplay.isConnected) {
+    errorDisplay.innerHTML = "";
+    errorDisplay.remove();
+  }
+});
+
+window.addEventListener("error", (err) => {
+  errorDisplay.innerHTML += ("message" in err ? err.message : err) + "\\n";
+  if (!errorDisplay.isConnected) {
+    document.body.appendChild(errorDisplay);
+  }
+})
 `
 
 export const FILES_MAP: FilesMap = {

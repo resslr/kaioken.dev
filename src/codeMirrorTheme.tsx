@@ -149,7 +149,7 @@ const editorTheme = EditorView.theme(
 //   { tag: [t.processingInstruction, t.string, t.inserted], color: "#fde3e3" },
 //   { tag: t.invalid, color: invalid },
 // ])
-const customTheme = HighlightStyle.define([
+const kaiokenHighlightStyle = HighlightStyle.define([
   { tag: t.function(t.variableName), color: "#B392F0" }, // Function names
   { tag: t.keyword, color: "#F97583" }, // Keywords
   { tag: t.variableName, color: "##E1E4E8" }, // Variables
@@ -166,5 +166,5 @@ const customTheme = HighlightStyle.define([
 /// the highlight style).
 export const kaiokenTheme: Extension = [
   editorTheme,
-  syntaxHighlighting(customTheme),
+  syntaxHighlighting(kaiokenHighlightStyle),
 ]
