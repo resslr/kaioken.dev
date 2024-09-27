@@ -105,7 +105,7 @@ function CodeSandboxImpl({ files, readonly, ...props }: CodeSanboxProps) {
   const debouncedWrite = useDebounceThrottle(() => {
     if (!nodeBox) return
     nodeBox.fs.writeFile(`/src/${selectedFile}`, files[selectedFile])
-  }, 250)
+  }, 0)
 
   const handleChange = (newCode: string) => {
     if (!nodeBox) return
