@@ -10,18 +10,27 @@ export function HighlightOnLoad({
   const ref = useRef<HTMLDivElement>(null)
   const timeoutRef = useRef(-1)
   useEffect(() => {
-    if (!ref.current) return
-    if (window.location.hash === hash) {
-      ref.current.classList.add("highlight")
-      if (timeoutRef.current !== -1) {
-        window.clearTimeout(timeoutRef.current)
+    const handleHashChange = () => {
+      if (!ref.current) return
+      if (window.location.hash === hash) {
+        ref.current.classList.add("highlight")
+        if (timeoutRef.current !== -1) {
+          window.clearTimeout(timeoutRef.current)
+        }
+        timeoutRef.current = window.setTimeout(
+          () => ref.current?.classList.remove("highlight"),
+          1000
+        )
       }
-      timeoutRef.current = window.setTimeout(
-        () => ref.current?.classList.remove("highlight"),
-        1000
-      )
     }
-  }, [globalThis.window?.location.hash])
+    handleHashChange()
+    window.addEventListener("hashchange", handleHashChange)
+    window.addEventListener("popstate", handleHashChange)
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange)
+      window.removeEventListener("popstate", handleHashChange)
+    }
+  }, [])
   return (
     <div className="docs-section" ref={ref}>
       {children}
