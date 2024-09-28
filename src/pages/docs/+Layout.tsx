@@ -1,8 +1,20 @@
 import { Container } from "$/components/atoms/Container"
 import { SidebarContent } from "$/components/SidebarContent"
-import { signal, useEffect, useRef, useState } from "kaioken"
+import { usePageContext } from "$/context/pageContext"
+import { docMeta } from "$/docs-meta"
+import { useHashChangeDispatcher } from "$/hooks/useHashChangeDispatcher"
+import { useEffect, useMemo, useRef, useState } from "kaioken"
 
 export function Layout({ children }: { children: JSX.Children }) {
+  const { urlPathname } = usePageContext()
+  const articleRef = useRef<HTMLDivElement>(null)
+  const sectionIds = useMemo(() => {
+    const pageData = docMeta.find(({ href }) => href === urlPathname)
+    if (!pageData) return []
+    return pageData.sections?.map(({ id }) => id) ?? []
+  }, [urlPathname])
+  useHashChangeDispatcher(sectionIds)
+
   return (
     <Container className="flex gap-8 mt-[var(--navbar-height)] min-h-[calc(100dvh+var(--navbar-height-negative))]">
       <aside className="hidden sm:block min-w-[200px] max-h-[calc(100vh-2.5rem-60px)] sticky top-[80px] p-1 overflow-y-auto">
@@ -11,9 +23,12 @@ export function Layout({ children }: { children: JSX.Children }) {
           <ActiveLinkTrackerSlidingThing />
         </div>
       </aside>
-      <div className="prose prose-invert flex-grow py-5 w-full max-w-none sm:max-w-[calc(100%-200px-2rem)]">
+      <article
+        ref={articleRef}
+        className="prose prose-invert flex-grow py-5 w-full max-w-none sm:max-w-[calc(100%-200px-2rem)]"
+      >
         {children}
-      </div>
+      </article>
     </Container>
   )
 }
