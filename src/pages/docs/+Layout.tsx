@@ -26,7 +26,7 @@ function ActiveLinkTrackerSlidingThing() {
     const parent = document.querySelector("aside")!
     const parentRect = parent.getBoundingClientRect()
     const el = parent.querySelector(
-      'a[href="' + globalThis.window?.location.pathname + '"]'
+      'a[href="' + window.location.pathname + window.location.hash + '"]'
     )!
     const domRect = el.getBoundingClientRect()
 
@@ -36,8 +36,12 @@ function ActiveLinkTrackerSlidingThing() {
   useEffect(() => {
     setPos()
     window.addEventListener("resize", setPos)
-    return () => window.removeEventListener("resize", setPos)
-  }, [globalThis.window?.location.pathname])
+    window.addEventListener("hashchange", setPos)
+    return () => {
+      window.removeEventListener("resize", setPos)
+      window.removeEventListener("hashchange", setPos)
+    }
+  }, [globalThis.window?.location.pathname, globalThis.window?.location.hash])
 
   useEffect(() => {
     setMounted(true)
