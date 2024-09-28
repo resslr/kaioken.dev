@@ -193,8 +193,8 @@ pre.shiki span.line.diff.remove {
 pre.shiki span.line.diff.remove:before {
   content: "-";
   line-height: 1.25rem;
-  position: absolute;
-  margin-left: 0.15rem;
+  margin-left: 0.1rem;
+  margin-right: -0.8em;
   color: red;
 }
 
@@ -205,8 +205,8 @@ pre.shiki span.line.diff.add {
 pre.shiki span.line.diff.add:before {
   content: "+";
   line-height: 1.25rem;
-  position: absolute;
-  margin-left: 0.15rem;
+  margin-left: 0.1rem;
+  margin-right: -0.85em;
   color: #1fc31f;
 }
 
