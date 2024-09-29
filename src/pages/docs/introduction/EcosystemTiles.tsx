@@ -47,7 +47,7 @@ const ECOSYSTEM: EcosystemItem[] = [
   {
     title: "Inertia Kaioken Adapter",
     description:
-      "Exactly what you need to use Kaioken as a front end for Inertia. Build apps with Laravel, .NET and more.",
+      "Enables use of Kaioken as a rendering library with Inertia. Build full-stack apps with Laravel, .NET and more.",
     url: "https://github.com/CrimsonChi/inertia-kaioken-adapter",
   },
 ]
@@ -112,7 +112,7 @@ function EcosystemTileChild({
       title={title + (comingSoon ? " - coming soon" : "")}
       target="_blank"
     >
-      {iconSrc && <img src={iconSrc} className="w-6 h-6" alt={title} />}
+      {iconSrc && <img src={iconSrc} className="w-6 h-6" />}
       <span>{title}</span>
     </a>
   )
