@@ -86,6 +86,14 @@ a {
   padding: .25rem .5rem;
 }
 
+
+.callout-block code {
+  background-color: #0e0e0e63;
+  border-radius: .25rem;
+  padding: .125rem .25rem;
+  font-size: 87.5%;
+}
+
 .prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)):before,
 .prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)):after {
   content: none;

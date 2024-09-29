@@ -10,7 +10,7 @@ export default {
       colors: {
         primary: "crimson",
         "primary-light": "#ec1b43",
-        info: "#433b3d",
+        info: "#322a2c",
         dark: "#151313",
         light: "#fffafa",
         "light-highlight": "#fbf6f6",

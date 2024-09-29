@@ -46,8 +46,12 @@ You can access a signal's value directly:
 console.log(userName.value)  // "bob"
 userName.value = "alice"
 ```
-
-Assigning a new value triggers reactivity, notifying any subscribers.
+<CalloutBlock variant="info">
+  Assigning a new value triggers reactivity, notifying any subscribers.
+  If you mutate the signal's value without assigning to the `value` property, 
+  eg. `mySignal.value.something = "test"`, the signal will not notify subscribers. 
+  In this case, use `mySignal.notify()` to manually trigger an update.
+</CalloutBlock>
 
 ### Subscribing to Signals
 
@@ -71,9 +75,7 @@ unsubscribe()
 ---
 
 <CalloutBlock>
-  <span className="not-prose text-sm">
     Derived signals are **read-only**, meaning their value cannot be set directly.
-  </span>
 </CalloutBlock>
 
 Use `signal.map()` to create a derived signal from another signal:
@@ -98,10 +100,8 @@ The `computed` signal will automatically track dependencies and
 update whenever the tracked signals change.
 
 <CalloutBlock>
-  <span className="not-prose text-sm">
   We've snuck a quality-of-life feature in here - signals 
 implement `toString()` and therefore are able to be used in strings.
-  </span>
 </CalloutBlock>
 
 
@@ -156,10 +156,8 @@ the text node that displays the greeting and the `value` attribute.
 
 
 <CalloutBlock variant="info">
-  <span className="not-prose text-sm">
     This is one of the more complex, but powerful aspects of signals.
     The core philosophy around their design is 
     **reactivity via observation, where it matters**.
-  </span>
 </CalloutBlock>
 
