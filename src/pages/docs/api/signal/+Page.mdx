@@ -33,10 +33,11 @@ for debugging. This returns an instance of the `Signal` class with the
 following properties:
 
 - **value**: Gets or sets the signal's current value
-- **notify**: Emits a signal change
-- **peek**: Retrieves the value without tracking reactivity
 - **subscribe**: Registers a function to be called when the signal's value changes
 - **map**: Derives a new signal based on the current signal's value
+- **peek**: Retrieves the value without tracking reactivity
+- **sneak**: Sets the value without emitting a signal change
+- **notify**: Emits a signal change
 
 ### Reading and Writing Signal Values
 
