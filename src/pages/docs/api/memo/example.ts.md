@@ -17,6 +17,6 @@ const MemoizedComponent = memo(
     // Component logic here
     return <div>{value}</div>
   },
-  (prevProps, nextProps) => prevProps.value === nextProps.value
+  (prevProps, nextProps) => prevProps.nested.value === nextProps.nested.value
 )
 ```
