@@ -42,7 +42,8 @@ function ActiveLinkTrackerSlidingThing() {
     const parentRect = parent.getBoundingClientRect()
     const el = parent.querySelector(
       'a[href="' + window.location.pathname + window.location.hash + '"]'
-    )!
+    )
+    if (!el) return
     const domRect = el.getBoundingClientRect()
 
     ref.current.style.top =
