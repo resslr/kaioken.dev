@@ -1,5 +1,6 @@
 import { CodePreview } from "$/components/CodePreview"
 import { siteCodeLang } from "$/state/langToggle"
+import { CalloutBlock } from "$/components/atoms/CalloutBlock"
 import ExternalSignalExample from "./example.externalSignal.md"
 import ExternalSignalExampleTS from "./example.externalSignal.ts.md"
 import SignalToChildExample from "./example.signalToChild.md"
@@ -10,108 +11,155 @@ import NotifyExampleTS from "./example.notify.ts.md"
 
 # Signal
 
-Signals are lightweight observable pattern objects (similar to Stores), that can be defined inside or 
-outside of kaioken components.
+A **Signal** is a reactive primitive used to manage state. 
+Signals hold a value that can be observed and updated. 
+When the value changes, any subscribers to the signal are notified, 
+allowing for efficient updates to dependent components.
 
+## General Usage
 
-### Example case 0
+----
 
-```jsx
+### Creating a Signal
+
+```ts
 import { signal } from "kaioken"
 
-const Counter = () => {
-  const count = signal(0)
-  const increment = () => count.value++
-  const decrement = () => count.value--
-  
-  return (
-    <div className="flex gap-4">
-      <button onclick={decrement}>-</button>
-      <p>{count.value}</p>
-      <button onclick={increment}>+</button>
-    </div>
-  )
-}
+const userName = signal("bob")
 ```
 
-You can see here that count is a signal that contains a value property. Under the hood, the value propery has a getter and setter. 
+The `signal` function takes an initial value and optionally a `displayName` 
+for debugging. This returns an instance of the `Signal` class with the 
+following properties:
 
-Invoking the getter will return the current value of the signal, and if done during the rendering phase, the component will be subscribed.
+- **value**: Gets or sets the signal's current value
+- **notify**: Emits a signal change
+- **peek**: Retrieves the value without tracking reactivity
+- **subscribe**: Registers a function to be called when the signal's value changes
+- **map**: Derives a new signal based on the current signal's value
 
-Invoking the setter will immediately update the value of the signal and trigger a re-render for all components that are subscribed.
+### Reading and Writing Signal Values
 
-
-### toString?
-
-A simple ease of life for signals is we override the `toString` method on the signal itself to always be the toString method of the value, 
-this can nice for when using this value in jsx, for example in our case 0 example, we could update count.value to just be count.
-
-```jsx
-const Counter = () => {
-  const count = signal(0)
-  const increment = () => count.value++
-  const decrement = () => count.value--
-  
-  return (
-    <div className="flex gap-4">
-      <button onclick={decrement}>-</button>
-      <p>{count.value}</p> // [!code --]
-      <p>{count}</p> // [!code ++]
-      <button onclick={increment}>+</button>
-    </div>
-  )
-}
-```
-
-### Signals can be created and used anywhere
-
-What does this mean? Well, let's up the complexity a bit from a counter with a tiny todo app.
-
-{siteCodeLang.value === "ts" ? <ExternalSignalExampleTS /> : <ExternalSignalExample />}
-
-You can see here even though, todos & input is defined inside of signals.ts, we can import them inside a single or multiple components and still keep our reactivity!
-
-### Quick gotcha!
-
-You can not destructure signals else it will loose it's reactiviesness, ie
+You can access a signal's value directly:
 
 ```ts
-const count = signal(0)
-const { value } = count; // value is no longer reactive!
+console.log(userName.value)  // "bob"
+userName.value = "alice"
 ```
 
-### What if you want to listen to value updates outside of the kaioken context.
+Assigning a new value triggers reactivity, notifying any subscribers.
 
-We've got you covered! All signals have a subscribe method that will fire anytime the value updates.
+### Subscribing to Signals
+
+You can subscribe to a signal's value changes using the `subscribe` method:
 
 ```ts
-const count = signal(0)
-
-const stop = count.subscribe(($count) => {
-  console.log(`count is now ${$count}`)
-  // any business logic you'd like you add!
+const unsubscribe = userName.subscribe((newValue) => {
+  console.log("Value updated:", newValue)
 })
 ```
 
-``subscribe`` returns it's unsubscribe method allowing you stop listening to any updates when ever you please!
-
-
-### Signals only updates the components that care!
-
-Let's say we have a parent & child situation, like so...
-
-{siteCodeLang.value === "ts" ? <SignalToChildExampleTS /> : <SignalToChildExample />}
-
-When mutating ``count``, signals are smart enough to only add ``Child`` to the internal list of 'subscribed nodes', meaning anytime it updates it will only re render ``Child`` even though it's defined in ``Parent``.
-
-### One more tiny thing
-
-You may have noticed in our todo app example this line
+The subscribe function returns an `unsubscribe` function, 
+allowing you to remove the subscription when needed:
 
 ```ts
-todos.value = [...todos.value, input.value]
+unsubscribe()
 ```
 
-Why not just ``todos.value.push(input.value)``? This is because signals only react to explicit sets on the value properly! This means you cannot deeply mutate the value and expect it to react. However, we supply a special ``notify`` method that allows you to notify all the subscribers (including components that have automatically subscribed to the signal), after you deeply mutate the value, so we can update the todos onSubmit method to look like so.
+## Derived Signals
 
-{siteCodeLang.value === "ts" ? <NotifyExampleTS /> : <NotifyExample />}
+---
+
+<CalloutBlock>
+  <span className="not-prose text-sm">
+    Derived signals are read-only, meaning their value cannot be set directly.
+  </span>
+</CalloutBlock>
+
+Use `signal.map()` to create a derived signal from another signal:
+
+```ts
+const userAge = signal(25)
+const userJoke =  userAge.map((age) => 
+  `${userAge} walked into a bar... 
+  and the bartender said, 'Why the long integer?'`
+)
+```
+
+Use `computed` to create a derived signal from a getter function:
+
+```ts
+import { computed } from "kaioken"
+
+const userGreeting = computed(() => `Hello, ${userName}! ${userJoke}`)
+```
+
+The `computed` signal will automatically track dependencies and 
+update whenever the tracked signals change.
+
+<CalloutBlock>
+  <span className="not-prose text-sm">
+  We've snuck a quality-of-life feature in here - signals 
+implement `toString()` and therefore are able to be used in strings.
+  </span>
+</CalloutBlock>
+
+
+## Signals in Components
+
+----
+
+In Kaioken components, reading and writing signals is slightly nuanced
+but has the capability to provide unmatched performance.
+
+```tsx
+function App() {
+  return (
+    <div>
+      <h1>{userGreeting.value}</h1>
+      <input 
+        type="text" 
+        value={userName.value} 
+        oninput={(e) => userName.value = e.target.value} 
+      />
+    </div>
+  )
+}
+```
+
+Here, `userGreeting.value` and `userName.value` are read directly inside 
+the component during render, causing the component to automatically subscribe 
+to them. This means the component will re-render whenever `userName.value` 
+or `userGreeting.value` change.
+
+While this may be the desired effect, signals can be much more performant
+when used for text or attributes. See the following: 
+
+```tsx
+function App() {
+  return (
+    <div>
+      <h1>{userGreeting}</h1>
+      <input 
+        type="text" 
+        value={userName} 
+        oninput={(e) => userName.value = e.target.value} 
+      />
+    </div>
+  )
+}
+```
+
+Because the signal's `value` is not read at the time of rendering, **when it 
+changes, Kaioken will only change the things that matter** - in this case, 
+the text node that displays the greeting and the `value` attribute. 
+
+
+<CalloutBlock variant="info">
+  <span className="not-prose text-sm">
+    This is one of the more complex, but powerful aspects of signals.
+    The core philosophy around their design is 
+    **reactivity via observation, where it matters**.
+  </span>
+</CalloutBlock>
+

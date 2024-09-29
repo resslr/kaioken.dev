@@ -95,6 +95,14 @@ a {
   color: #bbb;
 }
 
+.prose :where(hr):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  border-color: #fffc;
+  border-width: 2px;
+  opacity: .5;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .docs-section-header a {
   color: #fff !important;
   text-decoration: none;
@@ -166,6 +174,13 @@ pre.shiki span[style="color:#85E89D;"],
 pre.shiki span[style="color: rgb(133, 232, 157);"] {
   color: #e8585c !important;
 }
+
+/** comments: */
+pre.shiki span[style="color:#6A737D;"],
+pre.shiki span[style="color: rgb(106, 115, 125);"] {
+  color: #939192 !important;
+}
+
 
 pre.shiki span.line.diff.remove {
   background-color: #512525;
