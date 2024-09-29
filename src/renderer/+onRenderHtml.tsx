@@ -21,6 +21,7 @@ export const onRenderHtml: OnRenderHtmlAsync = async (
         <title>${getTitle(pageContext)}</title>
         <meta name="description" content="${getDescription(pageContext)}">
         <meta name="keywords" content="${getKeywords(pageContext).join(", ")}">
+        <meta property="og:image" content="https://kaioken.dev/kaioken-splash.png" />
         <meta name="darkreader-lock">
       </head>
       <body>
