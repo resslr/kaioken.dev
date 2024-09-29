@@ -158,7 +158,7 @@ export const useHashChangeDispatcher = (sections: string[]) => {
         const rect = section.getBoundingClientRect()
         const rectTop = rect.top
         const rectBottom = rect.bottom
-        if (rectBottom > window.innerHeight + window.scrollY + 500) {
+        if (rectBottom + 60 <= window.scrollY) {
           return
         }
 
