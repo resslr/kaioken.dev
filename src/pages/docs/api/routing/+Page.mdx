@@ -55,8 +55,9 @@ full page reloads.
 4. <CodePreview data={navigateTypePreview} />
     - A function for programmatic navigation to a given URL. 
 5. <CodePreview data={useRouterTypePreview} />
-    - A hook that allows you to access the URL state as parsed by the
-      router.
+    - A hook that allows you to access the URL `params` and `query`
+      objects as parsed by the router. Also provides `setQuery`, to 
+      update the query string in the URL. 
 
 ### Example
 
