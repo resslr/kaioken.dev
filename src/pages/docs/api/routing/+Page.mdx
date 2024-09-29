@@ -1,12 +1,18 @@
 import { TabGroup } from "$/components/TabGroup"
+import { CodePreview } from "$/components/CodePreview"
+import { linkTypePreview } from "$/components/previews/link.type.preview"
+import { routeTypePreview } from "$/components/previews/route.type.preview"
+import { routerTypePreview } from "$/components/previews/router.type.preview"
+import { navigateTypePreview } from "$/components/previews/navigate.type.preview"
+import { useRouterTypePreview } from "$/components/previews/useRouter.type.preview"
 import { siteCodeLang } from "$/state/langToggle"
-import { RoutingKeyComponents } from "./KeyComponents"
 import { selectedTab } from "./selectedTab"
 import ExampleApp from "./example.App.md"
 import ExampleLoginPage from "./example.LoginPage.md"
 import ExampleUserList from "./example.UserList.md"
 import ExampleUserListTS from "./example.UserList.ts.md"
 import ExampleUserPage from "./example.UserPage.md"
+
 
 # Routing
 
@@ -20,7 +26,37 @@ full page reloads.
 
 ### Key Components
 
-<RoutingKeyComponents />
+1. <CodePreview data={routerTypePreview} />
+    - Renders a single child component based on the current URL path.
+    - Manages navigation history and URL updates.
+    - Properties:
+        - **basePath** (optional): A prefix for path matching, useful
+          when the application is deployed in a subdirectory.
+2. <CodePreview data={routeTypePreview} />
+    - Defines a path pattern and the associated component to render when
+      the path matches.
+    - Properties:
+        - **element**: A JSX element to render.
+        - **path**: A string representing the path pattern to match.
+        - **fallthrough** (optional): A boolean indicating whether to
+          match loosely, allowing nested routers.
+3. <CodePreview data={linkTypePreview} />
+    - An anchor tag that handles client-side navigation without full
+      page reloads.
+    - Maintains crawlability by providing a valid href attribute for
+      search engines.
+    - Properties:
+        - **to**: The destination URL for navigation.
+        - **replace** (optional, default `false`): A boolean
+          indicating whether to replace the current history entry.
+        - **explicit** (optional, default `false`): Links prepend 
+          the `path` of parent routes and `basePath` of parent routers. 
+          Use the `explicit` flag to disable this behavior.
+4. <CodePreview data={navigateTypePreview} />
+    - A function for programmatic navigation to a given URL. 
+5. <CodePreview data={useRouterTypePreview} />
+    - A hook that allows you to access the URL state as parsed by the
+      router.
 
 ### Example
 
