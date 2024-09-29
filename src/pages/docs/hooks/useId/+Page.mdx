@@ -1,0 +1,13 @@
+import ExampleCode from "./example.md"
+
+# useId
+
+Generates a unique, stable ID for a component or element. 
+This hook ensures that each rendered instance of a component gets its own unique identifier, 
+making it ideal for cases where you need to bind elements like form labels, inputs, or any other HTML element requiring a unique id.
+
+The generated id will remain consistent **as long as the component's position in the application tree remains the same**, ensuring that re-renders don't break associations between elements, such as form fields and labels.
+
+### Example
+
+<ExampleCode />

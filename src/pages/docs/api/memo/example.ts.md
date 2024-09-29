@@ -1,7 +1,7 @@
 ```tsx
 import { memo } from "kaioken"
 
-const MyComponent = memo(({ value }: { value: number }) => {
+const MemoizedComponent = memo(({ value }: { value: number }) => {
   // Component logic here
   return <div>{value}</div>
 })
@@ -12,7 +12,7 @@ const MyComponent = memo(({ value }: { value: number }) => {
 ```tsx
 import { memo } from "kaioken"
 
-const MyComponent = memo(
+const MemoizedComponent = memo(
   ({ value }: { value: number }) => {
     // Component logic here
     return <div>{value}</div>

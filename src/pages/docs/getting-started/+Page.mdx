@@ -1,3 +1,4 @@
+import { DocsSectionHeader } from "$/components/DocsSectionHeader"
 import { ExternalLink } from "$/components/atoms/ExternalLink"
 import { CalloutBlock } from "$/components/atoms/CalloutBlock"
 import { HighlightOnLoad } from "$/components/HighlightOnLoad"
@@ -19,9 +20,9 @@ import { siteCodeLang } from "$/state/langToggle"
 # Getting started
 
 <HighlightOnLoad id="start-a-new-project">
-  <div className="docs-section-header mb-5">
-    <a href="#start-a-new-project">Start a new project</a>
-  </div>
+  <DocsSectionHeader href="#start-a-new-project">
+    Start a new project
+  </DocsSectionHeader>
   <div>
     <div className="not-prose">
       <PackageManagerSelector />
@@ -41,9 +42,9 @@ import { siteCodeLang } from "$/state/langToggle"
 </HighlightOnLoad>
 
 <HighlightOnLoad id="add-to-an-existing-project">
-  <div className="docs-section-header mb-5">
-    <a href="#add-to-an-existing-project">Add to an existing project</a>
-  </div>
+  <DocsSectionHeader href="#add-to-an-existing-project">
+    Add to an existing project
+  </DocsSectionHeader>
 
   <CalloutBlock>
     <span>The following example demonstrates adding Kaioken to a <ExternalLink href="https://vitejs.dev/">Vite</ExternalLink> project.</span>
@@ -115,9 +116,10 @@ import { siteCodeLang } from "$/state/langToggle"
 </HighlightOnLoad>
 
 <HighlightOnLoad id="getting-help">
-  <div className="docs-section-header">
-    <a href="#getting-help">Getting help</a>
-  </div>
+  <DocsSectionHeader href="#getting-help">
+    Getting help
+  </DocsSectionHeader>
+
   Reach out to us or get involved on <ExternalLink href="https://discord.gg/yspvgXegvs">Discord</ExternalLink>
 
 </HighlightOnLoad>

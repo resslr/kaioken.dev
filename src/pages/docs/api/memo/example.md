@@ -1,7 +1,7 @@
 ```jsx
 import { memo } from "kaioken"
 
-const MyComponent = memo(({ value }) => {
+const MemoizedComponent = memo(({ value }) => {
   // Component logic here
   return <div>{value}</div>
 })
@@ -12,11 +12,11 @@ const MyComponent = memo(({ value }) => {
 ```jsx
 import { memo } from "kaioken"
 
-const MyComponent = memo(
+const MemoizedComponent = memo(
   ({ value }) => {
     // Component logic here
     return <div>{value}</div>
   },
-  (prevProps, nextProps) => prevProps.value === nextProps.value
+  (prevProps, nextProps) => prevProps.nested.value === nextProps.nested.value
 )
 ```

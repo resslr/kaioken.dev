@@ -3,7 +3,7 @@ import tailwindTypography from "@tailwindcss/typography"
 
 export default {
   content: [
-    "./src/{components,layouts,pages,renderer}/**/*.{html,js,jsx,ts,tsx}",
+    "./src/{components,layouts,pages,renderer}/**/*.{html,js,jsx,ts,tsx,mdx}",
   ],
   theme: {
     extend: {

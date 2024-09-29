@@ -30,6 +30,10 @@ export const docMeta: DocItem[] = [
         title: "Roadmap",
         id: "roadmap",
       },
+      {
+        title: "Ecosystem",
+        id: "ecosystem",
+      },
     ],
   },
   {
@@ -57,6 +61,10 @@ export const docMeta: DocItem[] = [
         title: "Context",
         href: "/docs/api/context",
         keywords: ["createContext"],
+      },
+      {
+        title: "Lazy",
+        href: "/docs/api/lazy",
       },
       {
         title: "Memo",
@@ -105,6 +113,10 @@ export const docMeta: DocItem[] = [
       {
         title: "useEffect",
         href: "/docs/hooks/useEffect",
+      },
+      {
+        title: "useId",
+        href: "/docs/hooks/useId",
       },
       {
         title: "useLayoutEffect",
