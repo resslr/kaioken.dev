@@ -12,11 +12,11 @@ type Ball = {
   size: number
   sizeDir: number
 }
-const minSize = 20
-const maxSize = 60
-const speed = 1
+const MIN_SIZE = 20
+const MAX_SIZE = 60
+const SPEED = 0.25
 function randomSpeed() {
-  return -speed + Math.random() * speed || (Math.random() > 0.5 ? 1 : -1)
+  return -SPEED + Math.random() * SPEED || (Math.random() > 0.5 ? 1 : -1)
 }
 
 export function AnimatedBackground() {
@@ -46,7 +46,7 @@ export function AnimatedBackground() {
             x: randomSpeed(),
             y: randomSpeed(),
           },
-          size: maxSize / 2,
+          size: MAX_SIZE / 2,
           sizeDir: Math.random() > 0.5 ? 1 : -1,
         }
       })
@@ -79,10 +79,11 @@ export function AnimatedBackground() {
             ball.vel.y *= -1
           }
 
-          ball.size += ball.sizeDir * 0.125
-          if (ball.size < minSize) {
+          //ball.size += ball.sizeDir * 0.125
+          ball.size += ball.sizeDir * 0.0625
+          if (ball.size < MIN_SIZE) {
             ball.sizeDir = 1
-          } else if (ball.size > maxSize) {
+          } else if (ball.size > MAX_SIZE) {
             ball.sizeDir = -1
           } else if (Math.random() > 0.995) {
             ball.sizeDir *= -1
