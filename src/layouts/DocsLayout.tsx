@@ -7,7 +7,6 @@ import { useEffect, useMemo, useRef, useState } from "kaioken"
 
 export function DocsLayout({ children }: { children: JSX.Children }) {
   const { urlPathname } = usePageContext()
-  const articleRef = useRef<HTMLDivElement>(null)
   const sectionIds = useMemo(() => {
     const pageData = docMeta.find(({ href }) => href === urlPathname)
     if (!pageData) return []
@@ -23,10 +22,7 @@ export function DocsLayout({ children }: { children: JSX.Children }) {
           <ActiveLinkTrackerSlidingThing />
         </div>
       </aside>
-      <article
-        ref={articleRef}
-        className="prose prose-invert flex-grow py-5 w-full max-w-none sm:max-w-[calc(100%-200px-2rem)]"
-      >
+      <article className="prose prose-invert flex-grow py-5 w-full max-w-none sm:max-w-[calc(100%-200px-2rem)]">
         {children}
       </article>
     </Container>

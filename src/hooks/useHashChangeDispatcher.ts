@@ -181,7 +181,9 @@ export const useHashChangeDispatcher = (sections: string[]) => {
     window.addEventListener("scroll", handleScroll)
 
     // Run on initial mount to handle the case when the page is loaded scrolled partway down
-    handleScroll()
+    if (!!window.location.hash) {
+      handleScroll()
+    }
 
     return () => {
       window.removeEventListener("scroll", handleScroll)

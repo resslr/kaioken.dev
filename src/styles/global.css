@@ -8,7 +8,7 @@
 @tailwind utilities;
 
 .glass-container {
-  @apply border border-white border-opacity-5 bg-white bg-opacity-5 shadow-lg backdrop-blur-md
+  @apply border border-white border-opacity-5 bg-white bg-opacity-5 shadow-lg backdrop-blur-md;
 }
 
 * {
@@ -55,10 +55,6 @@
 
 body {
   margin: 0;
-}
-
-.prose {
-  color: (var(--color-dark))
 }
 
 a {
