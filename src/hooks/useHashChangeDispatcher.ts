@@ -196,9 +196,9 @@ export const useHashChangeDispatcher = (sections: string[]) => {
 function dispatchHashChange(newHash: string) {
   const hash = newHash ? `#${newHash}` : ""
   if (hash !== "") {
-    window.history.pushState(null, "", hash)
+    window.history.replaceState(null, "", hash)
   } else {
-    window.history.pushState(null, "", window.location.href.split("#")[0])
+    window.history.replaceState(null, "", window.location.href.split("#")[0])
   }
 
   // Dispatch a hashchange event
