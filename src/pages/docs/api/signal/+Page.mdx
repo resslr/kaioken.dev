@@ -71,23 +71,13 @@ allowing you to remove the subscription when needed:
 unsubscribe()
 ```
 
-## Derived Signals
+## Computed
 
 ---
 
 <CalloutBlock>
-    Derived signals are **read-only**, meaning their value cannot be set directly.
+  Computed signals are **read-only**, meaning their value cannot be set directly.
 </CalloutBlock>
-
-Use `signal.map()` to create a derived signal from another signal:
-
-```ts
-const userAge = signal(25)
-const userJoke =  userAge.map((age) => 
-  `${userAge} walked into a bar... 
-  and the bartender said, 'Why the long integer?'`
-)
-```
 
 Use `computed` to create a derived signal from a getter function:
 

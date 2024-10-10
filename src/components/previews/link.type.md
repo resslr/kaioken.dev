@@ -2,6 +2,6 @@
 (props: ElementProps<"a"> & { 
   to: string
   replace?: boolean 
-  explicit?: boolean 
+  inherit?: boolean 
 }) => JSX.Element
 ```
