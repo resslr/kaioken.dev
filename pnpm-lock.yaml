@@ -27,8 +27,8 @@ importers:
         specifier: ^4.21.1
         version: 4.21.1
       kaioken:
-        specifier: 0.33.2
-        version: 0.33.2
+        specifier: 0.34.0-0
+        version: 0.34.0-0
       tsx:
         specifier: ^4.19.1
         version: 4.19.1
@@ -71,7 +71,7 @@ importers:
         version: 5.6.3
       vite-plugin-kaioken:
         specifier: 0.13.3
-        version: 0.13.3(kaioken@0.33.2)
+        version: 0.13.3(kaioken@0.34.0-0)
 
 packages:
 
@@ -1078,8 +1078,8 @@ packages:
     resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
     hasBin: true
 
-  kaioken@0.33.2:
-    resolution: {integrity: sha512-b7MnK3bB2fRCYnVe9WUuNGCZ56jZ4uA00S9Nw//kyAVKLdKtEtyrrEvjoUnxDz2jRJhAQsw4gFHTOB41UiN4JA==}
+  kaioken@0.34.0-0:
+    resolution: {integrity: sha512-teWIfZ9DeB6bss47OCOt0i4hw5NdElV32w1O7tqSt2vCRMTZ75kbZnCm8TpmH7j24MwWxEJHZQcwObTzaUOe0A==}
 
   lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
@@ -2742,7 +2742,7 @@ snapshots:
 
   jiti@1.21.6: {}
 
-  kaioken@0.33.2: {}
+  kaioken@0.34.0-0: {}
 
   lilconfig@2.1.0: {}
 
@@ -3590,9 +3590,9 @@ snapshots:
       source-map-support: 0.5.21
       vite: 5.4.9(@types/node@22.7.6)
 
-  vite-plugin-kaioken@0.13.3(kaioken@0.33.2):
+  vite-plugin-kaioken@0.13.3(kaioken@0.34.0-0):
     dependencies:
-      kaioken: 0.33.2
+      kaioken: 0.34.0-0
 
   vite@5.4.9(@types/node@22.7.6):
     dependencies:
