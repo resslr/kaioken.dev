@@ -1,13 +1,8 @@
 import { CodePreview } from "$/components/CodePreview"
 import { siteCodeLang } from "$/state/langToggle"
 import { CalloutBlock } from "$/components/atoms/CalloutBlock"
-import ExternalSignalExample from "./example.externalSignal.md"
-import ExternalSignalExampleTS from "./example.externalSignal.ts.md"
-import SignalToChildExample from "./example.signalToChild.md"
-import SignalToChildExampleTS from "./example.signalToChild.ts.md"
-import NotifyExample from "./example.notify.md"
-import NotifyExampleTS from "./example.notify.ts.md"
-
+import { ExternalLink } from "$/components/atoms/ExternalLink"
+import { watchEffectTypePreview } from "$/components/previews/WatchEffect.type.preview"
 
 # Signal
 
@@ -28,8 +23,8 @@ import { signal } from "kaioken"
 const userName = signal("bob")
 ```
 
-The `signal` function takes an initial value and optionally a `displayName` 
-for debugging. This returns an instance of the `Signal` class with the 
+`signal` takes an initial value and optionally a `displayName` 
+for debugging. It returns an instance of the `Signal` class with the 
 following properties:
 
 - **value**: Gets or sets the signal's current value
@@ -75,10 +70,6 @@ unsubscribe()
 
 ---
 
-<CalloutBlock>
-  Computed signals are **read-only**, meaning their value cannot be set directly.
-</CalloutBlock>
-
 Use `computed` to create a signal derived from a getter function:
 
 ```ts
@@ -106,22 +97,26 @@ implement `toString()` and therefore are able to be used in strings.
   _reactivity via observation, **where it matters**_.
 </CalloutBlock>
 
-Use `watch` to observe changes in signals:
+Use `watch` create a <CodePreview data={watchEffectTypePreview} /> that 
+will fire the callback whenever `observed` signals change.
 ```ts
 import { watch } from "kaioken"
 
-watch(() => console.log(userName.value))
+const watcher = watch(() => console.log(userGreeting.value))
+
+watcher.stop()
+watcher.start()
 ```
+The callback provided to `watch` will fire immediately. 
+When a signal that it `observes` changes, it will be queued to fire again 
+within a <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/API/Window/queueMicrotask">microtask</ExternalLink>. 
+This allows us to automatically "batch" execution of callbacks.
 
-
-Any signals that are `observed` during the callback will cause it 
-to be called again when they change. 
-
-## Signals in Components
+## In Components
 
 ----
 
-### Using global signals
+### General usage
 
 In Kaioken components, reading and writing signals is slightly nuanced
 but has the capability to provide unmatched performance.
@@ -141,10 +136,10 @@ function App() {
 }
 ```
 
-In the above example, `userGreeting` and `userName` are `observed` by the 
-component during render, causing the component to automatically subscribe 
-to them. This means the component and all of its children will be updated 
-whenever their values change.
+In the above example, our `userGreeting` and `userName` signals from earlier 
+are `observed` by the component during render, causing the component to 
+automatically subscribe to them. This means the component and all of its 
+children will be updated whenever their values change.
 
 While this may be the desired effect, signals can be much more performant
 when used for text or attributes. See the following: 
@@ -164,8 +159,8 @@ function App() {
 }
 ```
 
-Because the signal is not `observed` at the time of rendering, 
-when it changes, Kaioken will only change the things that matter - in 
+Because neither of the signals are `observed` at the time of rendering, 
+when they change, Kaioken will only change the things that matter - in 
 this case, the text node inside of our heading that displays the 
 greeting and the `value` attribute of our input. 
 
@@ -183,7 +178,7 @@ import { useSignal, useComputed, useWatch } from "kaioken"
 
 function App() {
   const userName = useSignal("bob")
-  const userGreeting = useComputed(() => `Hello, ${userName.value}!`)
+  const userGreeting = useComputed(() => `Hello, ${userName}!`)
 
   useWatch(() => console.log(userName.value))
 
