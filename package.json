@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "type": "module",
+  "engines": {
+    "node": "LTS"
+  },
   "scripts": {
     "dev": "tsx ./express-entry.ts",
     "build": "vite build",
