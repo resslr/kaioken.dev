@@ -11,13 +11,9 @@ function App() {
 
   return (
     <div>
-      <ChildComponent onIncrement={handleIncrement} />
+      <button onclick={onIncrement}>Increment</button>
       <p>Count: {count}</p>
     </div>
   )
-}
-
-function ChildComponent({ onIncrement }: { onIncrement: () => void }) {
-  return <button onclick={onIncrement}>Increment</button>
 }
 ```
