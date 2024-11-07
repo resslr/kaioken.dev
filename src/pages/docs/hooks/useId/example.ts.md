@@ -1,4 +1,4 @@
-```jsx
+```tsx
 import { useId } from "kaioken"
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
   )
 }
 
-function FormItem({ name }) {
+function FormItem({ name }: { name: string }) {
   const id = useId()
 
   return (

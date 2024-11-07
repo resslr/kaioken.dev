@@ -1,4 +1,7 @@
+import { siteCodeLang } from "$/state/langToggle"
+
 import ExampleCode from "./example.md"
+import ExampleCodeTS from "./example.ts.md"
 
 # useId
 
@@ -14,4 +17,4 @@ break associations between elements, such as form fields and labels.
 
 ### Example
 
-<ExampleCode />
+{siteCodeLang.value === "ts" ? <ExampleCodeTS /> : <ExampleCode />}

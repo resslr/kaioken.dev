@@ -21,21 +21,21 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
-    "shiki": "^1.22.0",
+    "shiki": "^1.22.2",
     "tailwindcss": "^3.4.14",
     "typescript": "^5.6.3",
-    "vite-plugin-kaioken": "0.14.2"
+    "vite-plugin-kaioken": "0.15.0"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.0",
     "@mdx-js/rollup": "^3.1.0",
-    "@shikijs/rehype": "^1.22.0",
-    "@shikijs/transformers": "^1.22.0",
-    "compression": "^1.7.4",
+    "@shikijs/rehype": "^1.22.2",
+    "@shikijs/transformers": "^1.22.2",
+    "compression": "^1.7.5",
     "express": "^4.21.1",
-    "kaioken": "0.34.0",
-    "tsx": "^4.19.1",
-    "vike": "^0.4.199",
-    "vite": "^5.4.9"
+    "kaioken": "0.35.3",
+    "tsx": "^4.19.2",
+    "vike": "^0.4.201",
+    "vite": "^5.4.10"
   }
 }
