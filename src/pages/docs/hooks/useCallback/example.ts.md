@@ -5,13 +5,13 @@ function App() {
   const [count, setCount] = useState(0)
 
   // Without useCallback, handleIncrement will be recreated on every render.
-  const handleIncrement = useCallback(() => {
+  const handleClick = useCallback(() => {
     setCount((prev) => prev + 1)
   }, [])
 
   return (
     <div>
-      <button onclick={onIncrement}>Increment</button>
+      <button onclick={handleClick}>Increment</button>
       <p>Count: {count}</p>
     </div>
   )
