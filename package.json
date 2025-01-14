@@ -33,9 +33,9 @@
     "@shikijs/transformers": "^1.26.1",
     "compression": "^1.7.5",
     "express": "^4.21.2",
-    "kaioken": "0.35.3",
+    "kaioken": "0.35.8",
     "tsx": "^4.19.2",
     "vike": "^0.4.213",
-    "vite": "^5.4.11",
+    "vite": "^5.4.11"
   }
 }
