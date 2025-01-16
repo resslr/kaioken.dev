@@ -27,8 +27,8 @@ importers:
         specifier: ^4.21.2
         version: 4.21.2
       kaioken:
-        specifier: 0.35.8
-        version: 0.35.8
+        specifier: 0.35.9
+        version: 0.35.9
       tsx:
         specifier: ^4.19.2
         version: 4.19.2
@@ -71,7 +71,7 @@ importers:
         version: 5.7.3
       vite-plugin-kaioken:
         specifier: 0.15.0
-        version: 0.15.0(kaioken@0.35.8)
+        version: 0.15.0(kaioken@0.35.9)
 
 packages:
 
@@ -1264,8 +1264,8 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  kaioken@0.35.8:
-    resolution: {integrity: sha512-S4kt4I5kheZzSQRZKoHBW7QtmlcdJ8m7j7vmeCn3gIuH1bSmsO1Gxv+MDFNaBVTBiSPON1Bzk46O4dmIElRy3w==}
+  kaioken@0.35.9:
+    resolution: {integrity: sha512-2RbKT2HkppIVYmCNREbVuPGPLfdRr23Txccq22k3syFNvzDFsoDRKEyUbod2+rOMAuTxrP7zHN+01Ysd8232Zg==}
 
   lilconfig@3.1.3:
     resolution: {integrity: sha512-/vlFKAoH5Cgt3Ie+JLhRbwOsCQePABiU3tJ1egGvyQ+33R/vcwM2Zl2QR/LzjsBeItPt3oSVXapn+m4nQDvpzw==}
@@ -3088,7 +3088,7 @@ snapshots:
 
   json5@2.2.3: {}
 
-  kaioken@0.35.8: {}
+  kaioken@0.35.9: {}
 
   lilconfig@3.1.3: {}
 
@@ -3984,9 +3984,9 @@ snapshots:
       source-map-support: 0.5.21
       vite: 5.4.11(@types/node@22.10.5)
 
-  vite-plugin-kaioken@0.15.0(kaioken@0.35.8):
+  vite-plugin-kaioken@0.15.0(kaioken@0.35.9):
     dependencies:
-      kaioken: 0.35.8
+      kaioken: 0.35.9
 
   vite@5.4.11(@types/node@22.10.5):
     dependencies:
