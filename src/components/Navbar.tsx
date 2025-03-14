@@ -17,56 +17,56 @@ export function Navbar() {
   const { urlPathname } = usePageContext()
 
   return (
-    <nav className="flex items-center sm:justify-between gap-4 py-3 w-full">
-      <div className="flex gap-4 items-center">
-        <button
+    <nav className="flex items-center justify-between py-3 w-full">
+      <div className="flex items-center gap-4 h-full">
+      <button
           ariaLabel="Show menu"
           onclick={(e) => setOpen(true, e)}
           type="button"
-          className="sm:hidden"
+          className="sm:hidden flex items-center justify-center h-full"
         >
           <MenuIcon />
         </button>
 
-        <a href="/" className="hidden sm:flex gap-1">
-          <LogoIcon />
-          <span className="text-primary font-medium hidden sm:block">
+        <a href="/" className="hidden sm:flex items-center gap-1 h-full">
+          <div className="flex items-center justify-center">
+            <LogoIcon />
+          </div>
+          <span className="text-primary font-bold text-xl flex items-center">
             Kaioken
           </span>
         </a>
-        <div className="hidden sm:flex gap-2">
-          {SITE_LINKS.map((link) =>
-            isLinkActive(link.activePath ?? link.href, urlPathname) ? (
-              <a
-                key={link.href}
-                href={link.href}
-                target={link.external ? "_blank" : "_self"}
-                className="text-sm text-light"
-              >
+
+        <div className="hidden sm:flex items-center gap-4 ml-2 h-full">
+          {SITE_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target={link.external ? "_blank" : "_self"}
+              className={`text-md flex items-center h-full ${
+                isLinkActive(link.activePath ?? link.href, urlPathname)
+                  ? "text-light"
+                  : "text-muted hover:text-light"
+              }`}
+            >
+              <span className="flex items-center">
                 {link.title}
-              </a>
-            ) : (
-              <a
-                key={link.href}
-                href={link.href}
-                target={link.external ? "_blank" : "_self"}
-                className="inline-flex items-center gap-xs text-sm text-muted hover:text-light"
-              >
-                {link.title}
-                {link.external && <ExternalLinkIcon />}
-              </a>
-            )
-          )}
+                {link.external && <ExternalLinkIcon className="ml-1" />}
+              </span>
+            </a>
+          ))}
         </div>
       </div>
-      <div className="flex flex-grow gap-4 items-center justify-end">
+
+      <div className="flex items-center gap-4 h-full">
         <SiteLangToggle />
         <SearchButton />
-        <div className="flex gap-3 items-center">
+        <div className="flex items-center gap-3 h-full">
           <a
             href="https://github.com/CrimsonChi/kaioken"
             target="_blank"
             ariaLabel="Visit the Kaioken repo on GitHub"
+            className="flex items-center justify-center hover:opacity-80 transition-opacity"
           >
             <GithubIcon />
           </a>
@@ -74,6 +74,7 @@ export function Navbar() {
             href="https://discord.gg/yspvgXegvs"
             target="_blank"
             ariaLabel="Join the Kaioken Discord server"
+            className="flex items-center justify-center hover:opacity-80 transition-opacity"
           >
             <DiscordIcon />
           </a>
@@ -98,7 +99,7 @@ function SearchButton() {
     >
       <span className="text-xs sm:hidden text-muted">Search...</span>
       <span className="hidden sm:flex text-muted">
-        <span className="text-xs">Search documentation...</span>
+        <span className="text-xs">Search Docs</span>
       </span>
       <span className="hidden sm:flex items-center gap-1 bg-light opacity-85 text-dark px-1 rounded text-[11px] font-mono">
         {!mounted ? (
