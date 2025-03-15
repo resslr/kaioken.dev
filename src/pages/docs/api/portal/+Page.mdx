@@ -18,7 +18,7 @@ container.
     <TabGroup
       items={["App", "index.html"]}
       onSelect={(value) => (selectedTab.value = value)}
-          value={selectedTab.value}
+      value={selectedTab.value}
       itemSuffix={(item) => item === "App" ? `.${siteCodeLang.value}x` : ""}
     />
     {selectedTab.value === "App" ?

@@ -9,6 +9,7 @@ import ExampleTooltip from "./Example.Tooltip.md"
 import ExampleTooltipTS from "./Example.Tooltip.ts.md"
 import ExampleTooltipContainer from "./Example.TooltipContainer.md"
 import ExampleTooltipContainerTS from "./Example.TooltipContainer.ts.md"
+import { match } from "$/match"
 
 # useLayoutEffect
 
@@ -31,14 +32,23 @@ has changed.
     items={["App", "ButtonWithTooltip", "Tooltip", "TooltipContainer"]}
     onSelect={(value) => (selectedTab.value = value)}
     value={selectedTab.value}
-    itemSuffix={"." + siteCodeLang.value + "x"}
+    itemSuffix={`.${siteCodeLang.value}x`}
   />
-  {selectedTab.value === "App" ? (<ExampleApp />)
-    : selectedTab.value === "ButtonWithTooltip" ?
-      siteCodeLang.value === "js" ? (<ExampleButtonWithTooltip />) : (<ExampleButtonWithTooltipTS />)
-    : selectedTab.value === "Tooltip" ?
-      siteCodeLang.value === "js" ? (<ExampleTooltip />) : (<ExampleTooltipTS />)
-    : siteCodeLang.value === "js" ? (<ExampleTooltipContainer />) : (<ExampleTooltipContainerTS />)}
+    {match(siteCodeLang.value)
+        .with("js", () => { 
+          return match(selectedTab.value)
+            .with("App", () => <ExampleApp />)
+            .with("ButtonWithTooltip", () => <ExampleButtonWithTooltip />)
+            .with("Tooltip", () => <ExampleTooltip />)
+            .else(() => <ExampleTooltipContainer />)
+        })
+        .else(() => {
+          return match(selectedTab.value)
+            .with("App", () => <ExampleApp />)
+            .with("ButtonWithTooltip", () => <ExampleButtonWithTooltipTS />)
+            .with("Tooltip", () => <ExampleTooltipTS />)
+            .else(() => <ExampleTooltipContainerTS />)
+        })}
 </div>
 
 ### Related

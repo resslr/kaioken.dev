@@ -10,6 +10,7 @@ import ExampleThemeContext from "./example.ThemeContext.md"
 import ExampleThemeContextTS from "./example.ThemeContext.ts.md"
 import ExampleThemeContextProvider from "./example.ThemeContextProvider.md"
 import ExampleThemeContextProviderTS from "./example.ThemeContextProvider.ts.md"
+import { match } from "$/match"
 
 # Context
 
@@ -26,14 +27,23 @@ Children of the provider can use <a href="/docs/hooks/useContext">useContext</a>
       items={["App", "ThemeContext", "ThemeContextProvider", "Button"]}
       onSelect={(value) => (selectedTab.value = value)}
       value={selectedTab.value}
-      itemSuffix={(item) => "." + siteCodeLang.value + (item === "ThemeContext" ? "" : "x")}
+      itemSuffix={(item) => `.${siteCodeLang.value}${item === "ThemeContext" ? "" : "x"}`}
     />
-      {selectedTab.value === "App" ? (<ExampleApp />) 
-        : selectedTab.value === "ThemeContext" ?
-          siteCodeLang.value === "js" ? (<ExampleThemeContext />) : (<ExampleThemeContextTS />) 
-        : selectedTab.value === "ThemeContextProvider" ?
-          siteCodeLang.value === "js" ? (<ExampleThemeContextProvider />) : (<ExampleThemeContextProviderTS />)
-        : (<ExampleButton />)}
+      {match(siteCodeLang.value)
+        .with("js", () => { 
+          return match(selectedTab.value)
+            .with("App", () => <ExampleApp />)
+            .with("ThemeContext", () => <ExampleThemeContext />)
+            .with("ThemeContextProvider", () => <ExampleThemeContextProvider />)
+            .else(() => <ExampleButton />)
+        })
+        .else(() => {
+          return match(selectedTab.value)
+            .with("App", () => <ExampleApp />)
+            .with("ThemeContext", () => <ExampleThemeContextTS />)
+            .with("ThemeContextProvider", () => <ExampleThemeContextProviderTS />)
+            .else(() => <ExampleButton />)
+        })}
   </div>
 </div>
 
