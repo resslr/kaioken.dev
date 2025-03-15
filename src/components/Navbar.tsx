@@ -11,7 +11,7 @@ import { DiscordIcon } from "./icons/DiscordIcon"
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
 import { SiteLangToggle } from "./SiteLangToggle"
 import { useCallback, useLayoutEffect, useSignal } from "kaioken"
-import { match } from "$/match"
+import { match } from "lit-match"
 
 export function Navbar() {
   const { setOpen } = useNavDrawer()
