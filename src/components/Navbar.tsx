@@ -3,14 +3,15 @@ import { MenuIcon } from "./icons/MenuIcon"
 import { GithubIcon } from "./icons/GithubIcon"
 import { CommandKeyIcon } from "./icons/keys/CommandKeyIcon"
 import { useNavDrawer } from "$/state/navDrawer"
-import { SITE_LINKS } from "$/constants"
+import { OS, SITE_LINKS } from "$/constants"
 import { usePageContext } from "$/context/pageContext"
-import { isLinkActive, isMac as isMacImpl } from "$/utils"
+import { isLinkActive } from "$/utils"
 import { useCommandPallete } from "$/state/commandPallete"
 import { DiscordIcon } from "./icons/DiscordIcon"
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
 import { SiteLangToggle } from "./SiteLangToggle"
-import { useCallback, useLayoutEffect, useMemo, useState } from "kaioken"
+import { useCallback, useLayoutEffect, useSignal } from "kaioken"
+import { match } from "$/match"
 
 export function Navbar() {
   const { setOpen } = useNavDrawer()
@@ -19,7 +20,7 @@ export function Navbar() {
   return (
     <nav className="flex items-center justify-between py-3 w-full">
       <div className="flex items-center gap-4 h-full">
-      <button
+        <button
           ariaLabel="Show menu"
           onclick={(e) => setOpen(true, e)}
           type="button"
@@ -86,10 +87,9 @@ export function Navbar() {
 
 function SearchButton() {
   const { setOpen } = useCommandPallete()
-  const [mounted, setMounted] = useState(false)
-  const isMac = useMemo(() => mounted && isMacImpl(), [mounted])
+  const os = useSignal<null | "mac" | "other">(null)
+  useLayoutEffect(() => ((os.value = OS), void 0), [])
   const handleClick = useCallback((e: MouseEvent) => setOpen(true, e), [])
-  useLayoutEffect(() => setMounted(true), [])
   return (
     <button
       ariaLabel="Search documentation"
@@ -102,13 +102,12 @@ function SearchButton() {
         <span className="text-xs">Search Docs</span>
       </span>
       <span className="hidden sm:flex items-center gap-1 bg-light opacity-85 text-dark px-1 rounded text-[11px] font-mono">
-        {!mounted ? (
-          <span innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;" />
-        ) : isMac ? (
-          <CommandKeyIcon width="0.7rem" height="0.7rem" />
-        ) : (
-          "Ctrl"
-        )}
+        {match(os.value)
+          .with("mac", () => <CommandKeyIcon width="0.7rem" height="0.7rem" />)
+          .with("other", () => "Ctrl")
+          .else(() => (
+            <span innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;" />
+          ))}
         <b>K</b>
       </span>
     </button>

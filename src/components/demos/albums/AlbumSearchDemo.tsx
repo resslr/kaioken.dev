@@ -4,7 +4,7 @@ import { CodeDemo } from "../CodeDemo"
 import { DemoComponentWrapper } from "../DemoComponentWrapper"
 import { PlayIcon } from "$/components/icons/PlayIcon"
 import { LikeButton } from "$/components/LikeButton"
-import { siteCodeLang } from "$/state/langToggle"
+import { siteCodeLang } from "$/state/siteCodeLang"
 import SearchableAlbumList from "./SearchableAlbumList.md"
 import SearchableAlbumListTS from "./SearchableAlbumList.ts.md"
 
