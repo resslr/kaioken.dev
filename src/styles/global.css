@@ -1,22 +1,54 @@
 /* This CSS is common to all pages */
 
-@import url("utils.css");
-@import url("dialog.css");
-@import url("scrollbars.css");
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('utils.css') layer(base);
+@import url('dialog.css') layer(base);
+@import url('scrollbars.css') layer(base);
+@import 'tailwindcss';
 
-.glass-container {
-  @apply border border-white border-opacity-5 bg-white bg-opacity-5 shadow-lg backdrop-blur-md;
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --color-primary: crimson;
+  --color-primary-light: #ec1b43;
+  --color-info: #322a2c;
+  --color-dark: #151313;
+  --color-light: #fffafa;
+  --color-light-highlight: #fbf6f6;
+
+  --color-stone-750: #332f2f;
+
+  --spacing-xs: 0.125rem;
+
+  --breakpoint-xs: 460px;
+
+  --background-image-theme-gradient: linear-gradient(153deg,
+      #9913548a,
+      #ed143d7d);
 }
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+
 
 * {
   box-sizing: border-box;
-}
-
-.text-shadow {
-  text-shadow: 1px 1px 3px #0007;
 }
 
 
@@ -59,6 +91,10 @@ body {
 
 a {
   text-decoration: none;
+}
+
+button {
+  cursor: pointer;
 }
 
 .prose a:not(.text-light) {

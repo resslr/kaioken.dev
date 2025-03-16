@@ -114,7 +114,7 @@ function CommandPalleteDisplay() {
         <Input
           type="text"
           placeholder="Search..."
-          className="w-full pl-8 bg-black bg-opacity-20 font-normal text-base"
+          className="w-full pl-8 bg-black/20 font-normal text-base"
           ref={searchInputRef}
         />
         <button
@@ -125,7 +125,7 @@ function CommandPalleteDisplay() {
           <CloseIcon width="1em" height="1em" />
         </button>
       </DialogHeader>
-      <DialogBody className="bg-black bg-opacity-10 border border-white border-opacity-5 rounded max-h-[400px] overflow-y-auto scroll-py-20">
+      <DialogBody className="bg-black/10 border border-white/5 rounded-sm max-h-[400px] overflow-y-auto scroll-py-20">
         <div className="flex flex-col gap-2">
           <CommandPalleteGroup
             title="Links"
@@ -208,7 +208,7 @@ function CommandPalleteItem({
   }, [item.href, urlPathname, setOpen])
   if (item.disabled) {
     return (
-      <a className="w-full text-muted bg-white bg-opacity-[1%] border border-white border-opacity-5 p-2 rounded focus:bg-opacity-5 hover:bg-opacity-5">
+      <a className="w-full text-muted bg-white/[1%] border border-white/5 p-2 rounded-sm focus:bg-white/5 hover:bg-white/5">
         <span className="w-full flex justify-between items-center text-xs">
           {item.title}
           <span className="badge">Upcoming</span>
@@ -220,7 +220,7 @@ function CommandPalleteItem({
   }
   return (
     <a
-      className="w-full text-muted bg-white bg-opacity-[1%] border border-white border-opacity-5 p-2 rounded focus:bg-opacity-5 hover:bg-opacity-5"
+      className="w-full text-muted bg-white/[1%] border border-white/5 p-2 rounded-sm focus:bg-white/5 hover:bg-white/5"
       href={item.href}
       onclick={onLinkClick}
       target={external ? "_blank" : "_self"}

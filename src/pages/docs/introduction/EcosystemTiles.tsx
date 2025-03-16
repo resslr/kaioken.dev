@@ -74,8 +74,8 @@ function EcosystemTile({
   subItems?: EcosystemItemChild[]
 }) {
   return (
-    <div className="flex flex-col p-[2px] w-full flex-grow basis-1/2 lg:basis-1/3 relative before:bg-theme-gradient before:content-[''] before:absolute before:inset-0 before:opacity-85 before:z-[-1] before:rounded-lg hover:before:opacity-100 before:transition-opacity text-center">
-      <div className="bg-black bg-opacity-10 p-6 rounded flex flex-col gap-8 flex-grow">
+    <div className="flex flex-col p-[2px] w-full grow basis-1/2 lg:basis-1/3 relative before:bg-theme-gradient before:content-[''] before:absolute before:inset-0 before:opacity-85 before:z-[-1] before:rounded-lg hover:before:opacity-100 before:transition-opacity text-center">
+      <div className="bg-black/10 p-6 rounded-sm flex flex-col gap-8 grow">
         <a
           href={url}
           className="not-prose text-xl font-bold text-light"

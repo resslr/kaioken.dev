@@ -90,7 +90,7 @@ export function AlbumSearchDemo() {
       <DemoComponentWrapper className="max-w-[340px] overflow-hidden p-0">
         <div className="h-[240px] overflow-auto p-4">
           <h2 className="mb-4 font-bold text-lg">Albums</h2>
-          <div className="sticky top-0 bg-stone-750 mb-4 flex rounded z-10 shadow-md shadow-stone-900">
+          <div className="sticky top-0 bg-stone-750 mb-4 flex rounded-sm z-10 shadow-md shadow-stone-900">
             <SearchIcon className="absolute left-2 top-1/2 -translate-y-1/2 text-stone-400" />
             <input
               ref={inputRef}
@@ -118,10 +118,10 @@ function AlbumItem({ album }: { album: Album; key: string }) {
   )
   return (
     <div className="flex items-center gap-4">
-      <div role="none" className="p-2 border-2 border-light rounded">
+      <div role="none" className="p-2 border-2 border-light rounded-sm">
         <PlayIcon />
       </div>
-      <div className="flex-grow">
+      <div className="grow">
         <h4 className="font-bold">{album.title}</h4>
         <span className="text-muted">{album.artist}</span>
       </div>

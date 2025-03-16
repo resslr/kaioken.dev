@@ -7,7 +7,7 @@ function DefaultCalloutBlock({
 }) {
   return (
     <div
-      className={`${fontSize === "small" ? "text-sm" : ""} callout-block not-prose px-4 py-2 bg-dark bg-opacity-50 backdrop-blur-md text-neutral-200 rounded border-l-4 border-l-[#b42641]`}
+      className={`${fontSize === "small" ? "text-sm" : ""} callout-block not-prose px-4 py-2 bg-dark/50 backdrop-blur-md text-neutral-200 rounded-sm border-l-4 border-l-[#b42641]`}
     >
       {children}
     </div>
@@ -23,7 +23,7 @@ function InfoCalloutBlock({
 }) {
   return (
     <div
-      className={`${fontSize === "small" ? "text-sm" : ""} callout-block not-prose px-4 py-2 bg-info backdrop-blur-md text-neutral-200 rounded`}
+      className={`${fontSize === "small" ? "text-sm" : ""} callout-block not-prose px-4 py-2 bg-info backdrop-blur-md text-neutral-200 rounded-sm`}
     >
       {children}
     </div>
