@@ -77,11 +77,7 @@ export default defineConfig({
         ],
       }),
     },
-    vike({
-      prerender: {
-        noExtraDir: true,
-      },
-    }),
+    vike(),
     kaioken(),
   ],
 })

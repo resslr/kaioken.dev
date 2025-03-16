@@ -19,24 +19,23 @@
     "@types/compression": "^1.7.5",
     "@types/express": "^5.0.0",
     "@types/mdx": "^2.0.13",
-    "postcss": "^8.4.49",
-    "prettier": "^3.4.2",
-    "shiki": "^1.26.1",
+    "postcss": "^8.5.3",
+    "prettier": "^3.5.3",
+    "shiki": "^3.2.1",
     "tailwindcss": "^4.0.14",
-    "typescript": "^5.7.3",
-    "vite-plugin-kaioken": "0.15.0"
+    "typescript": "^5.8.2",
+    "vite-plugin-kaioken": "0.16.0"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.0",
     "@mdx-js/rollup": "^3.1.0",
-    "@shikijs/rehype": "^1.26.1",
-    "@shikijs/transformers": "^1.26.1",
-    "compression": "^1.7.5",
+    "@shikijs/rehype": "^3.2.1",
+    "@shikijs/transformers": "^3.2.1",
+    "compression": "^1.8.0",
     "express": "^4.21.2",
-    "kaioken": "0.35.9",
-    "lit-match": "^1.0.0",
-    "tsx": "^4.19.2",
-    "vike": "^0.4.213",
-    "vite": "^5.4.11"
+    "kaioken": "0.36.0",
+    "lit-match": "^1.0.3",
+    "vike": "^0.4.225",
+    "vite": "^6.2.2"
   }
 }
