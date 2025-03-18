@@ -55,19 +55,19 @@ export default defineConfig({
     sourcemap: false,
   },
   plugins: [
-    {
-      name: "cf: emit '_headers' file",
-      buildStart() {
-        this.emitFile({
-          type: "asset",
-          fileName: "_headers",
-          source: `# custom cloudflare headers
-https://kaioken.dev/*
-  Content-Security-Policy: default-src 'self'; img-src 'self' kaioken.dev;
-          `,
-        })
-      },
-    },
+    //     {
+    //       name: "cf: emit '_headers' file",
+    //       buildStart() {
+    //         this.emitFile({
+    //           type: "asset",
+    //           fileName: "_headers",
+    //           source: `# custom cloudflare headers
+    // https://kaioken.dev/*
+    //   Content-Security-Policy: default-src 'self'; img-src 'self' kaioken.dev;
+    //           `,
+    //         })
+    //       },
+    //     },
     {
       enforce: "pre",
       ...mdx({
