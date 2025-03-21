@@ -14,17 +14,17 @@
   "keywords": [],
   "author": "",
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.0.14",
+    "@tailwindcss/postcss": "^4.0.15",
     "@tailwindcss/typography": "^0.5.16",
     "@types/compression": "^1.7.5",
-    "@types/express": "^5.0.0",
+    "@types/express": "^5.0.1",
     "@types/mdx": "^2.0.13",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "shiki": "^3.2.1",
-    "tailwindcss": "^4.0.14",
+    "tailwindcss": "^4.0.15",
     "typescript": "^5.8.2",
-    "vite-plugin-kaioken": "0.16.0"
+    "vite-plugin-kaioken": "0.16.4"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.0",
@@ -33,9 +33,9 @@
     "@shikijs/transformers": "^3.2.1",
     "compression": "^1.8.0",
     "express": "^4.21.2",
-    "kaioken": "0.36.0",
+    "kaioken": "0.36.4",
     "lit-match": "^1.0.3",
-    "vike": "^0.4.225",
+    "vike": "^0.4.226",
     "vite": "^6.2.2"
   }
 }
