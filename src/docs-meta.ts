@@ -115,6 +115,10 @@ export const docMeta: DocItem[] = [
         href: "/docs/hooks/useEffect",
       },
       {
+        title: "useEffectEvent",
+        href: "/docs/hooks/useEffectEvent",
+      },
+      {
         title: "useId",
         href: "/docs/hooks/useId",
       },
