@@ -18,7 +18,7 @@ export function Navbar() {
   const { urlPathname } = usePageContext()
 
   return (
-    <nav className="flex items-center justify-between py-3 w-full">
+    <nav className="flex items-center justify-between py-3 gap-2 w-full">
       <div className="flex items-center gap-4 h-full">
         <button
           ariaLabel="Show menu"
@@ -38,7 +38,7 @@ export function Navbar() {
           </span>
         </a>
 
-        <div className="hidden sm:flex items-center gap-4 ml-2 h-full">
+        <div className="hidden sm:flex items-center gap-4 ml-2 h-full text-sm md:text-base">
           {SITE_LINKS.map((link) => (
             <a
               key={link.href}
@@ -94,7 +94,7 @@ function SearchButton() {
     <button
       ariaLabel="Search documentation"
       type="button"
-      className="flex leading-4 justify-between items-center grow text-left sm:grow-0 min-w-36 px-4 py-2 pr-2 gap-4 rounded-sm border border-white/10 bg-stone-950 hover:bg-stone-900"
+      className="flex leading-4 justify-between items-center grow text-left sm:grow-0 min-w-24 sm:min-w-36 px-4 py-2 pr-2 gap-4 rounded-sm border border-white/10 bg-stone-950 hover:bg-stone-900"
       onclick={handleClick}
     >
       <span className="text-xs sm:hidden text-muted">Search...</span>
