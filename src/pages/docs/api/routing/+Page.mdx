@@ -1,3 +1,4 @@
+import { match } from "lit-match"
 import { TabGroup } from "$/components/TabGroup"
 import { CodePreview } from "$/components/CodePreview"
 import { linkTypePreview } from "$/components/previews/link.type.preview"
@@ -5,8 +6,10 @@ import { routeTypePreview } from "$/components/previews/route.type.preview"
 import { routerTypePreview } from "$/components/previews/router.type.preview"
 import { navigateTypePreview } from "$/components/previews/navigate.type.preview"
 import { useRouterTypePreview } from "$/components/previews/useRouter.type.preview"
+import { refTypePreview } from "$/components/previews/Ref.type.preview"
 import { siteCodeLang } from "$/state/siteCodeLang"
 import { selectedTab } from "./selectedTab"
+import { ExternalLink } from "$/components/atoms/ExternalLink"
 import ExampleApp from "./example.App.md"
 import ExampleLoginPage from "./example.LoginPage.md"
 import ExampleUserList from "./example.UserList.md"
@@ -56,7 +59,8 @@ full page reloads.
 5. <CodePreview data={useRouterTypePreview} />
     - A hook that allows you to access the URL `params` and `query`
       objects as parsed by the router. Also provides `setQuery`, to 
-      update the query string in the URL. 
+      update the query string in the URL, and a <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/API/ViewTransition">ViewTransition</ExternalLink> <CodePreview data={refTypePreview} />
+      that can be used to control the navigation transition if `transition` is enabled.
 
 ### Example
 
@@ -68,10 +72,20 @@ full page reloads.
       value={selectedTab.value}
       itemSuffix={() => `.${siteCodeLang.value}x`}
     />
-    {selectedTab.value === "App" ? (<ExampleApp />) 
-      : selectedTab.value === "LoginPage" ? (<ExampleLoginPage />)
-      : selectedTab.value === "UserList" ?
-        siteCodeLang.value === "js" ? (<ExampleUserList />) : (<ExampleUserListTS />)
-      : (<ExampleUserPage />)}
+    {match(siteCodeLang.value)
+        .with("js", () => { 
+          return match(selectedTab.value)
+            .with("App", () => <ExampleApp />)
+            .with("LoginPage", () => <ExampleLoginPage />)
+            .with("UserList", () => <ExampleUserList />)
+            .else(() => <ExampleUserPage />)
+        })
+        .else(() => {
+          return match(selectedTab.value)
+            .with("App", () => <ExampleApp />)
+            .with("LoginPage", () => <ExampleLoginPage />)
+            .with("UserList", () => <ExampleUserListTS />)
+            .else(() => <ExampleUserPage />)
+        })}
   </div>
 </div>
