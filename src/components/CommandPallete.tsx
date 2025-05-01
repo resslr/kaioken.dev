@@ -225,10 +225,15 @@ function CommandPalleteItem({
       onclick={onLinkClick}
       target={external ? "_blank" : "_self"}
     >
-      <span className="flex gap-1 items-center text-sm font-light">
-        {item.title}
-        {external ? <ExternalLinkIcon width=".85rem" height=".85rem" /> : ""}
-      </span>
+      <div className="flex items-start justify-between">
+        <span className="flex gap-1 items-center text-sm font-light">
+          {item.title}{" "}
+          {external ? <ExternalLinkIcon width=".85rem" height=".85rem" /> : ""}
+        </span>
+        {item.isNew && (
+          <span className="badge px-1 py-0.5 rounded-sm">New</span>
+        )}
+      </div>
       <CommandPalleteBadges item={item} />
     </a>
   )

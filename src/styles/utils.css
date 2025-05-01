@@ -39,6 +39,14 @@ button.reset {
   background-color: #333;
 }
 
+.badge.badge-success {
+  font-size: 10px;
+  padding: 2px 5px;
+  text-transform: unset;
+  color: #f1f1f1;
+  background-color: #161;
+}
+
 .link-button {
   padding: .5rem 1rem;
   background: var(--color-light);
