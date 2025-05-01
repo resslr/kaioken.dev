@@ -27,8 +27,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
       kaioken:
-        specifier: 0.37.0
-        version: 0.37.0
+        specifier: 0.38.0
+        version: 0.38.0
       lit-match:
         specifier: ^1.0.3
         version: 1.0.3
@@ -70,8 +70,8 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
       vite-plugin-kaioken:
-        specifier: 0.17.0
-        version: 0.17.0(kaioken@0.37.0)
+        specifier: 0.18.0
+        version: 0.18.0(kaioken@0.38.0)
 
 packages:
 
@@ -1025,8 +1025,8 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  kaioken@0.37.0:
-    resolution: {integrity: sha512-prNpqzdPTyC2sl81DOZUX7PvhNo0eFk0Y8dUlEhnIBdH2lxEwVg+IwdD7l7KTaiXAchrHJzzvDF2cuFRajmoCg==}
+  kaioken@0.38.0:
+    resolution: {integrity: sha512-G+92jv1X8iowwMV1QsspZMlt6VVcLqpKa3zFeVZIujLYB+DqBDXmybWdLpOW81dyZ6Q5CLq47+8bCSJpyG/L1g==}
 
   lightningcss-darwin-arm64@1.29.2:
     resolution: {integrity: sha512-cK/eMabSViKn/PG8U/a7aCorpeKLMlK0bQeNHmdb7qUnBkNPnL+oV5DjJUo0kqWsJUapZsM4jCfYItbqBDvlcA==}
@@ -1553,10 +1553,10 @@ packages:
       vite:
         optional: true
 
-  vite-plugin-kaioken@0.17.0:
-    resolution: {integrity: sha512-oJJuNTbImBXxqi6q7c5H4WgJCeEVy9iAUS7oERMNLYjE0tdqcmCjknfN0+4FHrgwJhqOosB9MMYL0GBXBm3hWA==}
+  vite-plugin-kaioken@0.18.0:
+    resolution: {integrity: sha512-FYVxQPDvbaai41LgCOausZuezA4fbR+Xqyb435WXG73zWSi5Bujpa4VM4FFbVX1K9kMPwf6OXMVAIkS574lXaw==}
     peerDependencies:
-      kaioken: '>=0.37.0'
+      kaioken: '>=0.38.0-1'
 
   vite@6.2.6:
     resolution: {integrity: sha512-9xpjNl3kR4rVDZgPNdTL0/c6ao4km69a/2ihNQbcANz8RuCOK3hQBmLSJf3bRKVQjVMda+YvizNE8AwvogcPbw==}
@@ -2516,7 +2516,7 @@ snapshots:
 
   json5@2.2.3: {}
 
-  kaioken@0.37.0: {}
+  kaioken@0.38.0: {}
 
   lightningcss-darwin-arm64@1.29.2:
     optional: true
@@ -3306,9 +3306,9 @@ snapshots:
     optionalDependencies:
       vite: 6.2.6(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.2)(tsx@4.19.3)
 
-  vite-plugin-kaioken@0.17.0(kaioken@0.37.0):
+  vite-plugin-kaioken@0.18.0(kaioken@0.38.0):
     dependencies:
-      kaioken: 0.37.0
+      kaioken: 0.38.0
       magic-string: 0.30.17
 
   vite@6.2.6(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.2)(tsx@4.19.3):

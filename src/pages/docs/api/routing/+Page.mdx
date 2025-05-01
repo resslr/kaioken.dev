@@ -35,6 +35,8 @@ full page reloads.
     - Properties:
         - **basePath** (optional): A prefix for path matching, useful
           when the application is deployed in a subdirectory.
+        - **transition** (optional, default `false`): A boolean
+          indicating whether to enable usage of the <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API">ViewTransition API</ExternalLink> for navigation.
 2. <CodePreview data={routeTypePreview} />
     - Defines a path pattern and the associated component to render when
       the path matches.
