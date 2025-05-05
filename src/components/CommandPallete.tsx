@@ -247,7 +247,7 @@ function CommandPalleteItem({
 function CommandPalleteBadges({ item }: { item: DocPageLink }) {
   if (!item.keywords) return null
   return (
-    <div className="flex gap-1 mt-1">
+    <div className="flex flex-wrap gap-1 mt-1">
       {item.keywords.map((keyword) => (
         <span key={keyword} className="badge badge-muted">
           {keyword}

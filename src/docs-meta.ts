@@ -27,25 +27,29 @@ type DocSectionLink = {
 
 const NEW_API_DURATION = 30 * 24 * 60 * 60 * 1000 // 30 days
 const now = Date.now()
+
+const isNew = (strDate: string) =>
+  now < new Date(strDate).getTime() + NEW_API_DURATION
+
 const API_RELEASE_DATES: Record<string, IsNew> = {
   swr: {
-    isNew: now < new Date("2025-05-01").getTime() + NEW_API_DURATION,
+    isNew: isNew("2025-05-01"),
     since: "0.38.0",
   },
   form: {
-    isNew: now < new Date("2025-05-01").getTime() + NEW_API_DURATION,
+    isNew: isNew("2025-05-01"),
     since: "0.38.0",
   },
   element_bindings: {
-    isNew: now < new Date("2025-05-05").getTime() + NEW_API_DURATION,
+    isNew: isNew("2025-05-05"),
     since: "0.38.2",
   },
   sig_for: {
-    isNew: now < new Date("2025-05-06").getTime() + NEW_API_DURATION,
+    isNew: isNew("2025-05-06"),
     since: "0.38.4",
   },
   sig_derive: {
-    isNew: now < new Date("2025-05-06").getTime() + NEW_API_DURATION,
+    isNew: isNew("2025-05-06"),
     since: "0.38.4",
   },
 }
@@ -98,12 +102,13 @@ export const docMeta: DocItem[] = [
       {
         title: "Form",
         href: "/docs/api/form",
-        keywords: ["form", "useForm"],
+        keywords: ["useForm"],
         isNew: API_RELEASE_DATES.form,
       },
       {
         title: "Lazy",
         href: "/docs/api/lazy",
+        keywords: ["code-splitting"],
       },
       {
         title: "Memo",
@@ -116,12 +121,19 @@ export const docMeta: DocItem[] = [
       {
         title: "Router",
         href: "/docs/api/router",
-        keywords: ["router", "route", "link", "navigate"],
+        keywords: ["Router", "Route", "Link", "navigate", "useRouter"],
       },
       {
         title: "Signal",
         href: "/docs/api/signal",
-        keywords: ["signal", "state"],
+        keywords: [
+          "state",
+          "computed",
+          "effect",
+          "two way binding",
+          "For",
+          "Derive",
+        ],
         sections: [
           {
             id: "general-usage",
