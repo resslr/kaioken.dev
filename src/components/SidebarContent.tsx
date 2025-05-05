@@ -65,7 +65,7 @@ export function SidebarContent() {
                       </Link>
                     )}
                     {isActive && page.sections && (
-                      <LinkList className="px-2 py-1 bg-white/5 text-sm">
+                      <LinkList className="px-2 py-1 my-2 bg-white/5 text-sm rounded border border-white/5">
                         {page.sections.map((section) => (
                           <Link
                             className="flex items-center justify-between"
