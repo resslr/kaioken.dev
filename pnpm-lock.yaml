@@ -27,17 +27,17 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
       kaioken:
-        specifier: 0.38.1
-        version: 0.38.1
+        specifier: 0.38.3
+        version: 0.38.3
       lit-match:
         specifier: ^1.0.3
         version: 1.0.3
       vike:
         specifier: ^0.4.229
-        version: 0.4.229(vite@6.3.4(@types/node@22.15.3)(jiti@2.4.2)(lightningcss@1.29.2)(tsx@4.19.3))
+        version: 0.4.229(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(lightningcss@1.29.2))
       vite:
-        specifier: ^6.3.4
-        version: 6.3.4(@types/node@22.15.3)(jiti@2.4.2)(lightningcss@1.29.2)(tsx@4.19.3)
+        specifier: ^6.3.5
+        version: 6.3.5(@types/node@22.15.3)(jiti@2.4.2)(lightningcss@1.29.2)
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4.1.5
@@ -70,8 +70,8 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
       vite-plugin-kaioken:
-        specifier: 0.18.0
-        version: 0.18.0(kaioken@0.38.1)
+        specifier: 0.18.3
+        version: 0.18.3(kaioken@0.38.3)
 
 packages:
 
@@ -797,9 +797,6 @@ packages:
     resolution: {integrity: sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==}
     engines: {node: '>= 0.4'}
 
-  get-tsconfig@4.10.0:
-    resolution: {integrity: sha512-kGzZ3LWWQcGIAmg6iWvXn0ei6WDtV26wzHRMwDSzmAbcXrTEXxHy6IehI6/4eT6VRKyMP1eF1VqwrVUmE/LR7A==}
-
   gopd@1.2.0:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
     engines: {node: '>= 0.4'}
@@ -879,8 +876,8 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  kaioken@0.38.1:
-    resolution: {integrity: sha512-tc5wyeSHLSDuG913p4A8Rx+M0MapdchUnG/VKKHDFW6XyW9KWXUkl29nEYKsphwmLaKWI0NhzukYt74G7BrEzg==}
+  kaioken@0.38.3:
+    resolution: {integrity: sha512-joVSPhdQZlrfl3F9nDWQ7YelvnnUneNrcRxB5tt2+0KRiXZoxpnXrhQMEBj5hX7WTqJZLp9vgcj+U+brym4OLg==}
 
   lightningcss-darwin-arm64@1.29.2:
     resolution: {integrity: sha512-cK/eMabSViKn/PG8U/a7aCorpeKLMlK0bQeNHmdb7qUnBkNPnL+oV5DjJUo0kqWsJUapZsM4jCfYItbqBDvlcA==}
@@ -1140,8 +1137,8 @@ packages:
   oniguruma-parser@0.12.1:
     resolution: {integrity: sha512-8Unqkvk1RYc6yq2WBYRj4hdnsAxVze8i7iPfQr8e4uSP3tRv0rpZcbGUDvxfQQcdwHt/e9PrMvGCsa8OqG9X3w==}
 
-  oniguruma-to-es@4.3.2:
-    resolution: {integrity: sha512-Hxxc18dGbVYzcTp2W64YwxQLYabiYM+dOX5Dtycy3qLvuYE4HIQjwfgEeAtPS6chFJs8UdINTQ83/Rlh+1Qwsg==}
+  oniguruma-to-es@4.3.3:
+    resolution: {integrity: sha512-rPiZhzC3wXwE59YQMRDodUwwT9FZ9nNBwQQfsd1wfdtlKEyCdRV0avrTcSZ5xlIvGRVPd/cx6ZN45ECmS39xvg==}
 
   parse-entities@4.0.2:
     resolution: {integrity: sha512-GG2AQYWoLgL877gQIKeRPGO1xF9+eG1ujIb5soS5gPvLQ1y2o8FL90w2QWNdf9I361Mpp7726c+lj3U0qK1uGw==}
@@ -1225,9 +1222,6 @@ packages:
 
   remark-rehype@11.1.2:
     resolution: {integrity: sha512-Dh7l57ianaEoIpzbp0PC9UKAdCSVklD8E5Rpw7ETfbTl3FqcOOgq5q2LVDhgGCkaBv7p24JXikPdvhhmHvKMsw==}
-
-  resolve-pkg-maps@1.0.0:
-    resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
 
   rollup@4.40.1:
     resolution: {integrity: sha512-C5VvvgCCyfyotVITIAv+4efVytl5F7wt+/I2i9q9GZcEXW9BP52YYOXC58igUi+LFZVHukErIIqQSWwv/M3WRw==}
@@ -1339,11 +1333,6 @@ packages:
   trough@2.2.0:
     resolution: {integrity: sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw==}
 
-  tsx@4.19.3:
-    resolution: {integrity: sha512-4H8vUNGNjQ4V2EOoGw005+c+dGuPSnhpPBPHBtsZdGZBk/iJb4kguGlPWaZTZ3q5nMtFOEsY0nRDlh9PJyd6SQ==}
-    engines: {node: '>=18.0.0'}
-    hasBin: true
-
   type-is@2.0.1:
     resolution: {integrity: sha512-OZs6gsjF4vMp32qrCbiVSkrFmXtG/AZhY3t0iAMrMBiAZyV9oALtXO8hsrHbMXF9x6L3grlFuwW2oAz7cav+Gw==}
     engines: {node: '>= 0.6'}
@@ -1407,13 +1396,13 @@ packages:
       vite:
         optional: true
 
-  vite-plugin-kaioken@0.18.0:
-    resolution: {integrity: sha512-FYVxQPDvbaai41LgCOausZuezA4fbR+Xqyb435WXG73zWSi5Bujpa4VM4FFbVX1K9kMPwf6OXMVAIkS574lXaw==}
+  vite-plugin-kaioken@0.18.3:
+    resolution: {integrity: sha512-+c8r97ZrtxL7lHySumm63yCnITdAw/lgHxSYp0MqHbmvBG26gh0jmjJ5nmvClUKmt3Rh48zZb76R7J67RLN3Ow==}
     peerDependencies:
-      kaioken: '>=0.38.0-1'
+      kaioken: '>=0.38.2'
 
-  vite@6.3.4:
-    resolution: {integrity: sha512-BiReIiMS2fyFqbqNT/Qqt4CVITDU9M9vE+DKcVAsB+ZV0wvTKd+3hMbkpxz1b+NmEDMegpVbisKiAZOnvO92Sw==}
+  vite@6.3.5:
+    resolution: {integrity: sha512-cZn6NDFE7wdTpINgs++ZJ4N49W2vRp8LCKrn3Ob1kYNtOo21vfDoaV5GzBfLU4MovSAB8uNRm4jgzVQZ+mBzPQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -1674,7 +1663,7 @@ snapshots:
     dependencies:
       '@shikijs/types': 3.3.0
       '@shikijs/vscode-textmate': 10.0.2
-      oniguruma-to-es: 4.3.2
+      oniguruma-to-es: 4.3.3
 
   '@shikijs/engine-oniguruma@3.3.0':
     dependencies:
@@ -2152,11 +2141,6 @@ snapshots:
       dunder-proto: 1.0.1
       es-object-atoms: 1.1.1
 
-  get-tsconfig@4.10.0:
-    dependencies:
-      resolve-pkg-maps: 1.0.0
-    optional: true
-
   gopd@1.2.0: {}
 
   graceful-fs@4.2.11: {}
@@ -2269,7 +2253,7 @@ snapshots:
 
   json5@2.2.3: {}
 
-  kaioken@0.38.1: {}
+  kaioken@0.38.3: {}
 
   lightningcss-darwin-arm64@1.29.2:
     optional: true
@@ -2675,7 +2659,7 @@ snapshots:
 
   oniguruma-parser@0.12.1: {}
 
-  oniguruma-to-es@4.3.2:
+  oniguruma-to-es@4.3.3:
     dependencies:
       oniguruma-parser: 0.12.1
       regex: 6.0.1
@@ -2803,9 +2787,6 @@ snapshots:
       mdast-util-to-hast: 13.2.0
       unified: 11.0.5
       vfile: 6.0.3
-
-  resolve-pkg-maps@1.0.0:
-    optional: true
 
   rollup@4.40.1:
     dependencies:
@@ -2966,14 +2947,6 @@ snapshots:
 
   trough@2.2.0: {}
 
-  tsx@4.19.3:
-    dependencies:
-      esbuild: 0.25.3
-      get-tsconfig: 4.10.0
-    optionalDependencies:
-      fsevents: 2.3.3
-    optional: true
-
   type-is@2.0.1:
     dependencies:
       content-type: 1.0.5
@@ -3037,7 +3010,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vike@0.4.229(vite@6.3.4(@types/node@22.15.3)(jiti@2.4.2)(lightningcss@1.29.2)(tsx@4.19.3)):
+  vike@0.4.229(vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(lightningcss@1.29.2)):
     dependencies:
       '@brillout/import': 0.2.6
       '@brillout/json-serializer': 0.5.15
@@ -3056,14 +3029,14 @@ snapshots:
       source-map-support: 0.5.21
       tinyglobby: 0.2.13
     optionalDependencies:
-      vite: 6.3.4(@types/node@22.15.3)(jiti@2.4.2)(lightningcss@1.29.2)(tsx@4.19.3)
+      vite: 6.3.5(@types/node@22.15.3)(jiti@2.4.2)(lightningcss@1.29.2)
 
-  vite-plugin-kaioken@0.18.0(kaioken@0.38.1):
+  vite-plugin-kaioken@0.18.3(kaioken@0.38.3):
     dependencies:
-      kaioken: 0.38.1
+      kaioken: 0.38.3
       magic-string: 0.30.17
 
-  vite@6.3.4(@types/node@22.15.3)(jiti@2.4.2)(lightningcss@1.29.2)(tsx@4.19.3):
+  vite@6.3.5(@types/node@22.15.3)(jiti@2.4.2)(lightningcss@1.29.2):
     dependencies:
       esbuild: 0.25.3
       fdir: 6.4.4(picomatch@4.0.2)
@@ -3076,7 +3049,6 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.4.2
       lightningcss: 1.29.2
-      tsx: 4.19.3
 
   wrappy@1.0.2: {}
 
