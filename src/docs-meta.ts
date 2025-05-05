@@ -5,28 +5,49 @@ export type DocItem = {
   sections?: DocSectionLink[]
 }
 
+type IsNew = {
+  isNew?: boolean
+  since?: string
+}
+
 export type DocPageLink = {
   title: string
   href: string
   disabled?: boolean
   keywords?: string[]
-  isNew?: boolean
+  isNew?: IsNew
+  sections?: DocSectionLink[]
 }
 
 type DocSectionLink = {
   title: string
   id: string
-}
-
-const API_RELEASE_DATES = {
-  SWR: new Date("2025-05-01").getTime(),
-  FORM: new Date("2025-05-01").getTime(),
+  isNew?: IsNew
 }
 
 const NEW_API_DURATION = 30 * 24 * 60 * 60 * 1000 // 30 days
-
-const isAPINew = (api: keyof typeof API_RELEASE_DATES) => {
-  return Date.now() < API_RELEASE_DATES[api] + NEW_API_DURATION
+const now = Date.now()
+const API_RELEASE_DATES: Record<string, IsNew> = {
+  swr: {
+    isNew: now < new Date("2025-05-01").getTime() + NEW_API_DURATION,
+    since: "0.38.0",
+  },
+  form: {
+    isNew: now < new Date("2025-05-01").getTime() + NEW_API_DURATION,
+    since: "0.38.0",
+  },
+  element_bindings: {
+    isNew: now < new Date("2025-05-05").getTime() + NEW_API_DURATION,
+    since: "0.38.2",
+  },
+  sig_for: {
+    isNew: now < new Date("2025-05-06").getTime() + NEW_API_DURATION,
+    since: "0.38.4",
+  },
+  sig_derive: {
+    isNew: now < new Date("2025-05-06").getTime() + NEW_API_DURATION,
+    since: "0.38.4",
+  },
 }
 
 export const docMeta: DocItem[] = [
@@ -78,7 +99,7 @@ export const docMeta: DocItem[] = [
         title: "Form",
         href: "/docs/api/form",
         keywords: ["form", "useForm"],
-        isNew: isAPINew("FORM"),
+        isNew: API_RELEASE_DATES.form,
       },
       {
         title: "Lazy",
@@ -101,6 +122,39 @@ export const docMeta: DocItem[] = [
         title: "Signal",
         href: "/docs/api/signal",
         keywords: ["signal", "state"],
+        sections: [
+          {
+            id: "general-usage",
+            title: "General Usage",
+          },
+          {
+            id: "computed-signals",
+            title: "Computed",
+          },
+          {
+            id: "signal-effects",
+            title: "Watch",
+          },
+          {
+            id: "usage-in-components",
+            title: "In Components",
+          },
+          {
+            id: "two-way-binding",
+            title: "Two Way Binding",
+            isNew: API_RELEASE_DATES.element_bindings,
+          },
+          {
+            id: "for-component",
+            title: "For",
+            isNew: API_RELEASE_DATES.sig_for,
+          },
+          {
+            id: "derive-component",
+            title: "Derive",
+            isNew: API_RELEASE_DATES.sig_derive,
+          },
+        ],
       },
       {
         title: "Store",
@@ -111,7 +165,7 @@ export const docMeta: DocItem[] = [
         title: "SWR",
         href: "/docs/api/swr",
         keywords: ["swr", "useSWR", "fetcher", "mutate", "revalidate", "cache"],
-        isNew: isAPINew("SWR"),
+        isNew: API_RELEASE_DATES.swr,
       },
       {
         title: "Transition",

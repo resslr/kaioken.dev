@@ -1,14 +1,27 @@
 import { Container } from "$/components/atoms/Container"
 import { SidebarContent } from "$/components/SidebarContent"
 import { usePageContext } from "$/context/pageContext"
-import { docMeta } from "$/docs-meta"
+import { DocItem, docMeta } from "$/docs-meta"
 import { useHashChangeDispatcher } from "$/hooks/useHashChangeDispatcher"
 import { useEffect, useMemo, useRef, useState } from "kaioken"
 
 export function DocsLayout({ children }: { children: JSX.Children }) {
   const { urlPathname } = usePageContext()
   const sectionIds = useMemo(() => {
-    const pageData = docMeta.find(({ href }) => href === urlPathname)
+    let pageData: DocItem | null = null
+    for (const docItem of docMeta) {
+      if (docItem.href === urlPathname) {
+        pageData = docItem
+        break
+      }
+      if (docItem.pages) {
+        const res = docItem.pages.find((page) => page.href === urlPathname)
+        if (res) {
+          pageData = res
+          break
+        }
+      }
+    }
     if (!pageData) return []
     return pageData.sections?.map(({ id }) => id) ?? []
   }, [urlPathname])
@@ -29,8 +42,11 @@ export function DocsLayout({ children }: { children: JSX.Children }) {
   )
 }
 
+const ASIDE_PADDING = 0
+
 function ActiveLinkTrackerSlidingThing() {
   const ref = useRef<HTMLDivElement>(null)
+  const barHeight = useRef(0)
   const [mounted, setMounted] = useState(false)
   const setPos = () => {
     if (!ref.current) return
@@ -41,9 +57,16 @@ function ActiveLinkTrackerSlidingThing() {
     )
     if (!el) return
     const domRect = el.getBoundingClientRect()
-
+    // we want to line up the center of bar with center of target
+    const tgtCenter = domRect.top + domRect.height / 2
+    const halfBarHeight = barHeight.current / 2
     ref.current.style.top =
-      domRect.top - parentRect.top + parent.scrollTop + 4 + "px"
+      tgtCenter -
+      halfBarHeight -
+      parentRect.top +
+      parent.scrollTop -
+      ASIDE_PADDING +
+      "px"
   }
   useEffect(() => {
     setPos()
@@ -56,9 +79,17 @@ function ActiveLinkTrackerSlidingThing() {
   }, [globalThis.window?.location.pathname, globalThis.window?.location.hash])
 
   useEffect(() => {
+    barHeight.current = ref.current!.getBoundingClientRect().height
     setMounted(true)
   }, [])
 
-  const className = `bg-neutral-50 ${mounted ? "opacity-100" : "opacity-0"} w-[2px] h-4 block absolute left-0 top-0 ${mounted ? "transition-all" : ""}`
-  return <div ref={ref} className={className}></div>
+  return (
+    <div
+      ref={ref}
+      className={[
+        "bg-neutral-50 w-[2px] h-4 block absolute left-0 top-0",
+        mounted ? "opacity-100 transition-all" : "opacity-0",
+      ]}
+    ></div>
+  )
 }

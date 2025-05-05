@@ -231,7 +231,12 @@ function CommandPalleteItem({
           {external ? <ExternalLinkIcon width=".85rem" height=".85rem" /> : ""}
         </span>
         {item.isNew && (
-          <span className="badge px-1 py-0.5 rounded-sm">New</span>
+          <span
+            className="badge px-1 py-0.5 rounded-sm"
+            title={`Since ${item.isNew.since}`}
+          >
+            New
+          </span>
         )}
       </div>
       <CommandPalleteBadges item={item} />
