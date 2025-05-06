@@ -46,29 +46,29 @@ const ASIDE_PADDING = 0
 
 function ActiveLinkTrackerSlidingThing() {
   const ref = useRef<HTMLDivElement>(null)
-  const barHeight = useRef(0)
   const [mounted, setMounted] = useState(false)
-  const setPos = () => {
-    if (!ref.current) return
-    const parent = document.querySelector("aside")!
-    const parentRect = parent.getBoundingClientRect()
-    const el = parent.querySelector(
-      'a[href="' + window.location.pathname + window.location.hash + '"]'
-    )
-    if (!el) return
-    const domRect = el.getBoundingClientRect()
-    // we want to line up the center of bar with center of target
-    const tgtCenter = domRect.top + domRect.height / 2
-    const halfBarHeight = barHeight.current / 2
-    ref.current.style.top =
-      tgtCenter -
-      halfBarHeight -
-      parentRect.top +
-      parent.scrollTop -
-      ASIDE_PADDING +
-      "px"
-  }
+
   useEffect(() => {
+    setMounted(true)
+    const setPos = () => {
+      if (!ref.current) return
+      const parent = document.querySelector("aside")!
+      const parentRect = parent.getBoundingClientRect()
+      const el = parent.querySelector(
+        'a[href="' + window.location.pathname + window.location.hash + '"]'
+      )
+      if (!el) return
+      const tgtRect = el.getBoundingClientRect()
+      // adding 1px to account for box sizing !== line height
+      ref.current.style.top =
+        tgtRect.top -
+        parentRect.top +
+        parent.scrollTop -
+        ASIDE_PADDING +
+        1 +
+        "px"
+      ref.current.style.height = tgtRect.height + "px"
+    }
     setPos()
     window.addEventListener("resize", setPos)
     window.addEventListener("hashchange", setPos)
@@ -77,11 +77,6 @@ function ActiveLinkTrackerSlidingThing() {
       window.removeEventListener("hashchange", setPos)
     }
   }, [globalThis.window?.location.pathname, globalThis.window?.location.hash])
-
-  useEffect(() => {
-    barHeight.current = ref.current!.getBoundingClientRect().height
-    setMounted(true)
-  }, [])
 
   return (
     <div
