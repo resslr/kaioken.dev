@@ -21,9 +21,7 @@
 
   --breakpoint-xs: 460px;
 
-  --background-image-theme-gradient: linear-gradient(153deg,
-      #9913548a,
-      #ed143d7d);
+  --background-image-theme-gradient: linear-gradient(153deg, #972b3d8a, #471d1d8f);
 }
 
 /*
