@@ -29,6 +29,11 @@ export function SidebarContent() {
             <LinkList>
               {data.pages.map((page) => {
                 const isActive = isLinkActive(page.href, urlPathname)
+                let hasNewSection = false
+                if (!page.isNew) {
+                  hasNewSection = !!page.sections?.some((s) => s.isNew)
+                }
+
                 return (
                   <div>
                     {page.disabled ? (
@@ -54,13 +59,17 @@ export function SidebarContent() {
                         ]}
                       >
                         {page.title}{" "}
-                        {page.isNew && (
+                        {page.isNew ? (
                           <span
                             className="badge p-0.5 px-1"
                             title={`Since ${page.isNew.since}`}
                           >
                             New
                           </span>
+                        ) : (
+                          hasNewSection && (
+                            <span className="badge p-0.5 px-1">Updated</span>
+                          )
                         )}
                       </Link>
                     )}

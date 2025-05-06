@@ -6,8 +6,8 @@ export type DocItem = {
 }
 
 type IsNew = {
-  isNew?: boolean
-  since?: string
+  isNew: boolean
+  since: string
 }
 
 export type DocPageLink = {
