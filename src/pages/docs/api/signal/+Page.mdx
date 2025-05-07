@@ -33,7 +33,6 @@ following properties:
 
 - **value**: Gets or sets the signal's current value
 - **subscribe**: Registers a function to be called when the signal's value changes
-- **map**: Derives a new signal based on the current signal's value
 - **peek**: Retrieves the value without tracking reactivity
 - **sneak**: Sets the value without emitting a signal change
 - **notify**: Emits a signal change
@@ -74,6 +73,13 @@ unsubscribe()
 
 </HighlightOnLoad>
 
+<CalloutBlock fontSize="normal">
+  Going forward, we'll refer to the act of reading a signal's value 
+  as **observing**. This is one of the more complex, but powerful 
+  aspects of signals. The core philosophy around their design is 
+  _reactivity via observation, **where it matters**_.
+</CalloutBlock>
+
 <HighlightOnLoad id="computed-signals">
   <DocsSectionHeader href="#computed-signals">
     Computed
@@ -87,12 +93,12 @@ import { computed } from "kaioken"
 const userGreeting = computed(() => `Hello, ${userName}!`)
 ```
 
-The `computed` signal will automatically track dependencies and 
-update whenever the tracked signals change.
+The `computed` signal will automatically track dependencies (signals that were `observed`) 
+and update whenever any of them change.
 
 <CalloutBlock variant="info">
-  We've snuck a quality-of-life feature in here - signals 
-implement `toString()` and therefore are able to be used in strings.
+  We've also snuck a quality-of-life feature in here - signals 
+implement `toString()` so they can be used in strings!
 </CalloutBlock> 
 </HighlightOnLoad>
 
@@ -100,14 +106,6 @@ implement `toString()` and therefore are able to be used in strings.
   <DocsSectionHeader href="#signal-effects">
     Watch
   </DocsSectionHeader>
-
-  
-<CalloutBlock>
-  Going forward, we'll refer to the act of reading a signal's value 
-  as **observing**. This is one of the more complex, but powerful 
-  aspects of signals. The core philosophy around their design is 
-  _reactivity via observation, **where it matters**_.
-</CalloutBlock>
 
 Use `watch` create a <CodePreview data={watchEffectTypePreview} /> that 
 will fire the callback whenever `observed` signals change.
@@ -177,8 +175,8 @@ function App() {
 
 Because neither of the signals are `observed` at the time of rendering, 
 when they change, Kaioken will only change the things that matter - in 
-this case, the text node inside of our heading that displays the 
-greeting and the `value` attribute of our input. 
+this case, the text node inside of our heading that displays the greeting 
+and the `value` attribute of our input. 
 
 
 ### Using local signals
@@ -254,14 +252,14 @@ function App() {
   const items = useSignal([0, 1, 2, 3, 4])
   const doubledItems = useComputed(() => items.value.map((i) => i * 2))
 
-  const addItem = () => items.value = [...items.value, items.value.length]
+  const addItem = () => (items.value = [...items.value, items.value.length])
 
   return (
     <div>
       <ul>
         <For each={doubledItems}>{(item) => <li>{item}</li>}</For>
       </ul>
-      <button onclick={addItem}>
+      <button onclick={() => (items.value = [...items.value, items.value.length])}>
         Add
       </button>
     </div>
@@ -276,9 +274,9 @@ function App() {
   </DocsSectionHeader>
 
 
-The `<Derive />` component produces a JSX element that automatically updates 
-whenever the provided `from` signal changes. Similar to `<For />`, `<Derive />`
-allows you to easily create fine-grained reactivity in JSX.
+Similar to `<For />`, `<Derive />` allows you to easily create fine-grained reactivity in JSX. 
+The `<Derive />` component produces a JSX element that automatically updates whenever the 
+provided `from` signal changes. 
 
 ```tsx
 function App() {
@@ -294,6 +292,14 @@ function App() {
         {(person) => (
           <div>
             {person.name} is {person.age} years old
+          </div>
+        )}
+      </Derive>
+      {/* You can also use multiple signals! */}
+      <Derive from={[name, age]}>
+        {(name, age) => (
+          <div>
+            {name} is {age} years old
           </div>
         )}
       </Derive>
