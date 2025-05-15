@@ -3,6 +3,7 @@ import { docMeta } from "$/docs-meta"
 import { useNavDrawer } from "$/state/navDrawer"
 import { isLinkActive } from "$/utils"
 import { ElementProps, unwrap } from "kaioken"
+import { DocItemStatus } from "./DocItemStatus"
 
 export function SidebarContent() {
   const { urlPathname } = usePageContext()
@@ -30,7 +31,7 @@ export function SidebarContent() {
               {data.pages.map((page) => {
                 const isActive = isLinkActive(page.href, urlPathname)
                 let hasNewSection = false
-                if (!page.isNew) {
+                if (page.status?.type !== "new") {
                   hasNewSection = !!page.sections?.some((s) => s.isNew)
                 }
 
@@ -58,19 +59,11 @@ export function SidebarContent() {
                           "flex items-center justify-between",
                         ]}
                       >
-                        {page.title}{" "}
-                        {page.isNew ? (
-                          <span
-                            className="badge p-0.5 px-1"
-                            title={`Since ${page.isNew.since}`}
-                          >
-                            New
-                          </span>
-                        ) : (
-                          hasNewSection && (
-                            <span className="badge p-0.5 px-1">Updated</span>
-                          )
-                        )}
+                        {page.title}
+                        <DocItemStatus
+                          status={page.status}
+                          hasNewSection={hasNewSection}
+                        />
                       </Link>
                     )}
                     {isActive && page.sections && (

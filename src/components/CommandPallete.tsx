@@ -18,6 +18,7 @@ import { CloseIcon } from "./icons/CloseIcon"
 import { usePageContext } from "$/context/pageContext"
 import { isLinkActive } from "$/utils"
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
+import { DocItemStatus } from "./DocItemStatus"
 
 export function CommandPallete() {
   const {
@@ -218,6 +219,12 @@ function CommandPalleteItem({
       </a>
     )
   }
+
+  let hasNewSection = false
+  if (item.status?.type !== "new") {
+    hasNewSection = !!item.sections?.some((s) => s.isNew)
+  }
+
   return (
     <a
       className="w-full text-muted bg-white/[1%] border border-white/5 p-2 rounded-sm focus:bg-white/5 hover:bg-white/5"
@@ -230,14 +237,7 @@ function CommandPalleteItem({
           {item.title}{" "}
           {external ? <ExternalLinkIcon width=".85rem" height=".85rem" /> : ""}
         </span>
-        {item.isNew && (
-          <span
-            className="badge px-1 py-0.5 rounded-sm"
-            title={`Since ${item.isNew.since}`}
-          >
-            New
-          </span>
-        )}
+        <DocItemStatus status={item.status} hasNewSection={hasNewSection} />
       </div>
       <CommandPalleteBadges item={item} />
     </a>

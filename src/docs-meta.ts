@@ -5,54 +5,68 @@ export type DocItem = {
   sections?: DocSectionLink[]
 }
 
-type IsNew = {
-  isNew: boolean
-  since: string
-}
+export type DocItemStatus =
+  | {
+      type: "new"
+      since: string
+    }
+  | {
+      type: "deprecated"
+      since: string
+    }
 
 export type DocPageLink = {
   title: string
   href: string
   disabled?: boolean
   keywords?: string[]
-  isNew?: IsNew
+  status?: DocItemStatus
   sections?: DocSectionLink[]
 }
 
 type DocSectionLink = {
   title: string
   id: string
-  isNew?: IsNew
+  isNew?: DocItemStatus
 }
 
-const NEW_API_DURATION = 30 * 24 * 60 * 60 * 1000 // 30 days
-const now = Date.now()
-
-const isNew = (strDate: string) =>
-  now < new Date(strDate).getTime() + NEW_API_DURATION
-
-const API_RELEASE_DATES: Record<string, IsNew> = {
-  swr: {
-    isNew: isNew("2025-05-01"),
+const STATUS_MAP = {
+  // 2025-05-01
+  swrApi: {
+    type: "new",
     since: "0.38.0",
   },
-  form: {
-    isNew: isNew("2025-05-01"),
+  // 2025-05-01
+  formApi: {
+    type: "new",
     since: "0.38.0",
   },
-  element_bindings: {
-    isNew: isNew("2025-05-05"),
+  // 2025-05-05
+  elementBindings: {
+    type: "new",
     since: "0.38.2",
   },
-  sig_for: {
-    isNew: isNew("2025-05-06"),
+  // 2025-05-06
+  ForComponent: {
+    type: "new",
     since: "0.38.4",
   },
-  sig_derive: {
-    isNew: isNew("2025-05-06"),
+  // 2025-05-06
+  DeriveComponent: {
+    type: "new",
     since: "0.38.4",
   },
-}
+  // 2025-05-15
+  useModel: {
+    type: "deprecated",
+    since: "0.39.0",
+  },
+  // 2025-05-15
+  useViewTransition: {
+    type: "new",
+    since: "0.39.0",
+  },
+} satisfies Record<string, DocItemStatus>
 
 export const docMeta: DocItem[] = [
   {
@@ -103,7 +117,7 @@ export const docMeta: DocItem[] = [
         title: "Form",
         href: "/docs/api/form",
         keywords: ["useForm"],
-        isNew: API_RELEASE_DATES.form,
+        status: STATUS_MAP.formApi,
       },
       {
         title: "Lazy",
@@ -154,17 +168,17 @@ export const docMeta: DocItem[] = [
           {
             id: "two-way-binding",
             title: "Two Way Binding",
-            isNew: API_RELEASE_DATES.element_bindings,
+            isNew: STATUS_MAP.elementBindings,
           },
           {
             id: "for-component",
             title: "For",
-            isNew: API_RELEASE_DATES.sig_for,
+            isNew: STATUS_MAP.ForComponent,
           },
           {
             id: "derive-component",
             title: "Derive",
-            isNew: API_RELEASE_DATES.sig_derive,
+            isNew: STATUS_MAP.DeriveComponent,
           },
         ],
       },
@@ -177,11 +191,12 @@ export const docMeta: DocItem[] = [
         title: "SWR",
         href: "/docs/api/swr",
         keywords: ["swr", "useSWR", "fetcher", "mutate", "revalidate", "cache"],
-        isNew: API_RELEASE_DATES.swr,
+        status: STATUS_MAP.swrApi,
       },
       {
         title: "Transition",
         href: "/docs/api/transition",
+        keywords: ["transitions", "animation"],
       },
     ],
   },
@@ -224,6 +239,7 @@ export const docMeta: DocItem[] = [
         title: "useModel",
         href: "/docs/hooks/useModel",
         keywords: ["Ref"],
+        status: STATUS_MAP.useModel,
       },
       {
         title: "useReducer",
@@ -242,6 +258,12 @@ export const docMeta: DocItem[] = [
         title: "useSyncExternalStore",
         href: "/docs/hooks/useSyncExternalStore",
         keywords: ["state", "global state"],
+      },
+      {
+        title: "useViewTransition",
+        href: "/docs/hooks/useViewTransition",
+        keywords: ["view transition", "animation"],
+        status: STATUS_MAP.useViewTransition,
       },
       {
         title: "Dependency arrays",
