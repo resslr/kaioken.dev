@@ -41,6 +41,26 @@ const App = () => {
           )}
         />
       </div>
+      <form.Subscribe
+        selector={(state) => [state.canSubmit, state.isSubmitting] as const}
+        children={([canSubmit, isSubmitting]) => {
+          return (
+            <>
+              <button
+                className={canSubmit ? "bg-green-500" : "bg-red-500"}
+                type="submit"
+                disabled={!canSubmit}
+              >
+                {isSubmitting ? "..." : "Submit"}
+              </button>
+              <button type="reset" onclick={() => form.reset()}>
+                Reset
+              </button>
+            </>
+          )
+        }}
+      />
+
     </form>
   )
 }
