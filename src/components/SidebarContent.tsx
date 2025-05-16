@@ -2,7 +2,7 @@ import { usePageContext } from "$/context/pageContext"
 import { docMeta } from "$/docs-meta"
 import { useNavDrawer } from "$/state/navDrawer"
 import { isLinkActive } from "$/utils"
-import { ElementProps, unwrap } from "kaioken"
+import { ElementProps, Fragment, unwrap } from "kaioken"
 import { DocItemStatus } from "./DocItemStatus"
 
 export function SidebarContent() {
@@ -35,8 +35,10 @@ export function SidebarContent() {
                   hasNewSection = !!page.sections?.some((s) => s.isNew)
                 }
 
+                const Tag = page.sections ? "div" : Fragment
+
                 return (
-                  <div>
+                  <Tag key={page.href}>
                     {page.disabled ? (
                       <Link
                         key={page.title}
@@ -90,7 +92,7 @@ export function SidebarContent() {
                         ))}
                       </LinkList>
                     )}
-                  </div>
+                  </Tag>
                 )
               })}
             </LinkList>
