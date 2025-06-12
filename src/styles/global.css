@@ -52,7 +52,7 @@
 
 :root {
   --color-light: #fffbfb;
-  --color-dark: #151313;
+  --color-dark: #0d090d;
   color-scheme: dark;
   background-color: var(--color-dark);
   color: #fffafa;
@@ -67,8 +67,6 @@
   --tw-border-opacity: 1;
   scroll-padding: 100px;
   scrollbar-gutter: stable;
-  background-image: radial-gradient(#20011d42, #0000);
-  background-attachment: fixed;
 }
 
 ::placeholder {
