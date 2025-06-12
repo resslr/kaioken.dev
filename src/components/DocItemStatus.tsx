@@ -12,7 +12,10 @@ function capitalizeFirstLetter(string: string) {
 export function DocItemStatus({ status, hasNewSection }: DocItemStatusProps) {
   if (status) {
     return (
-      <span className="badge px-1 py-0.5" title={`Since ${status.since}`}>
+      <span
+        className={`badge ${status.type === "new" ? "" : "badge-warning"} px-1 py-0.5`}
+        title={`Since ${status.since}`}
+      >
         {capitalizeFirstLetter(status.type)}
       </span>
     )
