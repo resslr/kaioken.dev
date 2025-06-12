@@ -67,7 +67,7 @@
   --tw-border-opacity: 1;
   scroll-padding: 100px;
   scrollbar-gutter: stable;
-  background-image: radial-gradient(rgba(220, 40, 180, 0.025), transparent);
+  background-image: radial-gradient(#20011d42, #0000);
   background-attachment: fixed;
 }
 
