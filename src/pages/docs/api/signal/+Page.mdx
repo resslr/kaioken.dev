@@ -252,8 +252,6 @@ function App() {
   const items = useSignal([0, 1, 2, 3, 4])
   const doubledItems = useComputed(() => items.value.map((i) => i * 2))
 
-  const addItem = () => (items.value = [...items.value, items.value.length])
-
   return (
     <div>
       <ul>
