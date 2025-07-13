@@ -1,9 +1,10 @@
+import { className as cls } from "kaioken/utils"
+import { useEffect, useMemo, useRef, useState } from "kaioken"
 import { Container } from "$/components/atoms/Container"
 import { SidebarContent } from "$/components/SidebarContent"
 import { usePageContext } from "$/context/pageContext"
 import { DocItem, docMeta } from "$/docs-meta"
 import { useHashChangeDispatcher } from "$/hooks/useHashChangeDispatcher"
-import { useEffect, useMemo, useRef, useState } from "kaioken"
 
 export function DocsLayout({ children }: { children: JSX.Children }) {
   const { urlPathname } = usePageContext()
@@ -81,10 +82,10 @@ function ActiveLinkTrackerSlidingThing() {
   return (
     <div
       ref={ref}
-      className={[
+      className={cls(
         "bg-neutral-50 w-[2px] h-4 block absolute left-0 top-0",
-        mounted ? "opacity-100 transition-all" : "opacity-0",
-      ]}
+        mounted ? "opacity-100 transition-all" : "opacity-0"
+      )}
     ></div>
   )
 }
