@@ -10,6 +10,7 @@ import ExampleTooltipTS from "./Example.Tooltip.ts.md"
 import ExampleTooltipContainer from "./Example.TooltipContainer.md"
 import ExampleTooltipContainerTS from "./Example.TooltipContainer.ts.md"
 import { match } from "lit-match"
+import { CopyInnerText } from "$/components/CopyInnerText"
 
 # useLayoutEffect
 
@@ -34,6 +35,7 @@ has changed.
     value={selectedTab.value}
     itemSuffix={`.${siteCodeLang.value}x`}
   />
+  <CopyInnerText>
     {match(siteCodeLang.value)
         .with("js", () => { 
           return match(selectedTab.value)
@@ -49,6 +51,7 @@ has changed.
             .with("Tooltip", () => <ExampleTooltipTS />)
             .else(() => <ExampleTooltipContainerTS />)
         })}
+  </CopyInnerText>
 </div>
 
 ### Related

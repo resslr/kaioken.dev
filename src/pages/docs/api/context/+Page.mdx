@@ -11,6 +11,7 @@ import ExampleThemeContextTS from "./example.ThemeContext.ts.md"
 import ExampleThemeContextProvider from "./example.ThemeContextProvider.md"
 import ExampleThemeContextProviderTS from "./example.ThemeContextProvider.ts.md"
 import { match } from "lit-match"
+import { CopyInnerText } from "$/components/CopyInnerText"
 
 # Context
 
@@ -29,6 +30,7 @@ Children of the provider can use <a href="/docs/hooks/useContext">useContext</a>
       value={selectedTab.value}
       itemSuffix={(item) => `.${siteCodeLang.value}${item === "ThemeContext" ? "" : "x"}`}
     />
+    <CopyInnerText>
       {match(siteCodeLang.value)
         .with("js", () => { 
           return match(selectedTab.value)
@@ -44,6 +46,7 @@ Children of the provider can use <a href="/docs/hooks/useContext">useContext</a>
             .with("ThemeContextProvider", () => <ExampleThemeContextProviderTS />)
             .else(() => <ExampleButton />)
         })}
+    </CopyInnerText>
   </div>
 </div>
 

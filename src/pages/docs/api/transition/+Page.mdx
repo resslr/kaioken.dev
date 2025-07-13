@@ -3,6 +3,7 @@ import { TransitionStateTypePreview } from "$/components/previews/TransitionStat
 import { siteCodeLang } from "$/state/siteCodeLang"
 import ExampleCode from "./example.md"
 import ExampleCodeTS from "./example.ts.md"
+import { CopyInnerText } from "$/components/CopyInnerText"
 
 # Transition
 
@@ -19,4 +20,6 @@ import ExampleCodeTS from "./example.ts.md"
 
 ### Example
 
+<CopyInnerText>
 {siteCodeLang.value === "ts" ? <ExampleCodeTS /> : <ExampleCode />}
+</CopyInnerText>

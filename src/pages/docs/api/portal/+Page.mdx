@@ -4,6 +4,7 @@ import { siteCodeLang } from "$/state/siteCodeLang"
 import ExampleApp from "./example.App.md"
 import ExampleAppTS from "./example.App.ts.md"
 import ExampleIndex from "./example.index.md"
+import { CopyInnerText } from "$/components/CopyInnerText"
 
 # Portal
 
@@ -21,8 +22,10 @@ container.
       value={selectedTab.value}
       itemSuffix={(item) => item === "App" ? `.${siteCodeLang.value}x` : ""}
     />
+    <CopyInnerText>
     {selectedTab.value === "App" ?
       siteCodeLang.value === "js" ?(<ExampleApp />) : (<ExampleAppTS />) 
     : (<ExampleIndex />)}
+    </CopyInnerText>
   </div>
 </div>

@@ -1,5 +1,3 @@
-### Example
-
 ```jsx
 import { lazy } from "kaioken"
 

@@ -267,3 +267,7 @@ pre.shiki span.line.diff.add:before {
   padding-bottom: 0.8571429em;
   padding-inline-start: 1.1428571em;
 }
+
+.code-copy-wrapper>pre.shiki {
+  margin-top: 0;
+}

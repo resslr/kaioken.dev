@@ -2,6 +2,7 @@ import { siteCodeLang } from "$/state/siteCodeLang"
 import ExampleCode from "./example.md"
 import ExampleCodeTS from "./example.ts.md"
 import { ExternalLink } from "$/components/atoms/ExternalLink"
+import { CopyInnerText } from "$/components/CopyInnerText"
 
 
 # Form
@@ -12,5 +13,8 @@ Inspired by <ExternalLink href="https://tanstack.com/form" >TanStack Form</Exter
 offers a declarative approach to form management, making it easy to manage form state, 
 validation, and submission.
 
+### Example
 
+<CopyInnerText>
 {siteCodeLang.value === "js" ? <ExampleCode /> : <ExampleCodeTS />}
+</CopyInnerText>

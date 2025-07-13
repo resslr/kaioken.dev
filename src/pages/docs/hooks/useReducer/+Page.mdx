@@ -1,6 +1,7 @@
 import { siteCodeLang } from "$/state/siteCodeLang"
 import ExampleCode from "./example.md"
 import ExampleCodeTS from "./example.ts.md"
+import { CopyInnerText } from "$/components/CopyInnerText"
 
 # useReducer
 
@@ -10,7 +11,9 @@ specific scenarios.
 
 ### Example
 
+<CopyInnerText>
 {siteCodeLang.value === "ts" ? <ExampleCodeTS /> : <ExampleCode />}
+</CopyInnerText>
 
 ### Related
 <ul>

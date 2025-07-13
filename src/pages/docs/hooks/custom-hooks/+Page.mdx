@@ -1,8 +1,7 @@
 import { CodePreview } from "$/components/CodePreview"
 import { useHookTypePreview } from "$/components/previews/useHook.type.preview"
 import { useHookCallbackTypePreview } from "$/components/previews/useHookCallback.type.preview"
-
-
+import { CopyInnerText } from "$/components/CopyInnerText"
 
 # Custom hooks
 
@@ -41,8 +40,9 @@ The provided code snippet showcases the ``useHook`` function, which is the found
 
 4. **Return value:** The ``callback`` function should return the value(s) you want to expose to your component's logic.
 
-**Example (adapted from ``useState``):**
+**Example (simplified, adapted from ``useState``):**
 
+<CopyInnerText>
 ```jsx
 function useCounter(initialValue = 0) {
   return useHook(
@@ -64,7 +64,7 @@ function useCounter(initialValue = 0) {
   )
 }
 ```
-
+</CopyInnerText>
 
 **Key Considerations:**
 

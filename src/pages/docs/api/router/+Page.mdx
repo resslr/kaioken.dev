@@ -15,6 +15,7 @@ import ExampleLoginPage from "./example.LoginPage.md"
 import ExampleUserList from "./example.UserList.md"
 import ExampleUserListTS from "./example.UserList.ts.md"
 import ExampleUserPage from "./example.UserPage.md"
+import { CopyInnerText } from "$/components/CopyInnerText"
 
 
 # Router
@@ -74,6 +75,7 @@ full page reloads.
       value={selectedTab.value}
       itemSuffix={() => `.${siteCodeLang.value}x`}
     />
+    <CopyInnerText>
     {match(siteCodeLang.value)
         .with("js", () => { 
           return match(selectedTab.value)
@@ -89,5 +91,6 @@ full page reloads.
             .with("UserList", () => <ExampleUserListTS />)
             .else(() => <ExampleUserPage />)
         })}
+    </CopyInnerText>
   </div>
 </div>

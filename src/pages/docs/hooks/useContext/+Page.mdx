@@ -1,6 +1,7 @@
 import { siteCodeLang } from "$/state/siteCodeLang"
 import ExampleCode from "./example.md"
 import ExampleCodeTS from "./example.ts.md"
+import { CopyInnerText } from "$/components/CopyInnerText"
 
 # useContext
 
@@ -8,7 +9,9 @@ Gets the value from a <a href="/docs/api/context">Context</a> Provider component
 
 ### Example
 
+<CopyInnerText>
 {siteCodeLang.value === "ts" ? <ExampleCodeTS /> : <ExampleCode />}
+</CopyInnerText>
 
 ### Related
 <ul>

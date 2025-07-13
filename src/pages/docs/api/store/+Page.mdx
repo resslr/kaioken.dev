@@ -7,6 +7,7 @@ import CountStoreExample from "./CountStoreExample.md"
 import CountStoreExampleTS from "./CountStoreExample.ts.md"
 import TodoItemExample from "./todoItem.md"
 import TodoItemExampleTS from "./todoItem.ts.md"
+import { CopyInnerText } from "$/components/CopyInnerText"
 
 
 # Store
@@ -26,7 +27,9 @@ To create a store, you need to provide two arguments to the <CodePreview data={c
   state. These methods will be accessible through the returned store object.</li>
 </ol>
 
+<CopyInnerText>
 {siteCodeLang.value === "ts" ? <CountStoreExampleTS /> : <CountStoreExample />}
+</CopyInnerText>
 
 ### Accessing Store State and Methods
 

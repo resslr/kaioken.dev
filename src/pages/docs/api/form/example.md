@@ -1,5 +1,3 @@
-### Example
-
 ```jsx
 import { useForm } from "kaioken/form"
 

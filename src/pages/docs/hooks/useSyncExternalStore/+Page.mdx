@@ -5,6 +5,7 @@ import { TabGroup } from "$/components/TabGroup"
 import ExampleApp from "./example.App.md"
 import ExampleCounterStore from "./example.counterStore.md"
 import ExampleCounterStoreTS from "./example.counterStore.ts.md"
+import { CopyInnerText } from "$/components/CopyInnerText"
 
 # useSyncExternalStore
 
@@ -22,6 +23,7 @@ custom external store where you need to synchronize the Kaioken component with t
       value={selectedTab.value}
       itemSuffix={(item) => `.${siteCodeLang.value}${item === "App" ? "x" : ""}`}
     />
+    <CopyInnerText>
     {match(siteCodeLang.value)
         .with("js", () => {
           return match(selectedTab.value)
@@ -33,5 +35,6 @@ custom external store where you need to synchronize the Kaioken component with t
             .with("App", () => <ExampleApp />)
             .else(() => <ExampleCounterStoreTS />)
         })}
+    </CopyInnerText>
   </div>
 </div>

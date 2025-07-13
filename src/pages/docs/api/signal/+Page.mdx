@@ -1,4 +1,5 @@
 import { CodePreview } from "$/components/CodePreview"
+import { CopyInnerText } from "$/components/CopyInnerText"
 import { siteCodeLang } from "$/state/siteCodeLang"
 import { CalloutBlock } from "$/components/atoms/CalloutBlock"
 import { ExternalLink } from "$/components/atoms/ExternalLink"
@@ -156,6 +157,12 @@ const watcher = watch([userName, userGreeting], (newName, newGreeting) => {
 In Kaioken components, reading and writing signals is slightly nuanced
 but has the capability to provide unmatched performance.
 
+export const prefix = `import { signal, computed } from "kaioken"
+
+const userName = signal("bob")
+const userGreeting = computed(() => \`Hello, \${userName}!\`)\n\n`;
+
+<CopyInnerText prefix={prefix}>
 ```tsx
 function App() {
   return (
@@ -170,6 +177,7 @@ function App() {
   )
 }
 ```
+</CopyInnerText>
 
 In the above example, our `userGreeting` and `userName` signals from earlier 
 are `observed` by the component during render, causing the component to 
@@ -179,6 +187,7 @@ children will be updated whenever their values change.
 While this may be the desired effect, signals can be much more performant
 when used for text or attributes. See the following: 
 
+<CopyInnerText prefix={prefix}>
 ```tsx
 function App() {
   return (
@@ -193,6 +202,8 @@ function App() {
   )
 }
 ```
+</CopyInnerText>
+
 
 Because neither of the signals are `observed` at the time of rendering, 
 when they change, Kaioken will only change the things that matter - in 
@@ -208,6 +219,7 @@ This will allow them to be persisted across renders and automatically
 disposed of when the component unmounts.
 
 
+<CopyInnerText>
 ```tsx
 import { useSignal, useComputed, useWatch } from "kaioken"
 
@@ -229,7 +241,7 @@ function App() {
   )
 } 
 ```
-
+</CopyInnerText>
 </HighlightOnLoad>
 
 <HighlightOnLoad id="two-way-binding">
@@ -242,6 +254,7 @@ The `bind:` prefix can be used to create two-way binding for any property
 that changes via user interaction. When the signal changes, the property 
 is updated, and vice versa.
 
+<CopyInnerText prefix={`import { useSignal, useWatch } from "kaioken"\n\n`}>
 ```tsx
 function App() {
   const userName = useSignal("bob")
@@ -250,11 +263,12 @@ function App() {
 
   return (
     <div>
-      <input type="text" bind:value={userName} />
+      <input type="text" bind:value={userName} /> 
     </div>
   )
 } 
 ```
+</CopyInnerText>
 </HighlightOnLoad>
 
 <HighlightOnLoad id="for-component">
@@ -268,7 +282,10 @@ list with fine-grained reactivity. This is a great optimization tool for when yo
 use `signal.value.map((item) => ...)` in JSX, causing the component that renders
 it to update whenever the signal changes.
 
+<CopyInnerText importsOverride={`import { useSignal, useComputed, For } from "kaioken"`}>
 ```tsx
+import { For } from "kaioken"
+
 function App() {
   const items = useSignal([0, 1, 2, 3, 4])
   const doubledItems = useComputed(() => items.value.map((i) => i * 2))
@@ -285,6 +302,7 @@ function App() {
   )
 }
 ```
+</CopyInnerText>
 </HighlightOnLoad>
 
 <HighlightOnLoad id="derive-component">
@@ -297,7 +315,10 @@ Similar to `<For />`, `<Derive />` allows you to easily create fine-grained reac
 The `<Derive />` component produces a JSX element that automatically updates whenever the 
 provided `from` signal changes. 
 
+<CopyInnerText importsOverride={`import { useSignal, useComputed, Derive } from "kaioken"`}>
 ```tsx
+import { Derive } from "kaioken"
+
 function App() {
   const name = useSignal("bob")
   const age = useSignal(42)
@@ -326,4 +347,5 @@ function App() {
   )
 }
 ```
+</CopyInnerText>
 </HighlightOnLoad>

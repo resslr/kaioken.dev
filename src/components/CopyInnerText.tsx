@@ -1,8 +1,18 @@
-import { useState, useRef, useEffect, useCallback } from "kaioken"
+import { useSignal, useRef, useEffect, useCallback, Derive } from "kaioken"
 import { CopyIcon } from "./icons/CopyIcon"
 
-export function CopyInnerText({ children }: { children: JSX.Children }) {
-  const [copied, setCopied] = useState(false)
+type CopyInnerTextProps = {
+  children: JSX.Children
+  prefix?: string
+  importsOverride?: string
+}
+
+export function CopyInnerText({
+  children,
+  prefix = "",
+  importsOverride = "",
+}: CopyInnerTextProps) {
+  const copied = useSignal(false)
   const ref = useRef<HTMLDivElement>(null)
   const copiedTimeout = useRef(-1)
 
@@ -17,13 +27,25 @@ export function CopyInnerText({ children }: { children: JSX.Children }) {
     if (copiedTimeout.current !== -1) {
       window.clearTimeout(copiedTimeout.current!)
     }
-    await navigator.clipboard.writeText(ref.current!.textContent!)
-    setCopied(true)
-    copiedTimeout.current = window.setTimeout(() => setCopied(false), 1500)
+
+    const allLines = (prefix + ref.current!.textContent!).split("\n")
+    let toWrite = allLines
+    if (importsOverride) {
+      toWrite = allLines.map((line) =>
+        line.startsWith("import") ? importsOverride : line
+      )
+    }
+
+    await navigator.clipboard.writeText(toWrite.join("\n"))
+    copied.value = true
+    copiedTimeout.current = window.setTimeout(
+      () => (copied.value = false),
+      1500
+    )
   }, [])
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative code-copy-wrapper">
       {children}
       <div className="absolute top-0 right-0">
         <div className="flex justify-end">
@@ -35,11 +57,15 @@ export function CopyInnerText({ children }: { children: JSX.Children }) {
             <CopyIcon />
           </button>
         </div>
-        {copied && (
-          <span className="text-light text-xs p-1 bg-black mr-1">
-            Copied to clipboard!
-          </span>
-        )}
+        <Derive from={copied}>
+          {(copied) =>
+            copied && (
+              <span className="text-light text-xs p-1 bg-black mr-1">
+                Copied to clipboard!
+              </span>
+            )
+          }
+        </Derive>
       </div>
     </div>
   )

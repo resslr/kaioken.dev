@@ -1,5 +1,3 @@
-### Example
-
 ```tsx
 import { useForm } from "kaioken/form"
 

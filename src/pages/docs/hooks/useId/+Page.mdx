@@ -2,6 +2,7 @@ import { siteCodeLang } from "$/state/siteCodeLang"
 
 import ExampleCode from "./example.md"
 import ExampleCodeTS from "./example.ts.md"
+import { CopyInnerText } from "$/components/CopyInnerText"
 
 # useId
 
@@ -17,4 +18,6 @@ break associations between elements, such as form fields and labels.
 
 ### Example
 
+<CopyInnerText>
 {siteCodeLang.value === "ts" ? <ExampleCodeTS /> : <ExampleCode />}
+</CopyInnerText>

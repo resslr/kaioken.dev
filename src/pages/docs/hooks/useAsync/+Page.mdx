@@ -4,6 +4,7 @@ import { ExternalLink } from "$/components/atoms/ExternalLink"
 import { UseAsyncStateTypePreview } from "$/components/previews/UseAsyncState.type.preview"
 import ExampleCode from "./example.md"
 import ExampleCodeTS from "./example.ts.md"
+import { CopyInnerText } from "$/components/CopyInnerText"
 
 # useAsync
 
@@ -16,7 +17,9 @@ When `useAsync` re-runs, the signal is aborted, making it easy to cancel a runni
 
 ### Example
 
+<CopyInnerText>
 {siteCodeLang.value === "js" ? <ExampleCode /> : <ExampleCodeTS />}
+</CopyInnerText>
 
 ### Related
 <ul>
