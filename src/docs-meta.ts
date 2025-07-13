@@ -116,8 +116,22 @@ export const docMeta: DocItem[] = [
       {
         title: "Form",
         href: "/docs/api/form",
-        keywords: ["useForm"],
+        keywords: ["useForm", "form", "validation", "Field", "Subscribe"],
         status: STATUS_MAP.formApi,
+        sections: [
+          {
+            id: "basic-usage",
+            title: "Basic Usage",
+          },
+          {
+            id: "validation",
+            title: "Validation",
+          },
+          {
+            id: "form-components",
+            title: "Form Components",
+          },
+        ],
       },
       {
         title: "Lazy",
@@ -192,6 +206,20 @@ export const docMeta: DocItem[] = [
         href: "/docs/api/swr",
         keywords: ["swr", "useSWR", "fetcher", "mutate", "revalidate", "cache"],
         status: STATUS_MAP.swrApi,
+        sections: [
+          {
+            id: "basic-usage",
+            title: "Basic Usage",
+          },
+          {
+            id: "mutations",
+            title: "Mutations",
+          },
+          {
+            id: "caching",
+            title: "Caching",
+          },
+        ],
       },
       {
         title: "Transition",
