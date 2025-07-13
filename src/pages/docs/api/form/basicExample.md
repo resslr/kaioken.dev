@@ -8,7 +8,7 @@ function ContactForm() {
       email: "",
     },
     onSubmit: ({ state }) => {
-      console.log("Form submitted:", state.values)
+      console.log("Form submitted:", state)
     },
   })
 

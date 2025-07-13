@@ -8,7 +8,7 @@ function LoginForm() {
       password: "",
     },
     onSubmit: ({ state }) => {
-      console.log("Login attempt:", state.values)
+      console.log("Login attempt:", state)
     },
   })
 
