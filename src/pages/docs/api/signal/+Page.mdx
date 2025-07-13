@@ -5,6 +5,8 @@ import { ExternalLink } from "$/components/atoms/ExternalLink"
 import { watchEffectTypePreview } from "$/components/previews/WatchEffect.type.preview"
 import { DocsSectionHeader } from "$/components/DocsSectionHeader"
 import { HighlightOnLoad } from "$/components/HighlightOnLoad"
+import ExampleComputedPrev from "./example.computedPrev.md"
+import ExampleComputedPrevTs from "./example.computedPrev.ts.md"
 
 
 # Signal
@@ -85,7 +87,9 @@ unsubscribe()
     Computed
   </DocsSectionHeader>
 
-  Use `computed` to create a signal derived from a getter function:
+  Use `computed` to create a `ComputedSignal`, which is derived from a getter function.
+  A `ComputedSignal` is *lazily evaluated*, meaning that the getter function won't be called 
+  until it is `observed` or subscribed to. Manually assigning a new value to it has no effect.
 
 ```ts
 import { computed } from "kaioken"
@@ -100,6 +104,12 @@ and update whenever any of them change.
   We've also snuck a quality-of-life feature in here - signals 
 implement `toString()` so they can be used in strings!
 </CalloutBlock> 
+
+Computed signals also receive the previous value as an argument to the getter function.
+This can be useful for cleaning up previous resources, or for creating a new resource 
+based on the previous value.
+
+{siteCodeLang.value === "js" ? <ExampleComputedPrev /> : <ExampleComputedPrevTs />}
 </HighlightOnLoad>
 
 <HighlightOnLoad id="signal-effects">
