@@ -30,11 +30,12 @@ export function Page() {
           </div>
         </CalloutBlock>
         <CalloutBlock variant="default">
-          <div className="text-xl">
+          <div className="text-base">
             In general, items in a list/array should <b>always</b> have a{" "}
-            <code>key</code>
-            prop. This is how Kaioken persists state across re-renders when the
-            order of the items change.
+            <b>stable</b> <code>key</code> prop (
+            <i>i.e. a unique identifier, not the item's index</i>). This is how
+            Kaioken persists state across re-renders when the order of the items
+            change.
           </div>
         </CalloutBlock>
       </div>
