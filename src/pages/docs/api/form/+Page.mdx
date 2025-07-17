@@ -1,6 +1,6 @@
 import { CodePreview } from "$/components/CodePreview"
 import { useFormTypePreview } from "$/components/previews/useForm.type.preview"
-import { useFormReturnTypePreview } from "$/components/previews/UseFormReturn.type.preview"
+import { UseFormStateTypePreview } from "$/components/previews/UseFormState.type.preview"
 import { useFormConfigTypePreview } from "$/components/previews/UseFormConfig.type.preview"
 import { ExternalLink } from "$/components/atoms/ExternalLink"
 import { DocsSectionHeader } from "$/components/DocsSectionHeader"
@@ -27,7 +27,7 @@ it provides a flexible API that can handle complex form scenarios while maintain
   </DocsSectionHeader>
 
   <CodePreview data={useFormTypePreview} /> accepts a <CodePreview data={useFormConfigTypePreview} /> 
-  configuration object and returns a <CodePreview data={useFormReturnTypePreview} /> that provides:
+  configuration object and returns a <CodePreview data={UseFormStateTypePreview} /> that provides:
 
   - **Field**: Component for managing individual form fields
   - **Subscribe**: Component for subscribing to form state changes

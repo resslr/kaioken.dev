@@ -1,8 +1,8 @@
 import type { CodePreviewData } from "$/types"
-import UseFormReturnType from "./UseFormReturn.type.md"
+import UseFormStateType from "./UseFormState.type.md"
 
-export const useFormReturnTypePreview = {
-  element: UseFormReturnType,
+export const UseFormStateTypePreview = {
+  element: UseFormStateType,
   link: {
     text: "UseFormReturn",
     href: "/docs/api/form",
