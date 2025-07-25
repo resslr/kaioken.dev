@@ -1,4 +1,11 @@
-import { ElementProps, Fragment, unwrap } from "kaioken"
+import {
+  Derive,
+  ElementProps,
+  Fragment,
+  unwrap,
+  useEffect,
+  useSignal,
+} from "kaioken"
 import { className as cls } from "kaioken/utils"
 import { usePageContext } from "$/context/pageContext"
 import { docMeta } from "$/docs-meta"
@@ -7,8 +14,20 @@ import { isLinkActive } from "$/utils"
 import { DocItemStatus } from "./DocItemStatus"
 
 export function SidebarContent() {
-  const { urlPathname } = usePageContext()
+  const { urlPathname, urlParsed } = usePageContext()
   const { value: open, setOpen } = useNavDrawer((state) => state.open)
+  const hash = useSignal(urlParsed.hash)
+  console.log("hash", hash)
+
+  useEffect(() => {
+    const onHashChange = () => {
+      hash.value = window.location.hash.substring(1)
+    }
+    window.addEventListener("hashchange", onHashChange)
+    return () => {
+      window.removeEventListener("hashchange", onHashChange)
+    }
+  }, [])
 
   return (
     <>
@@ -41,10 +60,7 @@ export function SidebarContent() {
                 return (
                   <Tag key={page.href}>
                     {page.disabled ? (
-                      <Link
-                        key={page.title}
-                        className="flex items-center justify-between"
-                      >
+                      <Link key={page.title}>
                         <span className="opacity-75">{page.title}</span>
                         <span className="badge">Upcoming</span>
                       </Link>
@@ -57,10 +73,7 @@ export function SidebarContent() {
                           open &&
                           setOpen(false)
                         }
-                        className={cls(
-                          isActive && "text-light",
-                          "flex items-center justify-between"
-                        )}
+                        isActive={isActive}
                       >
                         {page.title}
                         <DocItemStatus
@@ -69,30 +82,36 @@ export function SidebarContent() {
                         />
                       </Link>
                     )}
-                    {isActive && page.sections && (
-                      <LinkList className="px-2 py-1 my-2 bg-white/5 text-sm rounded border border-white/5">
-                        {page.sections.map((section) => (
-                          <Link
-                            className="flex items-center justify-between"
-                            key={section.id}
-                            href={
-                              page.href + (section.id ? `#${section.id}` : "")
-                            }
-                            onclick={() => open && setOpen(false)}
-                          >
-                            {section.title}
-                            {section.isNew && (
-                              <span
-                                className="badge p-0.5 px-1"
-                                title={`Since ${section.isNew.since}`}
+                    <Derive from={hash}>
+                      {(hash) =>
+                        isActive &&
+                        page.sections && (
+                          <LinkList className="px-2 py-1 my-2 bg-white/5 text-sm rounded border border-white/5">
+                            {page.sections.map((section) => (
+                              <Link
+                                isActive={section.id === hash}
+                                key={section.id}
+                                href={
+                                  page.href +
+                                  (section.id ? `#${section.id}` : "")
+                                }
+                                onclick={() => open && setOpen(false)}
                               >
-                                New
-                              </span>
-                            )}
-                          </Link>
-                        ))}
-                      </LinkList>
-                    )}
+                                {section.title}
+                                {section.isNew && (
+                                  <span
+                                    className="badge p-0.5 px-1"
+                                    title={`Since ${section.isNew.since}`}
+                                  >
+                                    New
+                                  </span>
+                                )}
+                              </Link>
+                            ))}
+                          </LinkList>
+                        )
+                      }
+                    </Derive>
                   </Tag>
                 )
               })}
@@ -130,9 +149,16 @@ function LinkList({ className, ...props }: ElementProps<"div">) {
   )
 }
 
-function Link({ children, className, ...props }: ElementProps<"a">) {
+function Link({
+  isActive,
+  children,
+  ...props
+}: ElementProps<"a"> & { isActive?: boolean }) {
   return (
-    <a className={cls("text-muted", unwrap(className))} {...props}>
+    <a
+      className={`flex items-center justify-between ${isActive ? "text-light" : "text-muted"}`}
+      {...props}
+    >
       {children}
     </a>
   )
