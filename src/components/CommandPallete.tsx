@@ -2,6 +2,7 @@ import { useCommandPallete } from "$/state/commandPallete"
 import {
   computed,
   Derive,
+  For,
   signal,
   Transition,
   useCallback,
@@ -164,13 +165,9 @@ function CommandPalleteDisplay() {
       </DialogHeader>
       <DialogBody className="bg-black/10 border border-white/5 rounded-sm max-h-[400px] overflow-y-auto scroll-py-20">
         <div className="flex flex-col gap-2">
-          <Derive from={filteredGroups}>
-            {(groups) =>
-              groups.map(({ title, items }) => (
-                <CommandPalleteGroup key={title} title={title} items={items} />
-              ))
-            }
-          </Derive>
+          <For each={filteredGroups}>
+            {(group) => <CommandPalleteGroup key={group.title} {...group} />}
+          </For>
         </div>
       </DialogBody>
     </>
