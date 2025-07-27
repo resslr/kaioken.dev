@@ -163,17 +163,15 @@ function CommandPalleteDisplay() {
         </button>
       </DialogHeader>
       <DialogBody className="bg-black/10 border border-white/5 rounded-sm max-h-[400px] overflow-y-auto scroll-py-20">
-        <Derive from={filteredGroups}>
-          {(groups) => {
-            return (
-              <div className="flex flex-col gap-2">
-                {groups.map(({ title, items }) => (
-                  <CommandPalleteGroup title={title} items={items} />
-                ))}
-              </div>
-            )
-          }}
-        </Derive>
+        <div className="flex flex-col gap-2">
+          <Derive from={filteredGroups}>
+            {(groups) =>
+              groups.map(({ title, items }) => (
+                <CommandPalleteGroup key={title} title={title} items={items} />
+              ))
+            }
+          </Derive>
+        </div>
       </DialogBody>
     </>
   )
