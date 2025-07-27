@@ -57,16 +57,11 @@ const STATUS_MAP = {
     since: "0.38.4",
   },
   // 2025-05-15
-  useModel: {
-    type: "deprecated",
-    since: "0.39.0",
-  },
-  // 2025-05-15
   useViewTransition: {
     type: "new",
     since: "0.39.0",
   },
-} satisfies Record<string, DocItemStatus>
+} as const
 
 export const docMeta: DocItem[] = [
   {
@@ -262,12 +257,6 @@ export const docMeta: DocItem[] = [
       {
         title: "useMemo",
         href: "/docs/hooks/useMemo",
-      },
-      {
-        title: "useModel",
-        href: "/docs/hooks/useModel",
-        keywords: ["Ref"],
-        status: STATUS_MAP.useModel,
       },
       {
         title: "useReducer",

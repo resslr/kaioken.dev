@@ -1,11 +1,15 @@
 import { useCommandPallete } from "$/state/commandPallete"
 import {
+  computed,
+  Derive,
+  signal,
   Transition,
   useCallback,
+  useComputed,
   useEffect,
   useMemo,
-  useModel,
   useRef,
+  useSignal,
 } from "kaioken"
 import { Modal } from "./dialog/Modal"
 import { DialogHeader } from "./dialog/DialogHeader"
@@ -19,6 +23,12 @@ import { usePageContext } from "$/context/pageContext"
 import { isLinkActive } from "$/utils"
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
 import { DocItemStatus } from "./DocItemStatus"
+
+const groupData: Record<string, DocPageLink[]> = {
+  Links: SITE_LINKS,
+  API: docMeta.find((d) => d.title === "API")!.pages!,
+  Hooks: docMeta.find((d) => d.title === "Hooks")!.pages!,
+}
 
 export function CommandPallete() {
   const {
@@ -85,14 +95,41 @@ export function CommandPallete() {
     />
   )
 }
+const searchInputValue = signal("")
+const filteredGroups = computed(() => {
+  const terms = searchInputValue.value.toLowerCase().split(" ")
+  return Object.entries(groupData).reduce<CommandPalleteGroupProps[]>(
+    (acc, [title, items]) => {
+      const sectionTitleLower = title.toLowerCase()
+
+      const filtered = items.filter((item) => {
+        const defs = [
+          sectionTitleLower,
+          ...item.title.toLowerCase().split(" "),
+          ...(item.keywords ?? []).map((word) => word.toLowerCase()),
+        ]
+        let matched = 0
+        for (let i = 0; i < terms.length; i++) {
+          if (defs.some((k) => k.indexOf(terms[i]) > -1)) matched++
+        }
+        return matched === terms.length
+      })
+
+      if (filtered.length) return [...acc, { title, items: filtered }]
+      return acc
+    },
+    []
+  )
+})
 
 function CommandPalleteDisplay() {
-  const [searchInputRef, searchInputValue] = useModel<HTMLInputElement>("")
   const { setOpen } = useCommandPallete()
+  const searchInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     searchInputRef.current?.focus()
-  }, [searchInputRef.current])
+    searchInputRef.current?.select()
+  }, [])
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyboardEvent)
@@ -106,8 +143,6 @@ function CommandPalleteDisplay() {
     searchInputRef.current?.focus()
   }
 
-  const searchTerms = searchInputValue.toLowerCase().split(" ")
-
   return (
     <>
       <DialogHeader className="border-b-0 relative">
@@ -117,6 +152,7 @@ function CommandPalleteDisplay() {
           placeholder="Search..."
           className="w-full pl-8 bg-black/20 font-normal text-base"
           ref={searchInputRef}
+          bind:value={searchInputValue}
         />
         <button
           ariaLabel="Close"
@@ -127,63 +163,32 @@ function CommandPalleteDisplay() {
         </button>
       </DialogHeader>
       <DialogBody className="bg-black/10 border border-white/5 rounded-sm max-h-[400px] overflow-y-auto scroll-py-20">
-        <div className="flex flex-col gap-2">
-          <CommandPalleteGroup
-            title="Links"
-            items={SITE_LINKS}
-            searchTerms={searchTerms}
-          />
-          <CommandPalleteGroup
-            title="API"
-            items={docMeta.find((d) => d.title === "API")!.pages!}
-            searchTerms={searchTerms}
-          />
-          <CommandPalleteGroup
-            title="Hooks"
-            items={docMeta.find((d) => d.title === "Hooks")!.pages!}
-            searchTerms={searchTerms}
-          />
-        </div>
+        <Derive from={filteredGroups}>
+          {(groups) => {
+            return (
+              <div className="flex flex-col gap-2">
+                {groups.map(({ title, items }) => (
+                  <CommandPalleteGroup title={title} items={items} />
+                ))}
+              </div>
+            )
+          }}
+        </Derive>
       </DialogBody>
     </>
   )
 }
 
-function matchItem(terms: string[], keywords: string[]) {
-  let matched = 0
-  for (let i = 0; i < terms.length; i++) {
-    if (keywords.some((k) => k.indexOf(terms[i]) > -1)) matched++
-  }
-  return matched === terms.length
-}
-
-function CommandPalleteGroup({
-  title,
-  items,
-  searchTerms,
-}: {
+type CommandPalleteGroupProps = {
   title: string
   items: DocPageLink[]
-  searchTerms: string[]
-}) {
-  const filteredItems = useMemo(
-    () =>
-      items.filter((item) =>
-        matchItem(searchTerms, [
-          title.toLowerCase(),
-          ...item.title.toLowerCase().split(" "),
-          ...(item.keywords?.map((item) => item.toLowerCase()) ?? []),
-        ])
-      ),
-    [searchTerms]
-  )
-  if (!filteredItems.length) return null
-
+}
+function CommandPalleteGroup({ title, items }: CommandPalleteGroupProps) {
   return (
     <div>
       <h4 className="mx-1 font-bold text-sm text-muted">{title}</h4>
       <div className="flex gap-1 flex-col py-2 px-1">
-        {filteredItems.map((item) => (
+        {items.map((item) => (
           <CommandPalleteItem
             key={item.href}
             item={item}

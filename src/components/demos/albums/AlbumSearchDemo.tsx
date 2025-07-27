@@ -1,5 +1,5 @@
 import { SearchIcon } from "$/components/icons/SearchIcon"
-import { createStore, useMemo, useModel } from "kaioken"
+import { createStore, Derive, useComputed, useMemo, useSignal } from "kaioken"
 import { CodeDemo } from "../CodeDemo"
 import { DemoComponentWrapper } from "../DemoComponentWrapper"
 import { PlayIcon } from "$/components/icons/PlayIcon"
@@ -53,26 +53,22 @@ const useAlbumsStore = createStore(
 )
 
 export function AlbumSearchDemo() {
-  const [inputRef, inputValue] = useModel<HTMLInputElement>("")
-  const { value: albums } = useAlbumsStore(
-    (store) => store,
-    () => true
-  )
+  const searchInputValue = useSignal("")
+  const { value: albums } = useAlbumsStore()
 
-  const [filteredAlbums, resultTxt] = useMemo(() => {
-    const res = albums.filter(
-      (a) => a.title.toLowerCase().indexOf(inputValue.toLowerCase()) > -1
-    )
+  const searchResult = useComputed(() => {
+    const txt = searchInputValue.value.toLowerCase()
+    const res = albums.filter((a) => a.title.toLowerCase().indexOf(txt) > -1)
     const len = res.length
     return [
       res,
       len === 0
-        ? `No matches for "${inputValue}"`
+        ? `No matches for "${searchInputValue}"`
         : len === 1
           ? "1 match"
           : `${len} matches`,
-    ]
-  }, [inputValue])
+    ] as const
+  })
 
   return (
     <CodeDemo
@@ -93,19 +89,23 @@ export function AlbumSearchDemo() {
           <div className="sticky top-0 bg-stone-750 mb-4 flex rounded-sm z-10 shadow-md shadow-stone-900">
             <SearchIcon className="absolute left-2 top-1/2 -translate-y-1/2 text-stone-400" />
             <input
-              ref={inputRef}
+              bind:value={searchInputValue}
               type="text"
               name="album-search"
               className="bg-transparent pl-8 w-full text-sm py-1"
               placeholder="Search"
             />
           </div>
-          <section className="flex flex-col gap-4">
-            <p className="text-muted">{resultTxt}</p>
-            {filteredAlbums.map((album) => (
-              <AlbumItem key={album.id} album={album} />
-            ))}
-          </section>
+          <Derive from={searchResult}>
+            {([filteredAlbums, resultTxt]) => (
+              <section className="flex flex-col gap-4">
+                <p className="text-muted">{resultTxt}</p>
+                {filteredAlbums.map((album) => (
+                  <AlbumItem key={album.id} album={album} />
+                ))}
+              </section>
+            )}
+          </Derive>
         </div>
       </DemoComponentWrapper>
     </CodeDemo>
