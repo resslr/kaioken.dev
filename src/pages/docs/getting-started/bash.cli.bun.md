@@ -1,3 +1,3 @@
 ```bash
-bun create kaioken
+bun create kiru
 ```

@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - Transition",
+  title: "Kiru - Transition",
   keywords: ["transition"],
 }

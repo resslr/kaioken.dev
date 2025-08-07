@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - useSyncExternalStore",
+  title: "Kiru - useSyncExternalStore",
   keywords: ["useSyncExternalStore", "hooks"],
 }

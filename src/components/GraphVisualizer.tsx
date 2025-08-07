@@ -1,5 +1,5 @@
-import { ElementProps, useViewTransition, Signal } from "kaioken"
-import { className as cls } from "kaioken/utils"
+import { ElementProps, useViewTransition, Signal } from "kiru"
+import { className as cls } from "kiru/utils"
 import ArrowIcon from "./icons/ArrowIcon"
 
 function mapSiblings(

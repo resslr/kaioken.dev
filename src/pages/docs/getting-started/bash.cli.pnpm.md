@@ -1,3 +1,3 @@
 ```bash
-pnpm create kaioken
+pnpm create kiru
 ```

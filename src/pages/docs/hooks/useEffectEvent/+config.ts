@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - useEffectEvent",
+  title: "Kiru - useEffectEvent",
   keywords: ["useEffectEvent", "hooks"],
 }

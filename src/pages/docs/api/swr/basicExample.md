@@ -1,5 +1,5 @@
 ```jsx
-import { useSWR } from "kaioken/swr"
+import { useSWR } from "kiru/swr"
 
 const fetcher = async (url) => {
   const res = await fetch(url)

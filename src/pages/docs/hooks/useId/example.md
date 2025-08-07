@@ -1,5 +1,5 @@
 ```jsx
-import { useId } from "kaioken"
+import { useId } from "kiru"
 
 function App() {
   return (

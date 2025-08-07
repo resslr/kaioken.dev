@@ -1,5 +1,5 @@
 ```jsx
-import { useSyncExternalStore } from "kaioken"
+import { useSyncExternalStore } from "kiru"
 import { counterStore } from "./counterStore"
 
 function App() {

@@ -1,5 +1,5 @@
 ```tsx
-import { Portal } from "kaioken"
+import { Portal } from "kiru"
 
 function App() {
   return (

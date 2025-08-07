@@ -5,8 +5,8 @@ import {
   unwrap,
   useEffect,
   useSignal,
-} from "kaioken"
-import { className as cls } from "kaioken/utils"
+} from "kiru"
+import { className as cls } from "kiru/utils"
 import { usePageContext } from "$/context/pageContext"
 import { docMeta } from "$/docs-meta"
 import { useNavDrawer } from "$/state/navDrawer"

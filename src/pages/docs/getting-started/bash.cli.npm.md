@@ -1,3 +1,3 @@
 ```bash
-npx create-kaioken@latest
+npx create-kiru@latest
 ```

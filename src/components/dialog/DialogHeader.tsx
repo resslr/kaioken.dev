@@ -1,4 +1,4 @@
-import { ElementProps } from "kaioken"
+import { ElementProps } from "kiru"
 import { H2 } from "../atoms/Heading"
 
 export function DialogHeader({ children, className }: ElementProps<"div">) {

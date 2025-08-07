@@ -5,11 +5,11 @@ import { CopyInnerText } from "$/components/CopyInnerText"
 
 # Custom hooks
 
-Custom hooks allow you to encapsulate reusable logic within your Kaioken components. This documentation outlines the steps and considerations for building your own custom hooks.
+Custom hooks allow you to encapsulate reusable logic within your Kiru components. This documentation outlines the steps and considerations for building your own custom hooks.
 
 **Understanding the Code:**
 
-The provided code snippet showcases the ``useHook`` function, which is the foundation for creating hooks in Kaioken. Here's a breakdown of its functionality:
+The provided code snippet showcases the ``useHook`` function, which is the foundation for creating hooks in Kiru. Here's a breakdown of its functionality:
 
 - **<CodePreview data={useHookTypePreview} /> function:**
 
@@ -19,7 +19,7 @@ The provided code snippet showcases the ``useHook`` function, which is the found
         - ``hookData``: An object containing data specific to your hook's logic.
         - ``callback``: A function that defines the behavior of your custom hook. It receives an object containing information about the current execution context and can access the provided ``hookData``.
  
-    - Retrieves the Kaioken virtual node (vNode) associated with the component.
+    - Retrieves the Kiru virtual node (vNode) associated with the component.
     - Validates that the hook is called at an appropriate location (top level of a component or within another hook).
     - Extracts relevant context information from the vNode.
     - Calls the provided ``callback`` function with details about the current state and methods for updating the component or scheduling effects.
@@ -36,7 +36,7 @@ The provided code snippet showcases the ``useHook`` function, which is the found
     - ``isInit``: A boolean indicating whether the hook is being called for the first time.
     - ``update``: A function to trigger a re-render of the component.
     - ``queueEffect``: A function to schedule side effects within your hook.
-    - ``vNode``: The Kaioken virtual node associated with the component.
+    - ``vNode``: The Kiru virtual node associated with the component.
 
 4. **Return value:** The ``callback`` function should return the value(s) you want to expose to your component's logic.
 
@@ -71,9 +71,9 @@ function useCounter(initialValue = 0) {
 - **Accessing previous state (optional):** The ``isInit`` argument in the callback allows you to determine whether the hook is being called for the first time.
 - **Triggering re-renders:** Use the provided ``update`` function to trigger a re-render of the component when your hook's state changes.
 - **Scheduling effects:** Use the ``queueEffect`` function to schedule side effects that are executed post-update within your custom hook.
-- **``sideEffectsEnabled`` function (optional):** Kaioken exposes a ``sideEffectsEnabled`` function that allows you to determine whether side effects (eg. DOM interactions) should be executed. ``sideEffectsEnabled`` will return ``false`` if Kaioken's current ``renderMode`` is set to ``string`` or ``stream``.
+- **``sideEffectsEnabled`` function (optional):** Kiru exposes a ``sideEffectsEnabled`` function that allows you to determine whether side effects (eg. DOM interactions) should be executed. ``sideEffectsEnabled`` will return ``false`` if Kiru's current ``renderMode`` is set to ``string`` or ``stream``.
 
-By following these guidelines, you can create custom hooks that promote code reusability, improve component organization, and enhance the maintainability of your Kaioken applications.
+By following these guidelines, you can create custom hooks that promote code reusability, improve component organization, and enhance the maintainability of your Kiru applications.
 
 
 

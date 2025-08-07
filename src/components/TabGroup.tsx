@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "kaioken"
+import { useCallback, useMemo } from "kiru"
 import "./TabGroup.css"
 
 interface TabGroupProps {

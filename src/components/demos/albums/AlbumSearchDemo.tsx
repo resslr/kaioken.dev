@@ -1,5 +1,5 @@
 import { SearchIcon } from "$/components/icons/SearchIcon"
-import { createStore, Derive, useComputed, useMemo, useSignal } from "kaioken"
+import { createStore, Derive, useComputed, useMemo, useSignal } from "kiru"
 import { CodeDemo } from "../CodeDemo"
 import { DemoComponentWrapper } from "../DemoComponentWrapper"
 import { PlayIcon } from "$/components/icons/PlayIcon"

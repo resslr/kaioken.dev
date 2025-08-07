@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - useAsync",
+  title: "Kiru - useAsync",
   keywords: ["useAsync", "hooks"],
 }

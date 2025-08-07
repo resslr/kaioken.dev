@@ -11,7 +11,7 @@ import {
   useMemo,
   useRef,
   useSignal,
-} from "kaioken"
+} from "kiru"
 import { Modal } from "./dialog/Modal"
 import { DialogHeader } from "./dialog/DialogHeader"
 import { Input } from "./atoms/Input"

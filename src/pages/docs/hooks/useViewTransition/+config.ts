@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - useViewTransition",
+  title: "Kiru - useViewTransition",
   keywords: ["useViewTransition", "hooks"],
 }

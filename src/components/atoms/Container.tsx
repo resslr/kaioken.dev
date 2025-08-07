@@ -1,4 +1,4 @@
-import { ElementProps } from "kaioken"
+import { ElementProps } from "kiru"
 
 interface ContainerProps extends ElementProps<"div"> {
   mobilePadding?: boolean

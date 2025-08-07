@@ -4,7 +4,7 @@ type HookCallbackState<T> = {
   isInit: boolean
   update: () => void
   queueEffect: (callback: Function, opts?: { immediate?: boolean }) => void
-  vNode: Kaioken.VNode
+  vNode: Kiru.VNode
 }
 type HookCallback<T, U> = (state: HookCallbackState<T>) => U
 ```

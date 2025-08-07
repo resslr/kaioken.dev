@@ -1,4 +1,4 @@
 ```bash
-yarn add kaioken
-yarn add vite-plugin-kaioken --dev
+yarn add kiru
+yarn add vite-plugin-kiru --dev
 ```

@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - useState",
+  title: "Kiru - useState",
   keywords: ["useState", "hooks"],
 }

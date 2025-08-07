@@ -69,8 +69,8 @@ export const docMeta: DocItem[] = [
     href: "/docs/introduction",
     sections: [
       {
-        title: "About Kaioken",
-        id: "about-kaioken",
+        title: "About Kiru",
+        id: "about-kiru",
       },
       {
         title: "Roadmap",

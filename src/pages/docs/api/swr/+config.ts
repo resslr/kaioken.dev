@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - SWR",
+  title: "Kiru - SWR",
   keywords: ["SWR", "useSWR", "cache", "mutate", "fetcher", "revalidate"],
 }

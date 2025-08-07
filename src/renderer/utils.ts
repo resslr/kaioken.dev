@@ -10,7 +10,7 @@ function getTitle(pageContext: PageContext) {
   if (typeof val === "function") {
     return val(pageContext)
   }
-  return val || "Kaioken"
+  return val || "Kiru"
 }
 
 function getDescription(pageContext: PageContext) {

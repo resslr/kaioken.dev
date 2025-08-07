@@ -1,5 +1,5 @@
 ```jsx
-import { navigate } from "kaioken/router"
+import { navigate } from "kiru/router"
 
 export function LoginPage() {
   const user = useUser() // some custom hook that gets auth state

@@ -1,5 +1,5 @@
 ```jsx
-import { useReducer } from "kaioken"
+import { useReducer } from "kiru"
 
 function counterReducer(state, action) {
   switch (action.type) {

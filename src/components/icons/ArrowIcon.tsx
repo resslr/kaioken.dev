@@ -1,4 +1,4 @@
-import type { ElementProps } from "kaioken"
+import type { ElementProps } from "kiru"
 
 function Up(props: ElementProps<"svg">) {
   return (

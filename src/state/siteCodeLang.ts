@@ -1,9 +1,9 @@
-import { signal } from "kaioken"
+import { signal } from "kiru"
 
 export const siteCodeLang = signal<"js" | "ts">("js")
 if ("window" in globalThis) {
-  const storageKey = "kaioken.dev:siteCodeLang"
-  window.__kaioken?.on("mount", () => {
+  const storageKey = "kirujs.dev:siteCodeLang"
+  window.__kiru?.on("mount", () => {
     const storageValue = localStorage.getItem(storageKey)
     if (storageValue && ["js", "ts"].includes(storageValue)) {
       siteCodeLang.value = storageValue as "js" | "ts"

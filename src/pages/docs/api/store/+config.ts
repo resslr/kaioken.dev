@@ -1,5 +1,5 @@
 export default {
-  title: "Kaioken - Store",
+  title: "Kiru - Store",
   keywords: [
     "createStore",
     "useStore",

@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - Form",
+  title: "Kiru - Form",
   keywords: ["form", "validation", "useForm"],
 }

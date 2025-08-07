@@ -15,7 +15,7 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "types": [],
     "jsx": "preserve",
-    "jsxImportSource": "kaioken",
+    "jsxImportSource": "kiru",
     "paths": {
       "$/*": ["./src/*"]
     }

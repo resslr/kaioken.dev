@@ -1,6 +1,6 @@
 import { LikeButton } from "$/components/LikeButton"
 import { PlayIcon } from "$/components/icons/PlayIcon"
-import { useState } from "kaioken"
+import { useState } from "kiru"
 
 export function AlbumItem({ album }: { album: Album }) {
   const [liked, setLiked] = useState(false)

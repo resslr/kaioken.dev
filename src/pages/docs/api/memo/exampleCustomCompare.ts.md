@@ -1,5 +1,5 @@
 ```tsx
-import { memo } from "kaioken"
+import { memo } from "kiru"
 
 type User = {
   name: string

@@ -1,8 +1,8 @@
 export default {
   keywords: [
-    "Kaioken",
-    "KaiokenJS",
-    "Kaioken JS",
+    "Kiru",
+    "KiruJS",
+    "Kiru JS",
     "Typescript",
     "Javascript",
     "library",

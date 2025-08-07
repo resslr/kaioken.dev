@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - Custom hooks",
+  title: "Kiru - Custom hooks",
   keywords: ["Custom hooks", "hooks"],
 }

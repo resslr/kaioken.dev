@@ -1,5 +1,5 @@
 ```jsx
-import { useRef, useLayoutEffect, useState, Portal } from "kaioken"
+import { useRef, useLayoutEffect, useState, Portal } from "kiru"
 import { TooltipContainer } from "./TooltipContainer"
 
 export function Tooltip({ children, targetRect }) {

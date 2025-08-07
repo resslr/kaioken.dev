@@ -1,5 +1,5 @@
-import { className as cls } from "kaioken/utils"
-import { useEffect, useMemo, useRef, useState } from "kaioken"
+import { className as cls } from "kiru/utils"
+import { useEffect, useMemo, useRef, useState } from "kiru"
 import { Container } from "$/components/atoms/Container"
 import { SidebarContent } from "$/components/SidebarContent"
 import { usePageContext } from "$/context/pageContext"

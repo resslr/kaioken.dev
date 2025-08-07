@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - useCallback",
+  title: "Kiru - useCallback",
   keywords: ["useCallback", "hooks"],
 }

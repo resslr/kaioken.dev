@@ -1,6 +1,6 @@
 ```jsx
-import { useState } from "kaioken"
-import { useSWR } from "kaioken/swr"
+import { useState } from "kiru"
+import { useSWR } from "kiru/swr"
 
 interface Product {
   id: number

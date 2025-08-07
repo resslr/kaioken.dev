@@ -1,5 +1,5 @@
 import { siteCodeLang } from "$/state/siteCodeLang"
-import { useCallback } from "kaioken"
+import { useCallback } from "kiru"
 
 export function SiteLangToggle() {
   const handleClick = useCallback(() => {

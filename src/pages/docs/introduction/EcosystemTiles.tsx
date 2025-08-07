@@ -1,4 +1,4 @@
-import { className as cls } from "kaioken/utils"
+import { className as cls } from "kiru/utils"
 
 type EcosystemItemChild = {
   iconSrc?: string
@@ -18,47 +18,47 @@ const ECOSYSTEM: EcosystemItem[] = [
     title: "Fullstack QuickStart",
     description:
       "Full-stack template built with Hono, Drizzle, Vike, and Telefunc. Comes with preconfigured database, authentication, and more.",
-    url: "https://github.com/CrimsonChi/kaioken-node-fullstack-quickstart",
+    url: "https://github.com/kirujs/kiru-node-fullstack-quickstart",
   },
-  {
-    title: "Adonis Kaioken Template",
-    description:
-      "A ready-to-use starter template for Kaioken applications built with Adonis.",
-    url: "https://github.com/Yofou/adonis-kaioken-template",
-  },
-  {
-    title: "Inertia Kaioken Adapter",
-    description:
-      "Enables use of Kaioken as a rendering library with Inertia. Build full-stack apps with Laravel, .NET and more.",
-    url: "https://github.com/CrimsonChi/inertia-kaioken-adapter",
-  },
-  {
-    title: "Kaioken-GSAP",
-    description: "Makes using GSAP in Kaioken easier.",
-    url: "https://npmjs.com/package/kaioken-gsap",
-  },
-  {
-    title: "@kaioken-core",
-    description:
-      "The best source of custom hooks, headless components, and more.",
-    url: "https://github.com/Yofou/kaioken-core",
-    subItems: [
-      {
-        title: "Hooks",
-        url: "https://hooks.kaioken-core.dev/",
-        iconSrc: "https://hooks.kaioken-core.dev/kaioken-hook.svg",
-      },
-      {
-        title: "Components",
-      },
-      {
-        title: "Motion",
-      },
-      {
-        title: "Sortable",
-      },
-    ],
-  },
+  // {
+  //   title: "Adonis Kaioken Template",
+  //   description:
+  //     "A ready-to-use starter template for Kaioken applications built with Adonis.",
+  //   url: "https://github.com/Yofou/adonis-kaioken-template",
+  // },
+  // {
+  //   title: "Inertia Kaioken Adapter",
+  //   description:
+  //     "Enables use of Kaioken as a rendering library with Inertia. Build full-stack apps with Laravel, .NET and more.",
+  //   url: "https://github.com/CrimsonChi/inertia-kaioken-adapter",
+  // },
+  // {
+  //   title: "Kaioken-GSAP",
+  //   description: "Makes using GSAP in Kaioken easier.",
+  //   url: "https://npmjs.com/package/kaioken-gsap",
+  // },
+  // {
+  //   title: "@kaioken-core",
+  //   description:
+  //     "The best source of custom hooks, headless components, and more.",
+  //   url: "https://github.com/Yofou/kaioken-core",
+  //   subItems: [
+  //     {
+  //       title: "Hooks",
+  //       url: "https://hooks.kaioken-core.dev/",
+  //       iconSrc: "https://hooks.kaioken-core.dev/kaioken-hook.svg",
+  //     },
+  //     {
+  //       title: "Components",
+  //     },
+  //     {
+  //       title: "Motion",
+  //     },
+  //     {
+  //       title: "Sortable",
+  //     },
+  //   ],
+  // },
 ]
 
 export function EcosystemTiles() {

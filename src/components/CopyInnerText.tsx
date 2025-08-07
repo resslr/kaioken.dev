@@ -1,4 +1,4 @@
-import { useSignal, useRef, useEffect, useCallback, Derive } from "kaioken"
+import { useSignal, useRef, useEffect, useCallback, Derive } from "kiru"
 import { CopyIcon } from "./icons/CopyIcon"
 
 type CopyInnerTextProps = {

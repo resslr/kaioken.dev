@@ -1,5 +1,5 @@
 ```jsx
-import { useState, useViewTransition } from "kaioken"
+import { useState, useViewTransition } from "kiru"
 
 function App() {
   const [count, setCount] = useState(0)

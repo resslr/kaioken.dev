@@ -1,5 +1,5 @@
 ```jsx
-import { lazy } from "kaioken"
+import { lazy } from "kiru"
 
 const DefaultExportedLazyComponent = lazy(() => import("./MyComponent"))
 const NamedExportedLazyComponent = lazy(() =>

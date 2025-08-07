@@ -1,5 +1,5 @@
 ```tsx
-import { useContext } from "kaioken"
+import { useContext } from "kiru"
 import { ThemeContext } from "./themeContext"
 
 export function Button() {

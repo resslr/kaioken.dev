@@ -1,5 +1,5 @@
 ```tsx
-import { useState } from "kaioken"
+import { useState } from "kiru"
 import { ThemeContext } from "./themeContext"
 
 export function ThemeContextProvider({ children }: { children: JSX.Children }) {

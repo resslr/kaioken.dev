@@ -1,5 +1,5 @@
 ```tsx
-import { memo } from "kaioken"
+import { memo } from "kiru"
 
 const MemoizedUserAvatar = memo(({ name, avatarUrl }) => {
   // Component logic here

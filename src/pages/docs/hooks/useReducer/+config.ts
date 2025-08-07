@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - useReducer",
+  title: "Kiru - useReducer",
   keywords: ["useReducer", "hooks"],
 }

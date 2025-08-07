@@ -1,5 +1,5 @@
 export default {
-  title: "Kaioken - Signal",
+  title: "Kiru - Signal",
   keywords: [
     "signal",
     "state",

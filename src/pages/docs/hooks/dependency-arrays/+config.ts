@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - Dependency arrays",
+  title: "Kiru - Dependency arrays",
   keywords: ["Dependency arrays", "hooks"],
 }

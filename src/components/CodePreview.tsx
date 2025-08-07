@@ -1,9 +1,9 @@
 import { usePageContext } from "$/context/pageContext"
 import { CodePreviewData } from "$/types"
 import { isLinkActive } from "$/utils"
-import { Portal, Transition, useCallback, useRef, useState } from "kaioken"
+import { Portal, Transition, useCallback, useRef, useState } from "kiru"
 
-function clearTimeoutRef(timeoutRef: Kaioken.MutableRefObject<number>) {
+function clearTimeoutRef(timeoutRef: Kiru.MutableRefObject<number>) {
   if (timeoutRef.current !== -1) {
     window.clearTimeout(timeoutRef.current)
     timeoutRef.current = -1

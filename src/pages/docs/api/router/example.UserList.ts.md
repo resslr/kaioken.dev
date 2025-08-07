@@ -1,6 +1,6 @@
 ```jsx
-import { Link, useRouter } from "kaioken/router"
-import { useAsync } from "kaioken"
+import { Link, useRouter } from "kiru/router"
+import { useAsync } from "kiru"
 
 type UsersResponse = {
   users: User[]

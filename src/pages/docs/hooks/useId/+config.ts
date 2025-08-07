@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - useId",
+  title: "Kiru - useId",
   keywords: ["useId", "hooks"],
 }

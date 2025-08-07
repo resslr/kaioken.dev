@@ -1,7 +1,7 @@
 import path from "node:path"
 import { defineConfig } from "vite"
 import vike from "vike/plugin"
-import kaioken from "vite-plugin-kaioken"
+import kiru from "vite-plugin-kiru"
 import mdx from "@mdx-js/rollup"
 import shiki, { type RehypeShikiOptions } from "@shikijs/rehype"
 import {
@@ -62,8 +62,8 @@ export default defineConfig({
     //           type: "asset",
     //           fileName: "_headers",
     //           source: `# custom cloudflare headers
-    // https://kaioken.dev/*
-    //   Content-Security-Policy: default-src 'self'; img-src 'self' kaioken.dev;
+    // https://kirujs.dev/*
+    //   Content-Security-Policy: default-src 'self'; img-src 'self' kirujs.dev;
     //           `,
     //         })
     //       },
@@ -72,7 +72,7 @@ export default defineConfig({
       enforce: "pre",
       ...mdx({
         jsx: false,
-        jsxImportSource: "kaioken",
+        jsxImportSource: "kiru",
         jsxRuntime: "automatic",
         rehypePlugins: [
           [
@@ -91,6 +91,6 @@ export default defineConfig({
       }),
     },
     vike(),
-    kaioken(),
+    kiru(),
   ],
 })

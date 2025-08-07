@@ -1,5 +1,5 @@
 ```jsx
-import { useState, useAsync } from "kaioken"
+import { useState, useAsync } from "kiru"
 
 function App() {
   const [productId, setProductId] = useState(1)

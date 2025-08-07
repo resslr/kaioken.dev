@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - Portal",
+  title: "Kiru - Portal",
   keywords: ["portal"],
 }

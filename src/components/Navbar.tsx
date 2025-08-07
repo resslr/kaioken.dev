@@ -10,7 +10,7 @@ import { useCommandPallete } from "$/state/commandPallete"
 import { DiscordIcon } from "./icons/DiscordIcon"
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
 import { SiteLangToggle } from "./SiteLangToggle"
-import { useCallback, useLayoutEffect, useSignal } from "kaioken"
+import { useCallback, useLayoutEffect, useSignal } from "kiru"
 import { match } from "lit-match"
 
 export function Navbar() {
@@ -34,7 +34,7 @@ export function Navbar() {
             <LogoIcon />
           </div>
           <span className="text-primary font-bold text-xl flex items-center">
-            Kaioken
+            Kiru
           </span>
         </a>
 
@@ -64,9 +64,9 @@ export function Navbar() {
         <SearchButton />
         <div className="flex items-center gap-3 h-full">
           <a
-            href="https://github.com/CrimsonChi/kaioken"
+            href="https://github.com/kirujs/kiru"
             target="_blank"
-            ariaLabel="Visit the Kaioken repo on GitHub"
+            ariaLabel="Visit the Kiru repo on GitHub"
             className="flex items-center justify-center hover:opacity-80 transition-opacity"
           >
             <GithubIcon />
@@ -74,7 +74,7 @@ export function Navbar() {
           <a
             href={DISCORD_LINK}
             target="_blank"
-            ariaLabel="Join the Kaioken Discord server"
+            ariaLabel="Join the Kiru Discord server"
             className="flex items-center justify-center hover:opacity-80 transition-opacity"
           >
             <DiscordIcon />

@@ -1,6 +1,6 @@
 import { usePageContext } from "$/context/pageContext"
 import { customEvents } from "$/custom-events"
-import { useEffect, useRef, useState } from "kaioken"
+import { useEffect, useRef, useState } from "kiru"
 export const useHashChangeDispatcher = (sectionIds: string[]) => {
   const [currentSection, setCurrentSection] = useState<string>("")
   const { urlPathname } = usePageContext()

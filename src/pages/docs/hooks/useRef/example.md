@@ -1,5 +1,5 @@
 ```jsx
-import { useRef } from "kaioken"
+import { useRef } from "kiru"
 
 function App() {
   const inputRef = useRef(null) // Create a ref for the input element

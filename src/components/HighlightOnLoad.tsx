@@ -1,5 +1,5 @@
 import { customEvents } from "$/custom-events"
-import { useEffect, useRef } from "kaioken"
+import { useEffect, useRef } from "kiru"
 
 export function HighlightOnLoad({
   children,

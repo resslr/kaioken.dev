@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - Lazy",
+  title: "Kiru - Lazy",
   keywords: ["lazy"],
 }

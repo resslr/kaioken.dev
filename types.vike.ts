@@ -18,7 +18,7 @@ declare global {
         description: string | ((ctx: PageContext) => string)
         keywords: string[] | ((ctx: PageContext) => string[])
         Page: () => JSX.Element
-        Layout?: Kaioken.FC
+        Layout?: Kiru.FC
       }
 
       routeParams: Record<string, string>

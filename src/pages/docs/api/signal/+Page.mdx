@@ -25,7 +25,7 @@ allowing for efficient updates to dependent components.
   ### Creating a Signal
 
 ```ts
-import { signal } from "kaioken"
+import { signal } from "kiru"
 
 const userName = signal("bob")
 ```
@@ -93,7 +93,7 @@ unsubscribe()
   until it is `observed` or subscribed to. Manually assigning a new value to it has no effect.
 
 ```ts
-import { computed } from "kaioken"
+import { computed } from "kiru"
 
 const userGreeting = computed(() => `Hello, ${userName}!`)
 ```
@@ -122,7 +122,7 @@ implement `toString()` so they can be used in strings!
 Use `watch` create a <CodePreview data={watchEffectTypePreview} /> that 
 will fire the callback whenever `observed` signals change.
 ```ts
-import { watch } from "kaioken"
+import { watch } from "kiru"
 
 const watcher = watch(() => console.log(`Greeting has been updated: ${userGreeting}`))
 
@@ -154,10 +154,10 @@ const watcher = watch([userName, userGreeting], (newName, newGreeting) => {
 
 ### General usage
 
-In Kaioken components, reading and writing signals is slightly nuanced
+In Kiru components, reading and writing signals is slightly nuanced
 but has the capability to provide unmatched performance.
 
-export const prefix = `import { signal, computed } from "kaioken"
+export const prefix = `import { signal, computed } from "kiru"
 
 const userName = signal("bob")
 const userGreeting = computed(() => \`Hello, \${userName}!\`)\n\n`;
@@ -206,14 +206,14 @@ function App() {
 
 
 Because neither of the signals are `observed` at the time of rendering, 
-when they change, Kaioken will only change the things that matter - in 
+when they change, Kiru will only change the things that matter - in 
 this case, the text node inside of our heading that displays the greeting 
 and the `value` attribute of our input. 
 
 
 ### Using local signals
 
-`signal`, `computed`, and `watch` can all be created locally in Kaioken 
+`signal`, `computed`, and `watch` can all be created locally in Kiru 
 components via the `useSignal`, `useComputed`, and `useWatch` hooks. 
 This will allow them to be persisted across renders and automatically 
 disposed of when the component unmounts.
@@ -221,7 +221,7 @@ disposed of when the component unmounts.
 
 <CopyInnerText>
 ```tsx
-import { useSignal, useComputed, useWatch } from "kaioken"
+import { useSignal, useComputed, useWatch } from "kiru"
 
 function App() {
   const userName = useSignal("bob")
@@ -254,7 +254,7 @@ The `bind:` prefix can be used to create two-way binding for any property
 that changes via user interaction. When the signal changes, the property 
 is updated, and vice versa.
 
-<CopyInnerText prefix={`import { useSignal, useWatch } from "kaioken"\n\n`}>
+<CopyInnerText prefix={`import { useSignal, useWatch } from "kiru"\n\n`}>
 ```tsx
 function App() {
   const userName = useSignal("bob")
@@ -282,9 +282,9 @@ list with fine-grained reactivity. This is a great optimization tool for when yo
 use `signal.value.map((item) => ...)` in JSX, causing the component that renders
 it to update whenever the signal changes.
 
-<CopyInnerText importsOverride={`import { useSignal, useComputed, For } from "kaioken"`}>
+<CopyInnerText importsOverride={`import { useSignal, useComputed, For } from "kiru"`}>
 ```tsx
-import { For } from "kaioken"
+import { For } from "kiru"
 
 function App() {
   const items = useSignal([0, 1, 2, 3, 4])
@@ -317,9 +317,9 @@ Similar to `<For />`, `<Derive />` allows you to easily create fine-grained reac
 The `<Derive />` component produces a JSX element that automatically updates whenever the 
 provided `from` signal changes. 
 
-<CopyInnerText importsOverride={`import { useSignal, useComputed, Derive } from "kaioken"`}>
+<CopyInnerText importsOverride={`import { useSignal, useComputed, Derive } from "kiru"`}>
 ```tsx
-import { Derive } from "kaioken"
+import { Derive } from "kiru"
 
 function App() {
   const name = useSignal("bob")

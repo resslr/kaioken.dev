@@ -1,5 +1,5 @@
 ```jsx
-import { createStore } from "kaioken"
+import { createStore } from "kiru"
 
 const useCountStore = createStore(0, (set, get) => ({
   increment: () => set((state) => state + 1),

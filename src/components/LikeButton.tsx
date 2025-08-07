@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "kaioken"
+import { useEffect, useRef, useState } from "kiru"
 import { HeartIcon } from "./icons/HeartIcon"
 import "./LikeButton.css"
 

@@ -34,7 +34,7 @@ export function Page() {
             In general, items in a list/array should <b>always</b> have a{" "}
             <b>stable</b> <code>key</code> prop (
             <i>i.e. a unique identifier, not the item's index</i>). This is how
-            Kaioken persists state across re-renders when the order of the items
+            Kiru persists state across re-renders when the order of the items
             change.
           </div>
         </CalloutBlock>

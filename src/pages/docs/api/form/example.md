@@ -1,5 +1,5 @@
 ```jsx
-import { useForm } from "kaioken/form"
+import { useForm } from "kiru/form"
 
 const App = () => {
   const form = useForm({

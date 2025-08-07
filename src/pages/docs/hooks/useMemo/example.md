@@ -1,5 +1,5 @@
 ```jsx
-import { useMemo, useState } from "kaioken"
+import { useMemo, useState } from "kiru"
 import { fibonacci } from "./fibonacci"
 
 function App() {

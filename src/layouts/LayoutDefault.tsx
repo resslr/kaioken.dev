@@ -2,7 +2,7 @@ import { Container } from "$/components/atoms/Container"
 import { CommandPallete } from "$/components/CommandPallete"
 import { Navbar } from "$/components/Navbar"
 import { NavDrawer } from "$/components/NavDrawer"
-import { Portal } from "kaioken"
+import { Portal } from "kiru"
 
 export function LayoutDefault({ children }: { children: JSX.Children }) {
   return (

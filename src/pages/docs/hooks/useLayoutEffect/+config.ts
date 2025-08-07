@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - useLayoutEffect",
+  title: "Kiru - useLayoutEffect",
   keywords: ["useLayoutEffect", "hooks"],
 }

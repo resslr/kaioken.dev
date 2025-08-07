@@ -1,5 +1,5 @@
 ```tsx
-import { useSWR } from "kaioken/swr"
+import { useSWR } from "kiru/swr"
 
 interface User {
   id: number

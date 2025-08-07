@@ -1,4 +1,4 @@
-import { Transition, useEffect } from "kaioken"
+import { Transition, useEffect } from "kiru"
 import { Drawer } from "./dialog/Drawer"
 import { useNavDrawer } from "$/state/navDrawer"
 import { SITE_LINKS } from "$/constants"
@@ -36,7 +36,7 @@ export function NavDrawer() {
               <div className="flex gap-1 mb-5">
                 <a href="/" className="flex gap-2 items-center">
                   <LogoIcon width={24} height={24} />
-                  <span className="text-primary font-medium">Kaioken</span>
+                  <span className="text-primary font-medium">Kiru</span>
                 </a>
               </div>
               <div className="flex flex-col gap-2 px-2 ">

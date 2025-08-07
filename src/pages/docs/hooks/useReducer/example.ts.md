@@ -1,5 +1,5 @@
 ```tsx
-import { useReducer } from "kaioken"
+import { useReducer } from "kiru"
 
 type CounterState = { count: number }
 type CounterAction = { type: "increment" } | { type: "decrement" }

@@ -1,4 +1,4 @@
 export default {
-  title: "Kaioken - Memo",
+  title: "Kiru - Memo",
   keywords: ["memo"],
 }

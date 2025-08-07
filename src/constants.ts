@@ -6,7 +6,7 @@ export const SITE_LINKS = [
   },
   {
     title: "Playground",
-    href: "https://stackblitz.com/~/github.com/CrimsonChi/kaioken-csr-template",
+    href: "https://stackblitz.com/~/github.com/kirujs/kiru-csr-template",
     external: true,
   },
 ]
