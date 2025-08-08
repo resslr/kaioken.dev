@@ -44,7 +44,7 @@ export function TodoListDemo() {
             placeholder={"Add a todo"}
             required
           />
-          <button className={styles["form-button"]} type="submit">
+          <button className={styles["button"]} type="submit">
             Add
           </button>
         </form>
@@ -54,7 +54,7 @@ export function TodoListDemo() {
               <li className={styles["todo-item"]} key={id}>
                 {text}
                 <button
-                  className={styles["remove-button"]}
+                  className={styles["button"]}
                   type="button"
                   onclick={() => handleRemove(id)}
                 >

@@ -17,7 +17,7 @@ export function DemoComponentWrapper({
     <div
       className={cls(
         classIncludesPadding ? "" : "p-4",
-        `bg-[#1c1a1a] shadow-[#0005] shadow-lg grow rounded-lg`,
+        `bg-white/5 border border-white/5 shadow-[#0005] shadow-lg grow rounded-lg`,
         unwrap(className)
       )}
     >
