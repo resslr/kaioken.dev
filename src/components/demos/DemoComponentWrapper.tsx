@@ -12,7 +12,7 @@ export function DemoComponentWrapper({
   children,
   className,
 }: ElementProps<"div">) {
-  const classIncludesPadding = classNameIncludes(className, "p-")
+  const classIncludesPadding = classNameIncludes(className, " p-")
   return (
     <div
       className={cls(

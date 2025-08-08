@@ -16,8 +16,8 @@ type EcosystemItem = {
 const ECOSYSTEM: EcosystemItem[] = [
   {
     title: "Fullstack QuickStart",
-    description:
-      "Full-stack template built with Hono, Drizzle, Vike, and Telefunc. Comes with preconfigured database, authentication, and more.",
+    description: `Full-stack template built with Hono, Drizzle, Better-Auth, Vike, and Telefunc. 
+    Comes with preconfigured database, authentication, and more.`,
     url: "https://github.com/kirujs/kiru-node-fullstack-quickstart",
   },
   // {

@@ -1,16 +1,11 @@
 import { ExternalLink } from "$/components/atoms/ExternalLink"
-import { DocsSectionHeader } from "$/components/DocsSectionHeader"
-import { HighlightOnLoad } from "$/components/HighlightOnLoad"
+import { DocsSection } from "$/components/DocsSection"
 import { EcosystemTiles } from "./EcosystemTiles"
 import { DISCORD_LINK } from '$/constants'
 
 # Introduction
 
-<HighlightOnLoad id="about-kiru">
-  <DocsSectionHeader href="#about-kiru">
-    About Kiru
-  </DocsSectionHeader>
-
+<DocsSection id="about-kiru" title="About Kiru">
   Kiru is a lightweight framework designed to empower developers to build applications 
   with expressivity and customizability. It offers a rich feature set while maintaining a 
   smaller footprint, allowing for efficient and flexible development. We are committed to 
@@ -18,16 +13,9 @@ import { DISCORD_LINK } from '$/constants'
 
   Kiru will always be <ExternalLink href="https://github.com/kirujs/kiru" >open-source</ExternalLink>, and we encourage developers to share their ideas and 
   collaborate on improving the framework.
+</DocsSection>
 
-  
-
-</HighlightOnLoad>
-
-<HighlightOnLoad id="roadmap">
-  <DocsSectionHeader href="#roadmap">
-    Roadmap
-  </DocsSectionHeader>
-
+<DocsSection id="roadmap" title="Roadmap">
   There aren't any dates set in stone but rest assured, the following items will be on 
   Kiru's horizon:
 
@@ -41,19 +29,13 @@ import { DISCORD_LINK } from '$/constants'
 
   - \***Insert suggestions here**\*: Let us know what you think of Kiru and what you would 
   like to see in the future! 
- 
+</DocsSection>
 
-</HighlightOnLoad>
-
-<HighlightOnLoad id="ecosystem">
-  <DocsSectionHeader href="#ecosystem">
-    Ecosystem
-  </DocsSectionHeader>
-  
+<DocsSection id="ecosystem" title="Ecosystem">  
   Libraries & templates made by the community and ourselves, in no particular order:
   <EcosystemTiles />
 
   If you want your library or package to be part of this list,
     <ExternalLink href={DISCORD_LINK}>join the community</ExternalLink>
   and let us know about it!
-</HighlightOnLoad>
+</DocsSection>

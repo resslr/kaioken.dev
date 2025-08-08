@@ -1,7 +1,5 @@
 import { Container } from "$/components/atoms/Container"
-import { AlbumItemDemo } from "$/components/demos/albums/AlbumItemDemo"
-import { AlbumListDemo } from "$/components/demos/albums/AlbumListDemo"
-import { AlbumSearchDemo } from "$/components/demos/albums/AlbumSearchDemo"
+import { TodoListDemo } from "$/components/demos/todos/TodoListDemo"
 import { LandingSection } from "./LandingSection"
 
 export function Page() {
@@ -12,7 +10,7 @@ export function Page() {
           <h1 className="text-6xl xs:text-8xl sm:text-9xl font-bold leading-snug! text-shadow text-light">
             Kiru
           </h1>
-          <p className="text-lg mb-6 xs:text-xl sm:text-2xl font-light text-center text-shadow text-light">
+          <p className="text-lg xs:text-xl sm:text-2xl font-light text-center text-shadow text-light mb-6">
             A batteries-included, easy-to-use rendering library with a tiny
             footprint
           </p>
@@ -22,48 +20,19 @@ export function Page() {
           <LandingSection />
         </Container>
       </section>
-      <div className="flex flex-col">
-        <section className="py-20">
+      <div className="flex flex-col gap-12 py-20">
+        <section>
           <Container className="pb-6">
             <h2 className="text-3xl font-medium leading-snug mb-4">
-              Build modular user interfaces with reusable components
+              Do more with less... Actually, just do less.
             </h2>
             <p className="text-lg font-light">
-              Kiru uses unflavoured JSX syntax, making it familiar and
-              approachable to anyone with knowledge of HTML and Javascript.
+              Kiru makes it easy to create optimized web apps by embracing a{" "}
+              <i>'reactivity where it matters'</i> approach.
             </p>
           </Container>
           <Container breakpoint="md" mobilePadding={false}>
-            <AlbumItemDemo />
-          </Container>
-        </section>
-        <section className="py-20">
-          <Container className="pb-6">
-            <h2 className="text-3xl font-medium leading-snug mb-4">
-              Create dynamic experiences with simple control flow
-            </h2>
-            <p className="text-lg font-light">
-              Kiru components are Javascript functions, so control flow and
-              dynamic rendering requires no additional knowledge.
-            </p>
-          </Container>
-          <Container breakpoint="md" mobilePadding={false}>
-            <AlbumListDemo />
-          </Container>
-        </section>
-        <section className="py-20">
-          <Container className="pb-6">
-            <h2 className="text-3xl font-medium leading-snug mb-4">
-              Make interactivity easy
-            </h2>
-            <p className="text-lg font-light">
-              Kiru components use simple, declarative syntax to make
-              interactivity easy. Changing the state of a component
-              automatically updates the UI.
-            </p>
-          </Container>
-          <Container breakpoint="md" mobilePadding={false}>
-            <AlbumSearchDemo />
+            <TodoListDemo />
           </Container>
         </section>
       </div>

@@ -1,7 +1,6 @@
-import { DocsSectionHeader } from "$/components/DocsSectionHeader"
 import { ExternalLink } from "$/components/atoms/ExternalLink"
 import { CalloutBlock } from "$/components/atoms/CalloutBlock"
-import { HighlightOnLoad } from "$/components/HighlightOnLoad"
+import { DocsSection } from "$/components/DocsSection"
 import { packageManager } from "./packageManagerStore"
 import { PackageManagerSelector } from "./PackageManagerSelector"
 import { CopyInnerText } from "$/components/CopyInnerText"
@@ -20,10 +19,7 @@ import { DISCORD_LINK } from "$/constants"
 
 # Getting started
 
-<HighlightOnLoad id="start-a-new-project">
-  <DocsSectionHeader href="#start-a-new-project">
-    Start a new project
-  </DocsSectionHeader>
+<DocsSection id="start-a-new-project" title="Start a new project">
   <div>
     <div className="not-prose">
       <PackageManagerSelector />
@@ -40,13 +36,9 @@ import { DISCORD_LINK } from "$/constants"
       </CopyInnerText>
     </div>
   </div>
-</HighlightOnLoad>
+</DocsSection>
 
-<HighlightOnLoad id="add-to-an-existing-project">
-  <DocsSectionHeader href="#add-to-an-existing-project">
-    Add to an existing project
-  </DocsSectionHeader>
-
+<DocsSection id="add-to-an-existing-project" title="Add to an existing project">
   <CalloutBlock fontSize="normal">
     <span>The following example demonstrates adding Kiru to a <ExternalLink href="https://vitejs.dev/">Vite</ExternalLink> project.</span>
   </CalloutBlock>
@@ -114,13 +106,8 @@ import { DISCORD_LINK } from "$/constants"
     </CopyInnerText>
   </div>
 
-</HighlightOnLoad>
+</DocsSection>
 
-<HighlightOnLoad id="getting-help">
-  <DocsSectionHeader href="#getting-help">
-    Getting help
-  </DocsSectionHeader>
-
+<DocsSection id="getting-help" title="Getting help">
   Reach out to us or get involved on <ExternalLink href={DISCORD_LINK}>Discord</ExternalLink>
-
-</HighlightOnLoad>
+</DocsSection>

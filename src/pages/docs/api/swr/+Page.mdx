@@ -2,8 +2,7 @@ import { CodePreview } from "$/components/CodePreview"
 import { useSWRTypePreview } from "$/components/previews/useSWR.type.preview"
 import { swrResponseTypePreview } from "$/components/previews/SWRResponse.type.preview"
 import { ExternalLink } from "$/components/atoms/ExternalLink"
-import { DocsSectionHeader } from "$/components/DocsSectionHeader"
-import { HighlightOnLoad } from "$/components/HighlightOnLoad"
+import { DocsSection } from "$/components/DocsSection"
 import { CopyInnerText } from "$/components/CopyInnerText"
 import { siteCodeLang } from "$/state/siteCodeLang"
 import BasicExample from "./basicExample.md"
@@ -22,11 +21,7 @@ Inspired by <ExternalLink href="https://swr.vercel.app/" >Vercel's SWR</External
 it follows the stale-while-revalidate pattern, serving cached data while fetching 
 fresh data in the background.
 
-<HighlightOnLoad id="basic-usage">
-  <DocsSectionHeader href="#basic-usage">
-    Basic Usage
-  </DocsSectionHeader>
-
+<DocsSection id="basic-usage" title="Basic Usage">
   <CodePreview data={useSWRTypePreview} /> takes a key and a fetcher function, 
   and returns an <CodePreview data={swrResponseTypePreview} /> object containing:
 
@@ -40,13 +35,9 @@ fresh data in the background.
   <CopyInnerText>
     {siteCodeLang.value === "js" ? <BasicExample /> : <BasicExampleTS />}
   </CopyInnerText>
-</HighlightOnLoad>
+</DocsSection>
 
-<HighlightOnLoad id="mutations">
-  <DocsSectionHeader href="#mutations">
-    Mutations
-  </DocsSectionHeader>
-
+<DocsSection id="mutations" title="Mutations">
   The `mutate` function allows you to update data and trigger revalidation. 
   It accepts a function that returns a Promise, and the cache will be updated 
   with the resolved value.
@@ -54,17 +45,13 @@ fresh data in the background.
   <CopyInnerText>
     {siteCodeLang.value === "js" ? <MutationExample /> : <MutationExampleTS />}
   </CopyInnerText>
-</HighlightOnLoad>
+</DocsSection>
 
-<HighlightOnLoad id="caching">
-  <DocsSectionHeader href="#caching">
-    Caching
-  </DocsSectionHeader>
-
+<DocsSection id="caching" title="Caching">
   Multiple components using the same key will share the same data and only 
   trigger one network request. The cache is automatically managed and data 
   is revalidated when components mount or when the window regains focus.
-</HighlightOnLoad>
+</DocsSection>
 
 ### Related
 <ul>

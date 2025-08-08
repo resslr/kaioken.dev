@@ -4,8 +4,7 @@ import { siteCodeLang } from "$/state/siteCodeLang"
 import { CalloutBlock } from "$/components/atoms/CalloutBlock"
 import { ExternalLink } from "$/components/atoms/ExternalLink"
 import { watchEffectTypePreview } from "$/components/previews/WatchEffect.type.preview"
-import { DocsSectionHeader } from "$/components/DocsSectionHeader"
-import { HighlightOnLoad } from "$/components/HighlightOnLoad"
+import { DocsSection } from "$/components/DocsSection"
 import ExampleComputedPrev from "./example.computedPrev.md"
 import ExampleComputedPrevTs from "./example.computedPrev.ts.md"
 
@@ -17,11 +16,7 @@ Signals hold a value that can be read and updated.
 When the value changes, any subscribers to the signal are notified, 
 allowing for efficient updates to dependent components.
 
-<HighlightOnLoad id="general-usage">
-  <DocsSectionHeader href="#general-usage">
-    General Usage
-  </DocsSectionHeader>
-
+<DocsSection id="general-usage" title="General Usage">
   ### Creating a Signal
 
 ```ts
@@ -71,10 +66,7 @@ allowing you to remove the subscription when needed:
 ```ts
 unsubscribe()
 ```
-
-  
-
-</HighlightOnLoad>
+</DocsSection>
 
 <CalloutBlock fontSize="normal">
   Going forward, we'll refer to the act of reading a signal's value 
@@ -83,11 +75,8 @@ unsubscribe()
   _reactivity via observation, **where it matters**_.
 </CalloutBlock>
 
-<HighlightOnLoad id="computed-signals">
-  <DocsSectionHeader href="#computed-signals">
-    Computed
-  </DocsSectionHeader>
 
+<DocsSection id="computed-signals" title="Computed">
   Use `computed` to create a `ComputedSignal`, which is derived from a getter function.
   A `ComputedSignal` is *lazily evaluated*, meaning that the getter function won't be called 
   until it is `observed` or subscribed to. Manually assigning a new value to it has no effect.
@@ -112,13 +101,9 @@ based on the previous value.
 implement `toString()` so they can be used in strings!
 </CalloutBlock> 
 
-</HighlightOnLoad>
+</DocsSection>
 
-<HighlightOnLoad id="signal-effects">
-  <DocsSectionHeader href="#signal-effects">
-    Watch
-  </DocsSectionHeader>
-
+<DocsSection id="signal-effects" title="Watch">
 Use `watch` create a <CodePreview data={watchEffectTypePreview} /> that 
 will fire the callback whenever `observed` signals change.
 ```ts
@@ -144,14 +129,9 @@ const watcher = watch([userName, userGreeting], (newName, newGreeting) => {
 })
 ```
 
-</HighlightOnLoad>
+</DocsSection>
 
-<HighlightOnLoad id="usage-in-components">
-  <DocsSectionHeader href="#usage-in-components">
-    In Components
-  </DocsSectionHeader>
-
-
+<DocsSection id="usage-in-components" title="In Components">
 ### General usage
 
 In Kiru components, reading and writing signals is slightly nuanced
@@ -242,14 +222,9 @@ function App() {
 } 
 ```
 </CopyInnerText>
-</HighlightOnLoad>
+</DocsSection>
 
-<HighlightOnLoad id="two-way-binding">
-  <DocsSectionHeader href="#two-way-binding">
-    Two Way Binding
-  </DocsSectionHeader>
-
-
+<DocsSection id="two-way-binding" title="Two Way Binding">
 The `bind:` prefix can be used to create two-way binding for any property 
 that changes via user interaction. When the signal changes, the property 
 is updated, and vice versa.
@@ -269,14 +244,9 @@ function App() {
 } 
 ```
 </CopyInnerText>
-</HighlightOnLoad>
+</DocsSection>
 
-<HighlightOnLoad id="for-component">
-  <DocsSectionHeader href="#for-component">
-    {"<For />"}
-  </DocsSectionHeader>
-
-
+<DocsSection id="for-component" title="<For />">
 The `<For />` component iterates over a signal, producing an automatically-updating 
 list with fine-grained reactivity. This is a great optimization tool for when you would otherwise 
 use `signal.value.map((item) => ...)` in JSX, causing the component that renders
@@ -305,14 +275,9 @@ function App() {
 }
 ```
 </CopyInnerText>
-</HighlightOnLoad>
+</DocsSection>
 
-<HighlightOnLoad id="derive-component">
-  <DocsSectionHeader href="#derive-component">
-    {"<Derive />"}
-  </DocsSectionHeader>
-
-
+<DocsSection id="derive-component" title="<Derive />">
 Similar to `<For />`, `<Derive />` allows you to easily create fine-grained reactivity in JSX. 
 The `<Derive />` component produces a JSX element that automatically updates whenever the 
 provided `from` signal changes. 
@@ -350,4 +315,4 @@ function App() {
 }
 ```
 </CopyInnerText>
-</HighlightOnLoad>
+</DocsSection>

@@ -1,13 +1,13 @@
 import { customEvents } from "$/custom-events"
 import { useEffect, useRef } from "kiru"
 
-export function HighlightOnLoad({
-  children,
-  id,
-}: {
+type DocsSectionProps = {
   children: JSX.Children
   id: string
-}) {
+  title: string
+}
+
+export function DocsSection({ children, title, id }: DocsSectionProps) {
   const ref = useRef<HTMLDivElement>(null)
   const timeoutRef = useRef(-1)
   useEffect(() => {
@@ -35,6 +35,11 @@ export function HighlightOnLoad({
   }, [])
   return (
     <div className="docs-section" id={id} ref={ref}>
+      <div className="docs-section-header mb-5">
+        <a href={`#${id}`} className="text-light">
+          <p>{title}</p>
+        </a>
+      </div>
       {children}
     </div>
   )
