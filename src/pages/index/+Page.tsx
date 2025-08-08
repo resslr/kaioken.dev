@@ -47,8 +47,8 @@ export function Page() {
             <p className="text-lg font-light">
               Kiru aims to embody the word 'framework' in a literal sense.
               Routing, state management, responsive forms, asynchronous state
-              and more - Kiru makes it easy to build incredible web apps with no
-              need for other libraries.
+              and more - Kiru makes it possible to build incredible web apps
+              without any other libraries.
             </p>
           </Container>
           <Container breakpoint="md" mobilePadding={false}>
@@ -80,7 +80,7 @@ export function Page() {
       <section className="bg-white/2.5 p-12 md:p-16">
         <Container className="flex flex-col gap-6">
           <h2 className="text-3xl md:text-5xl font-light leading-snug text-center">
-            Join us and enjoy the modern web!
+            Let's build the modern web!
           </h2>
           <hr className="opacity-10" />
           <div className="flex justify-center items-center w-full">
