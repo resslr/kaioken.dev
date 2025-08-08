@@ -29,7 +29,7 @@ export function DocsLayout({ children }: { children: JSX.Children }) {
   useHashChangeDispatcher(sectionIds)
 
   return (
-    <Container className="flex gap-8 mt-[var(--navbar-height)] min-h-[calc(100dvh+var(--navbar-height-negative))]">
+    <Container className="flex gap-8 pt-[var(--navbar-height)] min-h-[calc(100dvh+var(--navbar-height-negative))]">
       <aside className="hidden sm:block min-w-[200px] max-h-[calc(100vh-2.5rem-60px)] sticky top-[80px] p-1 overflow-y-auto">
         <div>
           <SidebarContent />
