@@ -1,6 +1,10 @@
 import { Container } from "$/components/atoms/Container"
 import { TodoListDemo } from "$/components/demos/todos/TodoListDemo"
 import { LandingSection } from "./LandingSection"
+import PackageJSONKiru from "./package-json.kiru.mdx"
+import PackageJSONReact from "./package-json.react.mdx"
+import { Arrow } from "./Arrow"
+import "./page.css"
 
 export function Page() {
   return (
@@ -20,7 +24,7 @@ export function Page() {
           <LandingSection />
         </Container>
       </section>
-      <div className="flex flex-col gap-12 py-20">
+      <div className="flex flex-col gap-20 py-20">
         <section>
           <Container className="pb-6">
             <h2 className="text-3xl font-medium leading-snug mb-4">
@@ -35,7 +39,60 @@ export function Page() {
             <TodoListDemo />
           </Container>
         </section>
+        <section>
+          <Container className="pb-6">
+            <h2 className="text-3xl font-medium leading-snug mb-4">
+              Say goodbye to dependecy hell.
+            </h2>
+            <p className="text-lg font-light">
+              Kiru aims to embody the word 'framework' in a literal sense.
+              Routing, state management, responsive forms, asynchronous state
+              and more - Kiru makes it easy to build incredible web apps with no
+              need for other libraries.
+            </p>
+          </Container>
+          <Container breakpoint="md" mobilePadding={false}>
+            <div
+              id="package-json-comparison"
+              className="flex flex-wrap gap-8 items-center justify-center bg-white/2.5 md:rounded-lg p-12 prose max-w-none"
+            >
+              <div className="flex flex-col gap-2">
+                <h3 className="text-2xl font-medium not-prose text-white">
+                  React
+                </h3>
+                <PackageJSONReact />
+              </div>
+              <Arrow
+                className="text-neutral-300 rotate-90 md:rotate-0 w-full md:w-auto"
+                width={40}
+                height={40}
+              />
+              <div className="flex flex-col gap-2">
+                <h3 className="text-2xl font-medium not-prose text-white">
+                  Kiru
+                </h3>
+                <PackageJSONKiru />
+              </div>
+            </div>
+          </Container>
+        </section>
       </div>
+      <section className="bg-white/2.5 p-12 md:p-16">
+        <Container className="flex flex-col gap-6">
+          <h2 className="text-3xl md:text-5xl font-light leading-snug text-center">
+            Join us and enjoy the modern web!
+          </h2>
+          <hr className="opacity-10" />
+          <div className="flex justify-center items-center w-full">
+            <a
+              href="/docs/getting-started"
+              className="link-button bg-primary text-light"
+            >
+              Get Started
+            </a>
+          </div>
+        </Container>
+      </section>
     </div>
   )
 }
