@@ -54,7 +54,7 @@ export function Page() {
           <Container breakpoint="md" mobilePadding={false}>
             <div
               id="package-json-comparison"
-              className="flex flex-wrap gap-8 items-center justify-center bg-white/2.5 md:rounded-lg p-12 prose max-w-none"
+              className="flex flex-wrap gap-8 items-center justify-center md:rounded-lg p-12 prose max-w-none"
             >
               <div className="flex flex-col gap-2">
                 <h3 className="text-2xl font-medium not-prose text-white">
