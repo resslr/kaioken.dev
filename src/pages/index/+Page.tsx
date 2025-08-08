@@ -42,7 +42,7 @@ export function Page() {
         <section>
           <Container className="pb-6">
             <h2 className="text-3xl font-medium leading-snug mb-4">
-              Say goodbye to dependecy hell.
+              Say goodbye to dependency hell.
             </h2>
             <p className="text-lg font-light">
               Kiru aims to embody the word 'framework' in a literal sense.
