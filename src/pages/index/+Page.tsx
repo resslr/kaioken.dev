@@ -77,7 +77,7 @@ export function Page() {
           </Container>
         </section>
       </div>
-      <section className="bg-white/2.5 p-12 md:p-16">
+      <section className="bg-white/5 p-12 md:p-16">
         <Container className="flex flex-col gap-6">
           <h2 className="text-3xl md:text-5xl font-light leading-snug text-center">
             Let's build the modern web!

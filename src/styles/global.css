@@ -85,6 +85,9 @@
 
 body {
   margin: 0;
+  background: radial-gradient(72vh 60vh at 50% -20vh, rgba(61, 17, 31, 0.4) 0%, transparent 100%),
+    radial-gradient(75% 35% at 50% 95%, rgba(111, 36, 141, 0.085) 0%, transparent 90%);
+  background-attachment: fixed;
 }
 
 a {
