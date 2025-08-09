@@ -54,12 +54,9 @@ export function Page() {
           <Container breakpoint="md" mobilePadding={false}>
             <div
               id="package-json-comparison"
-              className="flex flex-wrap gap-8 items-center justify-center md:rounded-lg p-12 prose max-w-none"
+              className="flex flex-wrap gap-4 md:gap-8 items-center justify-center md:rounded-lg py-12 prose max-w-none"
             >
               <div className="flex flex-col gap-2">
-                <h3 className="text-2xl font-medium not-prose text-white">
-                  React
-                </h3>
                 <PackageJSONReact />
               </div>
               <Arrow
@@ -68,9 +65,6 @@ export function Page() {
                 height={40}
               />
               <div className="flex flex-col gap-2">
-                <h3 className="text-2xl font-medium not-prose text-white">
-                  Kiru
-                </h3>
                 <PackageJSONKiru />
               </div>
             </div>
