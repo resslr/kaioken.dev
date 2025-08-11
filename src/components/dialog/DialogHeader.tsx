@@ -1,5 +1,4 @@
 import { ElementProps } from "kiru"
-import { H2 } from "../atoms/Heading"
 
 export function DialogHeader({ children, className }: ElementProps<"div">) {
   return (
@@ -8,7 +7,7 @@ export function DialogHeader({ children, className }: ElementProps<"div">) {
         className || ""
       }`}
     >
-      <H2 className="text-xl w-full flex gap-2 justify-between">{children}</H2>
+      {children}
     </div>
   )
 }
