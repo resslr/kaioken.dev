@@ -1,11 +1,10 @@
-import { siteCodeLang } from "$/state/siteCodeLang"
 import { For, useSignal } from "kiru"
 import { CodeDemo } from "../CodeDemo"
 import { DemoComponentWrapper } from "../DemoComponentWrapper"
 import TodoList from "./TodoList.md"
 import TodoListTS from "./TodoList.ts.md"
-import { Todo } from "./types"
 import styles from "./TodoList.module.css"
+import { Todo } from "./types"
 
 export function TodoListDemo() {
   const inputText = useSignal(""),
@@ -32,10 +31,7 @@ export function TodoListDemo() {
   console.log("Hello from Kiru! This component never rerenders 😉")
 
   return (
-    <CodeDemo
-      filename={`App.${siteCodeLang}x`}
-      CodeBlock={siteCodeLang.value === "js" ? TodoList : TodoListTS}
-    >
+    <CodeDemo name="App" mode={"jsx"} code={{ js: TodoList, ts: TodoListTS }}>
       <DemoComponentWrapper className="max-w-[340px] flex flex-col gap-4">
         <form className={styles["form"]} onsubmit={handleSubmit}>
           <input
