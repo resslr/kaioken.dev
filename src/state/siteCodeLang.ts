@@ -1,6 +1,6 @@
 import { signal } from "kiru"
 
-export const siteCodeLang = signal<"js" | "ts">("js")
+export const siteCodeLang = signal<"js" | "ts">("ts")
 if ("window" in globalThis) {
   const storageKey = "kirujs.dev:siteCodeLang"
   window.__kiru?.on("mount", () => {
