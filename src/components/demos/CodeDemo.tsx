@@ -27,7 +27,7 @@ export function CodeDemo({ name, mode, code, children }: CodeDemoProps) {
         </span>
         <Derive from={CodeBlock} children={(Code) => <Code />} />
       </div>
-      <div className="md:col-span-2 md:rounded-e-2xl md:my-8 px-4 py-8 my-0 bg-theme-gradient flex items-center justify-center shadow-[#0006] shadow-lg">
+      <div className="md:col-span-2 md:rounded-e-2xl md:my-5 px-4 py-8 my-0 bg-theme-gradient flex items-center justify-center shadow-[#0006] shadow-lg">
         {children}
       </div>
     </div>
