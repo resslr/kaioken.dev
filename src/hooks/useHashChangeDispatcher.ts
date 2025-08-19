@@ -1,5 +1,6 @@
 import { usePageContext } from "$/context/pageContext"
 import { customEvents } from "$/custom-events"
+import { navEvent } from "$/state/navigationEvent"
 import { useEffect, useRef, useState } from "kiru"
 export const useHashChangeDispatcher = (sectionIds: string[]) => {
   const [currentSection, setCurrentSection] = useState<string>("")
@@ -45,7 +46,9 @@ export const useHashChangeDispatcher = (sectionIds: string[]) => {
   }
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = (e?: Event) => {
+      // if it's a scroll event that was triggered by user navigation, don't do anything
+      if (!e || (e.type === "scroll" && navEvent.peek())) return
       let sectionId = ""
       if (window.scrollY > 50) {
         if (
@@ -65,10 +68,10 @@ export const useHashChangeDispatcher = (sectionIds: string[]) => {
       dispatchHashChange(sectionId)
     }
 
-    // Run on initial mount to handle the case when the page is loaded scrolled partway down
-    if (!!window.location.hash) {
-      handleScroll()
-    }
+    // // Run on initial mount to handle the case when the page is loaded scrolled partway down
+    // if (!!window.location.hash) {
+    //   handleScroll()
+    // }
 
     window.addEventListener("scroll", handleScroll)
     window.addEventListener("resize", handleScroll)

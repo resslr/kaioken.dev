@@ -1,13 +1,5 @@
 import { useCommandPallete } from "$/state/commandPallete"
-import {
-  computed,
-  For,
-  signal,
-  Transition,
-  useCallback,
-  useEffect,
-  useRef,
-} from "kiru"
+import { computed, For, signal, Transition, useEffect, useRef } from "kiru"
 import { Modal } from "./dialog/Modal"
 import { DialogHeader } from "./dialog/DialogHeader"
 import { Input } from "./atoms/Input"
@@ -200,9 +192,6 @@ function CommandPalleteItem({
 }) {
   const { setOpen } = useCommandPallete()
   const { urlPathname } = usePageContext()
-  const onLinkClick = useCallback(() => {
-    if (isLinkActive(item.href, urlPathname)) setOpen(false)
-  }, [item.href, urlPathname, setOpen])
   if (item.disabled) {
     return (
       <a className="w-full text-muted bg-white/[1%] border border-white/5 p-2 rounded-sm focus:bg-white/5 hover:bg-white/5">
@@ -225,7 +214,7 @@ function CommandPalleteItem({
     <a
       className="w-full text-muted bg-white/[1%] border border-white/5 p-2 rounded-sm focus:bg-white/5 hover:bg-white/5"
       href={item.href}
-      onclick={onLinkClick}
+      onclick={() => isLinkActive(item.href, urlPathname) && setOpen(false)}
       target={external ? "_blank" : "_self"}
     >
       <div className="flex items-start justify-between">
