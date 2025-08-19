@@ -48,8 +48,17 @@ export const useHashChangeDispatcher = (sectionIds: string[]) => {
     const handleScroll = () => {
       let sectionId = ""
       if (window.scrollY > 50) {
-        sectionId =
-          findSectionCompletelyInViewport() || findMostVisibleSection()
+        if (
+          window.scrollY + window.innerHeight >=
+          document.body.offsetHeight - 50
+        ) {
+          // if we've scrolled to the bottom of the page (or within 50px), just select the last section
+          sectionId = sectionIds[sectionIds.length - 1]
+        } else {
+          // otherwise, select based on visibility
+          sectionId =
+            findSectionCompletelyInViewport() || findMostVisibleSection()
+        }
       }
 
       setCurrentSection(sectionId)
@@ -73,10 +82,9 @@ export const useHashChangeDispatcher = (sectionIds: string[]) => {
   return currentSection
 }
 
-let timeout: number | null = null
+let timeout: number | undefined
 function dispatchHashChange(newHash: string) {
-  if (timeout !== null) clearTimeout(timeout)
-
+  clearTimeout(timeout)
   timeout = window.setTimeout(() => {
     const hash = newHash ? `#${newHash}` : ""
     if (hash !== "") {

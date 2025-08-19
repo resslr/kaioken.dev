@@ -17,7 +17,6 @@ export function SidebarContent() {
   const { urlPathname, urlParsed } = usePageContext()
   const { value: open, setOpen } = useNavDrawer((state) => state.open)
   const hash = useSignal(urlParsed.hash)
-  console.log("hash", hash)
 
   useEffect(() => {
     const onHashChange = () => {

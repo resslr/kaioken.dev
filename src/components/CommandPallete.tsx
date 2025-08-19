@@ -1,16 +1,12 @@
 import { useCommandPallete } from "$/state/commandPallete"
 import {
   computed,
-  Derive,
   For,
   signal,
   Transition,
   useCallback,
-  useComputed,
   useEffect,
-  useMemo,
   useRef,
-  useSignal,
 } from "kiru"
 import { Modal } from "./dialog/Modal"
 import { DialogHeader } from "./dialog/DialogHeader"
