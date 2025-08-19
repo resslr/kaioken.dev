@@ -50,9 +50,9 @@ export const useHashChangeDispatcher = (sectionIds: string[]) => {
       if (window.scrollY > 50) {
         if (
           window.scrollY + window.innerHeight >=
-          document.body.offsetHeight - 50
+          document.body.offsetHeight - 10
         ) {
-          // if we've scrolled to the bottom of the page (or within 50px), just select the last section
+          // if we've scrolled to the bottom of the page (or within 10px), just select the last section
           sectionId = sectionIds[sectionIds.length - 1]
         } else {
           // otherwise, select based on visibility
