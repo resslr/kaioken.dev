@@ -1,7 +1,21 @@
-import { signal } from "kiru"
+import { effect, signal } from "kiru"
 
 export const navDrawerOpen = signal(false)
 export const commandPalleteOpen = signal(false)
+
+let prevFocussedElement: HTMLElement | null
+effect([navDrawerOpen, commandPalleteOpen], (a, b) => {
+  if (a || b) {
+    const active = document.activeElement
+    if (active instanceof HTMLElement) {
+      prevFocussedElement = active
+    }
+    return
+  }
+
+  prevFocussedElement?.focus()
+  prevFocussedElement = null
+})
 
 export const navEvent = signal(false)
 if ("window" in globalThis) {
