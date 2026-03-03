@@ -21,8 +21,8 @@ importers:
         specifier: ^3.22.0
         version: 3.22.0
       kiru:
-        specifier: ^1.1.1
-        version: 1.1.1
+        specifier: ^1.1.2
+        version: 1.1.2
       lit-match:
         specifier: ^1.0.3
         version: 1.0.3
@@ -56,7 +56,7 @@ importers:
         version: 5.9.3
       vite-plugin-kiru:
         specifier: ^1.1.0
-        version: 1.1.0(@types/node@24.9.1)(jiti@2.6.1)(kiru@1.1.1)(lightningcss@1.30.2)
+        version: 1.1.0(@types/node@24.9.1)(jiti@2.6.1)(kiru@1.1.2)(lightningcss@1.30.2)
 
 packages:
 
@@ -697,8 +697,8 @@ packages:
     resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
     hasBin: true
 
-  kiru@1.1.1:
-    resolution: {integrity: sha512-u1jbEJUWo8QZ89dG8hDkFW4muVgo3A9Sk746wkED+rLaAP1lX5F9/v/wQsZzNKdROqHIO9LrlGOr4o9kFbJNRg==}
+  kiru@1.1.2:
+    resolution: {integrity: sha512-GS9RV3Y+gGcXl9LFpMbysUaTjiKH3PuPaj+CcT2L2hKQNM2ZQdupvnNVpuW+2CvycKxzMCX2WCpZBRSPe3YWKw==}
 
   lightningcss-android-arm64@1.30.2:
     resolution: {integrity: sha512-BH9sEdOCahSgmkVhBLeU7Hc9DWeZ1Eb6wNS6Da8igvUwAe0sqROHddIlvU06q3WyXVEOYDZ6ykBZQnjTbmo4+A==}
@@ -1701,7 +1701,7 @@ snapshots:
 
   jiti@2.6.1: {}
 
-  kiru@1.1.1: {}
+  kiru@1.1.2: {}
 
   lightningcss-android-arm64@1.30.2:
     optional: true
@@ -2309,9 +2309,9 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-plugin-kiru@1.1.0(@types/node@24.9.1)(jiti@2.6.1)(kiru@1.1.1)(lightningcss@1.30.2):
+  vite-plugin-kiru@1.1.0(@types/node@24.9.1)(jiti@2.6.1)(kiru@1.1.2)(lightningcss@1.30.2):
     dependencies:
-      kiru: 1.1.1
+      kiru: 1.1.2
       magic-string: 0.30.21
       mime: 4.1.0
       tinyglobby: 0.2.15
