@@ -10,14 +10,81 @@ import ExampleOnCleanupTS from "./example.onCleanup.ts.md"
 
 <Head.Content>
   <title>Kiru - Lifecycles</title>
-  <meta name="keywords" content="lifecycle, onMount, onBeforeMount, onCleanup, useEffect, useLayoutEffect" />
-  <meta name="description" content="Learn how to use lifecycle hooks in Kiru — onMount, onBeforeMount, and onCleanup — to run side effects and clean up resources in your components." />
+  <meta
+    name="keywords"
+    content="lifecycle, setup, onMount, onBeforeMount, onCleanup, onHmr"
+  />
+  <meta
+    name="description"
+    content="Learn how to use lifecycle primitives in Kiru — setup, onMount, onBeforeMount, onCleanup, and onHmr — to derive props, run side effects, and clean up resources in your components."
+  />
 </Head.Content>
 
 # Lifecycles
 
-Kiru provides three lifecycle hooks for running side effects inside components.
-All hooks must be called synchronously during component initialization.
+Kiru provides several lifecycle primitives for working with component setup,
+side effects, and hot reloading.
+
+<DocsSection id="setup" title="setup">
+
+Stateful Kiru components (those that return a render function)
+are written in two phases:
+
+- **setup** - the outer function body that runs once per component instance. This is where you initialize state, effects, and lifecycle hooks.
+- **render** - the inner function you return, which is called every time the component re-renders
+
+Because setup only runs once per instance and Kiru tracks which signals
+each component actually observes, stateful components behave as though they are
+**"auto-memoized"** - work in setup is not repeated on every render, and render
+only runs again when an explicitly observed signal or props change.
+
+The `setup` lifecycle exposes a helper function, `setup<Props>()`, that lets you derive props into signals
+or access a stable, deterministic `id` for the current position in the virtual DOM (equivalent to `useId` in React).
+
+```tsx
+interface CounterProps {
+  count?: number
+}
+
+const Counter: Kiru.FC<CounterProps> = () => {
+  const { derive } = setup<CounterProps>()
+  // Alternatively, setup<typeof Counter>()
+
+  const count = derive((props) => props.count ?? 0)
+  // When props change, count is updated. 
+  // This is a no-op if the returned value is the same.
+
+  return () => (
+    <>
+      <p>Count: {count}</p>
+      <button onclick={() => count.value++}>Increment</button>
+      <button onclick={() => count.value--}>Decrement</button>
+    </>
+  )
+}
+```
+
+`setup<Props>()` returns an object with:
+
+- **`derive(selector)`**: takes a selector `(props) => value` and returns a `Signal`
+  that is kept in sync with the latest props passed to the component.
+- **`id`**: a lazily-created `Signal<string>` that holds a deterministically generated
+  id for _this_ spot in the virtual DOM. This is ideal for wiring `label`/`input` pairs:
+
+```tsx
+const Field: Kiru.FC = () => {
+  const { id } = setup()
+
+  return () => (
+    <>
+      <label htmlFor={id}>Name</label>
+      <input id={id} type="text" />
+    </>
+  )
+}
+```
+
+</DocsSection>
 
 <DocsSection id="onMount" title="onMount">
 `onMount` runs a callback **after** the component is first painted to the DOM.
@@ -49,9 +116,36 @@ It can be called inside any lifecycle hook, or at the top level of a component.
   </Derive>
 </CopyInnerText>
 </DocsSection>
+
+<DocsSection id="onHmr" title="onHmr">
+
+`onHmr` lets you register callbacks that run when Hot Module Reload (HMR) replaces code during development.
+
+```ts
+import { onHmr } from "kiru"
+
+// Start an interval in module scope
+const interval = setInterval(() => {
+  console.log("tick")
+}, 1000)
+
+// Stop the interval the next time this file is reloaded
+onHmr(() => clearInterval(interval))
+```
+
+- When called **during module evaluation** (top-level scope), the callback runs the next time that module is replaced.
+- When called **anywhere else** (e.g. inside an event handler), the callback runs on the next HMR update, regardless of which module changed.
+- Each callback only runs **once** per registration.
+
+</DocsSection>
+
 ### Related
 
 <ul>
-  <li><Link to="/docs/api/signal">`signal`</Link></li>
-  <li><Link to="/docs/api/computed">`computed`</Link></li>
+  <li>
+    <Link to="/docs/api/signal">`signal`</Link>
+  </li>
+  <li>
+    <Link to="/docs/api/signal#computed-signals">`computed`</Link>
+  </li>
 </ul>

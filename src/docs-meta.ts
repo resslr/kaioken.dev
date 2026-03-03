@@ -85,6 +85,33 @@ export const docMeta: DocItem[] = [
         tags: ["derive", "promise", "fallback", "mode", "signals"],
       },
       {
+        title: "Utils",
+        href: "/docs/api/utils",
+        tags: ["unwrap", "className", "nextIdle", "flushSync", "onHmr"],
+        sections: [
+          {
+            id: "unwrap",
+            title: "unwrap",
+          },
+          {
+            id: "className",
+            title: "className",
+          },
+          {
+            id: "nextIdle",
+            title: "nextIdle",
+          },
+          {
+            id: "flushSync",
+            title: "flushSync",
+          },
+          {
+            id: "onHmr",
+            title: "onHmr",
+          },
+        ],
+      },
+      {
         title: "ErrorBoundary",
         href: "/docs/api/error-boundary",
         tags: ["error handling", "error boundary"],
@@ -103,8 +130,14 @@ export const docMeta: DocItem[] = [
           "onCleanup",
           "useEffect",
           "useLayoutEffect",
+          "setup",
+          "onHmr",
         ],
         sections: [
+          {
+            id: "setup",
+            title: "setup",
+          },
           {
             id: "onMount",
             title: "onMount",
@@ -116,6 +149,10 @@ export const docMeta: DocItem[] = [
           {
             id: "onCleanup",
             title: "onCleanup",
+          },
+          {
+            id: "onHmr",
+            title: "onHmr",
           },
         ],
       },

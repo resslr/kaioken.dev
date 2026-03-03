@@ -1,0 +1,165 @@
+import { Head } from "kiru/router"
+import { CopyInnerText } from "$/components/CopyInnerText"
+import { DocsSection } from "$/components/DocsSection"
+import { CalloutBlock } from "$/components/atoms/CalloutBlock"
+
+<Head.Content>
+  <title>Kiru - Utils</title>
+  <meta
+    name="keywords"
+    content="unwrap, className, nextIdle, flushSync, onHmr, utilities"
+  />
+  <meta
+    name="description"
+    content="Utility helpers for working with signals, scheduling work, and integrating with Kiru's runtime."
+  />
+</Head.Content>
+
+# Utils
+
+Kiru ships a small set of runtime utilities that make it easier to work with signals,
+DOM updates, and development tooling.
+
+<DocsSection id="unwrap" title="unwrap">
+
+`unwrap` takes either a plain value or a `Signal<T>` and returns the underlying value.
+It is particularly useful when consuming **"signalable"** values - props or options
+typed as `Signal<T> | T` - so your code can treat both forms uniformly.
+
+```ts
+import { signal, unwrap } from "kiru"
+
+const count = signal(0)
+
+unwrap(count) // 0 (non‑reactive, does not track)
+unwrap(42) // 42
+```
+
+Pass `true` as the second argument to read reactively when the input is a signal:
+
+```ts
+const doubled = unwrap(count, true) * 2
+```
+
+- **`unwrap(value)`** - if `value` is a signal, returns `value.peek()` (no tracking).
+- **`unwrap(value, true)`** - if `value` is a signal, returns `value.value` (tracks).
+
+For example, a component or helper that accepts a "signalable" prop can normalize it:
+
+```ts
+type ButtonProps = {
+  color: Signal<string> | string
+}
+
+function getResolvedColor(props: ButtonProps) {
+  // Works whether `props.color` is a string or a Signal<string>
+  return unwrap(props.color, true)
+}
+```
+
+</DocsSection>
+
+<DocsSection id="className" title="className">
+
+`className` is a tiny helper for building class strings from optional fragments.
+It accepts a variadic list of `string | false | null | undefined` and joins the
+truthy ones with spaces.
+
+<CopyInnerText>
+```tsx
+import { className as cls } from "kiru/utils"
+
+const MyButton: Kiru.FC = () => {
+  const isActive = signal(false)
+
+  return () => (
+    <button 
+      className={cls("btn", "btn-primary", isActive.value && "btn-active")}
+      onclick={() => isActive.value = !isActive.value}
+    >
+      Click me
+    </button>
+  )
+}
+````
+</CopyInnerText>
+
+</DocsSection>
+
+<DocsSection id="nextIdle" title="nextIdle">
+
+`nextIdle` lets you schedule work to run after any currently queued Kiru updates
+have finished, or immediately if the scheduler is already idle.
+
+<CopyInnerText importsOverride={`import { nextIdle } from "kiru"`}>
+```ts
+nextIdle(() => {
+// Runs after the current render pass has completed
+console.log("DOM is up to date")
+})
+````
+
+</CopyInnerText>
+
+This is useful for coordinating with APIs that should see a fully-flushed DOM,
+without forcing an immediate synchronous flush.
+
+</DocsSection>
+
+<DocsSection id="flushSync" title="flushSync">
+
+`flushSync` forces Kiru to synchronously flush any pending work. If there is no
+work queued, it does nothing.
+
+<CopyInnerText importsOverride={`import { flushSync } from "kiru"`}>
+```ts
+function startViewTransition() {
+  document.startViewTransition(() => {
+    // enqueue some state updates...
+
+    // ensure all DOM changes are applied during the transition:
+    flushSync()
+
+})
+}
+
+````
+</CopyInnerText>
+
+Use this sparingly, as it can bypass Kiru's normal scheduling optimisations.
+It is primarily intended for integrations with things like View Transitions
+or measurements that must see the latest DOM.
+
+</DocsSection>
+
+<DocsSection id="onHmr" title="onHmr">
+
+`onHmr` registers a callback to run when Hot Module Reload (HMR) happens in
+development. In production or non-browser environments it is a no-op.
+
+<CopyInnerText importsOverride={`import { onHmr } from "kiru"`}>
+```ts
+// Start an interval in the module scope
+const interval = setInterval(() => {
+  console.log("tick")
+}, 1000)
+
+// Ensure the interval is cleaned up whenever this file is reloaded
+onHmr(() => clearInterval(interval))
+````
+
+</CopyInnerText>
+
+- When called **during module evaluation** (top-level), the callback runs the next
+  time that module is replaced.
+- When called **later** (e.g. inside a handler), the callback runs on the next HMR
+  update, regardless of which module changed.
+- Each registered callback is only fired **once**.
+
+<CalloutBlock variant="info">
+  `onHmr` is most useful for cleaning up resources created at module scope, such
+  as intervals, subscriptions, or singletons that should not leak across hot
+  reloads.
+</CalloutBlock>
+
+</DocsSection>

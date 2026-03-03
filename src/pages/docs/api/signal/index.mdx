@@ -233,6 +233,36 @@ function App() {
 } 
 ```
 </CopyInnerText>
+
+### Signals in `style` objects
+
+Signals can also be used inside `style` objects. Kiru will automatically keep 
+track of the signal's value and update the property whenever it changes.
+
+<CopyInnerText>
+```tsx
+import { signal } from "kiru"
+
+function App() {
+  const bgColor = signal("rebeccapurple")
+  const toggleColor = () => {
+    bgColor.value = bgColor.value === "rebeccapurple" ? "tomato" : "rebeccapurple"
+  }
+
+  return () => (
+    <button
+      style={{
+        backgroundColor: bgColor,
+        color: "white",
+      }}
+      onclick={toggleColor}
+    >
+      Toggle color
+    </button>
+  )
+}
+```
+</CopyInnerText>
 </DocsSection>
 
 <DocsSection id="two-way-binding" title="Two Way Binding">
