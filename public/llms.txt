@@ -85,7 +85,7 @@ function Button(props: { text: string; onClick: () => void }) {
 
 ### Stateful components: return a render function
 
-When a component has **local state** (signals, refs, etc.), it must **return a function** that returns JSX. That function is the render function; the component body runs once, and the returned function is called on each render. State created in the body is closed over and persists.
+When a component has **local state** (signals, refs, etc.), it must **return a function** that returns JSX. That function is the render function; the component body runs once (setup), and the returned function is called on each render. State created in the body is closed over and persists.
 
 ```tsx
 import { signal } from "kiru"
@@ -102,16 +102,20 @@ function Counter() {
 }
 ```
 
-With props, the render function receives them:
+Kiru effectively **auto-memoizes** stateful components: setup runs once per instance, and Kiru tracks which signals/props each component observes so that the render function is only re-run when those dependencies change.
+
+With props on a stateful component, use the `setup<Props>()` helper to derive prop values into signals:
 
 ```tsx
-const Greeter: Kiru.FC<{ name: string }> = (initialProps) => {
-  const greeted = signal(false)
+import { setup } from "kiru"
 
-  return (currentProps) => (
+const Greeter: Kiru.FC<{ name: string }> = () => {
+  const { derive } = setup<{ name: string }>()
+  const name = derive((props) => props.name)
+
+  return () => (
     <div>
-      <p>Hello, {currentProps.name}!</p>
-      <button onclick={() => (greeted.value = true)}>Mark greeted</button>
+      <p>Hello, {name}!</p>
     </div>
   )
 }
@@ -181,7 +185,7 @@ userName.value = "alice"
 - `sneak(v)`: set without notifying
 - `notify()`: trigger notification without changing value
 
-**Reactivity via observation:** When you read a signal’s value during render, that part of the tree subscribes. Use the signal directly in JSX (without `.value`) when possible so only the specific nodes that display it update:
+**Reactivity via observation:** When you read a signal’s value during render, that part of the tree subscribes. Use the signal directly in JSX (without `.value`) when possible so only the specific nodes that display it update. Signals can also be used in props like `className` and inside `style` objects; Kiru will bind them when building DOM attributes and execute highly performant partial updates.
 
 ```tsx
 function App() {
@@ -269,30 +273,86 @@ function Input() {
 
 ## Lifecycles
 
-All lifecycle hooks must be called synchronously during component initialization (in the component body, not inside the render function).
+All lifecycle primitives must be called synchronously during component initialization (in the stateful component body / setup phase, not inside the render function). This includes `setup`, `onMount`, `onBeforeMount`, `onCleanup`, and `onHmr`.
 
+- **setup<Props>()**: Returns a per-instance setup context with helpers:
+  - `derive(selector)`: derive `Signal<T>` values from props and keep them in sync.
+  - `id`: a lazily-created `Signal<string>` that holds a deterministic id for this VNode position (useful for `label`/`input` pairs, equivalent to React's "useId" hook).
 - **onMount(callback)**: Runs after the component is first painted. Return a function to clean up on unmount.
 - **onBeforeMount(callback)**: Runs before paint, after DOM nodes are created.
 - **onCleanup(fn)**: Registers a teardown that runs when the component unmounts. Can be called from lifecycle hooks or at top level of the component.
+- **onHmr(callback)**: Registers a callback to run when Hot Module Reload (HMR) happens in development. No-op in production/non-browser.
 
-Example:
+Example (setup + onMount/onCleanup):
 
 ```tsx
-import { signal, onMount, onCleanup } from "kiru"
+import { signal, setup, onMount, onCleanup } from "kiru"
 
-function Timer() {
+const Timer: Kiru.FC = () => {
+  const { id } = setup<{}>()
   const seconds = signal(0)
 
   onMount(() => {
-    const id = setInterval(() => (seconds.value += 1), 1000)
-    return () => clearInterval(id)
+    const intervalId = setInterval(() => (seconds.value += 1), 1000)
+    return () => clearInterval(intervalId)
   })
 
   onCleanup(() => console.log("Timer unmounting"))
 
-  return () => <p>Seconds: {seconds}</p>
+  return () => <p id={id}>Seconds: {seconds}</p>
 }
 ```
+
+Example (`onHmr` at module scope):
+
+```ts
+import { onHmr } from "kiru"
+
+const interval = setInterval(tick, 1000)
+
+onHmr(() => {
+  clearInterval(interval)
+})
+```
+
+## Runtime utils — unwrap, nextIdle, flushSync, onHmr
+
+Kiru exposes a few runtime utilities that are especially useful when working with signals and the scheduler:
+
+- **unwrap(value, reactive?)**:
+  - Accepts either a plain value or a `Signal<T>`.
+  - `unwrap(value)` will return `value.peek()` if it is a signal (non-reactive read).
+  - `unwrap(value, true)` will return `value.value` if it is a signal (reactive read).
+  - This is particularly useful for **"signalable"** values typed as `Signal<T> | T`, e.g. props:
+
+    ```ts
+    import type { Signal } from "kiru"
+    import { unwrap } from "kiru"
+
+    type ButtonProps = {
+      color: Signal<string> | string
+    }
+
+    function getResolvedColor(props: ButtonProps) {
+      return unwrap(props.color, true)
+    }
+    ```
+
+- **className(...classes)**:
+  - Helper for concatenating class names: takes `(...classes: (string | false | null | undefined)[])`
+    and joins truthy values with spaces.
+
+- **nextIdle(fn)**:
+  - Schedules `fn` to run after Kiru finishes any currently queued work, or immediately if the scheduler is idle.
+  - Use this when you need to run logic *after* DOM updates have been flushed, without forcing a synchronous flush.
+
+- **flushSync()**:
+  - Forces a synchronous flush of any pending work if rendering is in progress.
+  - Useful for integrations that must see the latest DOM (e.g. View Transitions) before continuing.
+
+- **onHmr(callback)**:
+  - Also exposed as a top-level utility; see the Lifecycles section above for semantics.
+
 
 ## Derive — Fine-grained reactivity in JSX
 
