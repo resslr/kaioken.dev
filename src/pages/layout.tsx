@@ -1,6 +1,6 @@
 import { Portal } from "kiru"
 import { Container } from "../components/atoms/Container"
-import { CommandPallete } from "../components/CommandPallete"
+import { CommandPalette } from "../components/CommandPalette"
 import { Navbar } from "../components/Navbar"
 import { NavDrawer } from "../components/NavDrawer"
 
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: JSX.Children }) {
       <div id="portal-root" />
       <Portal container={() => document.getElementById("portal-root")!}>
         <NavDrawer />
-        <CommandPallete />
+        <CommandPalette />
       </Portal>
     </>
   )

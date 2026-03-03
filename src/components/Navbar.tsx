@@ -10,7 +10,7 @@ import { SiteLangToggle } from "./SiteLangToggle"
 import { match } from "lit-match"
 import { SearchIcon } from "./icons/SearchIcon"
 import { Link, useFileRouter } from "kiru/router"
-import { commandPalleteOpen, navDrawerOpen } from "../state"
+import { commandPaletteOpen, navDrawerOpen } from "../state"
 import { onBeforeMount, signal } from "kiru"
 
 export function Navbar() {
@@ -104,7 +104,7 @@ function SearchButton() {
   })
 
   const handleClick = () => {
-    commandPalleteOpen.value = true
+    commandPaletteOpen.value = true
   }
 
   return () => (

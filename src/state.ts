@@ -1,10 +1,10 @@
 import { effect, signal } from "kiru"
 
 export const navDrawerOpen = signal(false)
-export const commandPalleteOpen = signal(false)
+export const commandPaletteOpen = signal(false)
 
 let prevFocussedElement: HTMLElement | null
-effect([navDrawerOpen, commandPalleteOpen], (a, b) => {
+effect([navDrawerOpen, commandPaletteOpen], (a, b) => {
   if (a || b) {
     const active = document.activeElement
     if (active instanceof HTMLElement) {

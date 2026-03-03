@@ -11,14 +11,14 @@ import { isLinkActive } from "$/utils"
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
 import { DocItemStatus } from "./DocItemStatus"
 import { Link, useFileRouter } from "kiru/router"
-import { commandPalleteOpen } from "../state"
+import { commandPaletteOpen } from "../state"
 
 const groupData: Record<string, DocPageLink[]> = {
   Links: SITE_LINKS,
   API: docMeta.find((d) => d.title === "API")!.pages!,
 }
 
-export function CommandPallete() {
+export function CommandPalette() {
   const router = useFileRouter()
 
   const prevActiveElement = ref<Element | null>(null)
@@ -31,8 +31,8 @@ export function CommandPallete() {
   })
 
   effect([router.state.pathname], () => {
-    if (commandPalleteOpen.peek()) {
-      commandPalleteOpen.value = false
+    if (commandPaletteOpen.peek()) {
+      commandPaletteOpen.value = false
     }
   })
 
@@ -48,18 +48,18 @@ export function CommandPallete() {
 
     e.preventDefault()
 
-    if (!commandPalleteOpen.value) {
+    if (!commandPaletteOpen.value) {
       prevActiveElement.current = document.activeElement
     } else {
       focusSender()
     }
 
-    commandPalleteOpen.value = !commandPalleteOpen.value
+    commandPaletteOpen.value = !commandPaletteOpen.value
   }
 
   return () => (
     <Transition
-      in={commandPalleteOpen}
+      in={commandPaletteOpen}
       duration={{
         in: 50,
         out: 250,
@@ -70,12 +70,12 @@ export function CommandPallete() {
             state={state}
             close={() => {
               //focusSender()
-              commandPalleteOpen.value = false
+              commandPaletteOpen.value = false
             }}
             sender={event}
             className="max-w-[min(400px,100vw)]"
           >
-            <CommandPalleteDisplay />
+            <CommandPaletteDisplay />
           </Modal>
         )
       }
@@ -109,7 +109,7 @@ const filteredGroups = computed(() => {
   )
 })
 
-function CommandPalleteDisplay() {
+function CommandPaletteDisplay() {
   const searchInputRef = ref<HTMLInputElement>(null)
 
   onMount(() => {
@@ -140,7 +140,7 @@ function CommandPalleteDisplay() {
         />
         <button
           ariaLabel="Close"
-          onclick={() => (commandPalleteOpen.value = false)}
+          onclick={() => (commandPaletteOpen.value = false)}
           className="flex px-2 items-center opacity-35 hover:opacity-100 focus:opacity-100"
         >
           <CloseIcon width="1em" height="1em" />
@@ -149,7 +149,7 @@ function CommandPalleteDisplay() {
       <DialogBody className="bg-black/10 border border-white/5 rounded-sm max-h-100 overflow-y-auto scroll-py-20">
         <div className="flex flex-col gap-2">
           <For each={filteredGroups}>
-            {(group) => <CommandPalleteGroup key={group.title} {...group} />}
+            {(group) => <CommandPaletteGroup key={group.title} {...group} />}
           </For>
         </div>
       </DialogBody>
@@ -161,13 +161,13 @@ type CommandPalleteGroupProps = {
   title: string
   items: DocPageLink[]
 }
-function CommandPalleteGroup({ title, items }: CommandPalleteGroupProps) {
+function CommandPaletteGroup({ title, items }: CommandPalleteGroupProps) {
   return (
     <div>
       <h4 className="mx-1 font-bold text-sm text-muted">{title}</h4>
       <div className="flex gap-1 flex-col py-2 px-1">
         {items.map((item) => (
-          <CommandPalleteItem
+          <CommandPaletteItem
             key={item.href}
             item={item}
             external={"external" in item && Boolean(item.external)}
@@ -178,7 +178,7 @@ function CommandPalleteGroup({ title, items }: CommandPalleteGroupProps) {
   )
 }
 
-function CommandPalleteItem({
+function CommandPaletteItem({
   item,
   external,
 }: {
@@ -226,7 +226,7 @@ function CommandPalleteItem({
       to={item.href}
       onclick={() =>
         isLinkActive(item.href, router.state.pathname.peek()) &&
-        (commandPalleteOpen.value = false)
+        (commandPaletteOpen.value = false)
       }
     >
       <div className="flex items-start justify-between">
