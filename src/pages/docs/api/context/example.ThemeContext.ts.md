@@ -1,8 +1,9 @@
 ```ts
-import { createContext } from "kiru"
+import { createContext, signal } from "kiru"
 
+const defaultValue = signal<"light" | "dark">("light")
 export const ThemeContext = createContext({
-  value: "light" as "light" | "dark",
+  value: defaultValue,
   toggle: () => {},
 })
 ```

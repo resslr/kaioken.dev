@@ -1,8 +1,9 @@
 ```js
-import { createContext } from "kiru"
+import { createContext, signal } from "kiru"
 
+const defaultValue = signal("light")
 export const ThemeContext = createContext({
-  value: "light",
+  value: defaultValue,
   toggle: () => {},
 })
 ```
