@@ -16,6 +16,7 @@ import { commandPaletteOpen } from "../state"
 const groupData: Record<string, DocPageLink[]> = {
   Links: SITE_LINKS,
   API: docMeta.find((d) => d.title === "API")!.pages!,
+  Components: docMeta.find((d) => d.title === "Components")!.pages!,
 }
 
 export function CommandPalette() {
