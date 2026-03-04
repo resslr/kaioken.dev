@@ -1,0 +1,46 @@
+import { Head } from "kiru/router"
+import { CopyInnerText } from "$/components/CopyInnerText"
+import { siteCodeLang } from "$/state"
+import ExampleCode from "./example.md"
+
+<Head.Content>
+  <title>Kiru - For</title>
+  <meta name="keywords" content="for, component, jsx, reactive, signal, array, iteration" />
+  <meta
+    name="description"
+    content="Learn how to use the For component in Kiru to render reactive lists with optional fallbacks and fine-grained updates when the backing value is a signal."
+  />
+</Head.Content>
+
+# For
+
+`<For>` renders a list of elements from an array-like value and provides a `fallback`
+that is shown when the list is empty.
+
+When you pass a **signal** to `<For>` (for example a `Signal<T[]>` or a computed signal),
+`<For>` subscribes to it.
+
+### Props
+
+<ul>
+  <li>
+    <b>each</b><sup style="color:red">*</sup>:
+    the array (or a signal of an array) to iterate over.
+  </li>
+  <li>
+    <b>fallback</b>:
+    optional JSX rendered when the (unwrapped) <code>each</code> value is empty.
+  </li>
+  <li>
+    <b>children</b>:
+    a render function of type <code>(item: T) =&gt; JSX.Element</code> that will be called
+    for each item in the list.
+  </li>
+</ul>
+
+### Example
+
+<CopyInnerText>
+  <ExampleCode />
+</CopyInnerText>
+

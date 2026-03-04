@@ -1,0 +1,52 @@
+import { Derive } from "kiru"
+import { Head } from "kiru/router"
+import { CopyInnerText } from "$/components/CopyInnerText"
+import { siteCodeLang } from "$/state"
+import ExampleCode from "./example.md"
+import ExampleCodeTS from "./example.ts.md"
+
+<Head.Content>
+  <title>Kiru - Show</title>
+  <meta name="keywords" content="show, component, jsx, reactive, signal, conditional rendering" />
+  <meta
+    name="description"
+    content="Learn how to use the Show component in Kiru for conditional rendering with optional fallbacks and fine-grained reactivity when the condition is a signal."
+  />
+</Head.Content>
+
+# Show
+
+`<Show>` is used for conditional rendering. It renders its `children` when the provided
+value is truthy, and renders the `fallback` when the (unwrapped) value is falsy.
+
+When the value you pass to `<Show>` is a **Signal**, the component subscribes to it. 
+This means that updates to the signal only affect the part of the tree controlled 
+by `<Show>`, without forcing the parent component to re-render.
+
+### Props
+
+<ul>
+  <li>
+    <b>when</b><sup style="color:red">*</sup>:
+    the value (or signal) that controls whether the children are shown.
+  </li>
+  <li>
+    <b>fallback</b>:
+    optional JSX rendered when the unwrapped <code>when</code> value is falsy.
+  </li>
+  <li>
+    <b>children</b>:
+    can be either a <code>JSX.Element</code> or a function of type
+    <code>(value: Truthy&lt;T&gt;) =&gt; JSX.Element</code>, which receives the unwrapped,
+    truthy value.
+  </li>
+</ul>
+
+### Example
+
+<CopyInnerText>
+  <Derive from={siteCodeLang}>
+    {(lang) => (lang === "ts" ? <ExampleCodeTS /> : <ExampleCode />)}
+  </Derive>
+</CopyInnerText>
+

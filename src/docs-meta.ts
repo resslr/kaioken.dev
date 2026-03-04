@@ -80,11 +80,6 @@ export const docMeta: DocItem[] = [
         tags: ["createContext"],
       },
       {
-        title: "Derive",
-        href: "/docs/api/derive",
-        tags: ["derive", "promise", "fallback", "mode", "signals"],
-      },
-      {
         title: "Utils",
         href: "/docs/api/utils",
         tags: ["unwrap", "className", "nextIdle", "flushSync", "onHmr"],
@@ -111,16 +106,7 @@ export const docMeta: DocItem[] = [
           },
         ],
       },
-      {
-        title: "ErrorBoundary",
-        href: "/docs/api/error-boundary",
-        tags: ["error handling", "error boundary"],
-      },
-      {
-        title: "Lazy",
-        href: "/docs/api/lazy",
-        tags: ["code-splitting"],
-      },
+
       {
         title: "Lifecycles",
         href: "/docs/api/lifecycles",
@@ -156,10 +142,7 @@ export const docMeta: DocItem[] = [
           },
         ],
       },
-      {
-        title: "Portal",
-        href: "/docs/api/portal",
-      },
+
       {
         title: "File Router",
         href: "/docs/api/file-router",
@@ -230,11 +213,7 @@ export const docMeta: DocItem[] = [
           },
         ],
       },
-      {
-        title: "Transition",
-        href: "/docs/api/transition",
-        tags: ["transitions", "animation"],
-      },
+
       {
         title: "ViewTransitions",
         href: "/docs/api/view-transitions",
@@ -253,6 +232,46 @@ export const docMeta: DocItem[] = [
             title: "stop",
           },
         ],
+      },
+    ],
+  },
+  {
+    title: "Components",
+    pages: [
+      {
+        title: "Derive",
+        href: "/docs/components/derive",
+        tags: ["derive", "promise", "fallback", "mode", "signals"],
+      },
+      {
+        title: "ErrorBoundary",
+        href: "/docs/components/error-boundary",
+        tags: ["error handling", "error boundary"],
+      },
+      {
+        title: "For",
+        href: "/docs/components/for",
+        tags: ["for", "list", "iteration"],
+      },
+      {
+        title: "Lazy",
+        href: "/docs/components/lazy",
+        tags: ["code-splitting"],
+      },
+      {
+        title: "Portal",
+        href: "/docs/components/portal",
+        tags: ["portal", "modal", "tooltip", "overlay"],
+      },
+      {
+        title: "Show",
+        href: "/docs/components/show",
+        tags: ["show", "conditional rendering"],
+      },
+      {
+        title: "Transition",
+        href: "/docs/components/transition",
+        tags: ["animation", "coroutine"],
       },
     ],
   },

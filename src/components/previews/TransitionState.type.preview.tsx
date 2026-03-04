@@ -5,6 +5,6 @@ export const TransitionStateTypePreview = {
   element: TransitionStateType,
   link: {
     text: "Transition State",
-    href: "/docs/api/transition",
+    href: "/docs/components/transition",
   },
 } satisfies CodePreviewData
