@@ -21,10 +21,17 @@ import { siteCodeLang } from "$/state"
 
 # Context
 
-<CodePreview data={contextTypePreview} /> is an externally declared state object declared via <CodePreview data={createContextPreview} />.
-The <b>Provider</b> property is a component that acts as a 'host' of the context, that is initialized with it's own value.
+<CodePreview data={contextTypePreview} /> is a context object created via <CodePreview data={createContextPreview} />.
+The value returned by `createContext` is itself a **Context component**. You use it as a JSX component with a `value` prop:
 
-Children of the context can use `useContext()` to access the provider's current state - if no provider is found, it will return the context's initial value.
+```tsx
+<ThemeContext value={themeState}>
+  <App />
+</ThemeContext>
+```
+
+Descendant components call `useContext(ThemeContext)` to read the nearest matching context's value. 
+If no matching context is found, `useContext` returns the default value passed to `createContext`.
 
 ### Example
 

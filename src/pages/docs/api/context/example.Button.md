@@ -4,9 +4,11 @@ import { ThemeContext } from "./themeContext"
 
 export function Button() {
   const { theme, toggle } = useContext(ThemeContext)
-  const backgroundColor = theme.value === "light" ? "black" : "white"
+  const backgroundColor = computed(() =>
+    theme.value === "light" ? "black" : "white"
+  )
 
-  return (
+  return () => (
     <button onclick={toggle} style={{ backgroundColor }}>
       Toggle theme
     </button>
