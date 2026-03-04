@@ -386,28 +386,76 @@ Multiple sources and fallback:
 
 ## For — Reactive lists
 
-`<For each={signal} fallback={...}>` iterates over a signal’s value and updates only when the list changes (fine-grained list updates):
+`<For>` renders a list from an array (or a signal/computed signal of an array) with **fine-grained list updates**:
 
 ```tsx
-import { For, signal } from "kiru"
+import { For, signal, computed } from "kiru"
 
-function TodoList() {
-  const todos = signal([{ id: "1", text: "One" }, { id: "2", text: "Two" }])
+function App() {
+  const items = signal([0, 1, 2, 3, 4])
+  const doubledItems = computed(() => items.value.map((i) => i * 2))
 
   return () => (
-    <ul>
-      <For each={todos} fallback={<li>No items</li>}>
-        {({ id, text }) => (
-          <li key={id}>
-            {text}
-            <button onclick={() => remove(id)}>Remove</button>
-          </li>
-        )}
-      </For>
-    </ul>
+    <div>
+      <ul>
+        <For each={doubledItems} fallback={<i>No items</i>}>
+          {(item) => <li>{item}</li>}
+        </For>
+      </ul>
+    </div>
   )
 }
 ```
+
+Key points for `<For>`:
+
+- `each`: array or signal/computed signal of items.
+- `fallback`: JSX rendered when the (unwrapped) `each` value is empty.
+- `children`: `(item: T) => JSX.Element` render function, called for each item.
+- If `each` is a signal, `<For>` creates a **slice of reactivity** for the list so only affected items update.
+
+## Show — Conditional rendering
+
+`<Show>` conditionally renders children based on a value (or signal) and supports a `fallback`:
+
+```tsx
+import { Show, signal } from "kiru"
+
+function App() {
+  const user = signal<{ name: string } | null>(null)
+
+  const login = () => {
+    user.value = { name: "Alice" }
+  }
+
+  const logout = () => {
+    user.value = null
+  }
+
+  return () => (
+    <div>
+      <Show
+        when={user}
+        fallback={<button onclick={login}>Log in</button>}
+      >
+        {(currentUser) => (
+          <div>
+            <p>Hello, {currentUser.name}</p>
+            <button onclick={logout}>Log out</button>
+          </div>
+        )}
+      </Show>
+    </div>
+  )
+}
+```
+
+Key points for `<Show>`:
+
+- `when`: value or signal that controls whether children are shown (truthy) or `fallback` is rendered (falsy).
+- `fallback`: JSX to display when the unwrapped `when` is falsy.
+- `children`: either a `JSX.Element` or a function `(value: Truthy<T>) => JSX.Element`.
+- If `when` is a signal, `<Show>` creates a fine-grained reactive slice so only its subtree updates.
 
 ## Async data: statefulPromise + Derive
 
