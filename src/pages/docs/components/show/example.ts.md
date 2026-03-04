@@ -17,17 +17,15 @@ function App() {
   }
 
   return () => (
-    <div>
-      <Show when={user} fallback={<button onclick={login}>Log in</button>}>
-        {(currentUser) => (
-          // ^ currentUser is type User
-          <div>
-            <p>Hello, {currentUser.name}</p>
-            <button onclick={logout}>Log out</button>
-          </div>
-        )}
-      </Show>
-    </div>
+    <Show when={user} fallback={<button onclick={login}>Log in</button>}>
+      {(currentUser) => (
+        // ^ currentUser is type User
+        <div>
+          <p>Hello, {currentUser.name}</p>
+          <button onclick={logout}>Log out</button>
+        </div>
+      )}
+    </Show>
   )
 }
 ```
