@@ -52,16 +52,17 @@ const MyButton = () => {
 `flushSync` forces Kiru to synchronously flush any pending work. If there is no
 work queued, it does nothing.
 
-<CopyInnerText importsOverride={`import { flushSync } from "kiru"`}>
+<CopyInnerText>
 ```ts
+import { flushSync } from "kiru"
+
 function startViewTransition() {
   document.startViewTransition(() => {
     // enqueue some state updates...
 
     // ensure all DOM changes are applied during the transition:
     flushSync()
-
-})
+  })
 }
 
 ````
@@ -78,11 +79,13 @@ or measurements that must see the latest DOM.
 `nextIdle` lets you schedule work to run after any currently queued Kiru updates
 have finished, or immediately if the scheduler is already idle.
 
-<CopyInnerText importsOverride={`import { nextIdle } from "kiru"`}>
+<CopyInnerText>
 ```ts
+import { nextIdle } from "kiru"
+
 nextIdle(() => {
-// Runs after the current render pass has completed
-console.log("DOM is up to date")
+  // Runs after the current render pass has completed
+  console.log("DOM is up to date")
 })
 ````
 
@@ -98,8 +101,10 @@ without forcing an immediate synchronous flush.
 `onHmr` registers a callback to run when Hot Module Reload (HMR) happens in
 development. In production or non-browser environments it is a no-op.
 
-<CopyInnerText importsOverride={`import { onHmr } from "kiru"`}>
+<CopyInnerText>
 ```ts
+import { onHmr } from "kiru"
+
 // Start an interval in the module scope
 const interval = setInterval(() => {
   console.log("tick")
@@ -151,7 +156,7 @@ const doubled = unwrap(count, true) * 2
 
 For example, a component or helper that accepts a "signalable" prop can normalize it:
 
-```ts
+```tsx
 interface CounterProps {
   initialCount?: number | Signal<number>
 }
