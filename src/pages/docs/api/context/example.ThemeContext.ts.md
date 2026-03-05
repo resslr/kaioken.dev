@@ -1,9 +1,12 @@
 ```ts
 import { createContext, signal } from "kiru"
 
-const defaultValue = signal<"light" | "dark">("light")
-export const ThemeContext = createContext({
-  value: defaultValue,
-  toggle: () => {},
-})
+interface ThemeContextValue {
+  value: Kiru.Signal<"light" | "dark">
+  toggle: () => void
+}
+
+export const ThemeContext = createContext<ThemeContextValue>(null!)
+
+export const useTheme = () => useContext(ThemeContext)
 ```

@@ -8,8 +8,10 @@ function App() {
     theme.value = theme.value === "light" ? "dark" : "light"
   }
 
+  const themeState = { theme, toggle }
+
   return () => (
-    <ThemeContext value={{ theme, toggle }}>
+    <ThemeContext value={themeState}>
       <Button />
     </ThemeContext>
   )

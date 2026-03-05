@@ -1,9 +1,8 @@
 ```tsx
-import { useContext } from "kiru"
-import { ThemeContext } from "./themeContext"
+import { useTheme } from "./ThemeContext"
 
 export function Button() {
-  const { theme, toggle } = useContext(ThemeContext)
+  const { theme, toggle } = useTheme()
   const backgroundColor = computed(() =>
     theme.value === "light" ? "black" : "white"
   )

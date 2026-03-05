@@ -15,23 +15,29 @@ import { siteCodeLang } from "$/state"
 
 <Head.Content>
   <title>Kiru - Context</title>
-  <meta name="keywords" content="context, createContext" />
+  <meta name="keywords" content="context, createContext, composition" />
   <meta name="description" content="Learn how to use Context API in Kiru with createContext to share state across components using the useContext hook." />
 </Head.Content>
 
 # Context
 
-<CodePreview data={contextTypePreview} /> is a context object created via <CodePreview data={createContextPreview} />.
-The value returned by `createContext` is itself a **Context component**. You use it as a JSX component with a `value` prop:
+<CodePreview data={contextTypePreview} /> allows components to share behavior and state across a subtree, 
+enabling powerful composition patterns without tightly coupling components together.
+
+A context is created with <CodePreview data={createContextPreview} />. The returned value is itself a Context component that provides a value to its descendants.
 
 ```tsx
 <ThemeContext value={themeState}>
-  <App />
+  {/* ... */}
 </ThemeContext>
 ```
 
-Descendant components call `useContext(ThemeContext)` to read the nearest matching context's value. 
-If no matching context is found, `useContext` returns the default value passed to `createContext`.
+Any descendant component can read the nearest value using `useContext`:
+```ts
+const theme = useContext(ThemeContext)
+```
+
+If no matching context exists in the component tree, `useContext` returns the default value passed to `createContext`.
 
 ### Example
 
