@@ -20,45 +20,6 @@ import { CalloutBlock } from "$/components/atoms/CalloutBlock"
 Kiru ships a small set of runtime utilities that make it easier to work with signals,
 DOM updates, and development tooling.
 
-<DocsSection id="unwrap" title="unwrap">
-
-`unwrap` takes either a plain value or a `Signal<T>` and returns the underlying value.
-It is particularly useful when consuming **"signalable"** values - props or options
-typed as `Signal<T> | T` - so your code can treat both forms uniformly.
-
-```ts
-import { signal, unwrap } from "kiru"
-
-const count = signal(0)
-
-unwrap(count) // 0 (non‑reactive, does not track)
-unwrap(42) // 42
-```
-
-Pass `true` as the second argument to read reactively when the input is a signal:
-
-```ts
-const doubled = unwrap(count, true) * 2
-```
-
-- **`unwrap(value)`** - if `value` is a signal, returns `value.peek()` (no tracking).
-- **`unwrap(value, true)`** - if `value` is a signal, returns `value.value` (tracks).
-
-For example, a component or helper that accepts a "signalable" prop can normalize it:
-
-```ts
-type ButtonProps = {
-  color: Signal<string> | string
-}
-
-function getResolvedColor(props: ButtonProps) {
-  // Works whether `props.color` is a string or a Signal<string>
-  return unwrap(props.color, true)
-}
-```
-
-</DocsSection>
-
 <DocsSection id="className" title="className">
 
 `className` is a tiny helper for building class strings from optional fragments.
@@ -69,7 +30,7 @@ truthy ones with spaces.
 ```tsx
 import { className as cls } from "kiru/utils"
 
-const MyButton: Kiru.FC = () => {
+const MyButton = () => {
   const isActive = signal(false)
 
   return () => (
@@ -83,26 +44,6 @@ const MyButton: Kiru.FC = () => {
 }
 ````
 </CopyInnerText>
-
-</DocsSection>
-
-<DocsSection id="nextIdle" title="nextIdle">
-
-`nextIdle` lets you schedule work to run after any currently queued Kiru updates
-have finished, or immediately if the scheduler is already idle.
-
-<CopyInnerText importsOverride={`import { nextIdle } from "kiru"`}>
-```ts
-nextIdle(() => {
-// Runs after the current render pass has completed
-console.log("DOM is up to date")
-})
-````
-
-</CopyInnerText>
-
-This is useful for coordinating with APIs that should see a fully-flushed DOM,
-without forcing an immediate synchronous flush.
 
 </DocsSection>
 
@@ -129,6 +70,26 @@ function startViewTransition() {
 Use this sparingly, as it can bypass Kiru's normal scheduling optimisations.
 It is primarily intended for integrations with things like View Transitions
 or measurements that must see the latest DOM.
+
+</DocsSection>
+
+<DocsSection id="nextIdle" title="nextIdle">
+
+`nextIdle` lets you schedule work to run after any currently queued Kiru updates
+have finished, or immediately if the scheduler is already idle.
+
+<CopyInnerText importsOverride={`import { nextIdle } from "kiru"`}>
+```ts
+nextIdle(() => {
+// Runs after the current render pass has completed
+console.log("DOM is up to date")
+})
+````
+
+</CopyInnerText>
+
+This is useful for coordinating with APIs that should see a fully-flushed DOM,
+without forcing an immediate synchronous flush.
 
 </DocsSection>
 
@@ -161,5 +122,48 @@ onHmr(() => clearInterval(interval))
   as intervals, subscriptions, or singletons that should not leak across hot
   reloads.
 </CalloutBlock>
+
+</DocsSection>
+
+<DocsSection id="unwrap" title="unwrap">
+
+`unwrap` takes either a plain value or a `Signal<T>` and returns the underlying value.
+It is particularly useful when consuming **"signalable"** values - props or options
+typed as `Signal<T> | T` - so your code can treat both forms uniformly.
+
+```ts
+import { signal, unwrap } from "kiru"
+
+const count = signal(0)
+
+unwrap(count) // 0 (non‑reactive, does not track)
+unwrap(42) // 42
+```
+
+Pass `true` as the second argument to read reactively when the input is a signal:
+
+```ts
+const doubled = unwrap(count, true) * 2
+```
+
+- **`unwrap(value)`** - if `value` is a signal, returns `value.peek()` (no tracking).
+- **`unwrap(value, true)`** - if `value` is a signal, returns `value.value` (tracks).
+
+For example, a component or helper that accepts a "signalable" prop can normalize it:
+
+```ts
+interface CounterProps {
+  initialCount?: number | Signal<number>
+}
+
+const Counter: Kiru.FC<CounterProps> = () => {
+  const $ = setup<typeof Counter>()
+  const count = $.derive((props) => unwrap(props.initialCount, true) ?? 0)
+
+  return () => (
+    <button onclick={() => count.value++}>Count: {count}</button>
+  )
+}
+```
 
 </DocsSection>

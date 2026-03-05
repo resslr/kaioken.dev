@@ -82,28 +82,13 @@ export const docMeta: DocItem[] = [
       {
         title: "Utils",
         href: "/docs/api/utils",
-        tags: ["unwrap", "className", "nextIdle", "flushSync", "onHmr"],
+        tags: ["className", "flushSync", "nextIdle", "onHmr", "unwrap"],
         sections: [
-          {
-            id: "unwrap",
-            title: "unwrap",
-          },
-          {
-            id: "className",
-            title: "className",
-          },
-          {
-            id: "nextIdle",
-            title: "nextIdle",
-          },
-          {
-            id: "flushSync",
-            title: "flushSync",
-          },
-          {
-            id: "onHmr",
-            title: "onHmr",
-          },
+          { id: "className", title: "className" },
+          { id: "flushSync", title: "flushSync" },
+          { id: "nextIdle", title: "nextIdle" },
+          { id: "onHmr", title: "onHmr" },
+          { id: "unwrap", title: "unwrap" },
         ],
       },
 
