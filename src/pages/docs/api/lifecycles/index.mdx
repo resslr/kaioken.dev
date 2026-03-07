@@ -43,16 +43,15 @@ or access a stable, deterministic `id` for the current position in the virtual D
 
 ```tsx
 interface CounterProps {
-  count?: number
+  initialCount?: number
 }
 
 const Counter: Kiru.FC<CounterProps> = () => {
   const { derive } = setup<CounterProps>()
   // Alternatively, setup<typeof Counter>()
 
-  const count = derive((props) => props.count ?? 0)
-  // When props change, count is updated. 
-  // This is a no-op if the returned value is the same.
+  const count = derive((props) => props.initialCount ?? 0)
+  // When "initialCount" changes, count is updated.
 
   return () => (
     <>
@@ -64,7 +63,7 @@ const Counter: Kiru.FC<CounterProps> = () => {
 }
 ```
 
-`setup<Props>()` returns an object with:
+`setup()` returns an object with:
 
 - **`derive(selector)`**: takes a selector `(props) => value` and returns a `Signal`
   that is kept in sync with the latest props passed to the component.
