@@ -1,7 +1,7 @@
 ```bash
 # Interactive mode
-npm create kiru@latest
+npx create-kiru
 
-# Or specify options directly
-npm create kiru@latest -d my-kiru-app --template CSR --install --start
+# Or specify options directly (template options: CSR, SSG, SSR, Tauri)
+npx create-kiru --dir my-kiru-app --template CSR --install --start
 ```

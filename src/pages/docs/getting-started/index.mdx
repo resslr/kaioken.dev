@@ -33,12 +33,14 @@ import { match } from "lit-match"
     <div className="not-prose">
       <PackageManagerSelector />
       <CopyInnerText>
-        {match(packageManager.value)
-          .with("Bun", () => <BunCliBash />)
-          .with("NPM", () => <NpmCliBash />)
-          .with("Yarn", () => <YarnCliBash />)
-          .with("PNPM", () => <PnpmCliBash />)
-          .exhaustive()}
+        <Derive from={packageManager}>
+          {pkg => match(pkg)
+            .with("Bun", () => <BunCliBash />)
+            .with("NPM", () => <NpmCliBash />)
+            .with("Yarn", () => <YarnCliBash />)
+            .with("PNPM", () => <PnpmCliBash />)
+            .exhaustive()}
+        </Derive>
       </CopyInnerText>
     </div>
   </div>
@@ -54,12 +56,14 @@ import { match } from "lit-match"
   <div className="not-prose">
     <PackageManagerSelector />
     <CopyInnerText>
-      {match(packageManager.value)
-        .with("Bun", () => <BunInstallBash />)
-        .with("NPM", () => <NpmInstallBash />)
-        .with("Yarn", () => <YarnInstallBash />)
-        .with("PNPM", () => <PnpmInstallBash />)
-        .exhaustive()}
+      <Derive from={packageManager}>
+        {pkg => match(pkg)
+          .with("Bun", () => <BunInstallBash />)
+          .with("NPM", () => <NpmInstallBash />)
+          .with("Yarn", () => <YarnInstallBash />)
+          .with("PNPM", () => <PnpmInstallBash />)
+          .exhaustive()}
+      </Derive>
     </CopyInnerText>
   </div>
 
