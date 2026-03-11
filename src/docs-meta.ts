@@ -170,14 +170,7 @@ export const docMeta: DocItem[] = [
       {
         title: "Signal",
         href: "/docs/api/signal",
-        tags: [
-          "state",
-          "computed",
-          "effect",
-          "resource",
-          "two way binding",
-          "For",
-        ],
+        tags: ["state", "computed", "effect", "resource", "two way binding"],
         sections: [
           {
             id: "general-usage",
