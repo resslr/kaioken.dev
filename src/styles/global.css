@@ -283,3 +283,7 @@ pre.shiki span.line.diff.add:before {
   /* background-color: #ffffff07 !important; */
   padding: 0.5rem !important;
 }
+
+.glass-container {
+  @apply border border-white/5 bg-white/5 shadow-lg backdrop-blur-md;
+}
