@@ -1,6 +1,7 @@
 import path from "node:path"
 import { defineConfig } from "vite"
 import kiru from "vite-plugin-kiru"
+import tailwindcss from "@tailwindcss/vite"
 import mdx from "@mdx-js/rollup"
 import shiki, { type RehypeShikiOptions } from "@shikijs/rehype"
 import {
@@ -18,6 +19,7 @@ export default defineConfig({
     sourcemap: false,
   },
   plugins: [
+    tailwindcss(),
     {
       enforce: "pre",
       ...mdx({
@@ -41,7 +43,6 @@ export default defineConfig({
     kiru({
       ssg: {
         page: "index.{tsx,mdx}",
-        layout: "layout.{tsx,mdx}",
         sitemap: {
           domain: "https://kirujs.dev",
           overrides: {
