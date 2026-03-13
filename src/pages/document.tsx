@@ -15,19 +15,22 @@ export default function Document() {
           href="https://fonts.gstatic.com"
           crossOrigin=""
         />
+
+        <meta property="og:url" content="https://kirujs.dev/" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Kiru" />
         <meta
           property="og:description"
           content="A powerful, easy-to-use rendering library with a tiny footprint"
         />
-        <meta property="og:type" content="website" />
         <meta
           property="og:image"
           content="https://kirujs.dev/kiru-splash.png"
         />
-        <meta property="og:image:width" content="1166" />
-        <meta property="og:image:width" content="495" />
+
         <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="kirujs.dev" />
+        <meta property="twitter:url" content="https://kirujs.dev/" />
         <meta name="twitter:title" content="Kiru" />
         <meta
           name="twitter:description"
@@ -37,8 +40,9 @@ export default function Document() {
           name="twitter:image"
           content="https://kirujs.dev/kiru-splash.png"
         />
-        <meta name="twitter:image:width" content="1166" />
-        <meta name="twitter:image:height" content="495" />
+
+        {/** https://www.opengraph.xyz */}
+
         <meta name="darkreader-lock" />
         <Head.Outlet />
       </head>
