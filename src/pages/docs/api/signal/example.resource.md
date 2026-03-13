@@ -11,7 +11,7 @@ const users = resource(search, async (search, { signal }) => {
   return res.json()
 })
 
-export default function HomePage() {
+function App() {
   return (
     <>
       <input placeholder="search" bind:value={search} />
