@@ -25,6 +25,20 @@ export default function Document() {
           property="og:image"
           content="https://kirujs.dev/kiru-splash.png"
         />
+        <meta property="og:image:width" content="1166" />
+        <meta property="og:image:width" content="495" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kiru" />
+        <meta
+          name="twitter:description"
+          content="A powerful, easy-to-use rendering library with a tiny footprint"
+        />
+        <meta
+          name="twitter:image"
+          content="https://kirujs.dev/kiru-splash.png"
+        />
+        <meta name="twitter:image:width" content="1166" />
+        <meta name="twitter:image:height" content="495" />
         <meta name="darkreader-lock" />
         <Head.Outlet />
       </head>
