@@ -5,9 +5,10 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const id = crypto.randomUUID(),
-      text = inputText.peek(),
-      todo = { id, text }
+    const todo = {
+      id: crypto.randomUUID(),
+      text: inputText.value,
+    }
 
     todos.value = [...todos.value, todo]
     inputText.value = ""

@@ -5,9 +5,10 @@ function App() {
 
   const handleSubmit = (e: Kiru.FormEvent) => {
     e.preventDefault()
-    const id = crypto.randomUUID(),
-      text = inputText.peek(),
-      todo = { id, text }
+    const todo: Todo = {
+      id: crypto.randomUUID(),
+      text: inputText.value,
+    }
 
     todos.value = [...todos.value, todo]
     inputText.value = ""
