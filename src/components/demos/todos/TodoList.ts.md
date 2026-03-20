@@ -1,7 +1,7 @@
 ```tsx
 function App() {
-  const inputText = signal(""),
-    todos = signal<Todo[]>([])
+  const todos = signal<Todo[]>([]),
+    inputText = signal("")
 
   const handleSubmit = (e: Kiru.FormEvent) => {
     e.preventDefault()

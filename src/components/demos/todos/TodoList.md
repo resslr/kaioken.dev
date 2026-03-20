@@ -1,7 +1,7 @@
 ```tsx
 function App() {
-  const inputText = signal(""),
-    todos = signal([])
+  const todos = signal([]),
+    inputText = signal("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
