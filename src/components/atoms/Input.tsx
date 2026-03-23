@@ -1,20 +1,15 @@
-import { ElementProps } from "kaioken"
-
-export interface InputProps extends ElementProps<"input"> {}
+import { ElementProps } from "kiru"
 
 export function Input({
   className = "",
   type = "text",
   ref,
   ...props
-}: InputProps) {
+}: ElementProps<"input">) {
   return (
     <input
       type={type}
-      className={
-        "flex h-9 px-2 rounded-md border border-white border-opacity-10 " +
-        className
-      }
+      className={"flex h-9 px-2 rounded-md border border-white/10 " + className}
       ref={ref}
       {...props}
     />

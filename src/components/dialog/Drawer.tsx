@@ -1,4 +1,4 @@
-import { useRef, type TransitionState, useEffect } from "kaioken"
+import { useRef, type TransitionState, useEffect } from "kiru"
 import { Backdrop } from "./Backdrop"
 import { isClickEventFromKeyboard, trapFocus } from "$/utils"
 

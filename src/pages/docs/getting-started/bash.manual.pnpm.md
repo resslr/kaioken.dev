@@ -1,4 +1,4 @@
 ```bash
-pnpm add kaioken
-pnpm add vite-plugin-kaioken -D
+pnpm add kiru
+pnpm add vite-plugin-kiru -D
 ```

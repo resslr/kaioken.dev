@@ -1,5 +1,5 @@
 ```jsx
-import { createContext, useContext } from "kaioken"
+import { createContext, useContext } from "kiru"
 
 const ThemeContext = useContext("light")
 

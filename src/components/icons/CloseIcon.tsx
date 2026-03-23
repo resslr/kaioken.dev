@@ -1,4 +1,4 @@
-import { ElementProps } from "kaioken"
+import { ElementProps } from "kiru"
 
 export const CloseIcon = (props: ElementProps<"svg">) => {
   const { width, height, ...rest } = props

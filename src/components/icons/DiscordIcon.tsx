@@ -1,4 +1,4 @@
-import { ElementProps } from "kaioken"
+import { ElementProps } from "kiru"
 
 export function DiscordIcon(props: ElementProps<"svg">) {
   const { width, height, ...rest } = props

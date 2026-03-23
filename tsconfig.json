@@ -10,12 +10,14 @@
     "sourceMap": true,
     "module": "ESNext",
     "noEmit": true,
-    "moduleResolution": "Node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "moduleResolution": "bundler",
     "target": "ES2020",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "types": ["vite/client"],
     "jsx": "preserve",
-    "jsxImportSource": "kaioken",
+    "jsxImportSource": "kiru",
     "paths": {
       "$/*": ["./src/*"]
     }

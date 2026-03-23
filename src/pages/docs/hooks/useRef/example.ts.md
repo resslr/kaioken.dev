@@ -1,5 +1,5 @@
 ```tsx
-import { useRef } from "kaioken"
+import { useRef } from "kiru"
 
 function App() {
   const inputRef = useRef<HTMLInputElement>(null) // Create a ref for the input element

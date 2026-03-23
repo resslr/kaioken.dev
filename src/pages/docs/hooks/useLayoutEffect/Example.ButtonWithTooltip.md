@@ -1,5 +1,5 @@
 ```jsx
-import { useState, useRef } from "kaioken"
+import { useState, useRef } from "kiru"
 import { Tooltip } from "./Tooltip"
 
 export function ButtonWithTooltip({ children, tooltipContent, ...rest }) {

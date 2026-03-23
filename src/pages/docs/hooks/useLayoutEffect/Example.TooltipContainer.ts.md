@@ -8,7 +8,7 @@ export function TooltipContainer({
   children: JSX.Children
   x: number
   y: number
-  contentRef: Kaioken.Ref<HTMLDivElement | null>
+  contentRef: Kiru.Ref<HTMLDivElement | null>
 }) {
   return (
     <div

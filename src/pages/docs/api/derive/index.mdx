@@ -1,0 +1,47 @@
+import { Head, Link } from "kiru/router"
+import { CopyInnerText } from "$/components/CopyInnerText"
+import { siteCodeLang } from "$/state/siteCodeLang"
+import ExampleCode from "./example.md"
+import ExampleCodeTS from "./example.ts.md"
+import ExamplePromiseCode from "./example.promise.md"
+import ExamplePromiseCodeTS from "./example.promise.ts.md"
+
+<Head.Content>
+  <title>Kiru - Derive</title>
+  <meta name="keywords" content="derive, component, jsx, reactive, signal, promise" />
+  <meta name="description" content="Learn how to use Derive in Kiru for creating fine-grained reactivity in JSX." />
+</Head.Content>
+
+# Derive
+
+Similar to <Link to="/docs/api/signal#for-component">{"<For>"}</Link>, `Derive` allows you to easily create fine-grained reactivity in JSX. 
+The `<Derive>` component produces a JSX element that automatically updates whenever the 
+provided `from` signal changes. 
+
+<CopyInnerText importsOverride={`import { useSignal, useComputed, Derive } from "kiru"`}>
+{siteCodeLang.value === "js" ? <ExampleCode /> : <ExampleCodeTS />}
+</CopyInnerText>
+
+## Promise Support
+
+`<Derive />` also supports promises created by the `usePromise` hook. When deriving from a promise,
+you can use the `fallback` prop to show content while the promise is pending, and the render function
+receives an `isStale` parameter that indicates whether the data is stale (i.e., a new request is in progress).
+
+You can use multiple promises with `<Derive />`, or mix promises and signals:
+
+<CopyInnerText>
+{siteCodeLang.value === "js" ? <ExamplePromiseCode /> : <ExamplePromiseCodeTS />}
+</CopyInnerText>
+
+If any entry in the `from` prop is a promise, you can use the `fallback` prop. By default, `<Derive />` uses 
+SWR-style behavior where stale data is shown while new data loads. If you never want to show stale content, 
+you can use the `mode` prop (accepted values: `"swr"` | `"fallback"`), which defaults to `"swr"`. Setting 
+it to `"fallback"` will render the fallback whenever the data is stale.
+
+### Related
+
+<ul>
+  <li><Link to="/docs/api/signal#for-component">`<For />`</Link></li>
+  <li><Link to="/docs/hooks/usePromise">usePromise</Link></li>
+</ul>

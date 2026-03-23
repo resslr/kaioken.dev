@@ -1,30 +1,30 @@
 import { useCommandPallete } from "$/state/commandPallete"
-import {
-  Transition,
-  useCallback,
-  useEffect,
-  useMemo,
-  useModel,
-  useRef,
-} from "kaioken"
+import { computed, For, signal, Transition, useEffect, useRef } from "kiru"
 import { Modal } from "./dialog/Modal"
 import { DialogHeader } from "./dialog/DialogHeader"
 import { Input } from "./atoms/Input"
 import { DocPageLink, docMeta } from "$/docs-meta"
 import { DialogBody } from "./dialog/DialogBody"
-import { SITE_LINKS } from "$/constants"
+import { OS, SITE_LINKS } from "$/constants"
 import { SearchIcon } from "./icons/SearchIcon"
 import { CloseIcon } from "./icons/CloseIcon"
-import { usePageContext } from "$/context/pageContext"
-import { isLinkActive, isMac } from "$/utils"
+import { isLinkActive } from "$/utils"
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon"
+import { DocItemStatus } from "./DocItemStatus"
+import { Link, useFileRouter } from "kiru/router"
+
+const groupData: Record<string, DocPageLink[]> = {
+  Links: SITE_LINKS,
+  API: docMeta.find((d) => d.title === "API")!.pages!,
+  Hooks: docMeta.find((d) => d.title === "Hooks")!.pages!,
+}
 
 export function CommandPallete() {
   const {
     value: { open, event },
     setOpen,
   } = useCommandPallete()
-  const { urlPathname } = usePageContext()
+  const router = useFileRouter()
 
   const prevActiveElement = useRef<Element | null>(null)
 
@@ -35,7 +35,7 @@ export function CommandPallete() {
     }
   }, [])
 
-  useEffect(() => (open && setOpen(false), void 0), [urlPathname])
+  useEffect(() => (open && setOpen(false), void 0), [router.state.pathname])
 
   function focusSender() {
     const el = prevActiveElement.current
@@ -44,7 +44,7 @@ export function CommandPallete() {
 
   function handleKeyboardEvent(e: KeyboardEvent) {
     const isHandled =
-      e.key.toLowerCase() === "k" && (isMac() ? e.metaKey : e.ctrlKey)
+      e.key.toLowerCase() === "k" && (OS === "mac" ? e.metaKey : e.ctrlKey)
     if (!isHandled) return
 
     e.preventDefault()
@@ -84,14 +84,41 @@ export function CommandPallete() {
     />
   )
 }
+const searchInputValue = signal("")
+const filteredGroups = computed(() => {
+  const terms = searchInputValue.value.toLowerCase().split(" ")
+  return Object.entries(groupData).reduce<CommandPalleteGroupProps[]>(
+    (acc, [title, items]) => {
+      const sectionTitleLower = title.toLowerCase()
+
+      const filtered = items.filter((item) => {
+        const defs = [
+          sectionTitleLower,
+          ...item.title.toLowerCase().split(" "),
+          ...(item.tags ?? []).map((word) => word.toLowerCase()),
+        ]
+        let matched = 0
+        for (let i = 0; i < terms.length; i++) {
+          if (defs.some((k) => k.indexOf(terms[i]) > -1)) matched++
+        }
+        return matched === terms.length
+      })
+
+      if (filtered.length) return [...acc, { title, items: filtered }]
+      return acc
+    },
+    []
+  )
+})
 
 function CommandPalleteDisplay() {
-  const [searchInputRef, searchInputValue] = useModel<HTMLInputElement>("")
   const { setOpen } = useCommandPallete()
+  const searchInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     searchInputRef.current?.focus()
-  }, [searchInputRef.current])
+    searchInputRef.current?.select()
+  }, [])
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyboardEvent)
@@ -105,8 +132,6 @@ function CommandPalleteDisplay() {
     searchInputRef.current?.focus()
   }
 
-  const searchTerms = searchInputValue.toLowerCase().split(" ")
-
   return (
     <>
       <DialogHeader className="border-b-0 relative">
@@ -114,8 +139,9 @@ function CommandPalleteDisplay() {
         <Input
           type="text"
           placeholder="Search..."
-          className="w-full pl-8 bg-black bg-opacity-20 font-normal text-base"
+          className="w-full pl-8 bg-black/20 font-normal text-base"
           ref={searchInputRef}
+          bind:value={searchInputValue}
         />
         <button
           ariaLabel="Close"
@@ -125,64 +151,27 @@ function CommandPalleteDisplay() {
           <CloseIcon width="1em" height="1em" />
         </button>
       </DialogHeader>
-      <DialogBody className="bg-black bg-opacity-10 border border-white border-opacity-5 rounded max-h-[400px] overflow-y-auto scroll-py-20">
+      <DialogBody className="bg-black/10 border border-white/5 rounded-sm max-h-[400px] overflow-y-auto scroll-py-20">
         <div className="flex flex-col gap-2">
-          <CommandPalleteGroup
-            title="Links"
-            items={SITE_LINKS}
-            searchTerms={searchTerms}
-          />
-          <CommandPalleteGroup
-            title="API"
-            items={docMeta.find((d) => d.title === "API")!.pages!}
-            searchTerms={searchTerms}
-          />
-          <CommandPalleteGroup
-            title="Hooks"
-            items={docMeta.find((d) => d.title === "Hooks")!.pages!}
-            searchTerms={searchTerms}
-          />
+          <For each={filteredGroups}>
+            {(group) => <CommandPalleteGroup key={group.title} {...group} />}
+          </For>
         </div>
       </DialogBody>
     </>
   )
 }
 
-function matchItem(terms: string[], keywords: string[]) {
-  let matched = 0
-  for (let i = 0; i < terms.length; i++) {
-    if (keywords.some((k) => k.indexOf(terms[i]) > -1)) matched++
-  }
-  return matched === terms.length
-}
-
-function CommandPalleteGroup({
-  title,
-  items,
-  searchTerms,
-}: {
+type CommandPalleteGroupProps = {
   title: string
   items: DocPageLink[]
-  searchTerms: string[]
-}) {
-  const filteredItems = useMemo(
-    () =>
-      items.filter((item) =>
-        matchItem(searchTerms, [
-          title.toLowerCase(),
-          ...item.title.toLowerCase().split(" "),
-          ...(item.keywords?.map((item) => item.toLowerCase()) ?? []),
-        ])
-      ),
-    [searchTerms]
-  )
-  if (!filteredItems.length) return null
-
+}
+function CommandPalleteGroup({ title, items }: CommandPalleteGroupProps) {
   return (
     <div>
       <h4 className="mx-1 font-bold text-sm text-muted">{title}</h4>
       <div className="flex gap-1 flex-col py-2 px-1">
-        {filteredItems.map((item) => (
+        {items.map((item) => (
           <CommandPalleteItem
             key={item.href}
             item={item}
@@ -202,43 +191,65 @@ function CommandPalleteItem({
   external?: boolean
 }) {
   const { setOpen } = useCommandPallete()
-  const { urlPathname } = usePageContext()
-  const onLinkClick = useCallback(() => {
-    if (isLinkActive(item.href, urlPathname)) setOpen(false)
-  }, [item.href, urlPathname, setOpen])
+  const router = useFileRouter()
+
   if (item.disabled) {
     return (
-      <a className="w-full text-muted bg-white bg-opacity-[1%] border border-white border-opacity-5 p-2 rounded focus:bg-opacity-5 hover:bg-opacity-5">
+      <a className="w-full text-muted bg-white/1 border border-white/5 p-2 rounded-sm focus:bg-white/5 hover:bg-white/5">
         <span className="w-full flex justify-between items-center text-xs">
           {item.title}
           <span className="badge">Upcoming</span>
         </span>
 
-        <CommandPalleteBadges item={item} />
+        {item.tags && <CommandPalleteItemTags tags={item.tags} />}
       </a>
     )
   }
+  if (external) {
+    return (
+      <a
+        className="w-full text-muted bg-white/1 border border-white/5 p-2 rounded-sm focus:bg-white/5 hover:bg-white/5"
+        href={item.href}
+        target="_blank"
+      >
+        <div className="flex items-start justify-between">
+          <span className="flex gap-1 items-center text-sm font-light">
+            {item.title} <ExternalLinkIcon width=".85rem" height=".85rem" />
+          </span>
+        </div>
+      </a>
+    )
+  }
+
+  let hasNewSection = false
+  if (item.status?.type !== "new") {
+    hasNewSection = !!item.sections?.some((s) => s.isNew)
+  }
+
   return (
-    <a
-      className="w-full text-muted bg-white bg-opacity-[1%] border border-white border-opacity-5 p-2 rounded focus:bg-opacity-5 hover:bg-opacity-5"
-      href={item.href}
-      onclick={onLinkClick}
-      target={external ? "_blank" : "_self"}
+    <Link
+      className="w-full text-muted bg-white/1 border border-white/5 p-2 rounded-sm focus:bg-white/5 hover:bg-white/5"
+      to={item.href}
+      onclick={() =>
+        isLinkActive(item.href, router.state.pathname) && setOpen(false)
+      }
     >
-      <span className="flex gap-1 items-center text-sm font-light">
-        {item.title}
-        {external ? <ExternalLinkIcon width=".85rem" height=".85rem" /> : ""}
-      </span>
-      <CommandPalleteBadges item={item} />
-    </a>
+      <div className="flex items-start justify-between">
+        <span className="flex gap-1 items-center text-sm font-light">
+          {item.title}{" "}
+        </span>
+        <DocItemStatus status={item.status} hasNewSection={hasNewSection} />
+      </div>
+      {item.tags && <CommandPalleteItemTags tags={item.tags} />}
+    </Link>
   )
 }
 
-function CommandPalleteBadges({ item }: { item: DocPageLink }) {
-  if (!item.keywords) return null
+function CommandPalleteItemTags({ tags }: { tags: string[] }) {
+  if (!tags) return null
   return (
-    <div className="flex gap-1 mt-1">
-      {item.keywords.map((keyword) => (
+    <div className="flex flex-wrap gap-1 mt-1">
+      {tags.map((keyword) => (
         <span key={keyword} className="badge badge-muted">
           {keyword}
         </span>

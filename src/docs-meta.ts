@@ -5,17 +5,49 @@ export type DocItem = {
   sections?: DocSectionLink[]
 }
 
+export type DocItemStatus =
+  | {
+      type: "new"
+      since: string
+    }
+  | {
+      type: "deprecated"
+      since: string
+    }
+
 export type DocPageLink = {
   title: string
   href: string
   disabled?: boolean
-  keywords?: string[]
+  tags?: string[]
+  status?: DocItemStatus
+  sections?: DocSectionLink[]
 }
 
 type DocSectionLink = {
   title: string
   id: string
+  isNew?: DocItemStatus
 }
+
+const STATUS_MAP: Record<string, DocItemStatus> = {
+  fileRouterApi: {
+    type: "new",
+    since: "0.50.0",
+  },
+  deriveApi: {
+    type: "new",
+    since: "0.53.0",
+  },
+  errorBoundary: {
+    type: "new",
+    since: "0.53.0",
+  },
+  usePromiseHook: {
+    type: "new",
+    since: "0.53.0",
+  },
+} as const
 
 export const docMeta: DocItem[] = [
   {
@@ -23,8 +55,8 @@ export const docMeta: DocItem[] = [
     href: "/docs/introduction",
     sections: [
       {
-        title: "About Kaioken",
-        id: "about-kaioken",
+        title: "About Kiru",
+        id: "about-kiru",
       },
       {
         title: "Roadmap",
@@ -60,11 +92,24 @@ export const docMeta: DocItem[] = [
       {
         title: "Context",
         href: "/docs/api/context",
-        keywords: ["createContext"],
+        tags: ["createContext"],
+      },
+      {
+        title: "Derive",
+        href: "/docs/api/derive",
+        tags: ["derive", "promise", "fallback", "mode", "signals"],
+        status: STATUS_MAP.deriveApi,
+      },
+      {
+        title: "ErrorBoundary",
+        href: "/docs/api/error-boundary",
+        tags: ["error handling", "error boundary"],
+        status: STATUS_MAP.errorBoundary,
       },
       {
         title: "Lazy",
         href: "/docs/api/lazy",
+        tags: ["code-splitting"],
       },
       {
         title: "Memo",
@@ -75,23 +120,127 @@ export const docMeta: DocItem[] = [
         href: "/docs/api/portal",
       },
       {
-        title: "Routing",
-        href: "/docs/api/routing",
-        keywords: ["router", "route", "link", "navigate"],
+        title: "File Router",
+        href: "/docs/api/file-router",
+        tags: ["FileRouter", "Link", "SSG", "useFileRouter", "404"],
+        status: STATUS_MAP.fileRouterApi,
+        sections: [
+          {
+            id: "general-usage",
+            title: "General Usage",
+          },
+          {
+            id: "file-structure",
+            title: "File Structure & Routing",
+          },
+          {
+            id: "data-loading",
+            title: "Data Loading",
+          },
+          {
+            id: "static-site-generation",
+            title: "Static Site Generation (SSG)",
+          },
+          {
+            id: "navigation",
+            title: "Navigation",
+          },
+          {
+            id: "layouts",
+            title: "Layouts",
+          },
+          {
+            id: "404",
+            title: "404",
+          },
+          {
+            id: "useFileRouter",
+            title: "useFileRouter",
+          },
+        ],
+      },
+      {
+        title: "Form",
+        href: "/docs/api/form",
+        tags: ["useForm", "form", "validation", "Field", "Subscribe"],
+        status: STATUS_MAP.formApi,
+        sections: [
+          {
+            id: "basic-usage",
+            title: "Basic Usage",
+          },
+          {
+            id: "validation",
+            title: "Validation",
+          },
+          {
+            id: "form-components",
+            title: "Form Components",
+          },
+        ],
       },
       {
         title: "Signal",
         href: "/docs/api/signal",
-        keywords: ["signal", "state"],
+        tags: ["state", "computed", "effect", "two way binding", "For"],
+        sections: [
+          {
+            id: "general-usage",
+            title: "General Usage",
+          },
+          {
+            id: "computed-signals",
+            title: "Computed",
+          },
+          {
+            id: "signal-effects",
+            title: "Watch",
+          },
+          {
+            id: "usage-in-components",
+            title: "In Components",
+          },
+          {
+            id: "two-way-binding",
+            title: "Two Way Binding",
+            isNew: STATUS_MAP.elementBindings,
+          },
+          {
+            id: "for-component",
+            title: "For",
+            isNew: STATUS_MAP.ForComponent,
+          },
+        ],
       },
       {
         title: "Store",
         href: "/docs/api/store",
-        keywords: ["createStore", "useStore", "MethodFactory", "state"],
+        tags: ["createStore", "useStore", "MethodFactory", "state"],
+      },
+      {
+        title: "SWR",
+        href: "/docs/api/swr",
+        tags: ["swr", "useSWR", "fetcher", "mutate", "revalidate", "cache"],
+        status: STATUS_MAP.swrApi,
+        sections: [
+          {
+            id: "basic-usage",
+            title: "Basic Usage",
+          },
+          {
+            id: "mutations",
+            title: "Mutations",
+          },
+          {
+            id: "caching",
+            title: "Caching",
+          },
+        ],
       },
       {
         title: "Transition",
         href: "/docs/api/transition",
+        tags: ["transitions", "animation"],
       },
     ],
   },
@@ -115,6 +264,10 @@ export const docMeta: DocItem[] = [
         href: "/docs/hooks/useEffect",
       },
       {
+        title: "useEffectEvent",
+        href: "/docs/hooks/useEffectEvent",
+      },
+      {
         title: "useId",
         href: "/docs/hooks/useId",
       },
@@ -127,9 +280,10 @@ export const docMeta: DocItem[] = [
         href: "/docs/hooks/useMemo",
       },
       {
-        title: "useModel",
-        href: "/docs/hooks/useModel",
-        keywords: ["Ref"],
+        title: "usePromise",
+        href: "/docs/hooks/usePromise",
+        tags: ["promise", "async", "Derive"],
+        status: STATUS_MAP.usePromiseHook,
       },
       {
         title: "useReducer",
@@ -138,7 +292,7 @@ export const docMeta: DocItem[] = [
       {
         title: "useRef",
         href: "/docs/hooks/useRef",
-        keywords: ["Ref"],
+        tags: ["Ref"],
       },
       {
         title: "useState",
@@ -147,7 +301,13 @@ export const docMeta: DocItem[] = [
       {
         title: "useSyncExternalStore",
         href: "/docs/hooks/useSyncExternalStore",
-        keywords: ["state", "global state"],
+        tags: ["state", "global state"],
+      },
+      {
+        title: "useViewTransition",
+        href: "/docs/hooks/useViewTransition",
+        tags: ["view transition", "animation"],
+        status: STATUS_MAP.useViewTransition,
       },
       {
         title: "Dependency arrays",
@@ -156,7 +316,7 @@ export const docMeta: DocItem[] = [
       {
         title: "Custom hooks",
         href: "/docs/hooks/custom-hooks",
-        keywords: ["useHook"],
+        tags: ["useHook"],
       },
     ],
   },

@@ -1,4 +1,4 @@
-import { ElementProps } from "kaioken"
+import { ElementProps } from "kiru"
 import { ExternalLinkIcon } from "../icons/ExternalLinkIcon"
 
 export function ExternalLink({ children, ...props }: ElementProps<"a">) {

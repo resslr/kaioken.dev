@@ -1,5 +1,5 @@
 ```jsx
-import { useState, useEffect } from "kaioken"
+import { useState, useEffect } from "kiru"
 
 function App() {
   const [count, setCount] = useState(0)

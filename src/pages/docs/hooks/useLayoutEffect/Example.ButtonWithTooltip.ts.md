@@ -1,5 +1,5 @@
 ```tsx
-import { useState, useRef, type ElementProps } from "kaioken"
+import { useState, useRef, type ElementProps } from "kiru"
 import { Tooltip } from "./Tooltip"
 
 export function ButtonWithTooltip({

@@ -1,4 +1,4 @@
-import { type TransitionState } from "kaioken"
+import { type TransitionState } from "kiru"
 
 type PreviewProps = {
   state: TransitionState
